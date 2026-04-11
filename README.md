@@ -1,35 +1,57 @@
-# web-portfolio
+# Web Portfolio
 
-This is a [Next.js](https://nextjs.org) project bootstrapped with [v0](https://v0.app).
+A modern personal portfolio to showcase projects, skills, and contact details.
 
-## Built with v0
+## Tech Stack
 
-This repository is linked to a [v0](https://v0.app) project. You can continue developing by visiting the link below -- start new chats to make changes, and v0 will push commits directly to this repo. Every merge to `main` will automatically deploy.
-
-[Continue working on v0 →](https://v0.app/chat/projects/prj_Epc1zIQ9tEaPgJP8JfoxciiPUqlj)
+- Next.js 16
+- React 19
+- TypeScript
+- Tailwind CSS 4
+- Biome (linting, formatting, import organization)
 
 ## Getting Started
 
-First, run the development server:
+Install dependencies:
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
+pnpm install
+```
+
+Run the development server:
+
+```bash
 pnpm dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000).
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Available Scripts
 
-## Learn More
+```bash
+pnpm dev           # Start dev server
+pnpm build         # Production build
+pnpm start         # Start production server
+pnpm lint          # Biome lint
+pnpm lint:fix      # Biome lint with fixes
+pnpm format        # Biome format (write)
+pnpm format:check  # Biome format check
+pnpm check         # Biome check
+pnpm check:fix     # Biome check with fixes
+```
 
-To learn more, take a look at the following resources:
+## Project Structure
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-- [v0 Documentation](https://v0.app/docs) - learn about v0 and how to use it.
+```text
+src/
+ app/            # App Router pages, layouts, globals
+ components/     # UI and portfolio sections
+ hooks/          # Custom React hooks
+ lib/            # Shared utilities
+ styles/         # Global style assets
+```
 
-<a href="https://v0.app/chat/api/kiro/clone/FEMADOX/web-portfolio" alt="Open in Kiro"><img src="https://pdgvvgmkdvyeydso.public.blob.vercel-storage.com/open%20in%20kiro.svg?sanitize=true" /></a>
+## Notes
+
+- Main route entry: `src/app/page.tsx`
+- Path alias `@/*` points to `src/*`
