@@ -1,17 +1,17 @@
 'use client'
 
+import {
+  ArrowRight,
+  Github,
+  Linkedin,
+  Mail,
+  MessageSquare,
+  Send
+} from 'lucide-react'
 import { useState } from 'react'
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
 import { Textarea } from '@/components/ui/textarea'
-import {
-  Mail,
-  MessageSquare,
-  Linkedin,
-  Github,
-  ArrowRight,
-  Send
-} from 'lucide-react'
 
 const contactLinks = [
   {
@@ -36,7 +36,7 @@ const contactLinks = [
   }
 ]
 
-export function ContactSection() {
+export const ContactSection = () => {
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -89,10 +89,14 @@ export function ContactSection() {
         {/* Contact Form */}
         <form onSubmit={handleSubmit} className="space-y-4">
           <div>
-            <label className="block text-xs font-medium text-muted-foreground uppercase tracking-wider mb-2">
+            <label
+              htmlFor="contact-name"
+              className="block text-xs font-medium text-muted-foreground uppercase tracking-wider mb-2"
+            >
               Target Identity (Name)
             </label>
             <Input
+              id="contact-name"
               placeholder="Enter identification..."
               value={formData.name}
               onChange={(e) =>
@@ -102,10 +106,14 @@ export function ContactSection() {
             />
           </div>
           <div>
-            <label className="block text-xs font-medium text-muted-foreground uppercase tracking-wider mb-2">
+            <label
+              htmlFor="contact-email"
+              className="block text-xs font-medium text-muted-foreground uppercase tracking-wider mb-2"
+            >
               Routing Address (Email)
             </label>
             <Input
+              id="contact-email"
               type="email"
               placeholder="Enter transmission route..."
               value={formData.email}
@@ -116,16 +124,20 @@ export function ContactSection() {
             />
           </div>
           <div>
-            <label className="block text-xs font-medium text-muted-foreground uppercase tracking-wider mb-2">
+            <label
+              htmlFor="contact-message"
+              className="block text-xs font-medium text-muted-foreground uppercase tracking-wider mb-2"
+            >
               Payload (Message)
             </label>
             <Textarea
+              id="contact-message"
               placeholder="Construct message payload..."
               value={formData.message}
               onChange={(e) =>
                 setFormData({ ...formData, message: e.target.value })
               }
-              className="bg-card border-border min-h-[120px]"
+              className="bg-card border-border min-h-30"
             />
           </div>
           <Button
@@ -142,7 +154,7 @@ export function ContactSection() {
       <footer className="mt-16 pt-8 border-t border-border">
         <div className="flex flex-col sm:flex-row items-center justify-between gap-4">
           <p className="text-sm text-muted-foreground">
-            © 2024 Giancarlos Gonzalez
+            © {new Date().getFullYear()} Giancarlos Gonzalez
           </p>
           <div className="flex items-center gap-6">
             <a
@@ -158,7 +170,7 @@ export function ContactSection() {
               LinkedIn
             </a>
             <a
-              href="#"
+              href="https://github.com/FEMADOX/web-portfolio"
               className="text-xs text-muted-foreground hover:text-foreground transition-colors uppercase tracking-wider"
             >
               Source

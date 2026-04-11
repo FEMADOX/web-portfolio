@@ -1,18 +1,18 @@
 'use client'
 
-import { useState, useEffect } from 'react'
-import { Sidebar } from '@/components/cv/sidebar'
-import { HeroSection } from '@/components/cv/hero-section'
-import { SkillsSection } from '@/components/cv/skills-section'
-import { ProjectsSection } from '@/components/cv/projects-section'
-import { EducationSection } from '@/components/cv/education-section'
+import { useEffect, useState } from 'react'
 import { ContactSection } from '@/components/cv/contact-section'
-import { MobileNav } from '@/components/cv/mobile-nav'
+import { EducationSection } from '@/components/cv/education-section'
+import { HeroSection } from '@/components/cv/hero-section'
 import { MobileHeader } from '@/components/cv/mobile-header'
+import { MobileNav } from '@/components/cv/mobile-nav'
+import { ProjectsSection } from '@/components/cv/projects-section'
+import { Sidebar } from '@/components/cv/sidebar'
+import { SkillsSection } from '@/components/cv/skills-section'
 
-export default function CVPage() {
+const CVPage = () => {
   const [activeSection, setActiveSection] = useState('summary')
-  const [isMobile, setIsMobile] = useState(false)
+  const [, setIsMobile] = useState(false)
 
   useEffect(() => {
     const checkMobile = () => {
@@ -87,3 +87,5 @@ export default function CVPage() {
     </div>
   )
 }
+
+export default CVPage

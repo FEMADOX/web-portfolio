@@ -1,7 +1,7 @@
 'use client'
 
+import { Briefcase, Code, Mail, User } from 'lucide-react'
 import { cn } from '@/lib/utils'
-import { User, Briefcase, Code, Mail } from 'lucide-react'
 
 interface MobileNavProps {
   activeSection: string
@@ -16,39 +16,38 @@ const navItems = [
   { id: 'contact', label: 'Contact', icon: Mail }
 ]
 
-export function MobileNav({
+export const MobileNav = ({
   activeSection,
   onNavigate,
   className
-}: MobileNavProps) {
-  return (
-    <nav
-      className={cn(
-        'fixed bottom-0 left-0 right-0 z-50 bg-card/95 backdrop-blur-sm border-t border-border',
-        className
-      )}
-    >
-      <div className="flex items-center justify-around py-2">
-        {navItems.map((item) => {
-          const Icon = item.icon
-          const isActive = activeSection === item.id
-          return (
-            <button
-              key={item.id}
-              onClick={() => onNavigate(item.id)}
-              className={cn(
-                'flex flex-col items-center gap-1 px-4 py-2 rounded-lg transition-colors min-w-[60px]',
-                isActive ? 'text-accent' : 'text-muted-foreground'
-              )}
-            >
-              <Icon className="w-5 h-5" />
-              <span className="text-[10px] font-medium uppercase">
-                {item.label}
-              </span>
-            </button>
-          )
-        })}
-      </div>
-    </nav>
-  )
-}
+}: MobileNavProps) => (
+  <nav
+    className={cn(
+      'fixed bottom-0 left-0 right-0 z-50 bg-card/95 backdrop-blur-sm border-t border-border',
+      className
+    )}
+  >
+    <div className="flex items-center justify-around py-2">
+      {navItems.map((item) => {
+        const Icon = item.icon
+        const isActive = activeSection === item.id
+        return (
+          <button
+            type="button"
+            key={item.id}
+            onClick={() => onNavigate(item.id)}
+            className={cn(
+              'flex flex-col items-center gap-1 px-4 py-2 rounded-lg transition-colors min-w-15',
+              isActive ? 'text-accent' : 'text-muted-foreground'
+            )}
+          >
+            <Icon className="w-5 h-5" />
+            <span className="text-[10px] font-medium uppercase">
+              {item.label}
+            </span>
+          </button>
+        )
+      })}
+    </div>
+  </nav>
+)

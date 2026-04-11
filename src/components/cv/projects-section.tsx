@@ -1,6 +1,5 @@
 'use client'
 
-import { Badge } from '@/components/ui/badge'
 import { ExternalLink, Github } from 'lucide-react'
 
 const projects = [
@@ -9,7 +8,7 @@ const projects = [
     period: 'Mar 2026 - Present',
     description:
       'Advanced implementation of high-performance microservices architecture using FastAPI and asynchronous processing. Implementing clean architecture, Pydantic for advance validation and full type annotation on the entire project, SQLAlchemy as ORM with Alembic as migrations manager, Pytest as testing framework, using Postgres DB, Docker for the API deploying and a integration with the NextJS framework.',
-    technologies: ['FastAPI', 'Python', 'Docker', 'PostgreSQL', 'Redis'],
+    technologies: ['FastAPI', 'Python', 'Docker', 'PostgreSQL'],
     links: {
       github: 'https://github.com'
     },
@@ -31,7 +30,7 @@ const projects = [
     period: 'Oct 2024 - Aug 2025',
     description:
       'Social networking application with real-time updates, user profiles, and media sharing capabilities. Social website clone with Django. Like, follow and user authentications implementation. Django used as the main technology to craft this social website clone where users can upload from internet images to the website using bookmarks, user basic authentication and OAuth2 with Google and X.',
-    technologies: ['Django', 'React', 'PostgreSQL', 'WebSocket'],
+    technologies: ['Django', 'PostgreSQL'],
     links: {
       website: 'https://example.com'
     },
@@ -39,8 +38,7 @@ const projects = [
   }
 ]
 
-export function ProjectsSection() {
-  return (
+export const ProjectsSection = () => (
     <section id="projects" className="py-16">
       {/* Section Header */}
       <div className="flex items-center justify-between mb-8">
@@ -54,9 +52,9 @@ export function ProjectsSection() {
 
       {/* Projects List */}
       <div className="space-y-6">
-        {projects.map((project, index) => (
+        {projects.map((project) => (
           <div
-            key={index}
+            key={project.title}
             className="group relative bg-card border border-border rounded-lg p-6 transition-all hover:border-accent/50"
           >
             {/* Period Badge */}
@@ -120,4 +118,3 @@ export function ProjectsSection() {
       </div>
     </section>
   )
-}
