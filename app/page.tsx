@@ -1,6 +1,7 @@
 "use client"
 
 import { useState, useEffect } from "react"
+import { Sidebar } from "@/components/cv/sidebar"
 import { HeroSection } from "@/components/cv/hero-section"
 import { SkillsSection } from "@/components/cv/skills-section"
 import { ProjectsSection } from "@/components/cv/projects-section"
@@ -11,11 +12,21 @@ import { MobileHeader } from "@/components/cv/mobile-header"
 
 export default function CVPage() {
   const [activeSection, setActiveSection] = useState("summary")
+  const [isMobile, setIsMobile] = useState(false)
+
+  useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth < 1024)
+    }
+    checkMobile()
+    window.addEventListener("resize", checkMobile)
+    return () => window.removeEventListener("resize", checkMobile)
+  }, [])
 
   useEffect(() => {
     const handleScroll = () => {
       const sections = ["summary", "skills", "projects", "education", "contact"]
-      const scrollPosition = window.scrollY + 150
+      const scrollPosition = window.scrollY + 200
 
       for (const section of sections) {
         const element = document.getElementById(section)
@@ -44,11 +55,18 @@ export default function CVPage() {
   return (
     <div className="min-h-screen bg-background text-foreground">
       {/* Mobile Header */}
-      <MobileHeader />
+      <MobileHeader className="lg:hidden" />
+
+      {/* Desktop Sidebar */}
+      <Sidebar
+        activeSection={activeSection}
+        onNavigate={scrollToSection}
+        className="hidden lg:flex"
+      />
 
       {/* Main Content */}
-      <main className="pb-20">
-        <div className="max-w-md mx-auto px-4 py-4">
+      <main className="lg:ml-64 pb-20 lg:pb-0">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-8 lg:py-16">
           <HeroSection />
           <SkillsSection />
           <ProjectsSection />
@@ -61,6 +79,7 @@ export default function CVPage() {
       <MobileNav
         activeSection={activeSection}
         onNavigate={scrollToSection}
+        className="lg:hidden"
       />
     </div>
   )
