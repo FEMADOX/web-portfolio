@@ -20,11 +20,11 @@ export function MobileNav({ activeSection, onNavigate, className }: MobileNavPro
   return (
     <nav
       className={cn(
-        "fixed bottom-0 left-0 right-0 z-50 bg-card/95 backdrop-blur-sm border-t border-border",
+        "fixed bottom-0 left-0 right-0 z-50 bg-background border-t border-border",
         className
       )}
     >
-      <div className="flex items-center justify-around py-2">
+      <div className="flex items-center justify-around py-2 px-2">
         {navItems.map((item) => {
           const Icon = item.icon
           const isActive = activeSection === item.id
@@ -33,12 +33,12 @@ export function MobileNav({ activeSection, onNavigate, className }: MobileNavPro
               key={item.id}
               onClick={() => onNavigate(item.id)}
               className={cn(
-                "flex flex-col items-center gap-1 px-4 py-2 rounded-lg transition-colors min-w-[60px]",
+                "flex flex-col items-center gap-1 px-3 py-2 rounded transition-colors flex-1",
                 isActive ? "text-accent" : "text-muted-foreground"
               )}
             >
               <Icon className="w-5 h-5" />
-              <span className="text-[10px] font-medium uppercase">{item.label}</span>
+              <span className="text-[9px] font-medium uppercase tracking-wider">{item.label}</span>
             </button>
           )
         })}
