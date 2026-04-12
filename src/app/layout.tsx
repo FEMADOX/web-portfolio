@@ -1,16 +1,22 @@
 import { Analytics } from '@vercel/analytics/next'
 import type { Metadata } from 'next'
-import { Geist, Geist_Mono } from 'next/font/google'
+import { Geist, Geist_Mono, Inter, Space_Grotesk } from 'next/font/google'
+
+import type { ChildrenProps } from '@/types/root'
 import './globals.css'
 
 const _geist = Geist({ subsets: ['latin'] })
 const _geistMono = Geist_Mono({ subsets: ['latin'] })
+const _spaceGrotesk = Space_Grotesk({
+  subsets: ['latin'],
+  weight: ['400', '500', '700']
+})
+const _inter = Inter({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
   title: 'Giancarlos Gonzalez | Web Developer',
   description:
     'Back-end python developer using Django and FastAPI with strong bases in Frontend Dev with TypeScript, React and NextJS.',
-  generator: 'v0.app',
   icons: {
     icon: [
       {
@@ -30,11 +36,7 @@ export const metadata: Metadata = {
   }
 }
 
-const RootLayout = ({
-  children
-}: Readonly<{
-  children: React.ReactNode
-}>) => (
+const RootLayout = ({ children }: ChildrenProps) => (
   <html lang="en">
     <body className="font-sans antialiased">
       {children}

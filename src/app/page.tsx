@@ -1,6 +1,7 @@
 'use client'
 
 import { useEffect, useState } from 'react'
+
 import { ContactSection } from '@/components/cv/contact-section'
 import { EducationSection } from '@/components/cv/education-section'
 import { HeroSection } from '@/components/cv/hero-section'
@@ -56,7 +57,7 @@ const CVPage = () => {
   }
 
   return (
-    <div className="min-h-screen bg-background text-foreground">
+    <div className="min-h-screen bg-background text-foreground antialiased">
       {/* Mobile Header */}
       <MobileHeader className="lg:hidden" />
 
@@ -68,8 +69,8 @@ const CVPage = () => {
       />
 
       {/* Main Content */}
-      <main className="lg:ml-64 pb-20 lg:pb-0">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-8 lg:py-16">
+      <main className="lg:ml-72 pb-24 lg:pb-0">
+        <div className="max-w-5xl mx-auto px-2 sm:px-6 lg:px-10 py-4 lg:py-10">
           <HeroSection />
           <SkillsSection />
           <ProjectsSection />

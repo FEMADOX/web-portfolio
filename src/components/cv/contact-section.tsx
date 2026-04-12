@@ -50,10 +50,10 @@ export const ContactSection = () => {
   }
 
   return (
-    <section id="contact" className="py-16">
+    <section id="contact" className="py-10">
       {/* Section Header */}
-      <div className="flex items-center justify-between mb-8">
-        <h2 className="inline-block bg-accent text-accent-foreground px-4 py-2 text-lg font-bold uppercase tracking-wider">
+      <div className="flex items-center justify-between mb-5">
+        <h2 className="inline-block border-2 border-border bg-foreground px-4 py-1 text-lg font-black uppercase tracking-wider text-background shadow-[2px_2px_0_0_#000]">
           Contact
         </h2>
         <span className="text-xs text-accent font-mono hidden sm:block">
@@ -61,7 +61,7 @@ export const ContactSection = () => {
         </span>
       </div>
 
-      <div className="grid lg:grid-cols-2 gap-8">
+      <div className="grid lg:grid-cols-2 gap-5">
         {/* Contact Links */}
         <div className="space-y-3">
           {contactLinks.map((link) => {
@@ -72,7 +72,7 @@ export const ContactSection = () => {
                 href={link.href}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center justify-between p-4 bg-card border border-border rounded-lg hover:border-accent/50 transition-all group"
+                className="flex items-center justify-between p-4 bg-card border-2 border-border shadow-[2px_2px_0_0_#000] transition-all group hover:-translate-y-0.5"
               >
                 <div className="flex items-center gap-3">
                   <Icon className="w-5 h-5 text-muted-foreground group-hover:text-accent transition-colors" />
@@ -80,7 +80,7 @@ export const ContactSection = () => {
                     {link.name}
                   </span>
                 </div>
-                <ArrowRight className="w-4 h-4 text-muted-foreground group-hover:text-accent group-hover:translate-x-1 transition-all" />
+                <ArrowRight className="w-4 h-4 text-muted-foreground group-hover:text-accent transition-all" />
               </a>
             )
           })}
@@ -102,7 +102,7 @@ export const ContactSection = () => {
               onChange={(e) =>
                 setFormData({ ...formData, name: e.target.value })
               }
-              className="bg-card border-border"
+              className="bg-card border-2 border-border rounded-none"
             />
           </div>
           <div>
@@ -120,7 +120,7 @@ export const ContactSection = () => {
               onChange={(e) =>
                 setFormData({ ...formData, email: e.target.value })
               }
-              className="bg-card border-border"
+              className="bg-card border-2 border-border rounded-none"
             />
           </div>
           <div>
@@ -137,12 +137,12 @@ export const ContactSection = () => {
               onChange={(e) =>
                 setFormData({ ...formData, message: e.target.value })
               }
-              className="bg-card border-border min-h-30"
+              className="bg-card border-2 border-border rounded-none min-h-30"
             />
           </div>
           <Button
             type="submit"
-            className="bg-accent hover:bg-accent/90 text-accent-foreground"
+            className="rounded-none border-2 border-border bg-accent hover:bg-accent/95 text-accent-foreground font-black uppercase tracking-widest"
           >
             <Send className="w-4 h-4 mr-2" />
             Transmit Data
@@ -151,27 +151,27 @@ export const ContactSection = () => {
       </div>
 
       {/* Footer */}
-      <footer className="mt-16 pt-8 border-t border-border">
+      <footer className="mt-12 pt-6 border-t-4 border-border bg-foreground text-background px-4 py-6">
         <div className="flex flex-col sm:flex-row items-center justify-between gap-4">
-          <p className="text-sm text-muted-foreground">
+          <p className="text-xs font-bold text-accent uppercase tracking-wider">
             © {new Date().getFullYear()} Giancarlos Gonzalez
           </p>
           <div className="flex items-center gap-6">
             <a
               href="https://github.com/"
-              className="text-xs text-muted-foreground hover:text-foreground transition-colors uppercase tracking-wider"
+              className="text-[10px] text-background hover:text-accent transition-colors uppercase tracking-wider"
             >
               GitHub
             </a>
             <a
               href="https://linkedin.com/"
-              className="text-xs text-muted-foreground hover:text-foreground transition-colors uppercase tracking-wider"
+              className="text-[10px] text-background hover:text-accent transition-colors uppercase tracking-wider"
             >
               LinkedIn
             </a>
             <a
               href="https://github.com/FEMADOX/web-portfolio"
-              className="text-xs text-muted-foreground hover:text-foreground transition-colors uppercase tracking-wider"
+              className="text-[10px] text-background hover:text-accent transition-colors uppercase tracking-wider"
             >
               Source
             </a>

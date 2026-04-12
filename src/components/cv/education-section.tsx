@@ -19,31 +19,32 @@ const languages = [
 ]
 
 export const EducationSection = () => (
-  <section id="education" className="py-16">
+  <section id="education" className="py-10">
     {/* Section Header */}
-    <div className="flex items-center justify-between mb-8">
-      <h2 className="inline-block bg-accent text-accent-foreground px-4 py-2 text-lg font-bold uppercase tracking-wider">
+    <div className="flex items-center justify-between mb-5">
+      <h2 className="inline-block border-2 border-border bg-card px-4 py-1 text-lg font-black uppercase tracking-wider text-foreground shadow-[2px_2px_0_0_#000]">
         Education
       </h2>
     </div>
 
     {/* Education List */}
-    <div className="space-y-6">
+    <div className="space-y-5">
       {education.map((item) => (
         <div
           key={item.degree}
-          className="flex gap-4 p-4 bg-card border border-border rounded-lg"
+          className="flex gap-4 p-4 bg-card border-2 border-border shadow-[3px_3px_0_0_#000]"
         >
           <div className="shrink-0">
-            <div className="w-10 h-10 rounded-full bg-muted flex items-center justify-center">
+            <div className="w-10 h-10 bg-muted border border-border flex items-center justify-center">
               <GraduationCap className="w-5 h-5 text-muted-foreground" />
             </div>
           </div>
           <div>
-            <h3 className="font-semibold text-foreground">{item.degree}</h3>
-            <p className="text-sm text-muted-foreground mb-2">{item.period}</p>
-            <p className="text-sm text-muted-foreground leading-relaxed">
-              {item.description}
+            <h3 className="font-black uppercase leading-tight text-foreground">
+              {item.degree}
+            </h3>
+            <p className="text-xs font-bold uppercase text-muted-foreground mt-2">
+              {item.period}
             </p>
           </div>
         </div>
@@ -51,17 +52,17 @@ export const EducationSection = () => (
     </div>
 
     {/* Languages */}
-    <div className="mt-8">
-      <h3 className="text-sm font-semibold text-foreground uppercase tracking-wider mb-4">
+    <div className="mt-6">
+      <h3 className="text-xs font-black text-foreground uppercase tracking-wider mb-3">
         Languages
       </h3>
       <div className="flex flex-wrap gap-3">
         {languages.map((lang) => (
           <div
             key={lang.name}
-            className="flex items-center gap-2 px-4 py-2 bg-muted rounded-lg"
+            className="flex items-center gap-2 px-3 py-2 bg-muted border border-border"
           >
-            <span className="text-sm font-medium text-foreground">
+            <span className="text-xs font-bold uppercase text-foreground">
               {lang.name}
             </span>
             <span className="text-xs text-muted-foreground">
