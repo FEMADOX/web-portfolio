@@ -2,17 +2,12 @@
 
 import { Briefcase, Code, Mail, User } from 'lucide-react'
 import { cn } from '@/lib/utils'
-
-interface MobileNavProps {
-  activeSection: string
-  onNavigate: (section: string) => void
-  className?: string
-}
+import type { MobileNavProps } from '@/types/root'
 
 const navItems = [
   { id: 'summary', label: 'About', icon: User },
-  { id: 'projects', label: 'Projects', icon: Briefcase },
   { id: 'skills', label: 'Skills', icon: Code },
+  { id: 'projects', label: 'Projects', icon: Briefcase },
   { id: 'contact', label: 'Contact', icon: Mail }
 ]
 
@@ -23,11 +18,11 @@ export const MobileNav = ({
 }: MobileNavProps) => (
   <nav
     className={cn(
-      'fixed bottom-0 left-0 right-0 z-50 bg-card/95 backdrop-blur-sm border-t border-border',
+      'fixed bottom-0 left-0 right-0 z-50 bg-card border-t-4 border-border',
       className
     )}
   >
-    <div className="flex items-center justify-around py-2">
+    <div className="grid grid-cols-4 items-center py-2">
       {navItems.map((item) => {
         const Icon = item.icon
         const isActive = activeSection === item.id
@@ -37,12 +32,12 @@ export const MobileNav = ({
             key={item.id}
             onClick={() => onNavigate(item.id)}
             className={cn(
-              'flex flex-col items-center gap-1 px-4 py-2 rounded-lg transition-colors min-w-15',
-              isActive ? 'text-accent' : 'text-muted-foreground'
+              'flex flex-col items-center gap-1 py-1 transition-colors',
+              isActive ? 'text-foreground' : 'text-muted-foreground'
             )}
           >
-            <Icon className="w-5 h-5" />
-            <span className="text-[10px] font-medium uppercase">
+            <Icon className={cn('w-4 h-4', isActive && 'text-accent')} />
+            <span className="text-[9px] font-bold uppercase tracking-wide">
               {item.label}
             </span>
           </button>
