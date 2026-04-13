@@ -1,13 +1,7 @@
 'use client'
 
-import {
-  ArrowRight,
-  Github,
-  Linkedin,
-  Mail,
-  MessageSquare,
-  Send
-} from 'lucide-react'
+import { Github, Linkedin } from '@boxicons/react'
+import { ArrowRight, Mail, MessageSquare, Send } from 'lucide-react'
 import { useState } from 'react'
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
@@ -75,12 +69,15 @@ export const ContactSection = () => {
                 className="flex items-center justify-between p-4 bg-card border-2 border-border shadow-[2px_2px_0_0_#000] transition-all group hover:-translate-y-0.5"
               >
                 <div className="flex items-center gap-3">
-                  <Icon className="w-5 h-5 text-muted-foreground group-hover:text-accent transition-colors" />
-                  <span className="font-medium text-foreground">
+                  <Icon
+                    className="w-5 h-5 text-muted-foreground group-hover:text-accent group-hover:color-accent transition-colors"
+                    // color="group-hover:text-accent"
+                  />
+                  <span className="font-medium text-foreground group-hover:text-accent transition-colors">
                     {link.name}
                   </span>
                 </div>
-                <ArrowRight className="w-4 h-4 text-muted-foreground group-hover:text-accent transition-all" />
+                <ArrowRight className="w-4 h-4 text-muted-foreground group-hover:text-accent group-hover:color-accent transition-all" />
               </a>
             )
           })}
