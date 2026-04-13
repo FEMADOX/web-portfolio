@@ -1,4 +1,5 @@
 import { Analytics } from '@vercel/analytics/next'
+import { SpeedInsights } from '@vercel/speed-insights/next'
 import type { Metadata } from 'next'
 import { Geist, Geist_Mono, Inter, Space_Grotesk } from 'next/font/google'
 
@@ -41,6 +42,7 @@ const RootLayout = ({ children }: ChildrenProps) => (
     <body className="font-sans antialiased">
       {children}
       {process.env.NODE_ENV === 'production' && <Analytics />}
+      {process.env.NODE_ENV === 'production' && <SpeedInsights />}
     </body>
   </html>
 )
