@@ -42,7 +42,7 @@ const RootLayout = ({ children }: ChildrenProps) => (
     <body className="font-sans antialiased">
       {children}
       {process.env.NODE_ENV === 'production' && <Analytics />}
-      <SpeedInsights />
+      {process.env.NODE_ENV === 'production' && <SpeedInsights />}
     </body>
   </html>
 )
