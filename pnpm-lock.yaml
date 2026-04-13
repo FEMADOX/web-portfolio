@@ -104,6 +104,9 @@ importers:
       '@vercel/blob':
         specifier: ^2.3.3
         version: 2.3.3
+      '@vercel/speed-insights':
+        specifier: 2.0.0
+        version: 2.0.0(next@16.2.3(react-dom@19.2.5(react@19.2.5))(react@19.2.5))(react@19.2.5)
       autoprefixer:
         specifier: ^10.4.27
         version: 10.4.27(postcss@8.5.9)
@@ -1361,6 +1364,10 @@ packages:
       vue-router:
         optional: true
 
+  '@vercel/blob@2.3.3':
+    resolution: {integrity: sha512-MtD7VLo6hU07eHR7bmk5SIMD290q574UaNYTe46qeyRT+hWrCy26CoAqfd7PnIefVXvRehRZBzukxuTO9iGTVg==}
+    engines: {node: '>=20.0.0'}
+
   '@vercel/speed-insights@2.0.0':
     resolution: {integrity: sha512-jwkNcrTeafWxjmWq4AHBaptSqZiJkYU5adLC9QBSqeim0GcqDMgN5Ievh8OG1rJ6W3A4l1oiP7qr9CWxGuzu3w==}
     peerDependencies:
@@ -1386,10 +1393,6 @@ packages:
         optional: true
       vue-router:
         optional: true
-    
-  '@vercel/blob@2.3.3':
-    resolution: {integrity: sha512-MtD7VLo6hU07eHR7bmk5SIMD290q574UaNYTe46qeyRT+hWrCy26CoAqfd7PnIefVXvRehRZBzukxuTO9iGTVg==}
-    engines: {node: '>=20.0.0'}
 
   aria-hidden@1.2.6:
     resolution: {integrity: sha512-ik3ZgC9dY/lYVVM++OISsaYDeg1tb0VtP5uL3ouh1koGOaUMDPpbFIei4JkFimWUFPn90sbMNMXQAIVOlnYKJA==}
