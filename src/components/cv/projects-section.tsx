@@ -1,6 +1,7 @@
 'use client'
 
-import { ExternalLink, Github } from 'lucide-react'
+import { ExternalLink } from 'lucide-react'
+import { GithubIcon } from '../icons'
 
 const projects = [
   {
@@ -8,7 +9,7 @@ const projects = [
     period: 'Mar 2026 - Present',
     description:
       'Advanced implementation of high-performance microservices architecture using FastAPI and asynchronous processing. Implementing clean architecture, Pydantic for advance validation and full type annotation on the entire project, SQLAlchemy as ORM with Alembic as migrations manager, Pytest as testing framework, using Postgres DB, Docker for the API deploying and a integration with the NextJS framework.',
-    technologies: ['FastAPI', 'Python', 'Docker', 'PostgreSQL'],
+    technologies: ['FastAPI', 'NextJS', 'Docker', 'PostgreSQL'],
     links: {
       github: 'https://github.com'
     },
@@ -76,7 +77,7 @@ export const ProjectsSection = () => (
                   rel="noopener noreferrer"
                   className="text-muted-foreground hover:text-foreground transition-colors"
                 >
-                  <Github className="w-4 h-4" />
+                  <GithubIcon className="w-4 h-4" />
                 </a>
               )}
               {project.links.website && (

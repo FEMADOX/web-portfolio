@@ -13,3 +13,8 @@ export interface MobileNavProps {
 export interface MobileHeaderProps {
   className?: string
 }
+
+export type Skill = {
+  name: string
+  icon: React.ElementType
+}
