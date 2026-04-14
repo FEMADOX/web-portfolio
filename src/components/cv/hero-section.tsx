@@ -9,7 +9,7 @@ const CV_FILES = {
 }
 
 export const HeroSection = () => (
-  <section id="summary" className="pt-2 pb-5 lg:pt-4">
+  <section id="summary" className="mt-2 mb-5 lg:mt-4">
     {/* Title */}
     <div className="mb-5 border-4 border-border bg-card p-6 shadow-normal">
       <h1 className="text-5xl sm:text-6xl font-black uppercase leading-none tracking-tight">

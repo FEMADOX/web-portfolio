@@ -3,7 +3,7 @@
 import { ProjectsList } from './ProjectsList'
 
 export const ProjectsSection = () => (
-  <section id="projects" className="py-10 group">
+  <section id="projects" className="my-20 group">
     {/* Section Header */}
     <div className="flex items-center justify-between mb-5">
       <h2

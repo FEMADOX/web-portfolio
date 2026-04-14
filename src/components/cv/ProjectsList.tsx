@@ -15,15 +15,15 @@ export const ProjectsList = () => (
         >
           <div
             key={`${accent.key}`}
-            className={`pointer-events-none w-0.75 h-full ${accent.line} ${isLeftLine ? 'order-first' : 'order-last'}`}
+            className={`pointer-events-none w-0.75 h-full ${accent.line} ${isLeftLine ? 'order-first' : 'order-last w-0.75'}`}
             aria-hidden="true"
           />
           <div
             key={project.title}
-            // If the line is on the left, we want to translate the card to the right, and vice versa, to create a staggered effect
             className={`
-              group relative w-full bg-card border-2 border-border p-5 shadow-sm transition-transform will-change-transform 
-              hover:-translate-y-0.5 sm:hover:translate-y-0 ${isLeftLine ? 'sm:hover:translate-x-0.5' : 'sm:hover:-translate-x-0.5'}
+              group relative w-full bg-card border-2 border-border p-5 shadow-sm
+              transition-transform will-change-transform hover:-translate-y-0.5 sm:hover:translate-y-0
+              ${isLeftLine ? 'sm:hover:translate-x-0.5' : 'sm:hover:-translate-x-0.5'}
             `}
           >
             {/* Period Badge */}
@@ -72,7 +72,7 @@ export const ProjectsList = () => (
               {project.technologies.map((tech) => (
                 <span
                   key={tech}
-                  className={`px-2 py-1 text-[10px] font-bold uppercase bg-muted text-foreground border border-border hover:${accent.line} hover:text-white transition-colors`}
+                  className={`px-2 py-1 text-[10px] font-bold uppercase bg-muted text-foreground border border-border ${accent.hoverLine} hover:text-white transition-colors`}
                 >
                   {tech}
                 </span>

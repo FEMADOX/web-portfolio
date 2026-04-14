@@ -13,16 +13,26 @@ const education = [
 
 const languages = [
   {
+    name: 'Spanish',
+    level: 'Native'
+  },
+  {
     name: 'English',
     level: 'B2 Advanced Intermediate'
   }
 ]
 
 export const EducationSection = () => (
-  <section id="education" className="py-10">
+  // TODO (FENYXZ): Refactor this component to have a more structured layout.
+  <section id="education" className="my-20 group">
     {/* Section Header */}
     <div className="flex items-center justify-between mb-5">
-      <h2 className="inline-block border-2 border-border bg-card px-4 py-1 text-lg font-black uppercase tracking-wider text-foreground shadow-sm">
+      <h2
+        className={`
+          inline-block border-2 border-border bg-card px-4 py-1 text-lg font-black uppercase tracking-wider text-foreground shadow-sm
+          group-hover:bg-accent group-hover:text-accent-foreground transition-colors
+        `}
+      >
         Education
       </h2>
     </div>
@@ -32,11 +42,11 @@ export const EducationSection = () => (
       {education.map((item) => (
         <div
           key={item.degree}
-          className="flex gap-4 p-4 bg-card border-2 border-border shadow-[3px_3px_0_0_#000]"
+          className="flex gap-4 p-4 bg-card border-2 border-border shadow-normal elevation-animation"
         >
           <div className="shrink-0">
-            <div className="w-10 h-10 bg-muted border border-border flex items-center justify-center">
-              <GraduationCap className="w-5 h-5 text-muted-foreground" />
+            <div className="w-10 h-10 flex items-center justify-center">
+              <GraduationCap stroke="currentColor" size={30} />
             </div>
           </div>
           <div>
@@ -56,11 +66,11 @@ export const EducationSection = () => (
       <h3 className="text-xs font-black text-foreground uppercase tracking-wider mb-3">
         Languages
       </h3>
-      <div className="flex flex-wrap gap-3">
+      <div className="flex flex-wrap flex-col gap-3 w-max">
         {languages.map((lang) => (
           <div
             key={lang.name}
-            className="flex items-center gap-2 px-3 py-2 bg-muted border border-border"
+            className="flex items-center gap-2 px-3 py-2 bg-muted border border-border shadow-sm elevation-animation"
           >
             <span className="text-xs font-bold uppercase text-foreground">
               {lang.name}

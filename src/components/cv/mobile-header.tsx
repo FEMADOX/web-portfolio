@@ -13,7 +13,7 @@ export const MobileHeader = ({ className }: MobileHeaderProps) => (
   >
     <div className="flex items-center justify-between">
       <div className="flex items-center gap-2">
-        <SquareTerminal color="black" height={30} width={30} />
+        <SquareTerminal className='text-primary' height={30} width={30} />
         <div>
           <h1 className="font-black text-foreground text-xl leading-none tracking-wide font-['Space_Grotesk']">
             GIANCARLOS

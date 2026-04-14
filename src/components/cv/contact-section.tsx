@@ -44,10 +44,16 @@ export const ContactSection = () => {
   }
 
   return (
-    <section id="contact" className="py-10">
+    // TODO (FENYXZ): Refactor this component to have a more structured layout.
+    <section id="contact" className="my-20 group/contact-section">
       {/* Section Header */}
       <div className="flex items-center justify-between mb-5">
-        <h2 className="inline-block border-2 border-border bg-foreground px-4 py-1 text-lg font-black uppercase tracking-wider text-background shadow-sm">
+        <h2
+          className={`
+            inline-block border-2 border-border bg-foreground px-4 py-1 text-lg font-black uppercase tracking-wider text-background shadow-sm
+            group-hover/contact-section:bg-accent group-hover/contact-section:text-accent-foreground transition-colors
+          `}
+        >
           Contact
         </h2>
         <span className="text-xs text-accent font-mono hidden sm:block">
@@ -66,18 +72,23 @@ export const ContactSection = () => {
                 href={link.href}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center justify-between p-4 bg-card border-2 border-border shadow-sm transition-all group hover:-translate-y-0.5"
+                className={`
+                  flex items-center justify-between p-4 bg-card border-2 border-border shadow-sm transition-all group hover:-translate-y-0.5
+                  button-animation-short
+                `}
               >
                 <div className="flex items-center gap-3">
-                  <Icon
-                    className="w-5 h-5 text-muted-foreground group-hover:text-accent group-hover:color-accent transition-colors"
-                    // color="group-hover:text-accent"
-                  />
+                  <Icon className="w-5 h-5 text-muted-foreground group-hover:text-accent group-hover:color-accent transition-colors" />
                   <span className="font-medium text-foreground group-hover:text-accent transition-colors">
                     {link.name}
                   </span>
                 </div>
-                <ArrowRight className="w-4 h-4 text-muted-foreground group-hover:text-accent group-hover:color-accent transition-all" />
+                <ArrowRight
+                  className={`
+                    w-4 h-4 text-muted-foreground mr-2
+                    group-hover:text-accent group-hover:color-accent group-hover:translate-x-1 transition-all
+                  `}
+                />
               </a>
             )
           })}
