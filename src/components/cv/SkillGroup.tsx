@@ -7,13 +7,13 @@ type SkillGroup = {
 }
 
 export const SkillGroup = ({ label, skills }: SkillGroup) => (
-  <div className="group" key={label}>
+  <div className="group/skill-group" key={label}>
     {/* Label colors should change on parent hover */}
     <span
       className={`
         inline-block mb-2 text-[10px] font-black uppercase tracking-widest 
         text-muted-foreground border border-border px-2 py-0.5 
-        group-hover:text-accent group-hover:border-accent transition-colors
+        group-hover/skill-group:text-accent group-hover/skill-group:border-accent transition-colors
       `}
     >
       {label}

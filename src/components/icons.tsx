@@ -118,6 +118,10 @@ export const PostgreSQLIcon = createBoxAppIcon(Postgresql, {
   color: '#336791'
 })
 
+export const MySQLIcon = createTablerAppIcon(IconBrandMysql, {
+  color: '#4479A1'
+})
+
 export const ReactIcon = createTablerAppIcon(IconBrandReact, {
   color: '#61DAFB',
   rotation: 90
@@ -149,13 +153,9 @@ export const GitIcon = createTablerAppIcon(IconBrandGit, {
 })
 
 export const GithubIcon = createTablerAppIcon(IconBrandGithub, {
-  color: '#333'
+  color: 'currentColor'
 })
 
 export const DockerIcon = createTablerAppIcon(IconBrandDocker, {
   color: '#2496ED'
-})
-
-export const MySQLIcon = createTablerAppIcon(IconBrandMysql, {
-  color: '#4479A1'
 })

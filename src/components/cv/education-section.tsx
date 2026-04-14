@@ -22,7 +22,7 @@ export const EducationSection = () => (
   <section id="education" className="py-10">
     {/* Section Header */}
     <div className="flex items-center justify-between mb-5">
-      <h2 className="inline-block border-2 border-border bg-card px-4 py-1 text-lg font-black uppercase tracking-wider text-foreground shadow-[2px_2px_0_0_#000]">
+      <h2 className="inline-block border-2 border-border bg-card px-4 py-1 text-lg font-black uppercase tracking-wider text-foreground shadow-sm">
         Education
       </h2>
     </div>

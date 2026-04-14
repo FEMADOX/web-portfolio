@@ -47,7 +47,7 @@ export const ContactSection = () => {
     <section id="contact" className="py-10">
       {/* Section Header */}
       <div className="flex items-center justify-between mb-5">
-        <h2 className="inline-block border-2 border-border bg-foreground px-4 py-1 text-lg font-black uppercase tracking-wider text-background shadow-[2px_2px_0_0_#000]">
+        <h2 className="inline-block border-2 border-border bg-foreground px-4 py-1 text-lg font-black uppercase tracking-wider text-background shadow-sm">
           Contact
         </h2>
         <span className="text-xs text-accent font-mono hidden sm:block">
@@ -66,7 +66,7 @@ export const ContactSection = () => {
                 href={link.href}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center justify-between p-4 bg-card border-2 border-border shadow-[2px_2px_0_0_#000] transition-all group hover:-translate-y-0.5"
+                className="flex items-center justify-between p-4 bg-card border-2 border-border shadow-sm transition-all group hover:-translate-y-0.5"
               >
                 <div className="flex items-center gap-3">
                   <Icon
