@@ -1,11 +1,11 @@
 export const FastAPICode = () => (
   <div className="mt-5 relative">
-    <div className="bg-[#101114] overflow-hidden border-4 border-border shadow-[4px_4px_0_0_#000]">
+    <div className="bg-[#101114] overflow-hidden border-4 border-border shadow-normal">
       <div className="flex items-center gap-2 px-4 py-2 border-b-2 border-border/70">
         <div className="w-3 h-3 rounded-full bg-red-500" />
         <div className="w-3 h-3 rounded-full bg-yellow-500" />
         <div className="w-3 h-3 rounded-full bg-green-500" />
-        <span className="ml-2 text-xs text-muted-foreground">main.py</span>
+        <span className="ml-2 text-xs text-gray-200">main.py</span>
       </div>
       <div className="p-4 font-mono text-sm overflow-x-auto">
         <pre className="text-muted-foreground">
@@ -54,7 +54,12 @@ export const FastAPICode = () => (
             {'\n'}
             <span className="text-blue-400">def</span>{' '}
             <span className="text-green-400">about_me</span>
-            <span className="text-white">():</span>
+            <span className="text-white">
+              () -{'>'} <span className="text-yellow-400">dict</span>[
+              <span className="text-yellow-400">str</span>,{' '}
+              <span className="text-yellow-400">str</span>]
+            </span>
+            <span className="text-white">:</span>
             {'\n'}
             {'    '}
             <span className="text-blue-400">return</span>{' '}

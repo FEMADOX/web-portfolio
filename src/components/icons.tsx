@@ -25,6 +25,7 @@ import type { ComponentType, CSSProperties } from 'react'
 type AppIconProps = IconProps & {
   size?: IconSize | number
   color?: string
+  stroke?: string
   strokeWidth?: number
   background?: string
   opacity?: number
@@ -85,14 +86,16 @@ const createBoxAppIcon = (
 ) => {
   const AppIcon = (overrideProps: AppIconProps) => {
     const mergedProps = { size: 'md' as IconSize, ...props, ...overrideProps }
-    const { className, color, size, style } = mergedProps
+    const { className, color, size, style, stroke, strokeWidth } = mergedProps
     const finalStyle = mergeIconStyles(mergedProps)
 
     return (
       <IconComponent
         className={`${className} w-7.5 h-7.5`}
-        color={color}
+        color={color || 'transparent'}
         size={size as IconSize}
+        stroke={stroke}
+        strokeWidth={strokeWidth}
         style={{ ...finalStyle, ...style }}
       />
     )
@@ -111,11 +114,13 @@ export const DjangoIcon = createTablerAppIcon(IconBrandDjango, {
 })
 
 export const FastAPIIcon = createBoxAppIcon(Fastapi, {
-  color: '#009688'
+  stroke: '#009688',
+  strokeWidth: 2
 })
 
 export const PostgreSQLIcon = createBoxAppIcon(Postgresql, {
-  color: '#336791'
+  stroke: '#336791',
+  strokeWidth: 0.8
 })
 
 export const MySQLIcon = createTablerAppIcon(IconBrandMysql, {
@@ -128,7 +133,7 @@ export const ReactIcon = createTablerAppIcon(IconBrandReact, {
 })
 
 export const NextJSIcon = createTablerAppIcon(IconBrandNextjs, {
-  color: '#000'
+  color: 'currentColor'
 })
 
 export const TypescriptIcon = createTablerAppIcon(IconBrandTypescript, {

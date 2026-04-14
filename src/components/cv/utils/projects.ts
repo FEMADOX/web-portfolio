@@ -3,19 +3,22 @@ export const projectAccents = [
     key: 'main',
     badge: 'bg-accent text-accent-foreground',
     line: 'bg-accent',
-    hoverText: 'hover:text-accent'
+    hoverText: 'hover:text-accent',
+    hoverLine: 'hover:bg-accent'
   },
   {
     key: 'secondary',
-    badge: 'bg-secondary text-white',
-    line: 'bg-secondary',
-    hoverText: 'hover:text-secondary'
+    badge: 'bg-destructive text-white',
+    line: 'bg-destructive',
+    hoverText: 'hover:text-destructive-foreground',
+    hoverLine: 'hover:bg-destructive'
   },
   {
     key: 'third',
     badge: 'bg-blue-700 text-white',
     line: 'bg-blue-700',
-    hoverText: 'hover:text-blue-700'
+    hoverText: 'hover:text-blue-700',
+    hoverLine: 'hover:bg-blue-700'
   }
 ] as const
 
@@ -35,7 +38,7 @@ export const projects = [
     period: 'Jan 2025 - Jan 2026',
     description:
       'Robust e-commerce platform featuring complex inventory management, payment gateway integration with Stripe, and customer dashboards. E-commerce created with Django. Cart, orders management and payments in Stripe included. With Django as a python web framework, user authentication, shopping cart logic, order validator, Stripe for payments and test using the Pytest framework.',
-    technologies: ['Django', 'Stripe', 'Python', 'PostgreSQL'],
+    technologies: ['Django', 'Python', 'PostgreSQL', 'Stripe'],
     links: {
       github: 'https://github.com/FEMADOX/Django-E-commers',
       website: 'https://django-e-commers.vercel.app/'

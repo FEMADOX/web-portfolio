@@ -23,7 +23,8 @@ export const DownloadCvButton = ({
     asChild
     className={`
       lg:hidden h-12 rounded-none border-2 border-border bg-accent text-accent-foreground font-black uppercase tracking-widest
-      hover:bg-accent/80 shadow-(--shadow) hover:-translate-y-0.5 transition-transform
+      hover:bg-accent/60 shadow-(--shadow)
+      button-animation
     `}
   >
     <a
