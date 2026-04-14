@@ -21,7 +21,10 @@ export const DownloadCvButton = ({
 }: DownloadCvButtonProps) => (
   <Button
     asChild
-    className={`lg:hidden h-12 rounded-none border-2 border-border bg-accent text-accent-foreground font-black uppercase tracking-widest hover:bg-accent/95 shadow-(--shadow)`}
+    className={`
+      lg:hidden h-12 rounded-none border-2 border-border bg-accent text-accent-foreground font-black uppercase tracking-widest
+      hover:bg-accent/80 shadow-(--shadow) hover:-translate-y-0.5 transition-transform
+    `}
   >
     <a
       href={cvLangUrl}
