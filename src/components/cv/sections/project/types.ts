@@ -2,14 +2,14 @@ export interface ProjectProps {
   title: string
   period: string
   description: string
-  technologies: string[]
+  technologies: readonly string[]
   links: {
     github?: string
     website?: string
   }
 }
 
-interface AccentsProps {
+export interface AccentsProps {
   key: string
   badge: string
   line: string
@@ -24,6 +24,6 @@ export interface ProjectsComponentProps {
 }
 
 export interface TechnologiesProps {
-  technologies: string[]
+  technologies: readonly string[]
   accent: AccentsProps
 }

@@ -1,5 +1,5 @@
-import { skills } from '@/components/cv/utils/skills'
 import { SkillsGroup } from './SkillsGroup'
+import { skills } from './utils'
 
 export const SkillGroups = () => (
   <div className="flex flex-col gap-5">

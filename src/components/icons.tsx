@@ -22,11 +22,11 @@ import {
 
 import type { ComponentType, CSSProperties } from 'react'
 
-type AppIconProps = IconProps & {
+export type AppIconProps = IconProps & {
   size?: IconSize | number
   color?: string
   stroke?: string
-  strokeWidth?: number
+  strokeWidth?: string | number
   background?: string
   opacity?: number
   rotation?: number

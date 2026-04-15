@@ -1,5 +1,5 @@
-import { educations } from '@/components/cv/utils/education'
 import { EducationComponent } from './Education'
+import { educations } from './utils'
 
 export const Educations = () => (
   <div className="space-y-5">

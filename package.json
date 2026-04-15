@@ -12,7 +12,7 @@
     "format:check": "biome format .",
     "check": "biome check .",
     "check:fix": "biome check --write .",
-    "prepare": "effect-tsgo patch"
+    "tsc": "tsgo --project tsconfig.json"
   },
   "dependencies": {
     "@boxicons/react": "^1.0.3",

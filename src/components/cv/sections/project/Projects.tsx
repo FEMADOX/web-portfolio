@@ -1,10 +1,9 @@
-import { projectAccents, projects } from '@/components/cv/utils/projects'
-import type { ProjectProps } from '@/types/root'
 import { Project } from './Project'
+import { projectAccents, projects } from './utils'
 
 export const Projects = () => (
   <div className="space-y-5">
-    {projects.map((project: ProjectProps, index) => {
+    {projects.map((project, index) => {
       const accent = projectAccents[index % projectAccents.length]
       const isLeftLine = index % 2 === 0
 

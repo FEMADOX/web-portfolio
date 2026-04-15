@@ -1,4 +1,4 @@
-import type { LanguageProps } from '@/components/cv/types/education'
+import type { LanguageProps } from './types'
 
 export const Language = ({ name, level }: LanguageProps) => (
   <div
