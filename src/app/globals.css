@@ -183,3 +183,19 @@ html {
   background: oklch(0.85 0.15 85 / 0.3);
   color: oklch(0.95 0 0);
 }
+
+.link-icon {
+  path:nth-child(1),
+  path:nth-child(2) {
+    transition: transform 180ms ease;
+    transform-origin: center;
+    will-change: transform;
+  }
+
+  &:hover {
+    path:nth-child(1),
+    path:nth-child(2) {
+      transform: translate(1.5px, -1.5px);
+    }
+  }
+}

@@ -1,6 +1,6 @@
 'use client'
 
-import { GraduationCap } from 'lucide-react'
+import { EducationComponent } from './sections/education/EducationComponent'
 
 const education = [
   {
@@ -40,24 +40,11 @@ export const EducationSection = () => (
     {/* Education List */}
     <div className="space-y-5">
       {education.map((item) => (
-        <div
+        <EducationComponent
           key={item.degree}
-          className="flex gap-4 p-4 bg-card border-2 border-border shadow-normal elevation-animation"
-        >
-          <div className="shrink-0">
-            <div className="w-10 h-10 flex items-center justify-center">
-              <GraduationCap stroke="currentColor" size={30} />
-            </div>
-          </div>
-          <div>
-            <h3 className="font-black uppercase leading-tight text-foreground">
-              {item.degree}
-            </h3>
-            <p className="text-xs font-bold uppercase text-muted-foreground mt-2">
-              {item.period}
-            </p>
-          </div>
-        </div>
+          degree={item.degree}
+          period={item.period}
+        />
       ))}
     </div>
 

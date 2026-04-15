@@ -1,5 +1,5 @@
 import { Download } from 'lucide-react'
-import { Button } from '../ui/button'
+import { Button } from '../../../ui/button'
 
 type DownloadCvButtonProps = {
   cvLangUrl: string

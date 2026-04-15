@@ -1,12 +1,12 @@
-import type { Skill } from '@/types/root'
-import { SkillComponent } from './Skill'
+import type { Skills } from '@/types/root'
+import { SkillsComponent } from './Skills'
 
-type SkillGroup = {
+type SkillsGroupProps = {
   label: string
-  skills: Skill[]
+  skills: Skills
 }
 
-export const SkillGroup = ({ label, skills }: SkillGroup) => (
+export const SkillsGroup = ({ label, skills }: SkillsGroupProps) => (
   <div className="group/skill-group" key={label}>
     {/* Label colors should change on parent hover */}
     <span
@@ -18,10 +18,6 @@ export const SkillGroup = ({ label, skills }: SkillGroup) => (
     >
       {label}
     </span>
-    <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-2">
-      {skills.map(({ name, icon }) => (
-        <SkillComponent key={name} name={name} icon={icon} />
-      ))}
-    </div>
+    <SkillsComponent skills={skills} />
   </div>
 )
