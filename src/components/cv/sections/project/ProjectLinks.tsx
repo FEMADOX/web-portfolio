@@ -35,6 +35,6 @@ export const ProjectLinks = ({
       >
         <ExternalLink className="link-icon" size={20} />
       </a>
-    ): null}
+    ) : null}
   </div>
 )
