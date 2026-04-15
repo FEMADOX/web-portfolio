@@ -1,6 +1,6 @@
 'use client'
 
-import { ProjectsList } from './ProjectsList'
+import { Projects } from './sections/project/Projects'
 
 export const ProjectsSection = () => (
   <section id="projects" className="my-20 group">
@@ -19,6 +19,6 @@ export const ProjectsSection = () => (
       </span>
     </div>
 
-    <ProjectsList />
+    <Projects />
   </section>
 )

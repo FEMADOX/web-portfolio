@@ -1,6 +1,6 @@
 'use client'
 
-import { SkillGroups } from './SkillGroups'
+import { SkillGroups } from './sections/skill/SkillsGroups'
 
 export const SkillsSection = () => (
   <section id="skills" className="group/skills-section my-20">

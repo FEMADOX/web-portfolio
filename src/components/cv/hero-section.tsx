@@ -1,7 +1,7 @@
 'use client'
 
-import { DownloadCvButton } from './DownloadCvButton'
-import { FastAPICode } from './FastAPICode'
+import { DownloadCvButton } from './sections/hero/DownloadCvButton'
+import { FastAPICode } from './sections/hero/FastAPICode'
 
 const CV_FILES = {
   en: '/api/cv/en',
