@@ -36,4 +36,4 @@ export const skills = {
     { name: 'Git', icon: GitIcon },
     { name: 'Github', icon: GithubIcon }
   ]
-}
+} as const

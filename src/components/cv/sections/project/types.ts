@@ -1,30 +1,3 @@
-import type { ElementType, ReactNode } from 'react'
-
-export interface ChildrenProps {
-  readonly children: ReactNode
-}
-
-export interface MobileNavProps {
-  activeSection: string
-  onNavigate: (section: string) => void
-  className?: string
-}
-
-export interface MobileHeaderProps {
-  className?: string
-}
-
-type Skill = {
-  name: string
-  icon: ElementType
-}
-
-export type Skills = Skill[]
-
-export interface SkillsComponentProps {
-  skills: Skills
-}
-
 export interface ProjectProps {
   title: string
   period: string

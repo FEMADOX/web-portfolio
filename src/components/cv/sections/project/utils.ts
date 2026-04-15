@@ -55,4 +55,4 @@ export const projects = [
       website: 'https://django-social-website-hade.onrender.com/'
     }
   }
-]
+] as const
