@@ -1,6 +1,6 @@
-import type { ProjectsComponentProps } from '@/types/root'
 import { ProjectLinks } from './ProjectLinks'
 import { Technologies } from './Technologies'
+import type { ProjectsComponentProps } from './types'
 
 export const Project = ({
   project: { title, period, description, technologies, links },

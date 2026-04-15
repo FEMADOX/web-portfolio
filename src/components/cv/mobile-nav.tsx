@@ -1,8 +1,8 @@
 'use client'
 
 import { Briefcase, Code, Mail, User } from 'lucide-react'
+import type { MobileNavProps } from '@/app/types'
 import { cn } from '@/lib/utils'
-import type { MobileNavProps } from '@/types/root'
 
 const navItems = [
   { id: 'summary', label: 'About', icon: User },

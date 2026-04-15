@@ -16,6 +16,9 @@
     "plugins": [
       {
         "name": "next"
+      },
+      {
+        "name": "@effect/language-service"
       }
     ],
     "paths": {
@@ -29,5 +32,6 @@
     ".next/types/**/*.ts",
     ".next/dev/types/**/*.ts"
   ],
-  "exclude": ["node_modules"]
+  "exclude": ["node_modules", "dist", "src/components/ui", ".next"],
+  "$schema": "https://raw.githubusercontent.com/Effect-TS/tsgo/refs/heads/main/schema.json"
 }

@@ -1,8 +1,8 @@
 'use client'
 
 import { SquareTerminal } from 'lucide-react'
+import type { MobileHeaderProps } from '@/app/types'
 import { cn } from '@/lib/utils'
-import type { MobileHeaderProps } from '@/types/root'
 
 export const MobileHeader = ({ className }: MobileHeaderProps) => (
   <header

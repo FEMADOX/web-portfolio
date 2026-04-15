@@ -1,11 +1,6 @@
 import { Download } from 'lucide-react'
-import { Button } from '../../../ui/button'
-
-type DownloadCvButtonProps = {
-  cvLangUrl: string
-  downloadName: string
-  buttonText: string
-}
+import { Button } from '@/components/ui/button'
+import type { DownloadCvButtonProps } from './types'
 
 const warmDownload = (url: string) => {
   void fetch(url, {

@@ -1,29 +1,9 @@
 'use client'
 
-import { EducationComponent } from './sections/education/EducationComponent'
-
-const education = [
-  {
-    degree: 'Bachelor in IPU Eduardo Garcia Delgado',
-    period: 'Jan 2018 - Jun 2021',
-    description:
-      'Relevant coursework in programming, mathematics and design. Participation in informatic competitions that have posed great challenges to develop my skills as a programmer.'
-  }
-]
-
-const languages = [
-  {
-    name: 'Spanish',
-    level: 'Native'
-  },
-  {
-    name: 'English',
-    level: 'B2 Advanced Intermediate'
-  }
-]
+import { Educations } from './sections/education/Educations'
+import { Languages } from './sections/education/Languages'
 
 export const EducationSection = () => (
-  // TODO (FENYXZ): Refactor this component to have a more structured layout.
   <section id="education" className="my-20 group">
     {/* Section Header */}
     <div className="flex items-center justify-between mb-5">
@@ -38,36 +18,9 @@ export const EducationSection = () => (
     </div>
 
     {/* Education List */}
-    <div className="space-y-5">
-      {education.map((item) => (
-        <EducationComponent
-          key={item.degree}
-          degree={item.degree}
-          period={item.period}
-        />
-      ))}
-    </div>
+    <Educations />
 
     {/* Languages */}
-    <div className="mt-6">
-      <h3 className="text-xs font-black text-foreground uppercase tracking-wider mb-3">
-        Languages
-      </h3>
-      <div className="flex flex-wrap flex-col gap-3 w-max">
-        {languages.map((lang) => (
-          <div
-            key={lang.name}
-            className="flex items-center gap-2 px-3 py-2 bg-muted border border-border shadow-sm elevation-animation"
-          >
-            <span className="text-xs font-bold uppercase text-foreground">
-              {lang.name}
-            </span>
-            <span className="text-xs text-muted-foreground">
-              ({lang.level})
-            </span>
-          </div>
-        ))}
-      </div>
-    </div>
+    <Languages />
   </section>
 )

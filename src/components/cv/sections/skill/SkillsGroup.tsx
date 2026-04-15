@@ -1,10 +1,5 @@
-import type { Skills } from '@/types/root'
 import { SkillsComponent } from './Skills'
-
-type SkillsGroupProps = {
-  label: string
-  skills: Skills
-}
+import type { SkillsGroupProps } from './types'
 
 export const SkillsGroup = ({ label, skills }: SkillsGroupProps) => (
   <div className="group/skill-group" key={label}>

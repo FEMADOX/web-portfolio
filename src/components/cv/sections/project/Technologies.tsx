@@ -1,4 +1,4 @@
-import type { TechnologiesProps } from '@/types/root'
+import type { TechnologiesProps } from './types'
 
 export const Technologies = ({ technologies, accent }: TechnologiesProps) => (
   <div className="flex flex-wrap gap-2">
