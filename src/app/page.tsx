@@ -1,15 +1,17 @@
 'use client'
 
 import { useEffect, useState } from 'react'
-
-import { ContactSection } from '@/components/cv/contact-section'
-import { EducationSection } from '@/components/cv/education-section'
-import { HeroSection } from '@/components/cv/hero-section'
-import { MobileHeader } from '@/components/cv/mobile-header'
-import { MobileNav } from '@/components/cv/mobile-nav'
-import { ProjectsSection } from '@/components/cv/projects-section'
-import { Sidebar } from '@/components/cv/sidebar'
-import { SkillsSection } from '@/components/cv/skills-section'
+import {
+  ContactSection,
+  EducationSection,
+  Footer,
+  HeroSection,
+  MobileHeader,
+  MobileNav,
+  ProjectsSection,
+  Sidebar,
+  SkillsSection
+} from '@/components/cv'
 
 const CVPage = () => {
   const [activeSection, setActiveSection] = useState('summary')
@@ -76,6 +78,7 @@ const CVPage = () => {
           <ProjectsSection />
           <EducationSection />
           <ContactSection />
+          <Footer />
         </div>
       </main>
 

@@ -1,7 +1,7 @@
 'use client'
 
-import { Educations } from './sections/education/Educations'
-import { Languages } from './sections/education/Languages'
+import { Educations } from './Educations'
+import { Languages } from './Languages'
 
 export const EducationSection = () => (
   <section id="education" className="my-20 group">
