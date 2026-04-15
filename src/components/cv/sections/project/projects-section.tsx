@@ -1,6 +1,6 @@
 'use client'
 
-import { Projects } from './sections/project/Projects'
+import { Projects } from './Projects'
 
 export const ProjectsSection = () => (
   <section id="projects" className="my-20 group">
