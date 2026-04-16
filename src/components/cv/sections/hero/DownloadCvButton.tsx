@@ -1,4 +1,5 @@
 import { Download } from 'lucide-react'
+import { toast } from 'sonner'
 import { Button } from '@/components/ui/button'
 import type { DownloadCvButtonProps } from './types'
 
@@ -26,6 +27,11 @@ export const DownloadCvButton = ({
       href={cvLangUrl}
       download={downloadName}
       onMouseEnter={() => warmDownload(cvLangUrl)}
+      onClick={() =>
+        toast.success('Downloading CV...', {
+          description: 'Your download should start shortly.'
+        })
+      }
     >
       {/* Download SVG should animate when button is hovered */}
       <Download

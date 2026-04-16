@@ -3,8 +3,9 @@ import { SpeedInsights } from '@vercel/speed-insights/next'
 import type { Metadata } from 'next'
 import { Geist, Geist_Mono, Inter, Space_Grotesk } from 'next/font/google'
 import { ThemeProvider } from '@/components/theme-provider'
-import { Toaster } from '@/components/ui/toaster'
+
 import './globals.css'
+import { Toaster } from 'sonner'
 import type { ChildrenProps } from './types'
 
 const _geist = Geist({ subsets: ['latin'] })
