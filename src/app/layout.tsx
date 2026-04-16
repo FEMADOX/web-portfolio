@@ -2,7 +2,8 @@ import { Analytics } from '@vercel/analytics/next'
 import { SpeedInsights } from '@vercel/speed-insights/next'
 import type { Metadata } from 'next'
 import { Geist, Geist_Mono, Inter, Space_Grotesk } from 'next/font/google'
-
+import { ThemeProvider } from '@/components/theme-provider'
+import { Toaster } from '@/components/ui/toaster'
 import './globals.css'
 import type { ChildrenProps } from './types'
 
@@ -38,11 +39,14 @@ export const metadata: Metadata = {
 }
 
 const RootLayout = ({ children }: ChildrenProps) => (
-  <html lang="en">
+  <html lang="en" suppressHydrationWarning>
     <body className="font-sans antialiased">
-      {children}
-      {process.env.NODE_ENV === 'production' && <Analytics />}
-      {process.env.NODE_ENV === 'production' && <SpeedInsights />}
+      <ThemeProvider>
+        {children}
+        <Toaster />
+        {process.env.NODE_ENV === 'production' && <Analytics />}
+        {process.env.NODE_ENV === 'production' && <SpeedInsights />}
+      </ThemeProvider>
     </body>
   </html>
 )

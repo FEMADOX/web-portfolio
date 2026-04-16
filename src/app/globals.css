@@ -152,6 +152,15 @@
   .button-animation-short {
     @apply active:translate-[0.25%] sm:active:translate-[0.5%] active:shadow-none transition-all;
   }
+
+  .download-icon {
+    @apply transition-transform will-change-transform;
+
+    path:nth-child(1),
+    path:nth-child(3) {
+      @apply animate-bounce;
+    }
+  }
 }
 
 /* Custom scrollbar for dark theme */
