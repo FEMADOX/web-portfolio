@@ -13,14 +13,16 @@ const warmDownload = (url: string) => {
 export const DownloadCvButton = ({
   cvLangUrl,
   downloadName,
-  buttonText
+  buttonText,
+  shadow,
+  animation
 }: DownloadCvButtonProps) => (
   <Button
     asChild
     className={`
-      lg:hidden h-12 rounded-none border-2 border-border bg-accent text-accent-foreground font-black uppercase tracking-widest
-      hover:bg-accent/60 shadow-(--shadow)
-      button-animation
+      h-12 rounded-none border-2 border-border bg-accent text-accent-foreground font-black uppercase tracking-widest
+      hover:bg-accent/60 ${shadow ? `shadow-${shadow}` : ''}
+      ${!animation ? '' : 'button-animation'}
     `}
   >
     <a

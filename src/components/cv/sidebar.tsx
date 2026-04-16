@@ -1,15 +1,9 @@
 'use client'
 
-import {
-  Briefcase,
-  Code,
-  Download,
-  GraduationCap,
-  Mail,
-  User
-} from 'lucide-react'
-import { Button } from '@/components/ui/button'
+import { Briefcase, Code, GraduationCap, Mail, User } from 'lucide-react'
 import { cn } from '@/lib/utils'
+import { CV_FILES } from '../constants'
+import { DownloadCvButton } from './sections/hero/DownloadCvButton'
 
 interface SidebarProps {
   activeSection: string
@@ -83,11 +77,13 @@ export const Sidebar = ({
     </nav>
 
     {/* Download CV Button */}
-    <div className="p-4 border-t-4 border-border">
-      <Button className="w-full rounded-none border-2 border-border bg-accent hover:bg-accent/95 text-accent-foreground font-black uppercase tracking-widest">
-        <Download className="w-4 h-4 mr-2" />
-        Download CV
-      </Button>
+    <div className="p-4 border-t-4 border-border mx-auto">
+      <DownloadCvButton
+        cvLangUrl={CV_FILES.en}
+        downloadName="Giancarlos-Gonzalez-CV-EN.pdf"
+        buttonText="Download CV"
+        animation={false}
+      />
     </div>
   </aside>
 )

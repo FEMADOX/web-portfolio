@@ -70,7 +70,7 @@ export const ContactForm = () => {
   const isSending = status === 'sending'
 
   return (
-    <form onSubmit={handleSubmit} className="space-y-4">
+    <form onSubmit={handleSubmit} className="space-y-4 md:order-first">
       <h3 className="text-sm font-black text-foreground uppercase tracking-wider mb-3">
         Contact Form
       </h3>
@@ -132,7 +132,6 @@ export const ContactForm = () => {
       <Button
         type="submit"
         onMouseEnter={() => sendIconRef.current?.startAnimation()}
-        // onMouseLeave={() => sendIconRef.current?.stopAnimation()}
         className={`
           rounded-none border-2 border-border bg-accent text-accent-foreground font-black uppercase tracking-widest
           hover:bg-accent/95

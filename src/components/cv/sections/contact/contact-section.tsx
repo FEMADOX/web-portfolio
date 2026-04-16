@@ -4,7 +4,7 @@ import { ContactForm } from './ContactForm'
 import { ContactLinks } from './ContactLinks'
 
 export const ContactSection = () => (
-  <section id="contact" className="my-20 group/contact-section">
+  <section id="contact" className="my-20 group/contact-section md:mb-52">
     <div className="flex items-center justify-between mb-5">
       <h2
         className="
