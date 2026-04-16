@@ -71,15 +71,15 @@ const CVPage = () => {
       />
 
       {/* Main Content */}
-      <main className="lg:ml-72 pb-24 lg:pb-0">
+      <main className="lg:ml-72 pb-15 lg:pb-0">
         <div className="max-w-5xl mx-auto px-2 sm:px-6 lg:px-10 py-4 lg:py-10">
           <HeroSection />
           <SkillsSection />
           <ProjectsSection />
           <EducationSection />
           <ContactSection />
-          <Footer />
         </div>
+        <Footer />
       </main>
 
       {/* Mobile Bottom Navigation */}

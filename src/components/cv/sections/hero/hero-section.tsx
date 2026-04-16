@@ -1,12 +1,8 @@
 'use client'
 
+import { CV_FILES } from '@/components/constants'
 import { DownloadCvButton } from './DownloadCvButton'
 import { FastAPICode } from './FastAPICode'
-
-const CV_FILES = {
-  en: '/api/cv/en',
-  es: '/api/cv/es'
-}
 
 export const HeroSection = () => (
   <section id="summary" className="mt-2 mb-5 lg:mt-4">
@@ -31,7 +27,7 @@ export const HeroSection = () => (
       </p>
 
       {/* Download CV Button - Mobile */}
-      <div className="flex flex-col gap-3 sm:flex-row sm:gap-0 sm:justify-around">
+      <div className="flex flex-col gap-3 sm:flex-row sm:gap-0 sm:justify-around lg:hidden">
         <DownloadCvButton
           cvLangUrl={CV_FILES.en}
           downloadName="Giancarlos-Gonzalez-CV-EN.pdf"
