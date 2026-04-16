@@ -1,10 +1,15 @@
-import { Send } from 'lucide-react'
 import type { SubmitEvent } from 'react'
-import { useState } from 'react'
+import { useRef, useState } from 'react'
+import { toast } from 'sonner'
 import z from 'zod'
 import { sendContactEmail } from '@/actions/sendContactEmail'
-import { Button, Input, Textarea } from '@/components/ui'
-import { useToast } from '@/hooks/use-toast'
+import {
+  Button,
+  Input,
+  SendIcon,
+  type SendIconHandle,
+  Textarea
+} from '@/components/ui'
 import type { ContactFormData, ContactStatus } from './types'
 import { initialContactFormData } from './utils'
 
@@ -13,7 +18,7 @@ export const ContactForm = () => {
     initialContactFormData
   )
   const [status, setStatus] = useState<ContactStatus>('idle')
-  const { toast } = useToast()
+  const sendIconRef = useRef<SendIconHandle>(null)
 
   const updateField = <T extends keyof ContactFormData>(
     field: T,
@@ -24,35 +29,41 @@ export const ContactForm = () => {
 
   const handleSubmit = async (event: SubmitEvent<HTMLFormElement>) => {
     event.preventDefault()
+
+    if (isSending) {
+      toast.warning('Transmission in progress.', {
+        description: 'Please wait for the current transmission to complete.'
+      })
+      return
+    }
+
     const rawEmail = formData.email.trim()
-    const { error, success } = z.string().email().safeParse(rawEmail)
+    const { error, success } = z.email().safeParse(rawEmail)
 
     if (error && !success) {
-      toast({
-        title: 'Invalid email address.',
-        description: 'Please enter a valid routing address.',
-        variant: 'destructive'
+      toast.error('Invalid email address.', {
+        description: 'Please enter a valid routing address.'
       })
       return
     }
 
     setStatus('sending')
+    sendIconRef.current?.startAnimation()
 
     try {
       await sendContactEmail(formData)
       setStatus('sent')
       setFormData(initialContactFormData)
-      toast({
-        title: 'Message transmitted successfully!',
+      toast.success('Message transmitted successfully!', {
         description: 'I will get back to you as soon as possible.'
       })
     } catch {
       setStatus('error')
-      toast({
-        title: 'Transmission failed.',
-        description: 'Please try again or contact me directly via email.',
-        variant: 'destructive'
+      toast.error('Transmission failed.', {
+        description: 'Please try again or contact me directly via email.'
       })
+    } finally {
+      sendIconRef.current?.stopAnimation()
     }
   }
 
@@ -77,6 +88,7 @@ export const ContactForm = () => {
           onChange={(event) => updateField('name', event.target.value)}
           disabled={isSending}
           className="bg-card border-2 border-border rounded-none"
+          required
         />
       </div>
 
@@ -95,6 +107,7 @@ export const ContactForm = () => {
           onChange={(event) => updateField('email', event.target.value)}
           disabled={isSending}
           className="bg-card border-2 border-border rounded-none"
+          required
         />
       </div>
 
@@ -112,19 +125,20 @@ export const ContactForm = () => {
           onChange={(event) => updateField('message', event.target.value)}
           disabled={isSending}
           className="bg-card border-2 border-border rounded-none min-h-30"
+          required
         />
       </div>
 
       <Button
         type="submit"
-        disabled={isSending}
+        onMouseEnter={() => sendIconRef.current?.startAnimation()}
+        // onMouseLeave={() => sendIconRef.current?.stopAnimation()}
         className={`
           rounded-none border-2 border-border bg-accent text-accent-foreground font-black uppercase tracking-widest
           hover:bg-accent/95
-          group/send-button
         `}
       >
-        <Send className="w-4 h-4 mr-2 group-hover/send-button:translate[-y-0.5_x-1] transition-transform" />
+        <SendIcon className="w-4 h-4 mr-2" ref={sendIconRef} />
         {isSending ? 'Transmitting...' : 'Transmit Data'}
       </Button>
     </form>
