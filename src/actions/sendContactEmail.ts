@@ -5,7 +5,7 @@ import type { ContactFormData } from '@/components/cv/sections/contact/types'
 
 const resend = new Resend(process.env.RESEND_API_KEY)
 
-export async function sendContactEmail(data: ContactFormData): Promise<void> {
+export async function sendContactEmail(data: ContactFormData) {
   const { name, email, message } = data
 
   const { error } = await resend.emails.send({
@@ -25,7 +25,7 @@ export async function sendContactEmail(data: ContactFormData): Promise<void> {
           ${message.replace(/\n/g, '<br />')}
         </blockquote>
       </div>
-    `,
+    `
   })
 
   if (error) {

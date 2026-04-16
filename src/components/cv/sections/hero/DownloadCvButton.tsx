@@ -27,7 +27,11 @@ export const DownloadCvButton = ({
       download={downloadName}
       onMouseEnter={() => warmDownload(cvLangUrl)}
     >
-      <Download className="w-4 h-4 mr-2" />
+      {/* Download SVG should animate when button is hovered */}
+      <Download
+        className={'download-icon w-4 mr-2 sm:ml-2'}
+        style={{ height: '100%' }}
+      />
       {buttonText}
     </a>
   </Button>
