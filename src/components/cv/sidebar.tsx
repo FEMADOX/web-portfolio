@@ -1,6 +1,5 @@
-'use client'
-
 import { Briefcase, Code, GraduationCap, Mail, User } from 'lucide-react'
+import Image from 'next/image'
 import { cn } from '@/lib/utils'
 import { CV_FILES } from '../constants'
 import { DownloadCvButton } from './sections/hero/DownloadCvButton'
@@ -30,12 +29,28 @@ export const Sidebar = ({
       className
     )}
   >
-    {/* Profile Section */}
     <div className="p-6 border-b-4 border-border">
       <div className="flex items-center gap-3">
-        <div className="relative w-12 h-12 overflow-hidden bg-muted border-2 border-border">
+        <div className="relative w-12 overflow-hidden bg-muted border-2 border-border h-full">
           <div className="w-full h-full flex items-center justify-center bg-primary/10 text-primary font-black text-lg">
-            GG
+            {/* Ligh mode Logo */}
+            <Image
+              src="/api/logo/black"
+              alt="Logo"
+              width={10}
+              height={10}
+              className="object-contain h-full w-full dark:hidden"
+              priority
+            />
+            {/* Dark mode Logo */}
+            <Image
+              src="/api/logo/white"
+              alt="Logo"
+              width={10}
+              height={10}
+              className="object-contain h-full w-full hidden dark:block"
+              priority
+            />
           </div>
         </div>
         <div>
@@ -49,7 +64,6 @@ export const Sidebar = ({
       </div>
     </div>
 
-    {/* Navigation */}
     <nav className="flex-1 p-4">
       <ul className="space-y-2">
         {navItems.map((item) => {
@@ -63,8 +77,8 @@ export const Sidebar = ({
                 className={cn(
                   'w-full flex items-center gap-3 px-4 py-3 border-2 border-border text-sm font-black uppercase transition-all',
                   isActive
-                    ? 'bg-accent text-accent-foreground shadow-[2px_2px_0_0_#000]'
-                    : 'bg-card text-muted-foreground hover:bg-muted hover:text-foreground'
+                    ? 'bg-accent text-accent-foreground'
+                    : 'bg-card text-muted-foreground hover:bg-muted hover:opacity-60 hover:text-foreground'
                 )}
               >
                 <Icon className="w-4 h-4" />
@@ -76,8 +90,7 @@ export const Sidebar = ({
       </ul>
     </nav>
 
-    {/* Download CV Button */}
-    <div className="p-4 border-t-4 border-border mx-auto">
+    <div className="p-4 border-t-4 border-border mx-0 text-center">
       <DownloadCvButton
         cvLangUrl={CV_FILES.en}
         downloadName="Giancarlos-Gonzalez-CV-EN.pdf"

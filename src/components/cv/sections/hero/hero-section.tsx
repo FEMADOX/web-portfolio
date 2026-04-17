@@ -32,12 +32,16 @@ export const HeroSection = () => (
           cvLangUrl={CV_FILES.en}
           downloadName="Giancarlos-Gonzalez-CV-EN.pdf"
           buttonText="Download CV"
+          shadow="sm"
+          animation={true}
         />
 
         <DownloadCvButton
           cvLangUrl={CV_FILES.es}
           downloadName="Giancarlos-Gonzalez-CV-ES.pdf"
           buttonText="Descargar CV"
+          shadow="sm"
+          animation={true}
         />
       </div>
     </div>

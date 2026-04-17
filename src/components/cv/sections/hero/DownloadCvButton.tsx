@@ -22,7 +22,7 @@ export const DownloadCvButton = ({
     className={`
       h-12 rounded-none border-2 border-border bg-accent text-accent-foreground font-black uppercase tracking-widest
       hover:bg-accent/60 ${shadow ? `shadow-${shadow}` : ''}
-      ${!animation ? '' : 'button-animation'}
+      ${animation ? 'button-animation' : ''}
     `}
   >
     <a

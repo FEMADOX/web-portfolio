@@ -1,7 +1,8 @@
 import { get, head } from '@vercel/blob'
 import { type NextRequest, NextResponse } from 'next/server'
+import type { CvProps, Lang } from './types'
 
-const cvByLang = {
+export const cvByLang = {
   en: {
     envKey: 'NEXT_PUBLIC_CV_EN',
     filename: 'Giancarlos-Gonzalez-CV-EN.pdf'
@@ -11,11 +12,6 @@ const cvByLang = {
     filename: 'Giancarlos-Gonzalez-CV-ES.pdf'
   }
 } as const
-
-type Lang = keyof typeof cvByLang
-interface CvProps {
-  params: Promise<{ lang: Lang }>
-}
 
 const isLang = (value: string): value is Lang => value in cvByLang
 

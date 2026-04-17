@@ -1,11 +1,11 @@
 import { Analytics } from '@vercel/analytics/next'
 import { SpeedInsights } from '@vercel/speed-insights/next'
-import type { Metadata } from 'next'
+import type { Metadata, Viewport } from 'next'
 import { Geist, Geist_Mono, Inter, Space_Grotesk } from 'next/font/google'
-import { ThemeProvider } from '@/components/theme-provider'
+import { Toaster } from 'sonner'
 
 import './globals.css'
-import { Toaster } from 'sonner'
+import { ThemeProvider } from '@/components/theme-provider'
 import type { ChildrenProps } from './types'
 
 const _geist = Geist({ subsets: ['latin'] })
@@ -17,26 +17,80 @@ const _spaceGrotesk = Space_Grotesk({
 const _inter = Inter({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
+  metadataBase: new URL('https://giancarlos-portfolio.vercel.app/'),
   title: 'Giancarlos Gonzalez | Web Developer',
   description:
     'Back-end python developer using Django and FastAPI with strong bases in Frontend Dev with TypeScript, React and NextJS.',
   icons: {
     icon: [
       {
-        url: '/icon-light-32x32.png',
+        url: '/favicon-white.svg',
+        type: 'image/svg+xml',
         media: '(prefers-color-scheme: light)'
       },
       {
-        url: '/icon-dark-32x32.png',
+        url: '/favicon-black.svg',
+        type: 'image/svg+xml',
         media: '(prefers-color-scheme: dark)'
       },
       {
-        url: '/icon.svg',
+        url: '/favicon-white.svg',
         type: 'image/svg+xml'
       }
     ],
-    apple: '/apple-icon.png'
-  }
+    apple: '/favicon-white.svg'
+  },
+  openGraph: {
+    title: 'Giancarlos Gonzalez | Web Developer',
+    description:
+      'Back-end python developer using Django and FastAPI with strong bases in Frontend Dev with TypeScript, React and NextJS.',
+    url: 'https://giancarlos-portfolio.vercel.app/',
+    siteName: 'Giancarlos Gonzalez Portfolio',
+    images: [
+      {
+        url: '/thumbnail.png',
+        width: 1200,
+        height: 630,
+        alt: 'Giancarlos Gonzalez Portfolio Open Graph Image Light'
+      },
+      {
+        url: '/thumbnail.png',
+        width: 1200,
+        height: 630,
+        alt: 'Giancarlos Gonzalez Portfolio Open Graph Image Dark'
+      }
+    ],
+    locale: 'en_US',
+    type: 'website'
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Giancarlos Gonzalez | Web Developer',
+    description:
+      'Back-end python developer using Django and FastAPI with strong bases in Frontend Dev with TypeScript, React and NextJS.',
+    images: [
+      {
+        url: '/thumbnail.png',
+        width: 1200,
+        height: 630,
+        alt: 'Giancarlos Gonzalez Portfolio Twitter Card Image Light'
+      },
+      {
+        url: '/thumbnail.png',
+        width: 1200,
+        height: 630,
+        alt: 'Giancarlos Gonzalez Portfolio Twitter Card Image Dark'
+      }
+    ]
+  },
+  manifest: '/site.webmanifest'
+}
+
+export const viewport: Viewport = {
+  themeColor: [
+    { media: '(prefers-color-scheme: light)', color: '#ffffff' },
+    { media: '(prefers-color-scheme: dark)', color: '#000000' }
+  ]
 }
 
 const RootLayout = ({ children }: ChildrenProps) => (
