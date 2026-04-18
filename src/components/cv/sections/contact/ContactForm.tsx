@@ -3,6 +3,7 @@ import { useRef, useState } from 'react'
 import { toast } from 'sonner'
 import z from 'zod'
 import { sendContactEmail } from '@/actions/sendContactEmail'
+import type { CvLocale } from '@/app/i18n'
 import {
   Button,
   Input,
@@ -13,7 +14,23 @@ import {
 import type { ContactFormData, ContactStatus } from './types'
 import { initialContactFormData } from './utils'
 
-export const ContactForm = () => {
+interface ContactFormProps {
+  contactForm: CvLocale['contactForm']
+}
+
+export const ContactForm = ({
+  contactForm: {
+    title,
+    nameLabel,
+    namePlaceholder,
+    emailLabel,
+    emailPlaceholder,
+    messageLabel,
+    messagePlaceholder,
+    submit,
+    submitting
+  }
+}: ContactFormProps) => {
   const [formData, setFormData] = useState<ContactFormData>(
     initialContactFormData
   )
@@ -72,18 +89,18 @@ export const ContactForm = () => {
   return (
     <form onSubmit={handleSubmit} className="space-y-4 md:order-first">
       <h3 className="text-sm font-black text-foreground uppercase tracking-wider mb-3">
-        Contact Form
+        {title}
       </h3>
       <div>
         <label
           htmlFor="contact-name"
           className="block text-xs font-medium text-muted-foreground uppercase tracking-wider mb-2"
         >
-          Target Identity (Name)
+          {nameLabel}
         </label>
         <Input
           id="contact-name"
-          placeholder="Enter identification..."
+          placeholder={namePlaceholder}
           value={formData.name}
           onChange={(event) => updateField('name', event.target.value)}
           disabled={isSending}
@@ -97,12 +114,12 @@ export const ContactForm = () => {
           htmlFor="contact-email"
           className="block text-xs font-medium text-muted-foreground uppercase tracking-wider mb-2"
         >
-          Routing Address (Email)
+          {emailLabel}
         </label>
         <Input
           id="contact-email"
           type="email"
-          placeholder="Enter transmission route..."
+          placeholder={emailPlaceholder}
           value={formData.email}
           onChange={(event) => updateField('email', event.target.value)}
           disabled={isSending}
@@ -116,11 +133,11 @@ export const ContactForm = () => {
           htmlFor="contact-message"
           className="block text-xs font-medium text-muted-foreground uppercase tracking-wider mb-2"
         >
-          Payload (Message)
+          {messageLabel}
         </label>
         <Textarea
           id="contact-message"
-          placeholder="Construct message payload..."
+          placeholder={messagePlaceholder}
           value={formData.message}
           onChange={(event) => updateField('message', event.target.value)}
           disabled={isSending}
@@ -134,11 +151,11 @@ export const ContactForm = () => {
         onMouseEnter={() => sendIconRef.current?.startAnimation()}
         className={`
           rounded-none border-2 border-border bg-accent text-accent-foreground font-black uppercase tracking-widest
-          hover:bg-accent/95
+          hover:bg-accent/95 hover:cursor-pointer
         `}
       >
         <SendIcon className="w-4 h-4 mr-2" ref={sendIconRef} />
-        {isSending ? 'Transmitting...' : 'Transmit Data'}
+        {isSending ? submitting : submit}
       </Button>
     </form>
   )

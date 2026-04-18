@@ -1,6 +1,7 @@
 import { get, head } from '@vercel/blob'
 import { type NextRequest, NextResponse } from 'next/server'
-import type { CvProps, Lang } from './types'
+import type { Lang } from '@/app/types'
+import type { CvProps } from './types'
 
 export const cvByLang = {
   en: {

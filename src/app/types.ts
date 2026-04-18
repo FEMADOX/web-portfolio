@@ -1,5 +1,7 @@
 import type { ReactNode } from 'react'
 
+export type Lang = 'en' | 'es'
+
 export interface ChildrenProps {
   readonly children: ReactNode
 }
@@ -11,5 +13,7 @@ export interface MobileNavProps {
 }
 
 export interface MobileHeaderProps {
+  lang: Lang
+  setLang: (lang: Lang) => void
   className?: string
 }
