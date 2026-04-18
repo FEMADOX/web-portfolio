@@ -48,13 +48,13 @@ export const metadata: Metadata = {
     siteName: 'Giancarlos Gonzalez Portfolio',
     images: [
       {
-        url: '/thumbnail.png',
+        url: '/thumbnail.jpg',
         width: 1200,
         height: 630,
         alt: 'Giancarlos Gonzalez Portfolio Open Graph Image Light'
       },
       {
-        url: '/thumbnail.png',
+        url: '/thumbnail.jpg',
         width: 1200,
         height: 630,
         alt: 'Giancarlos Gonzalez Portfolio Open Graph Image Dark'

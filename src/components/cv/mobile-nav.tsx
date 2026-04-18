@@ -15,7 +15,8 @@ const navItems = [
 export const MobileNav = ({
   activeSection,
   onNavigate,
-  className
+  className,
+  navigation
 }: MobileNavProps) => (
   <nav
     className={cn(
@@ -39,7 +40,7 @@ export const MobileNav = ({
           >
             <Icon className={cn('w-4 h-4', isActive && 'text-accent')} />
             <span className="text-[9px] font-bold uppercase tracking-wide">
-              {item.label}
+              {navigation[item.id as keyof typeof navigation]}
             </span>
           </button>
         )

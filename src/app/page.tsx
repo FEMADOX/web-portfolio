@@ -108,13 +108,14 @@ const CVPage = () => {
             contactForm={locale.contactForm}
           />
         </div>
-        <Footer />
+        <Footer source={locale.footer.source} />
       </main>
 
       {/* Mobile Bottom Navigation */}
       <MobileNav
         activeSection={activeSection}
         onNavigate={scrollToSection}
+        navigation={locale.navigation}
         className="lg:hidden"
       />
     </div>
