@@ -3,8 +3,13 @@
 import { SquareTerminal } from 'lucide-react'
 import type { MobileHeaderProps } from '@/app/types'
 import { cn } from '@/lib/utils'
+import { LanguageButton } from './LanguageButton'
 
-export const MobileHeader = ({ className }: MobileHeaderProps) => (
+export const MobileHeader = ({
+  lang,
+  setLang,
+  className
+}: MobileHeaderProps) => (
   <header
     className={cn(
       'sticky top-0 z-50 bg-card border-b-4 border-border px-3 py-3 shadow-normal',
@@ -22,6 +27,9 @@ export const MobileHeader = ({ className }: MobileHeaderProps) => (
             GONZALEZ
           </p>
         </div>
+      </div>
+      <div className="ml-auto">
+        <LanguageButton lang={lang} setLang={setLang} />
       </div>
     </div>
   </header>

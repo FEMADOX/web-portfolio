@@ -1,27 +1,28 @@
-import { Briefcase, Code, GraduationCap, Mail, User } from 'lucide-react'
 import Image from 'next/image'
+import type { CvLocale } from '@/app/i18n'
 import { cn } from '@/lib/utils'
-import { CV_FILES } from '../constants'
+import { LanguageButton, type LanguageButtonProps } from './LanguageButton'
+import { NavItems } from './NavItems'
 import { DownloadCvButton } from './sections/hero/DownloadCvButton'
 
 interface SidebarProps {
   activeSection: string
   onNavigate: (section: string) => void
   className?: string
+  sidebar: CvLocale['sidebar']
+  languageButtonProps: LanguageButtonProps
 }
-
-const navItems = [
-  { id: 'summary', label: 'Summary', icon: User },
-  { id: 'skills', label: 'Technical Skills', icon: Code },
-  { id: 'projects', label: 'Projects', icon: Briefcase },
-  { id: 'education', label: 'Education', icon: GraduationCap },
-  { id: 'contact', label: 'Contact', icon: Mail }
-]
 
 export const Sidebar = ({
   activeSection,
   onNavigate,
-  className
+  className,
+  sidebar: {
+    jobTitle,
+    navLabels,
+    downloadCv: { cvLangUrl, downloadName, buttonText }
+  },
+  languageButtonProps: { lang, setLang }
 }: SidebarProps) => (
   <aside
     className={cn(
@@ -29,7 +30,7 @@ export const Sidebar = ({
       className
     )}
   >
-    <div className="p-6 border-b-4 border-border">
+    <div className="p-2 border-b-4 border-border">
       <div className="flex items-center gap-3">
         <div className="relative w-12 overflow-hidden bg-muted border-2 border-border h-full">
           <div className="w-full h-full flex items-center justify-center bg-primary/10 text-primary font-black text-lg">
@@ -57,44 +58,25 @@ export const Sidebar = ({
           <h2 className="font-black uppercase text-foreground leading-none">
             Giancarlos Gonzalez
           </h2>
-          <p className="text-xs text-accent font-black tracking-wider mt-1">
-            WEB DEVELOPER
+          <p className="text-xs text-accent font-black tracking-wider mt-1 uppercase">
+            {jobTitle}
           </p>
         </div>
+        <LanguageButton lang={lang} setLang={setLang} />
       </div>
     </div>
 
-    <nav className="flex-1 p-4">
-      <ul className="space-y-2">
-        {navItems.map((item) => {
-          const Icon = item.icon
-          const isActive = activeSection === item.id
-          return (
-            <li key={item.id}>
-              <button
-                type="button"
-                onClick={() => onNavigate(item.id)}
-                className={cn(
-                  'w-full flex items-center gap-3 px-4 py-3 border-2 border-border text-sm font-black uppercase transition-all',
-                  isActive
-                    ? 'bg-accent text-accent-foreground'
-                    : 'bg-card text-muted-foreground hover:bg-muted hover:opacity-60 hover:text-foreground'
-                )}
-              >
-                <Icon className="w-4 h-4" />
-                {item.label}
-              </button>
-            </li>
-          )
-        })}
-      </ul>
-    </nav>
+    <NavItems
+      activeSection={activeSection}
+      onNavigate={onNavigate}
+      navLabels={navLabels}
+    />
 
     <div className="p-4 border-t-4 border-border mx-0 text-center">
       <DownloadCvButton
-        cvLangUrl={CV_FILES.en}
-        downloadName="Giancarlos-Gonzalez-CV-EN.pdf"
-        buttonText="Download CV"
+        cvLangUrl={cvLangUrl}
+        downloadName={downloadName}
+        buttonText={buttonText}
         animation={false}
       />
     </div>

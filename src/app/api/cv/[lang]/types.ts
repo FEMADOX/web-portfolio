@@ -1,6 +1,5 @@
-import type { cvByLang } from './route'
+import type { Lang } from '@/app/types'
 
-export type Lang = keyof typeof cvByLang
 export interface CvProps {
   params: Promise<{ lang: Lang }>
 }

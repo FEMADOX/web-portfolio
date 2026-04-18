@@ -1,8 +1,18 @@
 'use client'
 
+import type { CvLocale } from '@/app/i18n'
 import { Projects } from './Projects'
+import type { ProjectProps } from './types'
 
-export const ProjectsSection = () => (
+interface ProjectsSectionProps {
+  sectionTitle: CvLocale['sections']['projects']
+  projects: readonly ProjectProps[]
+}
+
+export const ProjectsSection = ({
+  sectionTitle,
+  projects
+}: ProjectsSectionProps) => (
   <section id="projects" className="my-20 group">
     {/* Section Header */}
     <div className="flex items-center justify-between mb-5">
@@ -12,13 +22,13 @@ export const ProjectsSection = () => (
           group-hover:bg-accent group-hover:text-accent-foreground transition-colors
         `}
       >
-        Projects
+        {sectionTitle}
       </h2>
       <span className="text-xs text-accent font-mono hidden sm:block">
         DEPLOYMENTS.02
       </span>
     </div>
 
-    <Projects />
+    <Projects projects={projects} />
   </section>
 )

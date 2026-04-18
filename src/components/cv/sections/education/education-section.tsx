@@ -1,9 +1,14 @@
 'use client'
 
+import type { CvLocale } from '@/app/i18n'
 import { Educations } from './Educations'
 import { Languages } from './Languages'
 
-export const EducationSection = () => (
+interface EducationSectionProps {
+  sectionTitle: CvLocale['sections']['education']
+}
+
+export const EducationSection = ({ sectionTitle }: EducationSectionProps) => (
   <section id="education" className="my-20 group">
     {/* Section Header */}
     <div className="flex items-center justify-between mb-5">
@@ -13,7 +18,7 @@ export const EducationSection = () => (
           group-hover:bg-accent group-hover:text-accent-foreground transition-colors
         `}
       >
-        Education
+        {sectionTitle}
       </h2>
     </div>
 

@@ -1,9 +1,18 @@
 'use client'
 
+import type { CvLocale } from '@/app/i18n'
 import { ContactForm } from './ContactForm'
 import { ContactLinks } from './ContactLinks'
 
-export const ContactSection = () => (
+interface ContactSectionProps {
+  sectionTitle: CvLocale['sections']['education']
+  contactForm: CvLocale['contactForm']
+}
+
+export const ContactSection = ({
+  sectionTitle,
+  contactForm
+}: ContactSectionProps) => (
   <section id="contact" className="my-20 group/contact-section md:mb-52">
     <div className="flex items-center justify-between mb-5">
       <h2
@@ -12,7 +21,7 @@ export const ContactSection = () => (
           group-hover/contact-section:bg-accent group-hover/contact-section:text-accent-foreground transition-colors
         "
       >
-        Contact
+        {sectionTitle}
       </h2>
       <span className="text-xs text-accent font-mono hidden sm:block">
         COMM.03
@@ -21,7 +30,7 @@ export const ContactSection = () => (
 
     <div className="grid lg:grid-cols-2 gap-8">
       <ContactLinks />
-      <ContactForm />
+      <ContactForm contactForm={contactForm} />
     </div>
   </section>
 )

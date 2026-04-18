@@ -12,10 +12,31 @@ import {
   Sidebar,
   SkillsSection
 } from '@/components/cv'
+import { getProjects } from '@/components/cv/sections/project/utils'
+import { getCvLocale } from './i18n'
+import type { Lang } from './types'
 
 const CVPage = () => {
   const [activeSection, setActiveSection] = useState('summary')
   const [, setIsMobile] = useState(false)
+  const [lang, setLang] = useState<Lang>('en')
+  const locale = getCvLocale(lang)
+  const projects = getProjects(lang)
+
+  useEffect(() => {
+    const storedLang = localStorage.getItem('lang') as Lang
+    if (!storedLang) {
+      localStorage.setItem('lang', 'en')
+    }
+    if (storedLang) {
+      setLang(storedLang)
+    }
+  }, [])
+
+  useEffect(() => {
+    localStorage.setItem('lang', lang)
+    console.log(`Language set to: ${lang}`)
+  }, [lang])
 
   useEffect(() => {
     const checkMobile = () => {
@@ -61,23 +82,31 @@ const CVPage = () => {
   return (
     <div className="min-h-screen bg-background text-foreground antialiased">
       {/* Mobile Header */}
-      <MobileHeader className="lg:hidden" />
+      <MobileHeader className="lg:hidden" lang={lang} setLang={setLang} />
 
       {/* Desktop Sidebar */}
       <Sidebar
         activeSection={activeSection}
         onNavigate={scrollToSection}
         className="hidden lg:flex"
+        sidebar={locale.sidebar}
+        languageButtonProps={{ lang, setLang }}
       />
 
       {/* Main Content */}
       <main className="lg:ml-72 pb-15 lg:pb-0">
         <div className="max-w-5xl mx-auto px-2 sm:px-6 lg:px-10 py-4 lg:py-10">
-          <HeroSection />
-          <SkillsSection />
-          <ProjectsSection />
-          <EducationSection />
-          <ContactSection />
+          <HeroSection hero={locale.hero} />
+          <SkillsSection sectionTitle={locale.sections.skills} />
+          <ProjectsSection
+            sectionTitle={locale.sections.projects}
+            projects={projects}
+          />
+          <EducationSection sectionTitle={locale.sections.education} />
+          <ContactSection
+            sectionTitle={locale.sections.contact}
+            contactForm={locale.contactForm}
+          />
         </div>
         <Footer />
       </main>

@@ -1,7 +1,12 @@
 import { Project } from './Project'
-import { projectAccents, projects } from './utils'
+import type { ProjectProps } from './types'
+import { projectAccents } from './utils'
 
-export const Projects = () => (
+interface ProjectsProps {
+  projects: readonly ProjectProps[]
+}
+
+export const Projects = ({ projects }: ProjectsProps) => (
   <div className="space-y-5">
     {projects.map((project, index) => {
       const accent = projectAccents[index % projectAccents.length]
