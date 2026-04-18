@@ -1,4 +1,5 @@
 import type { ReactNode } from 'react'
+import type { SectionId } from './i18n'
 
 export type Lang = 'en' | 'es'
 
@@ -9,6 +10,7 @@ export interface ChildrenProps {
 export interface MobileNavProps {
   activeSection: string
   onNavigate: (section: string) => void
+  navigation: Record<SectionId, string>
   className?: string
 }
 

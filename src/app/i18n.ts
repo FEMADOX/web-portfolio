@@ -70,6 +70,9 @@ export type CvLocale = {
       }
     }
   }
+  footer: {
+    source: string
+  }
 }
 
 export const cvI18n: Record<Lang, CvLocale> = {
@@ -147,6 +150,9 @@ export const cvI18n: Record<Lang, CvLocale> = {
           description: 'Please try again or contact me directly via email.'
         }
       }
+    },
+    footer: {
+      source: 'Source'
     }
   },
   es: {
@@ -223,6 +229,9 @@ export const cvI18n: Record<Lang, CvLocale> = {
           description: 'Intenta de nuevo o contactame por email directamente.'
         }
       }
+    },
+    footer: {
+      source: 'Fuente'
     }
   }
 }

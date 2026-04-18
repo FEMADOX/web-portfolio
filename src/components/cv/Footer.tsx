@@ -1,4 +1,8 @@
-export const Footer = () => (
+type FooterProps = {
+  source: string
+}
+
+export const Footer = ({ source }: FooterProps) => (
   <footer className="mt-12 pt-6 border-t-4 border-border bg-black text-background px-4 py-6">
     <div className="flex flex-col sm:flex-row items-center justify-between gap-4">
       <p className="text-xs font-bold text-accent uppercase tracking-wider">
@@ -21,7 +25,7 @@ export const Footer = () => (
           href="https://github.com/FEMADOX/web-portfolio"
           className="text-[10px] text-white hover:text-accent transition-colors uppercase tracking-wider"
         >
-          Source
+          {source}
         </a>
       </div>
     </div>
