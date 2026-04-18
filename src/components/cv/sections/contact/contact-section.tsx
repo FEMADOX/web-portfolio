@@ -24,7 +24,7 @@ export const ContactSection = ({
         {sectionTitle}
       </h2>
       <span className="text-xs text-accent font-mono hidden sm:block">
-        COMM.03
+        CONTACT.04
       </span>
     </div>
 

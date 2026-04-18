@@ -20,6 +20,9 @@ export const EducationSection = ({ sectionTitle }: EducationSectionProps) => (
       >
         {sectionTitle}
       </h2>
+      <span className="text-xs text-accent font-mono hidden sm:block">
+        EDUCATION.03
+      </span>
     </div>
 
     {/* Education List */}
