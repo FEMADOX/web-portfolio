@@ -38,7 +38,7 @@ export const projectsByLang: Record<Lang, readonly ProjectProps[]> = {
       }
     },
     {
-      title: 'Full Stack - Django E-commerce Project',
+      title: 'Full Stack - Django Ecommerce',
       period: 'Jan 2025 - Jan 2026',
       description:
         'Robust e-commerce platform featuring inventory management, Stripe payment integration, and customer dashboards. Built with Django, it includes shopping cart flows, order management, authentication, payment processing, and test coverage with Pytest.',
@@ -72,7 +72,7 @@ export const projectsByLang: Record<Lang, readonly ProjectProps[]> = {
       }
     },
     {
-      title: 'Full Stack - Proyecto E-commerce con Django',
+      title: 'Full Stack - Ecommerce con Django',
       period: 'Ene 2025 - Ene 2026',
       description:
         'Plataforma de comercio electronico robusta con gestion de inventario, integracion de pagos con Stripe y paneles para clientes. Construida con Django, incluye flujo de carrito, gestion de ordenes, autenticacion, procesamiento de pagos y cobertura de pruebas con Pytest.',

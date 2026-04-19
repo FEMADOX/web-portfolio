@@ -26,6 +26,7 @@ export const DownloadCvButton = ({
     `}
   >
     <a
+      className="text-xs sm:text-base"
       href={cvLangUrl}
       download={downloadName}
       onMouseEnter={() => warmDownload(cvLangUrl)}
