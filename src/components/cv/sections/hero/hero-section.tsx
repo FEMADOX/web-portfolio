@@ -19,7 +19,7 @@ export const HeroSection = ({
   <section id="summary" className="mt-2 mb-5 lg:mt-4">
     {/* Title */}
     <div className="mb-5 border-4 border-border bg-card p-6 shadow-normal">
-      <h1 className="text-5xl sm:text-6xl font-black uppercase leading-none tracking-tight">
+      <h1 className="text-4xl xs:text-5xl sm:text-6xl font-black uppercase leading-none tracking-tight overflow-hidden">
         <span className="text-foreground font-bold font-['Space_Grotesk'] tracking-tighter leading-none">
           {titleLineOne}
         </span>
@@ -31,12 +31,12 @@ export const HeroSection = ({
       <div className="h-0.5 bg-border mt-3" />
 
       {/* Summary */}
-      <p className="text-lg text-muted-foreground leading-relaxed mt-4 mb-4 max-w-2xl">
+      <p className="text-md xs:text-lg text-muted-foreground leading-relaxed mt-4 mb-4 max-w-2xl">
         {description}
       </p>
 
       {/* Download CV Button - Mobile */}
-      <div className="flex flex-col gap-3 sm:flex-row sm:gap-0 sm:justify-around lg:hidden">
+      <div className="flex flex-col gap-3 justify-self-center lg:hidden">
         <DownloadCvButton
           cvLangUrl={cvLangUrl}
           downloadName={downloadName}

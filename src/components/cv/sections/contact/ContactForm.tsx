@@ -28,7 +28,8 @@ export const ContactForm = ({
     messageLabel,
     messagePlaceholder,
     submit,
-    submitting
+    submitting,
+    toasts
   }
 }: ContactFormProps) => {
   const [formData, setFormData] = useState<ContactFormData>(
@@ -48,8 +49,8 @@ export const ContactForm = ({
     event.preventDefault()
 
     if (isSending) {
-      toast.warning('Transmission in progress.', {
-        description: 'Please wait for the current transmission to complete.'
+      toast.warning(toasts.alreadySending.title, {
+        description: toasts.alreadySending.description
       })
       return
     }
@@ -58,8 +59,8 @@ export const ContactForm = ({
     const { error, success } = z.email().safeParse(rawEmail)
 
     if (error && !success) {
-      toast.error('Invalid email address.', {
-        description: 'Please enter a valid routing address.'
+      toast.error(toasts.invalidEmail.title, {
+        description: toasts.invalidEmail.description
       })
       return
     }
@@ -71,13 +72,13 @@ export const ContactForm = ({
       await sendContactEmail(formData)
       setStatus('sent')
       setFormData(initialContactFormData)
-      toast.success('Message transmitted successfully!', {
-        description: 'I will get back to you as soon as possible.'
+      toast.success(toasts.success.title, {
+        description: toasts.success.description
       })
     } catch {
       setStatus('error')
-      toast.error('Transmission failed.', {
-        description: 'Please try again or contact me directly via email.'
+      toast.error(toasts.error.title, {
+        description: toasts.error.description
       })
     } finally {
       sendIconRef.current?.stopAnimation()
