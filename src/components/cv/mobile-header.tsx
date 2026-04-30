@@ -1,8 +1,8 @@
 'use client'
 
-import { SquareTerminal } from 'lucide-react'
 import type { MobileHeaderProps } from '@/app/types'
 import { cn } from '@/lib/utils'
+import { BrandLogo } from './BrandLogo'
 import { LanguageButton } from './LanguageButton'
 
 export const MobileHeader = ({
@@ -18,7 +18,7 @@ export const MobileHeader = ({
   >
     <div className="flex items-center justify-between">
       <div className="flex items-center gap-2">
-        <SquareTerminal className="text-primary" height={30} width={30} />
+        <BrandLogo />
         <div>
           <h1 className="font-black text-foreground text-xl leading-none tracking-wide font-['Space_Grotesk']">
             GIANCARLOS

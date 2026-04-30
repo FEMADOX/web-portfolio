@@ -161,6 +161,22 @@
       @apply animate-bounce;
     }
   }
+
+  #typing-effect::after {
+    content: attr(data-cursor);
+    animation: blink 0.8s infinite;
+    @apply ml-1 text-[#61dafb] w-2 font-extrabold;
+  }
+
+  @keyframes blink {
+    0%,
+    100% {
+      opacity: 1;
+    }
+    50% {
+      opacity: 0;
+    }
+  }
 }
 
 /* Custom scrollbar for dark theme */
