@@ -1,0 +1,76 @@
+type RawToken = { text: string; className: string }
+type Token = RawToken & { id: string }
+
+const RAW_TOKENS: RawToken[] = [
+  { text: 'from', className: 'text-blue-400' },
+  { text: ' ', className: '' },
+  { text: 'fastapi', className: 'text-green-400' },
+  { text: ' ', className: '' },
+  { text: 'import', className: 'text-blue-400' },
+  { text: ' ', className: '' },
+  { text: 'FastAPI', className: 'text-yellow-400' },
+  { text: '\n', className: '' },
+  { text: 'from', className: 'text-blue-400' },
+  { text: ' ', className: '' },
+  { text: 'pydantic', className: 'text-green-400' },
+  { text: ' ', className: '' },
+  { text: 'import', className: 'text-blue-400' },
+  { text: ' ', className: '' },
+  { text: 'BaseModel', className: 'text-yellow-400' },
+  { text: '\n\n', className: '' },
+  { text: 'app', className: 'text-white' },
+  { text: ' = ', className: 'text-white' },
+  { text: 'FastAPI', className: 'text-yellow-400' },
+  { text: '()', className: 'text-white' },
+  { text: '\n\n', className: '' },
+  { text: 'class', className: 'text-blue-400' },
+  { text: ' ', className: '' },
+  { text: 'Developer', className: 'text-green-400' },
+  { text: '(', className: 'text-white' },
+  { text: 'BaseModel', className: 'text-yellow-400' },
+  { text: '):', className: 'text-white' },
+  { text: '\n    ', className: '' },
+  { text: 'name', className: 'text-white' },
+  { text: ': ', className: 'text-white' },
+  { text: 'str', className: 'text-yellow-400' },
+  { text: '\n    ', className: '' },
+  { text: 'skills', className: 'text-white' },
+  { text: ': ', className: 'text-white' },
+  { text: 'list', className: 'text-yellow-400' },
+  { text: '[', className: 'text-white' },
+  { text: 'str', className: 'text-yellow-400' },
+  { text: ']', className: 'text-white' },
+  { text: '\n\n', className: '' },
+  { text: '@app.get', className: 'text-purple-400' },
+  { text: '(', className: 'text-white' },
+  { text: '"/"', className: 'text-orange-400' },
+  { text: ')', className: 'text-white' },
+  { text: '\n', className: '' },
+  { text: 'def', className: 'text-blue-400' },
+  { text: ' ', className: '' },
+  { text: 'about_me', className: 'text-green-400' },
+  { text: '() -> ', className: 'text-white' },
+  { text: 'dict', className: 'text-yellow-400' },
+  { text: '[', className: 'text-white' },
+  { text: 'str', className: 'text-yellow-400' },
+  { text: ', ', className: 'text-white' },
+  { text: 'str', className: 'text-yellow-400' },
+  { text: ']:', className: 'text-white' },
+  { text: '\n    ', className: '' },
+  { text: 'return', className: 'text-blue-400' },
+  { text: ' {', className: 'text-white' },
+  { text: '"developer"', className: 'text-orange-400' },
+  { text: ': ', className: 'text-white' },
+  { text: '"Giancarlos"', className: 'text-orange-400' },
+  { text: '}', className: 'text-white' }
+]
+
+// Stable keys derived at module load time — not at render time
+export const CODE_TOKENS: Token[] = RAW_TOKENS.map((t, i) => ({
+  ...t,
+  id: `token-${i}`
+}))
+export const TOTAL_CHARS = CODE_TOKENS.reduce(
+  (sum, t) => sum + t.text.length,
+  0
+)
