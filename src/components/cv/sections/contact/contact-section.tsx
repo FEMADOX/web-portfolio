@@ -1,6 +1,6 @@
 'use client'
 
-import type { CvLocale } from '@/app/i18n'
+import type { CvLocale } from '@/app/types'
 import { ContactForm } from './ContactForm'
 import { ContactLinks } from './ContactLinks'
 

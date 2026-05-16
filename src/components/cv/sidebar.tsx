@@ -1,4 +1,4 @@
-import type { CvLocale } from '@/app/i18n'
+import type { CvLocale } from '@/app/types'
 import { cn } from '@/lib/utils'
 import { BrandLogo } from './BrandLogo'
 import { LanguageButton, type LanguageButtonProps } from './LanguageButton'

@@ -1,6 +1,6 @@
 'use client'
 
-import type { CvLocale } from '@/app/i18n'
+import type { CvLocale } from '@/app/types'
 import { DownloadCvButton } from './DownloadCvButton'
 import { FastAPICode } from './FastAPICode'
 
