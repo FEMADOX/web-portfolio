@@ -1,5 +1,5 @@
 import { Briefcase, Code, GraduationCap, Mail, User } from 'lucide-react'
-import type { SectionId } from '@/app/i18n'
+import type { SectionId } from '@/app/types'
 import { cn } from '@/lib/utils'
 
 const navItems = [

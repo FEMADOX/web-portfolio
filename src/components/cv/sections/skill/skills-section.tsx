@@ -1,6 +1,6 @@
 'use client'
 
-import type { CvLocale } from '@/app/i18n'
+import type { CvLocale } from '@/app/types'
 import { SkillGroups } from './SkillsGroups'
 
 interface SkillSectionProps {

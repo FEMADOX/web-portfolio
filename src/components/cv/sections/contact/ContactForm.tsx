@@ -3,7 +3,7 @@ import { useRef, useState } from 'react'
 import { toast } from 'sonner'
 import z from 'zod'
 import { sendContactEmail } from '@/actions/sendContactEmail'
-import type { CvLocale } from '@/app/i18n'
+import type { CvLocale } from '@/app/types'
 import {
   Button,
   Input,
