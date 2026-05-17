@@ -71,10 +71,6 @@ BLOB_READ_WRITE_TOKEN=
 # CV blobs
 NEXT_PUBLIC_CV_EN=
 NEXT_PUBLIC_CV_ES=
-
-# Logo blobs
-NEXT_PUBLIC_LOGO_WHITE=
-NEXT_PUBLIC_LOGO_BLACK=
 ```
 
 ## Project Structure
@@ -95,7 +91,6 @@ src/
 - CV file source constants: `src/components/constants.ts`
 - API handlers:
   - `src/app/api/cv/[lang]/route.ts`
-  - `src/app/api/logo/[color]/route.ts`
 
 ## License
 
