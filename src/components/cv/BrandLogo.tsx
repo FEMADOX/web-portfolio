@@ -1,11 +1,11 @@
 import Image from 'next/image'
 
 export const BrandLogo = () => (
-  <div className="relative w-12 overflow-hidden bg-muted border-2 border-border h-full">
+  <div className="relative w-max overflow-hidden bg-muted border-2 border-border h-full">
     <div className="w-full h-full flex items-center justify-center bg-primary/10 text-primary font-black text-lg">
       {/* Ligh mode Logo */}
       <Image
-        src="/api/logo/black"
+        src="brand-logo-black.svg"
         alt="Logo"
         width={10}
         height={10}
@@ -14,7 +14,7 @@ export const BrandLogo = () => (
       />
       {/* Dark mode Logo */}
       <Image
-        src="/api/logo/white"
+        src="brand-logo-white.svg"
         alt="Logo"
         width={10}
         height={10}

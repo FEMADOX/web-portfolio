@@ -6,27 +6,27 @@ export const cvI18n: Record<Lang, CvLocale> = {
     mobileHeader: {
       firstName: 'GIANCARLOS',
       lastName: 'GONZALEZ',
-      role: 'WEB DEVELOPER'
+      role: 'FULL STACK DEVELOPER'
     },
     navigation: {
-      summary: 'Summary',
+      summary: 'About Me',
       skills: 'Technical Skills',
       projects: 'Projects',
       education: 'Education',
       contact: 'Contact'
     },
     sections: {
-      summary: 'Summary',
+      summary: 'About Me',
       skills: 'Technical Skills',
       projects: 'Projects',
       education: 'Education',
       contact: 'Contact'
     },
     hero: {
-      titleLineOne: 'Web',
+      titleLineOne: 'Full Stack',
       titleLineTwo: 'Developer',
       description:
-        'Back-end python developer using Django and FastAPI with strong bases in Frontend Dev with TypeScript, React and NextJS focusing on delivering impactful results.',
+        'Full-Stack Developer focused on Python backend (Django/FastAPI) and modern frontend with TypeScript, React, and Next.js. I build scalable, production-ready web applications.',
       downloadCv: {
         cvLangUrl: CV_FILES.en,
         downloadName: 'Giancarlos-Gonzalez-CV-EN.pdf',
@@ -34,9 +34,9 @@ export const cvI18n: Record<Lang, CvLocale> = {
       }
     },
     sidebar: {
-      jobTitle: 'Web Developer',
+      jobTitle: 'Full Stack Dev.',
       navLabels: {
-        summary: 'Summary',
+        summary: 'About Me',
         skills: 'Technical Skills',
         projects: 'Projects',
         education: 'Education',
@@ -50,29 +50,29 @@ export const cvI18n: Record<Lang, CvLocale> = {
     },
     contactForm: {
       title: 'Contact Form',
-      nameLabel: 'Target Identity (Name)',
-      namePlaceholder: 'Enter identification...',
-      emailLabel: 'Routing Address (Email)',
-      emailPlaceholder: 'Enter transmission route...',
-      messageLabel: 'Payload (Message)',
-      messagePlaceholder: 'Construct message payload...',
-      submit: 'Send Data',
+      nameLabel: 'Name',
+      namePlaceholder: 'Enter your name...',
+      emailLabel: 'Email',
+      emailPlaceholder: 'Enter your email...',
+      messageLabel: 'Message',
+      messagePlaceholder: 'Write your message...',
+      submit: 'Send Message',
       submitting: 'Sending...',
       toasts: {
         alreadySending: {
-          title: 'Transmission in progress.',
-          description: 'Please wait for the current transmission to complete.'
+          title: 'Message is already being sent.',
+          description: 'Please wait until the current request finishes.'
         },
         invalidEmail: {
           title: 'Invalid email address.',
-          description: 'Please enter a valid routing address.'
+          description: 'Please enter a valid email address.'
         },
         success: {
-          title: 'Message transmitted successfully!',
+          title: 'Message sent successfully!',
           description: 'I will get back to you as soon as possible.'
         },
         error: {
-          title: 'Transmission failed.',
+          title: 'Failed to send message.',
           description: 'Please try again or contact me directly via email.'
         }
       }
@@ -85,17 +85,17 @@ export const cvI18n: Record<Lang, CvLocale> = {
     mobileHeader: {
       firstName: 'GIANCARLOS',
       lastName: 'GONZALEZ',
-      role: 'DESARROLLADOR WEB'
+      role: 'DESARROLLADOR FULL STACK'
     },
     navigation: {
-      summary: 'Resumen',
+      summary: 'Sobre Mi',
       skills: 'Habilidades Tecnicas',
       projects: 'Proyectos',
       education: 'Educacion',
       contact: 'Contacto'
     },
     sections: {
-      summary: 'Resumen',
+      summary: 'Sobre Mi',
       skills: 'Habilidades Tecnicas',
       projects: 'Proyectos',
       education: 'Educacion',
@@ -103,9 +103,9 @@ export const cvI18n: Record<Lang, CvLocale> = {
     },
     hero: {
       titleLineOne: 'Desarrollador',
-      titleLineTwo: 'Web',
+      titleLineTwo: 'Full Stack',
       description:
-        'Desarrollador back-end en Python con Django y FastAPI, con bases solidas en frontend usando TypeScript, React y NextJS, enfocado en entregar resultados de impacto.',
+        'Desarrollador Full Stack enfocado en backend con Python (Django/FastAPI) y frontend moderno con TypeScript, React y Next.js. Construyo aplicaciones web escalables listas para produccion.',
       downloadCv: {
         cvLangUrl: CV_FILES.es,
         downloadName: 'Giancarlos-Gonzalez-CV-ES.pdf',
@@ -113,9 +113,9 @@ export const cvI18n: Record<Lang, CvLocale> = {
       }
     },
     sidebar: {
-      jobTitle: 'Desarrollador Web',
+      jobTitle: 'Dev. Full Stack',
       navLabels: {
-        summary: 'Resumen',
+        summary: 'Sobre Mi',
         skills: 'Habilidades Tecnicas',
         projects: 'Proyectos',
         education: 'Educacion',
@@ -129,30 +129,30 @@ export const cvI18n: Record<Lang, CvLocale> = {
     },
     contactForm: {
       title: 'Formulario de Contacto',
-      nameLabel: 'Identidad de destino (Nombre)',
-      namePlaceholder: 'Ingresa la identificacion...',
-      emailLabel: 'Direccion de enrutamiento (Email)',
-      emailPlaceholder: 'Ingresa la ruta de transmision...',
-      messageLabel: 'Carga util (Mensaje)',
-      messagePlaceholder: 'Construye el mensaje...',
-      submit: 'Enviar Datos',
+      nameLabel: 'Nombre',
+      namePlaceholder: 'Ingresa tu nombre...',
+      emailLabel: 'Correo Electronico',
+      emailPlaceholder: 'Ingresa tu correo...',
+      messageLabel: 'Mensaje',
+      messagePlaceholder: 'Escribe tu mensaje...',
+      submit: 'Enviar Mensaje',
       submitting: 'Enviando...',
       toasts: {
         alreadySending: {
-          title: 'Transmision en progreso.',
-          description: 'Espera a que termine la transmision actual.'
+          title: 'Ya se esta enviando un mensaje.',
+          description: 'Espera a que finalice la solicitud actual.'
         },
         invalidEmail: {
-          title: 'Correo invalido.',
+          title: 'Correo electronico invalido.',
           description: 'Ingresa una direccion de correo valida.'
         },
         success: {
-          title: 'Mensaje transmitido con exito!',
-          description: 'Te respondere lo antes posible.'
+          title: 'Mensaje enviado con exito!',
+          description: 'Te respondere lo mas pronto posible.'
         },
         error: {
-          title: 'Fallo la transmision.',
-          description: 'Intenta de nuevo o contactame por email directamente.'
+          title: 'No se pudo enviar el mensaje.',
+          description: 'Intenta de nuevo o contactame por correo directamente.'
         }
       }
     },

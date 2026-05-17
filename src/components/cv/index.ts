@@ -1,3 +1,5 @@
+export { DesktopControls } from './DesktopControls'
+export { DesktopControlsDock } from './DesktopControlsDock'
 export { Footer } from './Footer'
 export { MobileHeader } from './mobile-header'
 export { MobileNav } from './mobile-nav'

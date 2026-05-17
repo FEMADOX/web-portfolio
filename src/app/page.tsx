@@ -3,6 +3,7 @@
 import { useEffect, useState } from 'react'
 import {
   ContactSection,
+  DesktopControlsDock,
   EducationSection,
   Footer,
   HeroSection,
@@ -90,8 +91,9 @@ const CVPage = () => {
         onNavigate={scrollToSection}
         className="hidden lg:flex"
         sidebar={locale.sidebar}
-        languageButtonProps={{ lang, setLang }}
       />
+
+      <DesktopControlsDock lang={lang} setLang={setLang} />
 
       {/* Main Content */}
       <main className="lg:ml-72 pb-15 lg:pb-0">
@@ -102,7 +104,10 @@ const CVPage = () => {
             sectionTitle={locale.sections.projects}
             projects={projects}
           />
-          <EducationSection sectionTitle={locale.sections.education} />
+          <EducationSection
+            sectionTitle={locale.sections.education}
+            lang={lang}
+          />
           <ContactSection
             sectionTitle={locale.sections.contact}
             contactForm={locale.contactForm}
