@@ -38,7 +38,7 @@ export const projectsByLang: Record<Lang, readonly ProjectProps[]> = {
       }
     },
     {
-      title: 'Full Stack - Django Ecommerce',
+      title: 'Full Stack - Django E-commerce Platform',
       period: 'Jan 2025 - Jan 2026',
       description:
         'Robust e-commerce platform featuring inventory management, Stripe payment integration, and customer dashboards. Built with Django, it includes shopping cart flows, order management, authentication, payment processing, and test coverage with Pytest.',
@@ -49,7 +49,7 @@ export const projectsByLang: Record<Lang, readonly ProjectProps[]> = {
       }
     },
     {
-      title: 'Full Stack - Django Social Website',
+      title: 'Full Stack - Social Bookmarking Platform',
       period: 'Oct 2024 - Aug 2025',
       description:
         'Social networking application with real-time updates, user profiles, and media sharing. Built with Django, it includes likes, follows, authentication, bookmark-based image publishing, and OAuth2 sign-in with Google and X.',
@@ -72,7 +72,7 @@ export const projectsByLang: Record<Lang, readonly ProjectProps[]> = {
       }
     },
     {
-      title: 'Full Stack - Ecommerce con Django',
+      title: 'Full Stack - Plataforma E-commerce con Django',
       period: 'Ene 2025 - Ene 2026',
       description:
         'Plataforma de comercio electronico robusta con gestion de inventario, integracion de pagos con Stripe y paneles para clientes. Construida con Django, incluye flujo de carrito, gestion de ordenes, autenticacion, procesamiento de pagos y cobertura de pruebas con Pytest.',
@@ -83,7 +83,7 @@ export const projectsByLang: Record<Lang, readonly ProjectProps[]> = {
       }
     },
     {
-      title: 'Full Stack - Red Social con Django',
+      title: 'Full Stack - Plataforma Social con Marcadores',
       period: 'Oct 2024 - Ago 2025',
       description:
         'Aplicacion de red social con actualizaciones en tiempo real, perfiles de usuario y comparticion de contenido multimedia. Construida con Django, incluye likes, follows, autenticacion, publicacion de imagenes mediante bookmarks e inicio de sesion con OAuth2 usando Google y X.',

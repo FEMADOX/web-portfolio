@@ -1,14 +1,18 @@
 'use client'
 
-import type { CvLocale } from '@/app/types'
+import type { CvLocale, Lang } from '@/app/types'
 import { Educations } from './Educations'
 import { Languages } from './Languages'
 
 interface EducationSectionProps {
   sectionTitle: CvLocale['sections']['education']
+  lang: Lang
 }
 
-export const EducationSection = ({ sectionTitle }: EducationSectionProps) => (
+export const EducationSection = ({
+  sectionTitle,
+  lang
+}: EducationSectionProps) => (
   <section id="education" className="my-20 group">
     {/* Section Header */}
     <div className="flex items-center justify-between mb-5">
@@ -26,9 +30,9 @@ export const EducationSection = ({ sectionTitle }: EducationSectionProps) => (
     </div>
 
     {/* Education List */}
-    <Educations />
+    <Educations lang={lang} />
 
     {/* Languages */}
-    <Languages />
+    <Languages lang={lang} />
   </section>
 )

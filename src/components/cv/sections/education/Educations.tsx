@@ -1,9 +1,14 @@
+import type { Lang } from '@/app/types'
 import { EducationComponent } from './Education'
-import { educations } from './utils'
+import { getEducations } from './utils'
 
-export const Educations = () => (
+interface EducationsProps {
+  lang: Lang
+}
+
+export const Educations = ({ lang }: EducationsProps) => (
   <div className="space-y-5">
-    {educations.map((item) => (
+    {getEducations(lang).map((item) => (
       <EducationComponent
         key={item.degree}
         degree={item.degree}

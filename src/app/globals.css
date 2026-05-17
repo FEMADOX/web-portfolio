@@ -4,6 +4,26 @@
 @custom-variant dark (&:is(.dark *));
 
 :root {
+  --theme-toggle-x: 50vw;
+  --theme-toggle-y: 50vh;
+  --expo-out: linear(
+    0 0%,
+    0.1684 2.66%,
+    0.3165 5.49%,
+    0.446 8.52%,
+    0.5581 11.78%,
+    0.6535 15.29%,
+    0.7341 19.11%,
+    0.8011 23.3%,
+    0.8557 27.93%,
+    0.8962 32.68%,
+    0.9283 38.01%,
+    0.9529 44.08%,
+    0.9711 51.14%,
+    0.9833 59.06%,
+    0.9915 68.74%,
+    1 100%
+  );
   /* Light (white) theme palette */
   --background: oklch(0.95 0.01 45);
   --foreground: oklch(0.21 0 0);
@@ -133,6 +153,34 @@
 }
 
 @layer utilities {
+  .theme-transition,
+  .theme-transition * {
+    transition-property:
+      background-color, border-color, color, fill, stroke, box-shadow;
+    transition-duration: 320ms;
+    transition-timing-function: cubic-bezier(0.22, 1, 0.36, 1);
+  }
+
+  .theme-toggle-icon-animate {
+    animation: theme-toggle-swap 460ms cubic-bezier(0.22, 1, 0.36, 1);
+    transform-origin: center;
+  }
+
+  @keyframes theme-toggle-swap {
+    0% {
+      transform: rotate(0deg) scale(1);
+      opacity: 1;
+    }
+    42% {
+      transform: rotate(120deg) scale(0.72);
+      opacity: 0.72;
+    }
+    100% {
+      transform: rotate(360deg) scale(1);
+      opacity: 1;
+    }
+  }
+
   .shadow-normal {
     box-shadow: var(--shadow);
   }
@@ -151,6 +199,32 @@
 
   .button-animation-short {
     @apply active:translate-[0.25%] sm:active:translate-[0.5%] active:shadow-none transition-all;
+  }
+
+  .desktop-controls-dock {
+    animation: desktop-controls-float 4.2s ease-in-out infinite;
+    will-change: transform;
+
+    &:hover,
+    &:focus-within {
+      animation-play-state: paused;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .desktop-controls-dock {
+      animation: none;
+    }
+  }
+
+  @keyframes desktop-controls-float {
+    0%,
+    100% {
+      transform: translate3d(0, 0, 0);
+    }
+    50% {
+      transform: translate3d(0, 8px, 0);
+    }
   }
 
   .download-icon {
@@ -201,6 +275,30 @@
 /* Smooth scrolling */
 html {
   scroll-behavior: smooth;
+}
+
+::view-transition-group(root) {
+  animation-duration: 0.7s;
+  animation-timing-function: var(--expo-out);
+}
+
+::view-transition-old(root),
+.dark::view-transition-old(root) {
+  animation: none;
+  animation-fill-mode: both;
+  z-index: -1;
+}
+
+::view-transition-new(root) {
+  clip-path: circle(0 at var(--theme-toggle-x) var(--theme-toggle-y));
+  animation: theme-reveal 2s;
+  animation-fill-mode: both;
+}
+
+@keyframes theme-reveal {
+  to {
+    clip-path: circle(150vmax at var(--theme-toggle-x) var(--theme-toggle-y));
+  }
 }
 
 /* Selection color */

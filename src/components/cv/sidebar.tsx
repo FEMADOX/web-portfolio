@@ -1,7 +1,6 @@
 import type { CvLocale } from '@/app/types'
 import { cn } from '@/lib/utils'
 import { BrandLogo } from './BrandLogo'
-import { LanguageButton, type LanguageButtonProps } from './LanguageButton'
 import { NavItems } from './NavItems'
 import { DownloadCvButton } from './sections/hero/DownloadCvButton'
 
@@ -10,7 +9,6 @@ interface SidebarProps {
   onNavigate: (section: string) => void
   className?: string
   sidebar: CvLocale['sidebar']
-  languageButtonProps: LanguageButtonProps
 }
 
 export const Sidebar = ({
@@ -21,19 +19,18 @@ export const Sidebar = ({
     jobTitle,
     navLabels,
     downloadCv: { cvLangUrl, downloadName, buttonText }
-  },
-  languageButtonProps: { lang, setLang }
+  }
 }: SidebarProps) => (
   <aside
     className={cn(
-      'fixed left-0 top-0 h-screen w-72 bg-card border-r-4 border-border flex flex-col z-50',
+      'fixed left-0 top-0 h-screen w-74 bg-card border-r-4 border-border flex flex-col z-50',
       className
     )}
   >
     <div className="p-2 border-b-4 border-border">
       <div className="flex items-center gap-3">
         <BrandLogo />
-        <div>
+        <div className="min-w-0 flex-1">
           <h2 className="font-black uppercase text-foreground leading-none">
             Giancarlos Gonzalez
           </h2>
@@ -41,7 +38,6 @@ export const Sidebar = ({
             {jobTitle}
           </p>
         </div>
-        <LanguageButton lang={lang} setLang={setLang} />
       </div>
     </div>
 
