@@ -38,7 +38,6 @@ export type CvLocale = {
   mobileHeader: {
     firstName: string
     lastName: string
-    role: string
   }
   navigation: Record<SectionId, string>
   sections: {
