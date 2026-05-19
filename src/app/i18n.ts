@@ -5,8 +5,7 @@ export const cvI18n: Record<Lang, CvLocale> = {
   en: {
     mobileHeader: {
       firstName: 'GIANCARLOS',
-      lastName: 'GONZALEZ',
-      role: 'FULL STACK DEVELOPER'
+      lastName: 'GONZALEZ'
     },
     navigation: {
       summary: 'About Me',
@@ -34,7 +33,7 @@ export const cvI18n: Record<Lang, CvLocale> = {
       }
     },
     sidebar: {
-      jobTitle: 'Full Stack Dev.',
+      jobTitle: 'Full Stack Developer',
       navLabels: {
         summary: 'About Me',
         skills: 'Technical Skills',
@@ -84,8 +83,7 @@ export const cvI18n: Record<Lang, CvLocale> = {
   es: {
     mobileHeader: {
       firstName: 'GIANCARLOS',
-      lastName: 'GONZALEZ',
-      role: 'DESARROLLADOR FULL STACK'
+      lastName: 'GONZALEZ'
     },
     navigation: {
       summary: 'Sobre Mi',
@@ -113,7 +111,7 @@ export const cvI18n: Record<Lang, CvLocale> = {
       }
     },
     sidebar: {
-      jobTitle: 'Dev. Full Stack',
+      jobTitle: 'Desarrollador Full Stack',
       navLabels: {
         summary: 'Sobre Mi',
         skills: 'Habilidades Tecnicas',

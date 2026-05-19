@@ -31,7 +31,7 @@ const RAW_TOKENS: RawToken[] = [
   { text: 'Developer', className: green },
   { text: '(', className: white },
   { text: 'BaseModel', className: yellow },
-  { text: '):\n\tname:', className: white },
+  { text: '):\n\tname: ', className: white },
   { text: 'str\n', className: yellow },
   { text: '\tskills: ', className: white },
   { text: 'list', className: yellow },
