@@ -36,7 +36,6 @@ const CVPage = () => {
 
   useEffect(() => {
     localStorage.setItem('lang', lang)
-    console.log(`Language set to: ${lang}`)
   }, [lang])
 
   useEffect(() => {
