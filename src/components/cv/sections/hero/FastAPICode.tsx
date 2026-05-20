@@ -14,7 +14,6 @@ export const FastAPICode = () => {
   }, [charsVisible])
 
   useEffect(() => {
-    console.log(`Chars visible: ${charsVisible}/${TOTAL_CHARS}`)
     if (codeRef.current) {
       if (charsVisible >= TOTAL_CHARS) {
         setTimeout(() => codeRef.current?.setAttribute('data-cursor', '|'), 700)
