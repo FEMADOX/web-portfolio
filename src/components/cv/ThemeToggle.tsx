@@ -103,10 +103,10 @@ export const ThemeToggle = () => {
 
   return (
     <Button
+      aria-disabled={!mounted}
       aria-label={label}
       aria-pressed={mounted ? isDark : false}
       className={buttonClassName}
-      disabled={!mounted}
       onClick={handleThemeToggle}
       type="button"
       variant="ghost"
