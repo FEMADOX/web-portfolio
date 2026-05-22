@@ -20,7 +20,7 @@ export const metadata: Metadata = {
   metadataBase: new URL('https://giancarlos-portfolio.vercel.app/'),
   title: 'Giancarlos Gonzalez | Web Developer',
   description:
-    'Back-end python developer using Django and FastAPI with strong bases in Frontend Dev with TypeScript, React and NextJS.',
+    'Full-Stack Developer focused on Python backend (Django/FastAPI) and modern frontend with TypeScript, React, and Next.js.',
   icons: {
     icon: [
       {
@@ -43,7 +43,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: 'Giancarlos Gonzalez | Web Developer',
     description:
-      'Back-end python developer using Django and FastAPI with strong bases in Frontend Dev with TypeScript, React and NextJS.',
+      'Full-Stack Developer focused on Python backend (Django/FastAPI) and modern frontend with TypeScript, React, and Next.js.',
     url: 'https://giancarlos-portfolio.vercel.app/',
     siteName: 'Giancarlos Gonzalez Portfolio',
     images: [
@@ -67,7 +67,7 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: 'Giancarlos Gonzalez | Web Developer',
     description:
-      'Back-end python developer using Django and FastAPI with strong bases in Frontend Dev with TypeScript, React and NextJS.',
+      'Full-Stack Developer focused on Python backend (Django/FastAPI) and modern frontend with TypeScript, React, and Next.js.',
     images: [
       {
         url: '/thumbnail.png',
