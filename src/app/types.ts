@@ -1,6 +1,14 @@
 import type { ReactNode } from 'react'
 
-export type Lang = 'en' | 'es'
+export type Lang = 'en' | 'es' | 'pt'
+
+export type CvDownload = {
+  cvLangUrl: string
+  downloadName: string
+  buttonText: string
+  downloadNotice: string
+  downloadDescription: string
+}
 
 export type DesktopControlsPlacement = 'sidebar' | 'topbar'
 
@@ -18,6 +26,7 @@ export interface MobileNavProps {
 export interface MobileHeaderProps {
   lang: Lang
   setLang: (lang: Lang) => void
+  themeLabels: CvLocale['theme']
   className?: string
 }
 
@@ -35,6 +44,9 @@ export type SectionId =
   | 'contact'
 
 export type CvLocale = {
+  controls: string
+  theme: { change: string; light: string; dark: string }
+  sectionCodes: { projects: string; education: string; contact: string }
   mobileHeader: {
     firstName: string
     lastName: string
@@ -51,20 +63,12 @@ export type CvLocale = {
     titleLineOne: string
     titleLineTwo: string
     description: string
-    downloadCv: {
-      cvLangUrl: string
-      downloadName: string
-      buttonText: string
-    }
+    downloadCv: CvDownload
   }
   sidebar: {
     jobTitle: string
     navLabels: Record<SectionId, string>
-    downloadCv: {
-      cvLangUrl: string
-      downloadName: string
-      buttonText: string
-    }
+    downloadCv: CvDownload
   }
   contactForm: {
     title: string

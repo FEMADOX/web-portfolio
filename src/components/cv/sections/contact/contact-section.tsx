@@ -7,11 +7,13 @@ import { ContactLinks } from './ContactLinks'
 interface ContactSectionProps {
   sectionTitle: CvLocale['sections']['education']
   contactForm: CvLocale['contactForm']
+  sectionCode: string
 }
 
 export const ContactSection = ({
   sectionTitle,
-  contactForm
+  contactForm,
+  sectionCode
 }: ContactSectionProps) => (
   <section id="contact" className="my-20 group/contact-section md:mb-52">
     <div className="flex items-center justify-between mb-5">
@@ -24,12 +26,12 @@ export const ContactSection = ({
         {sectionTitle}
       </h2>
       <span className="text-xs text-accent font-mono hidden sm:block">
-        CONTACT.04
+        {sectionCode}
       </span>
     </div>
 
     <div className="grid lg:grid-cols-2 gap-8">
-      <ContactLinks />
+      <ContactLinks emailLabel={contactForm.emailLabel} />
       <ContactForm contactForm={contactForm} />
     </div>
   </section>

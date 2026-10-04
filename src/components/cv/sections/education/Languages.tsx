@@ -10,7 +10,7 @@ interface LanguagesProps {
 export const Languages = ({ lang }: LanguagesProps) => (
   <div className="mt-6">
     <h3 className="text-xs font-black text-foreground uppercase tracking-wider mb-3">
-      {lang === 'es' ? 'Idiomas' : 'Languages'}
+      {lang === 'en' ? 'Languages' : 'Idiomas'}
     </h3>
     <div className="flex flex-wrap flex-col gap-3 w-max">
       {getLanguages(lang).map(({ name, level }: LanguageProps) => (

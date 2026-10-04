@@ -6,7 +6,11 @@ import { type MouseEvent, useEffect, useRef, useState } from 'react'
 
 import { Button } from '../ui'
 
-export const ThemeToggle = () => {
+export const ThemeToggle = ({
+  labels
+}: {
+  labels: { change: string; light: string; dark: string }
+}) => {
   const [mounted, setMounted] = useState(false)
   const [isAnimating, setIsAnimating] = useState(false)
   const { resolvedTheme, setTheme } = useTheme()
@@ -85,11 +89,7 @@ export const ThemeToggle = () => {
     })
   }
 
-  const label = !mounted
-    ? 'Change theme'
-    : isDark
-      ? 'Switch to light mode'
-      : 'Switch to dark mode'
+  const label = !mounted ? labels.change : isDark ? labels.light : labels.dark
 
   const buttonClassName = `w-10 border-2 bg-background px-2 hover:cursor-pointer ${
     isDark

@@ -1,5 +1,6 @@
 'use client'
 
+import { usePathname, useRouter } from 'next/navigation'
 import { useEffect, useState } from 'react'
 import {
   ContactSection,
@@ -15,37 +16,52 @@ import {
 } from '@/components/cv'
 import { getProjects } from '@/components/cv/sections/project/utils'
 import { getCvLocale } from './i18n'
+import { getPreferredLang, LANGUAGE_CHOICE_KEY } from './language'
 import type { Lang } from './types'
 
-const CVPage = () => {
+const CVPage = ({ initialLang = 'en' }: { initialLang?: Lang }) => {
+  const router = useRouter()
+  const pathname = usePathname()
   const [activeSection, setActiveSection] = useState('summary')
-  const [, setIsMobile] = useState(false)
-  const [lang, setLang] = useState<Lang>('en')
+  const lang = initialLang
   const locale = getCvLocale(lang)
   const projects = getProjects(lang)
 
   useEffect(() => {
-    const storedLang = localStorage.getItem('lang') as Lang
-    if (!storedLang) {
-      localStorage.setItem('lang', 'en')
-    }
-    if (storedLang) {
-      setLang(storedLang)
-    }
-  }, [])
-
-  useEffect(() => {
-    localStorage.setItem('lang', lang)
+    document.documentElement.lang = lang === 'pt' ? 'pt-BR' : lang
   }, [lang])
 
   useEffect(() => {
-    const checkMobile = () => {
-      setIsMobile(window.innerWidth < 1024)
+    if (pathname === '/') {
+      let savedChoice: string | null = null
+      let legacyLang: string | null = null
+      try {
+        savedChoice = localStorage.getItem(LANGUAGE_CHOICE_KEY)
+        legacyLang = localStorage.getItem('lang')
+      } catch {
+        // Browser storage can be unavailable in private or restricted contexts.
+      }
+
+      const browserLanguages = navigator.languages?.length
+        ? navigator.languages
+        : [navigator.language]
+      const nextLang = getPreferredLang(
+        savedChoice,
+        browserLanguages,
+        legacyLang
+      )
+      router.replace(`/${nextLang}`)
     }
-    checkMobile()
-    window.addEventListener('resize', checkMobile)
-    return () => window.removeEventListener('resize', checkMobile)
-  }, [])
+  }, [pathname, router])
+
+  const setLang = (nextLang: Lang) => {
+    try {
+      localStorage.setItem(LANGUAGE_CHOICE_KEY, nextLang)
+    } catch {
+      // Navigation still works when browser storage is unavailable.
+    }
+    router.push(`/${nextLang}`)
+  }
 
   useEffect(() => {
     const handleScroll = () => {
@@ -82,7 +98,12 @@ const CVPage = () => {
   return (
     <div className="min-h-screen bg-background text-foreground antialiased">
       {/* Mobile Header */}
-      <MobileHeader className="lg:hidden" lang={lang} setLang={setLang} />
+      <MobileHeader
+        className="lg:hidden"
+        lang={lang}
+        setLang={setLang}
+        themeLabels={locale.theme}
+      />
 
       {/* Desktop Sidebar */}
       <Sidebar
@@ -92,7 +113,12 @@ const CVPage = () => {
         sidebar={locale.sidebar}
       />
 
-      <DesktopControlsDock lang={lang} setLang={setLang} />
+      <DesktopControlsDock
+        lang={lang}
+        setLang={setLang}
+        controlsLabel={locale.controls}
+        themeLabels={locale.theme}
+      />
 
       {/* Main Content */}
       <main className="lg:ml-72 pb-15 lg:pb-0">
@@ -102,14 +128,17 @@ const CVPage = () => {
           <ProjectsSection
             sectionTitle={locale.sections.projects}
             projects={projects}
+            sectionCode={locale.sectionCodes.projects}
           />
           <EducationSection
             sectionTitle={locale.sections.education}
             lang={lang}
+            sectionCode={locale.sectionCodes.education}
           />
           <ContactSection
             sectionTitle={locale.sections.contact}
             contactForm={locale.contactForm}
+            sectionCode={locale.sectionCodes.contact}
           />
         </div>
         <Footer source={locale.footer.source} />

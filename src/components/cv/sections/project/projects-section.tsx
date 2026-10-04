@@ -7,11 +7,13 @@ import type { ProjectProps } from './types'
 interface ProjectsSectionProps {
   sectionTitle: CvLocale['sections']['projects']
   projects: readonly ProjectProps[]
+  sectionCode: string
 }
 
 export const ProjectsSection = ({
   sectionTitle,
-  projects
+  projects,
+  sectionCode
 }: ProjectsSectionProps) => (
   <section id="projects" className="my-20 group">
     {/* Section Header */}
@@ -25,7 +27,7 @@ export const ProjectsSection = ({
         {sectionTitle}
       </h2>
       <span className="text-xs text-accent font-mono hidden sm:block">
-        DEPLOYMENTS.02
+        {sectionCode}
       </span>
     </div>
 

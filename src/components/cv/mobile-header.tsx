@@ -9,6 +9,7 @@ import { ThemeToggle } from './ThemeToggle'
 export const MobileHeader = ({
   lang,
   setLang,
+  themeLabels,
   className
 }: MobileHeaderProps) => (
   <header
@@ -21,16 +22,16 @@ export const MobileHeader = ({
       <div className="flex items-center gap-2">
         <BrandLogo />
         <div>
-          <h1 className="font-black text-foreground text-xl leading-none tracking-wide font-['Space_Grotesk']">
+          <h1 className="font-black text-foreground text-xl leading-none tracking-wide font-sans">
             GIANCARLOS
           </h1>
-          <p className="text-xl text-foreground leading-none tracking-wide font-['Space_Grotesk']">
+          <p className="text-xl text-foreground leading-none tracking-wide font-sans">
             GONZALEZ
           </p>
         </div>
       </div>
       <div className="ml-auto flex items-center gap-2">
-        <ThemeToggle />
+        <ThemeToggle labels={themeLabels} />
         <LanguageButton lang={lang} setLang={setLang} />
       </div>
     </div>

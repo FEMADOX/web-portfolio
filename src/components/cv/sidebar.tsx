@@ -15,11 +15,7 @@ export const Sidebar = ({
   activeSection,
   onNavigate,
   className,
-  sidebar: {
-    jobTitle,
-    navLabels,
-    downloadCv: { cvLangUrl, downloadName, buttonText }
-  }
+  sidebar: { jobTitle, navLabels, downloadCv }
 }: SidebarProps) => (
   <aside
     className={cn(
@@ -48,12 +44,7 @@ export const Sidebar = ({
     />
 
     <div className="p-4 border-t-4 border-border mx-0 text-center">
-      <DownloadCvButton
-        cvLangUrl={cvLangUrl}
-        downloadName={downloadName}
-        buttonText={buttonText}
-        animation={false}
-      />
+      <DownloadCvButton {...downloadCv} animation={false} />
     </div>
   </aside>
 )

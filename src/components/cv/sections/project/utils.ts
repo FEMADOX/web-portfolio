@@ -93,6 +93,40 @@ export const projectsByLang: Record<Lang, readonly ProjectProps[]> = {
         website: 'https://django-social-website-hade.onrender.com/'
       }
     }
+  ],
+  pt: [
+    {
+      title: 'Full Stack - Laboratório do Ecossistema FastAPI',
+      period: 'Mar 2026 - Atualmente',
+      description:
+        'Implementação avançada de uma arquitetura de microsserviços de alto desempenho usando FastAPI e processamento assíncrono. O projeto aplica arquitetura limpa, validação avançada com Pydantic, anotações completas de tipos, SQLAlchemy como ORM, Alembic para migrações, Pytest para testes, PostgreSQL como banco de dados, Docker para implantação e uma camada de integração com NextJS.',
+      technologies: ['FastAPI', 'NextJS', 'Docker', 'PostgreSQL'],
+      links: {
+        github: 'https://github.com/FEMADOX/Fastapi-Ecosystem-Lab'
+      }
+    },
+    {
+      title: 'Full Stack - Plataforma de Comércio Eletrônico com Django',
+      period: 'Jan 2025 - Jan 2026',
+      description:
+        'Plataforma robusta de comércio eletrônico com gerenciamento de estoque, integração de pagamentos com Stripe e painéis para clientes. Desenvolvida com Django, inclui fluxos de carrinho de compras, gerenciamento de pedidos, autenticação, processamento de pagamentos e cobertura de testes com Pytest.',
+      technologies: ['Django', 'Python', 'PostgreSQL', 'Stripe'],
+      links: {
+        github: 'https://github.com/FEMADOX/Django-E-commers',
+        website: 'https://django-e-commers.vercel.app/'
+      }
+    },
+    {
+      title: 'Full Stack - Plataforma Social de Favoritos',
+      period: 'Out 2024 - Ago 2025',
+      description:
+        'Aplicação de rede social com atualizações em tempo real, perfis de usuários e compartilhamento de mídia. Desenvolvida com Django, inclui curtidas, seguidores, autenticação, publicação de imagens por meio de favoritos e login com OAuth2 usando Google e X.',
+      technologies: ['Django', 'Python', 'PostgreSQL'],
+      links: {
+        github: 'https://github.com/FEMADOX/django-social-website',
+        website: 'https://django-social-website-hade.onrender.com/'
+      }
+    }
   ]
 }
 

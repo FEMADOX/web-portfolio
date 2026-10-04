@@ -7,11 +7,13 @@ import { Languages } from './Languages'
 interface EducationSectionProps {
   sectionTitle: CvLocale['sections']['education']
   lang: Lang
+  sectionCode: string
 }
 
 export const EducationSection = ({
   sectionTitle,
-  lang
+  lang,
+  sectionCode
 }: EducationSectionProps) => (
   <section id="education" className="my-20 group">
     {/* Section Header */}
@@ -25,7 +27,7 @@ export const EducationSection = ({
         {sectionTitle}
       </h2>
       <span className="text-xs text-accent font-mono hidden sm:block">
-        EDUCATION.03
+        {sectionCode}
       </span>
     </div>
 

@@ -45,16 +45,18 @@ pnpm check:fix     # Biome check with fixes
 
 - App Router portfolio page with responsive desktop/mobile navigation.
 - Section-aware scrolling with active state for: `summary`, `skills`, `projects`, `education`, `contact`.
-- Language toggle with persisted locale in `localStorage` (`en` / `es`).
-- CV download by locale through API endpoints.
+- English, Spanish, and Brazilian Portuguese at `/en`, `/es`, and `/pt`. The home route uses the first supported browser language, while a manually selected language is saved and takes priority on later visits.
+- Localized page titles, descriptions, social metadata, manifests, and a multilingual sitemap.
+- CV downloads for English, Portuguese, and Spanish, served from the public `public/cv/` directory.
 - Dynamic logo delivery by color through API endpoints.
 - Contact form submission via server action and Resend.
 - Vercel Analytics and Speed Insights in production.
 
 ## API Endpoints
 
-- `GET /api/cv/en` and `GET /api/cv/es`: Download CV file by language.
-- `HEAD /api/cv/:lang`: Warm-up/metadata check for CV availability.
+- `GET /api/cv/en`, `/api/cv/pt`, and `/api/cv/es`: Redirect to the corresponding downloadable PDF in `public/cv/`.
+- `HEAD /api/cv/:lang`: Lightweight compatibility check for CV downloads.
+- `GET /api/manifest/en`, `/api/manifest/es`, and `/api/manifest/pt`: Localized web app manifests.
 - `GET /api/logo/black` and `GET /api/logo/white`: Download logo assets by theme color.
 
 ## Environment Variables
@@ -65,12 +67,6 @@ Use the `.env.example` file with:
 # Contact form (Resend)
 RESEND_API_KEY=
 
-# Vercel Blob access
-BLOB_READ_WRITE_TOKEN=
-
-# CV blobs
-NEXT_PUBLIC_CV_EN=
-NEXT_PUBLIC_CV_ES=
 ```
 
 ## Project Structure
@@ -81,6 +77,7 @@ src/
  components/     # UI and portfolio sections
  hooks/          # Custom React hooks
  lib/            # Shared utilities
+ public/cv/      # Public downloadable CV PDFs
  styles/         # Global style assets
 ```
 

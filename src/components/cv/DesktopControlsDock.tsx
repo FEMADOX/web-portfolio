@@ -1,18 +1,22 @@
 'use client'
 
-import type { Lang } from '@/app/types'
+import type { CvLocale, Lang } from '@/app/types'
 import { cn } from '@/lib/utils'
 import { DesktopControls } from './DesktopControls'
 
 interface DesktopControlsDockProps {
   lang: Lang
   setLang: (lang: Lang) => void
+  controlsLabel: string
+  themeLabels: CvLocale['theme']
   className?: string
 }
 
 export const DesktopControlsDock = ({
   lang,
   setLang,
+  controlsLabel,
+  themeLabels,
   className
 }: DesktopControlsDockProps) => (
   <div
@@ -25,8 +29,8 @@ export const DesktopControlsDock = ({
     )}
   >
     <span className="text-[11px] font-black uppercase tracking-[0.2em] text-muted-foreground">
-      Controls
+      {controlsLabel}
     </span>
-    <DesktopControls lang={lang} setLang={setLang} />
+    <DesktopControls lang={lang} setLang={setLang} themeLabels={themeLabels} />
   </div>
 )

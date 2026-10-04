@@ -1,5 +1,4 @@
 import type { Lang } from '@/app/types'
-import { Button } from '../ui'
 
 export interface LanguageButtonProps {
   lang: Lang
@@ -7,19 +6,22 @@ export interface LanguageButtonProps {
 }
 
 export const LanguageButton = ({ lang, setLang }: LanguageButtonProps) => {
-  const handleLanguageToggle = () => {
-    setLang(lang === 'en' ? 'es' : 'en')
-  }
-
   return (
-    <Button
-      className={`
-        bg-background text-primary border-2 font-bold w-10 px-2 dark:border-primary
-        hover:text-muted hover:cursor-pointer
-      `}
-      onClick={handleLanguageToggle}
+    <select
+      aria-label={
+        {
+          en: 'Portfolio language',
+          es: 'Idioma del portafolio',
+          pt: 'Idioma do portfólio'
+        }[lang]
+      }
+      className="h-10 w-16 cursor-pointer border-2 border-border bg-background px-1 text-sm font-bold text-primary dark:border-primary"
+      value={lang}
+      onChange={event => setLang(event.target.value as Lang)}
     >
-      {lang === 'en' ? 'EN' : 'ES'}
-    </Button>
+      <option value="en">EN</option>
+      <option value="es">ES</option>
+      <option value="pt">PT</option>
+    </select>
   )
 }

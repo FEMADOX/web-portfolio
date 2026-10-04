@@ -14,34 +14,41 @@ export const DownloadCvButton = ({
   cvLangUrl,
   downloadName,
   buttonText,
+  downloadNotice,
+  downloadDescription,
   shadow,
   animation
-}: DownloadCvButtonProps) => (
-  <Button
-    asChild
-    className={`
-      h-12 rounded-none border-2 border-border bg-accent text-accent-foreground font-black uppercase tracking-widest
-      hover:bg-accent/60 ${shadow ? `shadow-${shadow}` : ''}
-      ${animation ? 'button-animation' : ''}
-    `}
-  >
-    <a
-      className="text-xs sm:text-base"
-      href={cvLangUrl}
-      download={downloadName}
-      onMouseEnter={() => warmDownload(cvLangUrl)}
-      onClick={() =>
-        toast.success('Downloading CV...', {
-          description: 'Your download should start shortly.'
-        })
-      }
-    >
-      {/* Download SVG should animate when button is hovered */}
-      <Download
-        className={'download-icon w-4 mr-2 sm:ml-2'}
-        style={{ height: '100%' }}
-      />
-      {buttonText}
-    </a>
-  </Button>
-)
+}: DownloadCvButtonProps) => {
+  const notifyDownload = () =>
+    toast.success(downloadNotice, {
+      description: downloadDescription
+    })
+
+  return (
+    <div className="flex justify-center">
+      <Button
+        asChild
+        className={`
+          h-12 rounded-none border-2 border-border bg-accent text-accent-foreground font-black uppercase tracking-widest
+          hover:bg-accent/60 ${shadow ? `shadow-${shadow}` : ''}
+          ${animation ? 'button-animation' : ''}
+        `}
+      >
+        <a
+          className="text-xs sm:text-base"
+          href={cvLangUrl}
+          download={downloadName}
+          onMouseEnter={() => warmDownload(cvLangUrl)}
+          onClick={notifyDownload}
+        >
+          {/* Download SVG should animate when the button is hovered */}
+          <Download
+            className={'download-icon w-4 mr-2 sm:ml-2'}
+            style={{ height: '100%' }}
+          />
+          {buttonText}
+        </a>
+      </Button>
+    </div>
+  )
+}

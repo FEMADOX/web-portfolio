@@ -6,12 +6,12 @@ export const contactLinks: readonly ContactLink[] = [
   {
     name: 'Email',
     icon: Mail,
-    href: 'mailto:enmadofenyxz@gmail.com'
+    href: 'mailto:leyvagiancarlosgonzalez@gmail.com'
   },
   {
     name: 'WhatsApp',
     icon: MessageSquare,
-    href: 'https://wa.me/+17865781180'
+    href: 'https://wa.me/5541987329409'
   },
   {
     name: 'LinkedIn',

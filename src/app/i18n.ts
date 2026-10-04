@@ -3,6 +3,17 @@ import { CV_FILES } from '@/components/constants'
 
 export const cvI18n: Record<Lang, CvLocale> = {
   en: {
+    controls: 'Controls',
+    theme: {
+      change: 'Change theme',
+      light: 'Switch to light mode',
+      dark: 'Switch to dark mode'
+    },
+    sectionCodes: {
+      projects: 'DEPLOYMENTS.02',
+      education: 'EDUCATION.03',
+      contact: 'CONTACT.04'
+    },
     mobileHeader: {
       firstName: 'GIANCARLOS',
       lastName: 'GONZALEZ'
@@ -29,7 +40,9 @@ export const cvI18n: Record<Lang, CvLocale> = {
       downloadCv: {
         cvLangUrl: CV_FILES.en,
         downloadName: 'Giancarlos-Gonzalez-CV-EN.pdf',
-        buttonText: 'Download CV'
+        buttonText: 'Download CV',
+        downloadNotice: 'Downloading CV...',
+        downloadDescription: 'Your download should start shortly.'
       }
     },
     sidebar: {
@@ -44,7 +57,9 @@ export const cvI18n: Record<Lang, CvLocale> = {
       downloadCv: {
         cvLangUrl: CV_FILES.en,
         downloadName: 'Giancarlos-Gonzalez-CV-EN.pdf',
-        buttonText: 'Download CV'
+        buttonText: 'Download CV',
+        downloadNotice: 'Downloading CV...',
+        downloadDescription: 'Your download should start shortly.'
       }
     },
     contactForm: {
@@ -81,6 +96,17 @@ export const cvI18n: Record<Lang, CvLocale> = {
     }
   },
   es: {
+    controls: 'Controles',
+    theme: {
+      change: 'Cambiar tema',
+      light: 'Cambiar a modo claro',
+      dark: 'Cambiar a modo oscuro'
+    },
+    sectionCodes: {
+      projects: 'DESPLIEGUES.02',
+      education: 'EDUCACIÓN.03',
+      contact: 'CONTACTO.04'
+    },
     mobileHeader: {
       firstName: 'GIANCARLOS',
       lastName: 'GONZALEZ'
@@ -107,7 +133,9 @@ export const cvI18n: Record<Lang, CvLocale> = {
       downloadCv: {
         cvLangUrl: CV_FILES.es,
         downloadName: 'Giancarlos-Gonzalez-CV-ES.pdf',
-        buttonText: 'Descargar CV'
+        buttonText: 'Descargar CV',
+        downloadNotice: 'Descargando CV...',
+        downloadDescription: 'La descarga comenzará en breve.'
       }
     },
     sidebar: {
@@ -122,7 +150,9 @@ export const cvI18n: Record<Lang, CvLocale> = {
       downloadCv: {
         cvLangUrl: CV_FILES.es,
         downloadName: 'Giancarlos-Gonzalez-CV-ES.pdf',
-        buttonText: 'Descargar CV'
+        buttonText: 'Descargar CV',
+        downloadNotice: 'Descargando CV...',
+        downloadDescription: 'La descarga comenzará en breve.'
       }
     },
     contactForm: {
@@ -157,6 +187,95 @@ export const cvI18n: Record<Lang, CvLocale> = {
     footer: {
       source: 'Fuente'
     }
+  },
+  pt: {
+    controls: 'Controles',
+    theme: {
+      change: 'Mudar tema',
+      light: 'Mudar para o modo claro',
+      dark: 'Mudar para o modo escuro'
+    },
+    sectionCodes: {
+      projects: 'PROJETOS.02',
+      education: 'FORMAÇÃO.03',
+      contact: 'CONTATO.04'
+    },
+    mobileHeader: { firstName: 'GIANCARLOS', lastName: 'GONZALEZ' },
+    navigation: {
+      summary: 'Sobre mim',
+      skills: 'Habilidades',
+      projects: 'Projetos',
+      education: 'Formação',
+      contact: 'Contato'
+    },
+    sections: {
+      summary: 'Sobre mim',
+      skills: 'Habilidades técnicas',
+      projects: 'Projetos',
+      education: 'Formação',
+      contact: 'Contato'
+    },
+    hero: {
+      titleLineOne: 'Desenvolvedor',
+      titleLineTwo: 'Full Stack',
+      description:
+        'Desenvolvedor Full Stack com foco em backend Python (Django/FastAPI) e frontend moderno com TypeScript, React e Next.js. Desenvolvo aplicações web escaláveis e prontas para produção.',
+      downloadCv: {
+        cvLangUrl: CV_FILES.pt,
+        downloadName: 'Giancarlos-Gonzalez-CV-PT.pdf',
+        buttonText: 'Baixar currículo',
+        downloadNotice: 'Baixando currículo...',
+        downloadDescription: 'O download começará em instantes.'
+      }
+    },
+    sidebar: {
+      jobTitle: 'Desenvolvedor Full Stack',
+      navLabels: {
+        summary: 'Sobre mim',
+        skills: 'Habilidades técnicas',
+        projects: 'Projetos',
+        education: 'Formação',
+        contact: 'Contato'
+      },
+      downloadCv: {
+        cvLangUrl: CV_FILES.pt,
+        downloadName: 'Giancarlos-Gonzalez-CV-PT.pdf',
+        buttonText: 'Baixar currículo',
+        downloadNotice: 'Baixando currículo...',
+        downloadDescription: 'O download começará em instantes.'
+      }
+    },
+    contactForm: {
+      title: 'Formulário de contato',
+      nameLabel: 'Nome',
+      namePlaceholder: 'Digite seu nome...',
+      emailLabel: 'E-mail',
+      emailPlaceholder: 'Digite seu e-mail...',
+      messageLabel: 'Mensagem',
+      messagePlaceholder: 'Escreva sua mensagem...',
+      submit: 'Enviar mensagem',
+      submitting: 'Enviando...',
+      toasts: {
+        alreadySending: {
+          title: 'A mensagem já está sendo enviada.',
+          description: 'Aguarde a conclusão do envio atual.'
+        },
+        invalidEmail: {
+          title: 'Endereço de e-mail inválido.',
+          description: 'Digite um endereço de e-mail válido.'
+        },
+        success: {
+          title: 'Mensagem enviada com sucesso!',
+          description: 'Responderei assim que possível.'
+        },
+        error: {
+          title: 'Não foi possível enviar a mensagem.',
+          description:
+            'Tente novamente ou entre em contato diretamente por e-mail.'
+        }
+      }
+    },
+    footer: { source: 'Código-fonte' }
   }
 }
 

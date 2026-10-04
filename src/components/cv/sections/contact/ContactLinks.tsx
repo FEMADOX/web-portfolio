@@ -1,9 +1,9 @@
 import { ArrowRight } from 'lucide-react'
 import { contactLinks } from './utils'
 
-export const ContactLinks = () => (
+export const ContactLinks = ({ emailLabel }: { emailLabel: string }) => (
   <div className="space-y-3 md:my-auto">
-    {contactLinks.map((link) => {
+    {contactLinks.map(link => {
       const Icon = link.icon
 
       return (
@@ -17,7 +17,7 @@ export const ContactLinks = () => (
           <div className="flex items-center gap-3">
             <Icon className="w-5 h-5 text-muted-foreground group-hover:text-accent group-hover:color-accent transition-colors" />
             <span className="font-medium text-foreground group-hover:text-accent transition-colors">
-              {link.name}
+              {link.name === 'Email' ? emailLabel : link.name}
             </span>
           </div>
           <ArrowRight className="w-4 h-4 text-muted-foreground mr-2 group-hover:text-accent group-hover:color-accent group-hover:translate-x-1 transition-all" />

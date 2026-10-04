@@ -9,22 +9,17 @@ interface HeroSectionProps {
 }
 
 export const HeroSection = ({
-  hero: {
-    titleLineOne,
-    titleLineTwo,
-    description,
-    downloadCv: { cvLangUrl, downloadName, buttonText }
-  }
+  hero: { titleLineOne, titleLineTwo, description, downloadCv }
 }: HeroSectionProps) => (
   <section id="summary" className="mt-2 mb-5 lg:mt-4">
     {/* Title */}
     <div className="mb-5 border-4 border-border bg-card p-6 shadow-normal">
       <h1 className="text-4xl xs:text-5xl sm:text-6xl font-black uppercase leading-none tracking-tight overflow-hidden">
-        <span className="text-foreground font-bold font-['Space_Grotesk'] tracking-tighter leading-none">
+        <span className="text-foreground font-bold font-sans tracking-tighter leading-none">
           {titleLineOne}
         </span>
         <br />
-        <span className="text-foreground font-bold font-['Space_Grotesk'] tracking-tighter leading-none">
+        <span className="text-foreground font-bold font-sans tracking-tighter leading-none">
           {titleLineTwo}
         </span>
       </h1>
@@ -37,13 +32,7 @@ export const HeroSection = ({
 
       {/* Download CV Button - Mobile */}
       <div className="flex flex-col gap-3 justify-self-center lg:hidden">
-        <DownloadCvButton
-          cvLangUrl={cvLangUrl}
-          downloadName={downloadName}
-          buttonText={buttonText}
-          shadow="sm"
-          animation={true}
-        />
+        <DownloadCvButton {...downloadCv} shadow="sm" animation={true} />
       </div>
     </div>
 

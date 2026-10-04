@@ -1,7 +1,6 @@
-export type DownloadCvButtonProps = {
-  cvLangUrl: string
-  downloadName: string
-  buttonText: string
+import type { CvDownload } from '@/app/types'
+
+export type DownloadCvButtonProps = CvDownload & {
   shadow?: 'sm' | 'normal'
   animation?: boolean
 }

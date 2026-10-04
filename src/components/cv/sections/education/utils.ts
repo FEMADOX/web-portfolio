@@ -17,6 +17,14 @@ const educationsByLang: Record<Lang, readonly EducationProps[]> = {
       description:
         'Formacion academica en programacion, matematicas y resolucion de problemas tecnicos.'
     }
+  ],
+  pt: [
+    {
+      degree: 'IPU Eduardo Garcia Delgado',
+      period: 'Jan 2018 - Jun 2021',
+      description:
+        'Formação acadêmica em programação, matemática e resolução de problemas técnicos.'
+    }
   ]
 }
 
@@ -28,6 +36,10 @@ const languagesByLang: Record<Lang, readonly LanguageProps[]> = {
   es: [
     { name: 'Espanol', level: 'Nativo' },
     { name: 'Ingles', level: 'B2 (Intermedio-Alto)' }
+  ],
+  pt: [
+    { name: 'Espanhol', level: 'Nativo' },
+    { name: 'Inglês', level: 'B2 (Intermediário avançado)' }
   ]
 }
 
