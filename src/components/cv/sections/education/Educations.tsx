@@ -8,7 +8,7 @@ interface EducationsProps {
 
 export const Educations = ({ lang }: EducationsProps) => (
   <div className="space-y-5">
-    {getEducations(lang).map((item) => (
+    {getEducations(lang).map(item => (
       <EducationComponent
         key={item.degree}
         degree={item.degree}

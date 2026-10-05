@@ -14,26 +14,27 @@ import {
   TailwindIcon,
   TypescriptIcon
 } from '@/components/icons'
+import { type SkillName, skillGroups } from './data'
+import type { SkillItem } from './types'
 
-export const skills = {
-  backend: [
-    { name: 'Python', icon: PythonIcon },
-    { name: 'Django', icon: DjangoIcon },
-    { name: 'FastAPI', icon: FastAPIIcon },
-    { name: 'PostgreSQL', icon: PostgreSQLIcon },
-    { name: 'MySQL', icon: MySQLIcon }
-  ],
-  frontend: [
-    { name: 'JavaScript', icon: JavascriptIcon },
-    { name: 'TypeScript', icon: TypescriptIcon },
-    { name: 'React', icon: ReactIcon },
-    { name: 'NextJS', icon: NextJSIcon },
-    { name: 'TailwindCSS', icon: TailwindIcon },
-    { name: 'Bootstrap', icon: BootstrapIcon }
-  ],
-  extras: [
-    { name: 'Docker', icon: DockerIcon },
-    { name: 'Git', icon: GitIcon },
-    { name: 'Github', icon: GithubIcon }
-  ]
-} as const
+const skillIcons = {
+  Python: PythonIcon,
+  Django: DjangoIcon,
+  FastAPI: FastAPIIcon,
+  PostgreSQL: PostgreSQLIcon,
+  MySQL: MySQLIcon,
+  JavaScript: JavascriptIcon,
+  TypeScript: TypescriptIcon,
+  React: ReactIcon,
+  NextJS: NextJSIcon,
+  TailwindCSS: TailwindIcon,
+  Bootstrap: BootstrapIcon,
+  Docker: DockerIcon,
+  Git: GitIcon,
+  Github: GithubIcon
+} satisfies Record<SkillName, SkillItem['icon']>
+
+export const skills = skillGroups.map(group => ({
+  label: group.label,
+  skills: group.names.map(name => ({ name, icon: skillIcons[name] }))
+}))

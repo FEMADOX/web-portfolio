@@ -31,15 +31,18 @@ const educationsByLang: Record<Lang, readonly EducationProps[]> = {
 const languagesByLang: Record<Lang, readonly LanguageProps[]> = {
   en: [
     { name: 'Spanish', level: 'Native' },
-    { name: 'English', level: 'B2 (Upper-Intermediate)' }
+    { name: 'English', level: 'B2 - Upper-Intermediate' },
+    { name: 'Portuguese', level: 'A1 - Beginner' }
   ],
   es: [
     { name: 'Espanol', level: 'Nativo' },
-    { name: 'Ingles', level: 'B2 (Intermedio-Alto)' }
+    { name: 'Ingles', level: 'B2 - Intermedio-Alto' },
+    { name: 'Português', level: 'A1 - Iniciante' }
   ],
   pt: [
     { name: 'Espanhol', level: 'Nativo' },
-    { name: 'Inglês', level: 'B2 (Intermediário avançado)' }
+    { name: 'Inglês', level: 'B2 - Intermediário avançado' },
+    { name: 'Português', level: 'A1 - Iniciante' }
   ]
 }
 

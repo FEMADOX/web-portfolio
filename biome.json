@@ -1,5 +1,5 @@
 {
-  "$schema": "https://biomejs.dev/schemas/2.4.11/schema.json",
+  "$schema": "https://biomejs.dev/schemas/2.5.14/schema.json",
   "vcs": {
     "enabled": true,
     "clientKind": "git",
@@ -18,7 +18,8 @@
       "!.junie",
       "src/components/cv",
       "!src/components/ui",
-      "!src/lib"
+      "!src/lib",
+      "!public"
     ]
   },
   "formatter": {
@@ -31,7 +32,7 @@
   "linter": {
     "enabled": true,
     "rules": {
-      "recommended": true,
+      "preset": "recommended",
       "correctness": {
         "noUnusedVariables": "warn",
         "noUnusedImports": "error",
@@ -60,7 +61,7 @@
       "jsxQuoteStyle": "double",
       "semicolons": "asNeeded",
       "trailingCommas": "none",
-      "arrowParentheses": "always"
+      "arrowParentheses": "asNeeded"
     }
   },
   "assist": {

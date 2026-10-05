@@ -1,8 +1,15 @@
 'use client'
 
 import type { CvLocale } from '@/app/types'
-import { Projects } from './Projects'
+import { createLazyOnVisible } from '@/components/cv/LazyOnVisible'
+import type { ProjectsProps } from './Projects'
+import { ProjectsPreview } from './ProjectsPreview'
 import type { ProjectProps } from './types'
+
+const LazyProjects = createLazyOnVisible<ProjectsProps>(
+  () => import('./Projects').then(({ Projects }) => ({ default: Projects })),
+  props => <ProjectsPreview {...props} />
+)
 
 interface ProjectsSectionProps {
   sectionTitle: CvLocale['sections']['projects']
@@ -31,6 +38,6 @@ export const ProjectsSection = ({
       </span>
     </div>
 
-    <Projects projects={projects} />
+    <LazyProjects projects={projects} />
   </section>
 )

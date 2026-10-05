@@ -8,7 +8,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     'pt-BR': `${SITE_URL}/pt`
   }
 
-  return (['en', 'es', 'pt'] as const).map((lang) => ({
+  return (['en', 'es', 'pt'] as const).map(lang => ({
     url: `${SITE_URL}/${lang}`,
     alternates: { languages }
   }))

@@ -2,7 +2,7 @@ import type { TechnologiesProps } from './types'
 
 export const Technologies = ({ technologies, accent }: TechnologiesProps) => (
   <div className="flex flex-wrap gap-2">
-    {technologies.map((tech) => (
+    {technologies.map(tech => (
       <span
         key={tech}
         className={`

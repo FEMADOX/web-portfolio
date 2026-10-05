@@ -1,16 +1,15 @@
+'use client'
+
 import type { SubmitEvent } from 'react'
 import { useRef, useState } from 'react'
 import { toast } from 'sonner'
 import z from 'zod'
 import { sendContactEmail } from '@/actions/sendContactEmail'
 import type { CvLocale } from '@/app/types'
-import {
-  Button,
-  Input,
-  SendIcon,
-  type SendIconHandle,
-  Textarea
-} from '@/components/ui'
+import { Button } from '@/components/ui/button'
+import { Input } from '@/components/ui/input'
+import { SendIcon, type SendIconHandle } from '@/components/ui/send-icon'
+import { Textarea } from '@/components/ui/textarea'
 import type { ContactFormData, ContactStatus } from './types'
 import { initialContactFormData } from './utils'
 
@@ -42,7 +41,7 @@ export const ContactForm = ({
     field: T,
     value: ContactFormData[T]
   ) => {
-    setFormData((prev) => ({ ...prev, [field]: value }))
+    setFormData(prev => ({ ...prev, [field]: value }))
   }
 
   const handleSubmit = async (event: SubmitEvent<HTMLFormElement>) => {
@@ -103,7 +102,7 @@ export const ContactForm = ({
           id="contact-name"
           placeholder={namePlaceholder}
           value={formData.name}
-          onChange={(event) => updateField('name', event.target.value)}
+          onChange={event => updateField('name', event.target.value)}
           disabled={isSending}
           className="bg-card border-2 border-border rounded-none"
           required
@@ -122,7 +121,7 @@ export const ContactForm = ({
           type="email"
           placeholder={emailPlaceholder}
           value={formData.email}
-          onChange={(event) => updateField('email', event.target.value)}
+          onChange={event => updateField('email', event.target.value)}
           disabled={isSending}
           className="bg-card border-2 border-border rounded-none"
           required
@@ -140,7 +139,7 @@ export const ContactForm = ({
           id="contact-message"
           placeholder={messagePlaceholder}
           value={formData.message}
-          onChange={(event) => updateField('message', event.target.value)}
+          onChange={event => updateField('message', event.target.value)}
           disabled={isSending}
           className="bg-card border-2 border-border rounded-none min-h-30"
           required

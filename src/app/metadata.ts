@@ -54,8 +54,8 @@ export const getPortfolioMetadata = (lang: Lang): Metadata => {
       images: [image],
       locale,
       alternateLocale: Object.values(seo)
-        .map((entry) => entry.locale)
-        .filter((value) => value !== locale),
+        .map(entry => entry.locale)
+        .filter(value => value !== locale),
       type: 'website'
     },
     twitter: {

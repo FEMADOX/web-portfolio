@@ -253,7 +253,18 @@
   }
 }
 
-/* Custom scrollbar for dark theme */
+/* Hide the page scrollbar without disabling scrolling. */
+html,
+body {
+  scrollbar-width: none;
+}
+
+html::-webkit-scrollbar,
+body::-webkit-scrollbar {
+  display: none;
+}
+
+/* Custom scrollbar for scrollable components */
 ::-webkit-scrollbar {
   width: 8px;
   height: 8px;

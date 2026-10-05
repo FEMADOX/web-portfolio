@@ -1,7 +1,9 @@
 import { ExternalLink } from 'lucide-react'
 import { GithubIcon } from '@/components/icons'
+import { ProjectLinksFrame } from './ProjectLinksFrame'
 
 export interface ProjectLinksProps {
+  title: string
   links: {
     github?: string
     website?: string
@@ -12,29 +14,15 @@ export interface ProjectLinksProps {
 }
 
 export const ProjectLinks = ({
-  links: { github, website },
+  links,
+  title,
   accent: { hoverText }
 }: ProjectLinksProps) => (
-  <div className="flex gap-2">
-    {github && (
-      <a
-        href={github}
-        target="_blank"
-        rel="noopener noreferrer"
-        className={`text-muted-foreground ${hoverText} transition-colors`}
-      >
-        <GithubIcon size={20} />
-      </a>
-    )}
-    {website ? (
-      <a
-        href={website}
-        target="_blank"
-        rel="noopener noreferrer"
-        className={`text-muted-foreground ${hoverText} transition-colors`}
-      >
-        <ExternalLink className="link-icon" size={20} />
-      </a>
-    ) : null}
-  </div>
+  <ProjectLinksFrame
+    links={links}
+    title={title}
+    hoverText={hoverText}
+    githubIcon={<GithubIcon size={20} />}
+    websiteIcon={<ExternalLink className="link-icon" size={20} />}
+  />
 )

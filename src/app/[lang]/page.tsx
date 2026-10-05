@@ -1,7 +1,7 @@
 import type { Metadata } from 'next'
 import { notFound } from 'next/navigation'
+import CVPage from '@/components/cv/CVPage'
 import { getPortfolioMetadata } from '../metadata'
-import CVPage from '../page'
 import type { Lang } from '../types'
 
 type Props = { params: Promise<{ lang: string }> }
