@@ -2,7 +2,7 @@
 
 import { useEffect, useRef } from 'react'
 
-export const ScrollProgress = () => {
+const useScrollProgress = () => {
   const fillRef = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
@@ -38,6 +38,12 @@ export const ScrollProgress = () => {
       if (frame !== null) cancelAnimationFrame(frame)
     }
   }, [])
+
+  return { fillRef }
+}
+
+export const ScrollProgress = () => {
+  const { fillRef } = useScrollProgress()
 
   return (
     <div

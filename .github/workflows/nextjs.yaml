@@ -25,25 +25,30 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v6
 
-      - name: Setup pnpm
-        uses: pnpm/action-setup@v5
-        with:
-          version: 10
-
       - name: Setup Node.js
         uses: actions/setup-node@v6.3.0
         with:
           node-version: ${{ matrix.node-version }}
-          cache: pnpm
-          cache-dependency-path: pnpm-lock.yaml
+
+      - name: Setup Bun
+        uses: oven-sh/setup-bun@v2
+
+      - name: Setup pnpm for existing lockfile
+        if: ${{ hashFiles('bun.lock') == '' && hashFiles('pnpm-lock.yaml') != '' }}
+        uses: pnpm/action-setup@v5
+        with:
+          version: 10
 
       - name: Install dependencies
-        run: pnpm install --frozen-lockfile
-
-      - name: Setup Biome
-        uses: biomejs/setup-biome@v2
-        with:
-          version: latest
+        run: |
+          if [ -f bun.lock ]; then
+            bun install --frozen-lockfile
+          elif [ -f pnpm-lock.yaml ]; then
+            pnpm install --frozen-lockfile
+          else
+            echo "No supported lockfile found" >&2
+            exit 1
+          fi
 
       - name: Run Biome
-        run: biome ci ./src
+        run: bunx --no-install biome ci ./src

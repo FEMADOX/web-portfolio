@@ -2,6 +2,9 @@
 
 import { usePathname, useRouter } from 'next/navigation'
 import { useEffect, useState } from 'react'
+import { getCvLocale } from '@/app/i18n'
+import { getPreferredLang, LANGUAGE_CHOICE_KEY } from '@/app/language'
+import type { Lang } from '@/app/types'
 import {
   ContactSection,
   DesktopControlsDock,
@@ -15,9 +18,6 @@ import {
   SkillsSection
 } from '@/components/cv'
 import { getProjects } from '@/components/cv/sections/project/utils'
-import { getCvLocale } from './i18n'
-import { getPreferredLang, LANGUAGE_CHOICE_KEY } from './language'
-import type { Lang } from './types'
 
 const CVPage = ({ initialLang = 'en' }: { initialLang?: Lang }) => {
   const router = useRouter()
