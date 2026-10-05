@@ -3,6 +3,7 @@
 import { Briefcase, Code, GraduationCap, Mail, User } from 'lucide-react'
 import type { MobileNavProps } from '@/app/types'
 import { cn } from '@/lib/utils'
+import { ScrollProgress } from './ScrollProgress'
 
 const navItems = [
   { id: 'summary', label: 'About', icon: User },
@@ -24,8 +25,9 @@ export const MobileNav = ({
       className
     )}
   >
+    <ScrollProgress />
     <div className="grid grid-cols-5 items-center py-2">
-      {navItems.map((item) => {
+      {navItems.map(item => {
         const Icon = item.icon
         const isActive = activeSection === item.id
         return (
