@@ -4,7 +4,7 @@ import { Moon, Sun } from 'lucide-react'
 import { useTheme } from 'next-themes'
 import { type MouseEvent, useEffect, useRef, useState } from 'react'
 
-import { Button } from '../ui'
+import { Button } from '../ui/button'
 
 export const ThemeToggle = ({
   labels

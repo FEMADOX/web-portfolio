@@ -1,7 +1,11 @@
 import { ArrowRight } from 'lucide-react'
 import { contactLinks } from './utils'
 
-export const ContactLinks = ({ emailLabel }: { emailLabel: string }) => (
+interface ContactLinksProps {
+  emailLabel: string
+}
+
+export const ContactLinks = ({ emailLabel }: ContactLinksProps) => (
   <div className="space-y-3 md:my-auto">
     {contactLinks.map(link => {
       const Icon = link.icon

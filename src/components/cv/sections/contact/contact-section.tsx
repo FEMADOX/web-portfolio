@@ -1,8 +1,8 @@
 'use client'
 
 import type { CvLocale } from '@/app/types'
-import { ContactForm } from './ContactForm'
 import { ContactLinks } from './ContactLinks'
+import { LazyContactForm } from './LazyContactForm'
 
 interface ContactSectionProps {
   sectionTitle: CvLocale['sections']['education']
@@ -32,7 +32,7 @@ export const ContactSection = ({
 
     <div className="grid lg:grid-cols-2 gap-8">
       <ContactLinks emailLabel={contactForm.emailLabel} />
-      <ContactForm contactForm={contactForm} />
+      <LazyContactForm contactForm={contactForm} />
     </div>
   </section>
 )
