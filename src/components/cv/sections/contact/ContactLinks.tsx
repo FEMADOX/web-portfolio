@@ -3,7 +3,7 @@ import { contactLinks } from './utils'
 
 export const ContactLinks = ({ emailLabel }: { emailLabel: string }) => (
   <div className="space-y-3 md:my-auto">
-    {contactLinks.map(link => {
+    {contactLinks.map((link) => {
       const Icon = link.icon
 
       return (
