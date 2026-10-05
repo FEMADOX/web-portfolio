@@ -53,11 +53,11 @@ const RAW_TOKENS: RawToken[] = [
   { text: 'str', className: yellow },
   { text: ']:\n', className: white },
   { text: '\treturn', className: blue },
-  { text: ' {', className: white },
+  { text: ' { ', className: white },
   { text: '"developer"', className: orange },
   { text: ': ', className: white },
   { text: '"Giancarlos"', className: orange },
-  { text: '}', className: white }
+  { text: ' }', className: white }
 ]
 
 // Stable keys derived at module load time — not at render time
