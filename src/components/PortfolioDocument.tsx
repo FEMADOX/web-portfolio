@@ -1,13 +1,11 @@
 import { Analytics } from '@vercel/analytics/next'
 import { SpeedInsights } from '@vercel/speed-insights/next'
 import type { Metadata, Viewport } from 'next'
-import { headers } from 'next/headers'
 import { Toaster } from 'sonner'
 
-import './globals.css'
+import '@/app/globals.css'
+import { getPortfolioMetadata, SITE_URL } from '@/app/metadata'
 import { ThemeProvider } from '@/components/theme-provider'
-import { getPortfolioMetadata, SITE_URL } from './metadata'
-import type { ChildrenProps } from './types'
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
@@ -41,9 +39,13 @@ export const viewport: Viewport = {
   ]
 }
 
-const RootLayout = async ({ children }: ChildrenProps) => {
-  const routeLang = (await headers()).get('x-portfolio-lang') ?? 'en'
-  const lang = routeLang === 'pt' ? 'pt-BR' : routeLang
+export default function PortfolioDocument({
+  children,
+  lang
+}: {
+  children: React.ReactNode
+  lang: string
+}) {
   return (
     <html lang={lang} data-scroll-behavior="smooth" suppressHydrationWarning>
       <body className="font-sans antialiased">
@@ -57,5 +59,3 @@ const RootLayout = async ({ children }: ChildrenProps) => {
     </html>
   )
 }
-
-export default RootLayout
