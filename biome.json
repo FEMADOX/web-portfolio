@@ -18,7 +18,8 @@
       "!.junie",
       "src/components/cv",
       "!src/components/ui",
-      "!src/lib"
+      "!src/lib",
+      "!public"
     ]
   },
   "formatter": {
