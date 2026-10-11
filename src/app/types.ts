@@ -1,6 +1,8 @@
 import type { ReactNode } from 'react'
+import type { AppIconProps } from '@/components/icons'
+import type { LANGUAGE_CONFIG } from './constants'
 
-export type Lang = 'en' | 'es' | 'pt'
+export type Lang = keyof typeof LANGUAGE_CONFIG
 
 export type CvDownload = {
   cvLangUrl: string
@@ -10,30 +12,14 @@ export type CvDownload = {
   downloadDescription: string
 }
 
-export type DesktopControlsPlacement = 'sidebar' | 'topbar'
-
 export interface ChildrenProps {
   readonly children: ReactNode
 }
 
-export interface MobileNavProps {
-  activeSection: string
-  onNavigate: (section: string) => void
-  navigation: Record<SectionId, string>
-  className?: string
-}
-
-export interface MobileHeaderProps {
-  lang: Lang
-  setLang: (lang: Lang) => void
-  themeLabels: CvLocale['theme']
-  className?: string
-}
-
-export interface DesktopControlsVariantProps {
-  placement: DesktopControlsPlacement
-  setPlacement: (placement: DesktopControlsPlacement) => void
-  className?: string
+export interface NavigationItem {
+  id: SectionId
+  label: LabelSection
+  icon: (props: AppIconProps) => React.ReactNode
 }
 
 export type SectionId =
@@ -42,6 +28,13 @@ export type SectionId =
   | 'projects'
   | 'education'
   | 'contact'
+
+export type LabelSection =
+  | 'About'
+  | 'Skills'
+  | 'Projects'
+  | 'Education'
+  | 'Contact'
 
 export type CvLocale = {
   controls: string

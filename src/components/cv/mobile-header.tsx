@@ -1,17 +1,17 @@
 'use client'
 
-import type { MobileHeaderProps } from '@/app/types'
+import type { CvLocale } from '@/app/types'
 import { cn } from '@/lib/utils'
 import { BrandLogo } from './BrandLogo'
 import { LanguageButton } from './LanguageButton'
 import { ThemeToggle } from './ThemeToggle'
 
-export const MobileHeader = ({
-  lang,
-  setLang,
-  themeLabels,
-  className
-}: MobileHeaderProps) => (
+interface MobileHeaderProps {
+  themeLabels: CvLocale['theme']
+  className?: string
+}
+
+export const MobileHeader = ({ themeLabels, className }: MobileHeaderProps) => (
   <header
     className={cn(
       'sticky top-0 z-50 bg-card border-b-4 border-border px-3 py-3 shadow-normal',
@@ -32,7 +32,7 @@ export const MobileHeader = ({
       </div>
       <div className="ml-auto flex items-center gap-2">
         <ThemeToggle labels={themeLabels} />
-        <LanguageButton lang={lang} setLang={setLang} />
+        <LanguageButton />
       </div>
     </div>
   </header>

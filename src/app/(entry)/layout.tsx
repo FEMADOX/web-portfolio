@@ -1,10 +1,11 @@
 import PortfolioDocument from '@/components/PortfolioDocument'
+import type { ChildrenProps } from '../types'
 
-export { metadata, viewport } from '@/components/PortfolioDocument'
-export default function EntryLayout({
-  children
-}: {
-  children: React.ReactNode
-}) {
+export {
+  documentMetadata as metadata,
+  documentViewport as viewport
+} from '@/lib/documentMetadata'
+
+export default function EntryLayout({ children }: ChildrenProps) {
   return <PortfolioDocument lang="en">{children}</PortfolioDocument>
 }

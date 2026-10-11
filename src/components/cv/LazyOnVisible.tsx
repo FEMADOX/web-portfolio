@@ -9,7 +9,7 @@ import {
   useLayoutEffect,
   useRef
 } from 'react'
-import { useNearViewport } from '@/hooks/useNearViewport'
+import useNearViewport from '@/hooks/useNearViewport'
 
 interface LazyOnVisibleProps {
   children: ReactNode

@@ -1,4 +1,4 @@
-import type { Lang } from '@/app/types'
+import { LANGUAGE_CONFIG, SUPPORTED_LANGUAGES } from '@/app/constants'
 import {
   Select,
   SelectContent,
@@ -8,25 +8,16 @@ import {
   SelectTrigger,
   SelectValue
 } from '@/components/ui/select'
+import { useLanguageContext } from '@/contexts/LanguageContext'
+import useLanguageNavigation from '@/hooks/useLanguageNavigation'
 
-const languages = {
-  en: { label: 'Portfolio language', value: 'en', text: 'EN' },
-  es: { label: 'Idioma del portafolio', value: 'es', text: 'ES' },
-  pt: { label: 'Idioma do portfolio', value: 'pt', text: 'PT' }
-}
-
-export interface LanguageButtonProps {
-  lang: Lang
-  setLang: (lang: Lang) => void
-}
-
-export const LanguageButton = ({ lang, setLang }: LanguageButtonProps) => {
-  const { en, es, pt } = languages
+export const LanguageButton = () => {
+  const [lang, setLang] = [useLanguageContext(), useLanguageNavigation()]
 
   return (
-    <Select value={languages[lang].value} onValueChange={setLang}>
+    <Select value={lang} onValueChange={setLang}>
       <SelectTrigger className="h-[stretch] w-16 cursor-pointer border-2 border-primary px-2 text-sm text-primary font-bold rounded-md transition-colors hover:bg-primary hover:text-primary-foreground dark:hover:bg-primary dark:hover:text-primary-foreground">
-        <SelectValue aria-label={languages[lang].label} />
+        <SelectValue aria-label={LANGUAGE_CONFIG[lang].selectLabel} />
       </SelectTrigger>
       <SelectContent
         position="popper"
@@ -36,16 +27,17 @@ export const LanguageButton = ({ lang, setLang }: LanguageButtonProps) => {
         className="z-70 shadow-normal rounded-none bg-card border-2 font-bold"
       >
         <SelectGroup>
-          <SelectLabel>{languages[lang].label}</SelectLabel>
-          <SelectItem className="cursor-pointer" value={en.value}>
-            {en.text}
-          </SelectItem>
-          <SelectItem className="cursor-pointer" value={es.value}>
-            {es.text}
-          </SelectItem>
-          <SelectItem className="cursor-pointer" value={pt.value}>
-            {pt.text}
-          </SelectItem>
+          <SelectLabel>{LANGUAGE_CONFIG[lang].selectLabel}</SelectLabel>
+          {SUPPORTED_LANGUAGES.map(value => (
+            <SelectItem
+              key={value}
+              className="cursor-pointer"
+              value={value}
+              disabled={value === lang}
+            >
+              {LANGUAGE_CONFIG[value].shortLabel}
+            </SelectItem>
+          ))}
         </SelectGroup>
       </SelectContent>
     </Select>

@@ -1,3 +1,5 @@
+import { useCurrentYearContext } from '@/contexts/CurrentYearContext'
+
 type FooterProps = {
   source: string
 }
@@ -6,7 +8,7 @@ export const Footer = ({ source }: FooterProps) => (
   <footer className="mt-12 pt-6 border-t-4 border-border bg-black text-background px-4 py-6">
     <div className="flex flex-col sm:flex-row items-center justify-between gap-4">
       <p className="text-xs font-bold text-accent uppercase tracking-wider">
-        © {new Date().getFullYear()} Giancarlos Gonzalez
+        © {useCurrentYearContext()} Giancarlos Gonzalez
       </p>
       <div className="flex items-center gap-6">
         <a

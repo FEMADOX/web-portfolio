@@ -1,5 +1,5 @@
 import type { CvLocale, Lang, SectionId } from '@/app/types'
-import { CV_FILES } from '@/components/constants'
+import { CV_FILES } from '@/lib/language'
 
 export const cvI18n: Record<Lang, CvLocale> = {
   en: {

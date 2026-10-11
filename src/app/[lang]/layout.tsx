@@ -1,19 +1,22 @@
 import { notFound } from 'next/navigation'
+import type { ChildrenProps } from '@/app/types'
 import PortfolioDocument from '@/components/PortfolioDocument'
+import { isLang } from '@/lib/language'
 
-export { metadata, viewport } from '@/components/PortfolioDocument'
+export {
+  documentMetadata as metadata,
+  documentViewport as viewport
+} from '@/lib/documentMetadata'
+
+interface LocalizedLayoutProps extends ChildrenProps {
+  params: Promise<{ lang: string }>
+}
+
 export default async function LocalizedLayout({
   children,
   params
-}: {
-  children: React.ReactNode
-  params: Promise<{ lang: string }>
-}) {
+}: LocalizedLayoutProps) {
   const { lang } = await params
-  if (lang !== 'en' && lang !== 'es' && lang !== 'pt') notFound()
-  return (
-    <PortfolioDocument lang={lang === 'en' ? 'en-US' : lang}>
-      {children}
-    </PortfolioDocument>
-  )
+  if (!isLang(lang)) notFound()
+  return <PortfolioDocument lang={lang}>{children}</PortfolioDocument>
 }
