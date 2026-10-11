@@ -1,0 +1,652 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Detalle de proyecto · A · Caso de estudio editorial</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            surface: '#F5EDE9',
+            'surface-container': '#EBE7E0',
+            'surface-muted': '#E4E1DA',
+            ink: '#181818',
+            'ink-muted': '#484848',
+            accent: '#FCCA21',
+            'brand-red': '#B91C1C',
+            'brand-blue': '#1D4ED8',
+            outline: '#222222',
+          },
+          fontFamily: {
+            sans: ['"Space Grotesk"', 'system-ui', 'sans-serif'],
+            mono: ['"JetBrains Mono"', 'monospace'],
+          },
+          boxShadow: {
+            'brutal': '3px 3px 0px #181818',
+            'brutal-sm': '2px 2px 0px #181818',
+            'brutal-lg': '5px 5px 0px #181818',
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    body {
+      background-color: #F5EDE9;
+      color: #181818;
+      font-family: 'Space Grotesk', system-ui, sans-serif;
+      -webkit-font-smoothing: antialiased;
+    }
+  </style>
+</head>
+<body class="min-h-screen bg-surface text-ink flex flex-col selection:bg-accent selection:text-ink">
+
+  <!-- STICKY TOP BRAND HEADER -->
+  <header class="sticky top-0 z-50 bg-surface/95 backdrop-blur-sm border-b-2 border-outline px-4 py-3 flex items-center justify-between">
+    <a href="/es" class="flex items-center gap-2 group">
+      <div class="w-8 h-8 bg-ink text-surface flex items-center justify-center font-bold text-xs tracking-wider border border-outline shadow-brutal-sm group-hover:bg-accent group-hover:text-ink transition-colors">
+        GG
+      </div>
+      <div class="flex flex-col">
+        <span class="text-xs font-black tracking-tight uppercase leading-none">Giancarlos Gonzalez</span>
+        <span class="text-[9px] font-mono font-medium text-ink-muted uppercase leading-tight mt-0.5">Full Stack Dev</span>
+      </div>
+    </a>
+
+    <!-- Theme & Language Controls -->
+    <div class="flex items-center gap-2">
+      <button type="button" aria-label="Cambiar tema" class="w-8 h-8 bg-surface border-2 border-outline shadow-brutal-sm flex items-center justify-center text-xs font-mono font-bold hover:bg-accent transition-colors">
+        ☀️
+      </button>
+      <div class="border-2 border-outline bg-surface px-2 py-1 shadow-brutal-sm flex items-center gap-1 text-[11px] font-mono font-bold">
+        <span>ES</span>
+        <span class="text-[9px] text-ink-muted">▾</span>
+      </div>
+    </div>
+  </header>
+
+  <!-- SUBHEADER / QUICK NAVIGATION & RETURN LINK -->
+  <div class="bg-surface-container border-b-2 border-outline px-4 py-2.5 flex items-center justify-between gap-2">
+    <a href="/es#projects" class="inline-flex items-center gap-1.5 text-xs font-mono font-bold uppercase tracking-wider bg-surface px-2.5 py-1 border-2 border-outline shadow-brutal-sm hover:bg-accent transition-all active:translate-x-0.5 active:translate-y-0.5">
+      <span>←</span> Volver a proyectos
+    </a>
+    <span class="text-[10px] font-mono font-bold text-ink-muted bg-surface/60 px-2 py-0.5 border border-outline/30 uppercase">
+      Expediente // #02
+    </span>
+  </div>
+
+  <!-- MAIN SCROLLING CONTENT CONTAINER -->
+  <main class="flex-1 w-full max-w-[390px] mx-auto px-4 py-6 space-y-8">
+
+    <!-- 01. HERO / PROJECT HEADER -->
+    <section class="space-y-4">
+      <div class="flex flex-wrap items-center gap-2">
+        <span class="bg-brand-red text-white text-[10px] font-mono font-bold px-2 py-0.5 border-2 border-outline uppercase shadow-brutal-sm">
+          Caso de estudio // 02
+        </span>
+        <span class="bg-surface text-ink text-[10px] font-mono font-bold px-2 py-0.5 border-2 border-outline uppercase">
+          Categoría: Web
+        </span>
+        <span class="text-[10px] font-mono text-ink-muted ml-auto font-medium">
+          Rev. 2026
+        </span>
+      </div>
+
+      <div class="space-y-2">
+        <h1 class="text-3xl font-black uppercase tracking-tight leading-tight">
+          Plataforma E-commerce <span class="bg-accent px-1.5 py-0.5 border-2 border-outline inline-block shadow-brutal-sm">con Django</span>
+        </h1>
+        <p class="text-sm text-ink-muted font-medium leading-relaxed">
+          Plataforma de comercio electrónico con Django: inventario, flujos de carrito, pagos con Stripe, gestión de pedidos, autenticación y paneles de clientes.
+        </p>
+      </div>
+
+      <!-- Compact Metadata Strip -->
+      <div class="grid grid-cols-2 gap-2 pt-1">
+        <div class="bg-surface-container border-2 border-outline p-2.5 shadow-brutal-sm">
+          <span class="block text-[9px] font-mono font-bold text-ink-muted uppercase tracking-wider">Rol</span>
+          <span class="text-xs font-bold leading-tight mt-0.5 block">Desarrollo Full Stack</span>
+        </div>
+        <div class="bg-surface-container border-2 border-outline p-2.5 shadow-brutal-sm">
+          <span class="block text-[9px] font-mono font-bold text-ink-muted uppercase tracking-wider">Período</span>
+          <span class="text-xs font-mono font-bold leading-tight mt-0.5 block">Ene 2025 — Ene 2026</span>
+        </div>
+        <div class="bg-surface-container border-2 border-outline p-2.5 shadow-brutal-sm">
+          <span class="block text-[9px] font-mono font-bold text-ink-muted uppercase tracking-wider">Tecnologías clave</span>
+          <span class="text-xs font-mono font-bold leading-tight mt-0.5 block">Django, PostgreSQL, Stripe</span>
+        </div>
+        <div class="bg-surface-container border-2 border-outline p-2.5 shadow-brutal-sm">
+          <span class="block text-[9px] font-mono font-bold text-ink-muted uppercase tracking-wider">Metodología pruebas</span>
+          <span class="text-xs font-mono font-bold leading-tight mt-0.5 block text-brand-blue">Pytest Suite</span>
+        </div>
+      </div>
+
+      <!-- Badges Stack -->
+      <div class="flex flex-wrap gap-1.5 pt-1">
+        <span class="text-[10px] font-mono font-bold px-2 py-0.5 bg-surface border-2 border-outline">Django</span>
+        <span class="text-[10px] font-mono font-bold px-2 py-0.5 bg-surface border-2 border-outline">Python</span>
+        <span class="text-[10px] font-mono font-bold px-2 py-0.5 bg-surface border-2 border-outline">PostgreSQL</span>
+        <span class="text-[10px] font-mono font-bold px-2 py-0.5 bg-surface border-2 border-outline">Stripe Payments</span>
+        <span class="text-[10px] font-mono font-bold px-2 py-0.5 bg-surface border-2 border-outline">Pytest</span>
+      </div>
+
+      <!-- Action Buttons (Touch Friendly) -->
+      <div class="grid grid-cols-2 gap-2.5 pt-2">
+        <a href="https://github.com/FEMADOX/Django-E-commers" target="_blank" rel="noopener noreferrer" class="flex items-center justify-center gap-1.5 bg-ink text-white text-xs font-mono font-bold py-2.5 px-3 border-2 border-outline shadow-brutal hover:bg-neutral-800 transition-all text-center">
+          <span>Ver código</span>
+          <span class="text-xs">↗</span>
+        </a>
+        <a href="https://django-e-commers.vercel.app/" target="_blank" rel="noopener noreferrer" class="flex items-center justify-center gap-1.5 bg-accent text-ink text-xs font-mono font-bold py-2.5 px-3 border-2 border-outline shadow-brutal hover:bg-yellow-400 transition-all text-center">
+          <span>Ver demo</span>
+          <span class="text-xs">↗</span>
+        </a>
+      </div>
+    </section>
+
+    <!-- 02. CONCEPTUAL UI WIREFRAME SCHEMATIC (Vista conceptual del flujo) -->
+    <section class="space-y-2">
+      <div class="border-2 border-outline bg-surface-container shadow-brutal-sm overflow-hidden">
+        <!-- Mock Browser / App Titlebar -->
+        <div class="bg-surface border-b-2 border-outline px-3 py-1.5 flex items-center justify-between">
+          <div class="flex items-center gap-1.5">
+            <span class="w-2.5 h-2.5 rounded-full border border-outline bg-red-400 inline-block"></span>
+            <span class="w-2.5 h-2.5 rounded-full border border-outline bg-amber-400 inline-block"></span>
+            <span class="w-2.5 h-2.5 rounded-full border border-outline bg-emerald-400 inline-block"></span>
+            <span class="text-[9px] font-mono font-bold text-ink-muted ml-2">app.tienda // checkout</span>
+          </div>
+          <span class="text-[8px] font-mono font-bold uppercase bg-surface-muted px-1.5 py-0.2 border border-outline/40">
+            Vista conceptual
+          </span>
+        </div>
+
+        <!-- Wireframe Content -->
+        <div class="p-3 space-y-3 bg-[#FAF7F5]">
+          <!-- Micro Catalogue View -->
+          <div class="border-2 border-outline/80 bg-surface p-2.5 space-y-2">
+            <div class="flex items-center justify-between border-b border-outline/20 pb-1.5">
+              <span class="text-[10px] font-mono font-bold uppercase tracking-wider">Catálogo de Productos</span>
+              <span class="text-[9px] font-mono text-ink-muted bg-surface-container px-1 border border-outline/30">Filtro activo</span>
+            </div>
+
+            <div class="grid grid-cols-2 gap-2">
+              <div class="border border-outline bg-surface-container p-2 space-y-1.5">
+                <div class="h-14 bg-surface-muted border border-outline/30 flex items-center justify-center text-[9px] font-mono text-ink-muted text-center p-1">
+                  [ Imagen de producto ]
+                </div>
+                <div class="flex justify-between items-baseline">
+                  <span class="text-[10px] font-bold">Artículo #01</span>
+                  <span class="text-[9px] font-mono font-bold text-brand-blue">$45.00</span>
+                </div>
+                <div class="flex justify-between items-center pt-0.5">
+                  <span class="text-[8px] font-mono text-emerald-700 font-bold">En stock</span>
+                  <span class="text-[8px] font-mono font-bold bg-accent px-1.5 py-0.5 border border-outline">Añadir</span>
+                </div>
+              </div>
+
+              <div class="border border-outline bg-surface-container p-2 space-y-1.5">
+                <div class="h-14 bg-surface-muted border border-outline/30 flex items-center justify-center text-[9px] font-mono text-ink-muted text-center p-1">
+                  [ Imagen de producto ]
+                </div>
+                <div class="flex justify-between items-baseline">
+                  <span class="text-[10px] font-bold">Artículo #02</span>
+                  <span class="text-[9px] font-mono font-bold text-brand-blue">$89.00</span>
+                </div>
+                <div class="flex justify-between items-center pt-0.5">
+                  <span class="text-[8px] font-mono text-emerald-700 font-bold">En stock</span>
+                  <span class="text-[8px] font-mono font-bold bg-accent px-1.5 py-0.5 border border-outline">Añadir</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Micro Cart & Payment Checkout Box -->
+          <div class="border-2 border-outline/80 bg-surface p-2.5 space-y-2">
+            <div class="flex justify-between items-center text-[10px] font-mono font-bold uppercase border-b border-outline/20 pb-1">
+              <span>Resumen del Carrito</span>
+              <span class="bg-accent px-1 border border-outline text-[9px]">2 Ítems</span>
+            </div>
+            <div class="space-y-1 text-[10px] font-mono">
+              <div class="flex justify-between text-ink-muted">
+                <span>Artículo #01 (x1)</span>
+                <span>$45.00</span>
+              </div>
+              <div class="flex justify-between text-ink-muted">
+                <span>Artículo #02 (x1)</span>
+                <span>$89.00</span>
+              </div>
+              <div class="flex justify-between font-bold border-t border-dashed border-outline/40 pt-1 text-ink">
+                <span>Total</span>
+                <span>$134.00</span>
+              </div>
+            </div>
+
+            <!-- Stripe Payment Box -->
+            <div class="bg-surface-container border border-outline p-2 space-y-1 mt-1.5">
+              <div class="flex items-center justify-between text-[9px] font-mono font-bold text-ink">
+                <span>Pasarela de Pago</span>
+                <span class="text-brand-blue">Stripe</span>
+              </div>
+              <p class="text-[8px] text-ink-muted leading-tight">Representación conceptual del paso de pago y la gestión del pedido.</p>
+              <div class="w-full bg-ink text-white text-[9px] font-mono font-bold py-1.5 text-center border border-outline mt-1 uppercase">
+                Procesar Pedido con Stripe
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Caption Required -->
+      <p class="text-[11px] font-mono text-ink-muted text-center italic">
+        Vista conceptual del flujo — Representación esquemática de los módulos de navegación, carrito y procesamiento de pagos.
+      </p>
+    </section>
+
+    <!-- 03. INTRODUCCIÓN Y NARRATIVA EDITORIAL -->
+    <section class="space-y-4">
+      <div class="flex items-center gap-2 border-b-2 border-outline pb-1">
+        <span class="text-xs font-mono font-bold text-brand-red">( 01 )</span>
+        <h2 class="text-xs font-mono font-black uppercase tracking-wider">Estructura Editorial & Planteamiento</h2>
+      </div>
+
+      <div class="space-y-3">
+        <h3 class="text-xl font-black uppercase tracking-tight leading-snug">
+          Visión general y planteamiento del proyecto
+        </h3>
+        <p class="text-xs text-ink leading-relaxed font-normal">
+          Una plataforma full stack desarrollada con Django y Python, PostgreSQL como base de datos y Stripe para los pagos. El proyecto reúne las funciones de una tienda: catálogo e inventario, carrito, autenticación, pedidos y paneles de clientes.
+        </p>
+        <p class="text-xs text-ink leading-relaxed font-normal">
+          El recorrido conecta la selección de productos con el carrito y el pago, y continúa con la gestión de los pedidos. Las vistas conceptuales de esta página ayudan a explicar esas funciones; el repositorio muestra su implementación.
+        </p>
+      </div>
+
+      <!-- Highlights Box -->
+      <div class="bg-surface-container border-2 border-outline p-3 shadow-brutal-sm space-y-2">
+        <span class="text-[10px] font-mono font-bold uppercase tracking-wider text-brand-red block">Puntos destacados</span>
+        <ul class="text-xs space-y-1.5 list-disc list-inside text-ink leading-relaxed">
+          <li><strong>Gestión de inventario</strong> con base de datos relacional.</li>
+          <li><strong>Gestión de pedidos</strong> y paneles de clientes.</li>
+          <li><strong>Autenticación y perfiles</strong> para seguimiento de clientes.</li>
+        </ul>
+      </div>
+
+      <!-- Sección Qué Construí -->
+      <div class="pt-2 space-y-2">
+        <h4 class="text-sm font-black uppercase tracking-wide flex items-center gap-1.5">
+          <span class="w-2 h-2 bg-accent border border-outline inline-block"></span>
+          Qué construí
+        </h4>
+        <p class="text-xs text-ink leading-relaxed">
+          Diseñé e implementé la solución de extremo a extremo cubriendo tanto la interfaz de usuario como la lógica en el servidor y la persistencia de datos:
+        </p>
+        <div class="space-y-2 pt-1">
+          <div class="border border-outline bg-surface p-2.5">
+            <span class="text-[11px] font-bold block">1. Catálogo interactivo</span>
+            <p class="text-[11px] text-ink-muted mt-0.5 leading-normal">
+              Funciones de catálogo e inventario para presentar y gestionar productos.
+            </p>
+          </div>
+          <div class="border border-outline bg-surface p-2.5">
+            <span class="text-[11px] font-bold block">2. Flujos de carrito</span>
+            <p class="text-[11px] text-ink-muted mt-0.5 leading-normal">
+              Flujos de carrito que conectan la selección de productos con el proceso de compra.
+            </p>
+          </div>
+          <div class="border border-outline bg-surface p-2.5">
+            <span class="text-[11px] font-bold block">3. Integración de pasarela Stripe</span>
+            <p class="text-[11px] text-ink-muted mt-0.5 leading-normal">
+              Integración de Stripe como proveedor de pagos del proyecto.
+            </p>
+          </div>
+          <div class="border border-outline bg-surface p-2.5">
+            <span class="text-[11px] font-bold block">4. Gestión de inventario y pedidos</span>
+            <p class="text-[11px] text-ink-muted mt-0.5 leading-normal">
+              Gestión de pedidos y paneles de clientes dentro de la plataforma.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 04. CAPACIDADES DEL PROYECTO (Real Explanatory Text) -->
+    <section class="space-y-4">
+      <div class="flex items-center gap-2 border-b-2 border-outline pb-1">
+        <span class="text-xs font-mono font-bold text-brand-blue">( 02 )</span>
+        <h2 class="text-xs font-mono font-black uppercase tracking-wider">Funcionalidades Técnicas</h2>
+      </div>
+
+      <div class="space-y-1">
+        <h3 class="text-xl font-black uppercase tracking-tight">
+          Capacidades clave del sistema
+        </h3>
+        <p class="text-xs text-ink-muted">
+          Funciones principales que conectan productos, clientes, pedidos y pagos.
+        </p>
+      </div>
+
+      <!-- Stacked Capability Cards for Mobile Reading -->
+      <div class="space-y-3">
+        <!-- Capacidad 1 -->
+        <div class="border-2 border-outline bg-surface p-3.5 shadow-brutal-sm space-y-2">
+          <div class="flex items-center justify-between">
+            <span class="text-[10px] font-mono font-bold bg-surface-container px-2 py-0.5 border border-outline">01</span>
+            <span class="text-[10px] font-mono font-bold text-ink-muted uppercase">Catálogo & Stock</span>
+          </div>
+          <h4 class="text-sm font-bold uppercase tracking-tight">Inventario y Catálogo</h4>
+          <p class="text-xs text-ink leading-relaxed">
+            Gestión de inventario y catálogo de productos con PostgreSQL como base de datos del proyecto.
+          </p>
+          <div class="pt-1 border-t border-outline/20 flex flex-wrap gap-1">
+            <span class="text-[9px] font-mono bg-surface-muted px-1.5 py-0.5 border border-outline/30">Funciones: Catálogo e inventario</span>
+          </div>
+        </div>
+
+        <!-- Capacidad 2 -->
+        <div class="border-2 border-outline bg-surface p-3.5 shadow-brutal-sm space-y-2">
+          <div class="flex items-center justify-between">
+            <span class="text-[10px] font-mono font-bold bg-accent px-2 py-0.5 border border-outline">02</span>
+            <span class="text-[10px] font-mono font-bold text-ink-muted uppercase">Pagos Seguros</span>
+          </div>
+          <h4 class="text-sm font-bold uppercase tracking-tight">Carrito & Pagos con Stripe</h4>
+          <p class="text-xs text-ink leading-relaxed">
+            Flujos de carrito e integración de pagos con Stripe para completar el recorrido de compra.
+          </p>
+          <div class="pt-1 border-t border-outline/20 flex flex-wrap gap-1">
+            <span class="text-[9px] font-mono bg-surface-muted px-1.5 py-0.5 border border-outline/30">Módulos: Carrito y Stripe</span>
+          </div>
+        </div>
+
+        <!-- Capacidad 3 -->
+        <div class="border-2 border-outline bg-surface p-3.5 shadow-brutal-sm space-y-2">
+          <div class="flex items-center justify-between">
+            <span class="text-[10px] font-mono font-bold bg-surface-container px-2 py-0.5 border border-outline">03</span>
+            <span class="text-[10px] font-mono font-bold text-ink-muted uppercase">Usuarios & Histórico</span>
+          </div>
+          <h4 class="text-sm font-bold uppercase tracking-tight">Autenticación & Órdenes</h4>
+          <p class="text-xs text-ink leading-relaxed">
+            Autenticación, gestión de pedidos y paneles de clientes para reunir las funciones de la cuenta dentro de la tienda.
+          </p>
+          <div class="pt-1 border-t border-outline/20 flex flex-wrap gap-1">
+            <span class="text-[9px] font-mono bg-surface-muted px-1.5 py-0.5 border border-outline/30">Funciones: Autenticación y pedidos</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 05. CONCEPTUAL ARCHITECTURE / FLOW DIAGRAM (Stacked for mobile, no text clipping) -->
+    <section class="space-y-4">
+      <div class="flex items-center gap-2 border-b-2 border-outline pb-1">
+        <span class="text-xs font-mono font-bold text-brand-red">( 03 )</span>
+        <h2 class="text-xs font-mono font-black uppercase tracking-wider">Arquitectura del Sistema</h2>
+      </div>
+
+      <div class="space-y-1">
+        <h3 class="text-xl font-black uppercase tracking-tight">
+          Diagrama conceptual de flujo
+        </h3>
+        <p class="text-xs text-ink-muted">
+          Relación funcional entre la capa de presentación, el backend en Django, la persistencia en base de datos y el proveedor externo de pagos.
+        </p>
+      </div>
+
+      <!-- Architecture Stack (Mobile Vertical Layout) -->
+      <div class="border-2 border-outline bg-surface-container p-3 space-y-2.5 shadow-brutal-sm">
+
+        <!-- Node 1: Interfaz web -->
+        <div class="border-2 border-outline bg-surface p-2.5 relative">
+          <div class="flex items-center justify-between">
+            <span class="text-[9px] font-mono font-bold uppercase text-ink-muted">Capa 01 // Cliente</span>
+            <span class="w-2 h-2 rounded-full bg-emerald-500 inline-block"></span>
+          </div>
+          <h4 class="text-xs font-mono font-bold uppercase mt-1">Interfaz Web</h4>
+          <p class="text-[11px] text-ink-muted mt-0.5 leading-normal">
+            Representación de la interfaz de catálogo, carrito y cuenta del cliente.
+          </p>
+          <div class="mt-1.5 text-[9px] font-mono bg-surface-container inline-block px-1.5 py-0.5 border border-outline/30">
+            Peticiones HTTP / Formularios
+          </div>
+        </div>
+
+        <!-- Flow Connector -->
+        <div class="flex items-center justify-center text-ink-muted text-xs font-mono font-bold">
+          ↓
+        </div>
+
+        <!-- Node 2: Django Core -->
+        <div class="border-2 border-outline bg-accent p-2.5 relative shadow-brutal-sm">
+          <div class="flex items-center justify-between">
+            <span class="text-[9px] font-mono font-bold uppercase text-ink">Capa 02 // Servidor</span>
+            <span class="text-[9px] font-mono font-bold bg-ink text-accent px-1">CORE</span>
+          </div>
+          <h4 class="text-xs font-mono font-bold uppercase mt-1">Django</h4>
+          <p class="text-[11px] text-ink mt-0.5 leading-normal font-medium">
+            Backend del proyecto: lógica de la tienda, autenticación y gestión de pedidos.
+          </p>
+          <div class="mt-1.5 text-[9px] font-mono bg-white inline-block px-1.5 py-0.5 border border-outline">
+            Backend + Autenticación + Pedidos
+          </div>
+        </div>
+
+        <!-- Double Flow Connector Branch -->
+        <div class="flex items-center justify-around text-ink-muted text-xs font-mono font-bold py-0.5">
+          <span>↓ Persistencia</span>
+          <span>↓ Pagos API</span>
+        </div>
+
+        <div class="grid grid-cols-2 gap-2">
+          <!-- Node 3: PostgreSQL -->
+          <div class="border-2 border-outline bg-surface p-2.5">
+            <span class="text-[8px] font-mono font-bold uppercase text-ink-muted block">Capa 03 // BD</span>
+            <h4 class="text-xs font-mono font-bold uppercase mt-0.5">PostgreSQL</h4>
+            <p class="text-[10px] text-ink-muted mt-0.5 leading-tight">
+              Base de datos relacional para inventario, catálogo, usuarios y registro transaccional de órdenes.
+            </p>
+            <div class="mt-1.5 text-[8px] font-mono text-ink-muted">
+              Base de datos del proyecto
+            </div>
+          </div>
+
+          <!-- Node 4: Stripe -->
+          <div class="border-2 border-outline bg-surface p-2.5">
+            <span class="text-[8px] font-mono font-bold uppercase text-ink-muted block">Capa 04 // Pasarela</span>
+            <h4 class="text-xs font-mono font-bold uppercase mt-0.5">Stripe</h4>
+            <p class="text-[10px] text-ink-muted mt-0.5 leading-tight">
+              Proveedor de pagos integrado en el recorrido de compra.
+            </p>
+            <div class="mt-1.5 text-[8px] font-mono text-brand-blue font-bold">
+              Integración de pagos
+            </div>
+          </div>
+        </div>
+
+        <!-- Sequential Flow Explanation -->
+        <div class="border-t-2 border-outline pt-2 mt-1 space-y-1 text-[10px] font-mono text-ink">
+          <div class="flex items-start gap-1.5">
+            <span class="font-bold text-brand-red">1.</span>
+            <span><strong>Solicitud de compra:</strong> El cliente selecciona productos y continúa desde el carrito.</span>
+          </div>
+          <div class="flex items-start gap-1.5">
+            <span class="font-bold text-brand-red">2.</span>
+            <span><strong>Cobro delegado:</strong> Stripe representa el paso de pago en este recorrido conceptual.</span>
+          </div>
+          <div class="flex items-start gap-1.5">
+            <span class="font-bold text-brand-red">3.</span>
+            <span><strong>Gestión de pedidos:</strong> La plataforma reúne la gestión de los pedidos y los paneles de clientes.</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 06. STACK Y PRUEBAS CON PYTEST -->
+    <section class="space-y-4">
+      <div class="flex items-center gap-2 border-b-2 border-outline pb-1">
+        <span class="text-xs font-mono font-bold text-brand-blue">( 04 )</span>
+        <h2 class="text-xs font-mono font-black uppercase tracking-wider">Tecnologías Utilizadas</h2>
+      </div>
+
+      <div class="space-y-1">
+        <h3 class="text-xl font-black uppercase tracking-tight">
+          Stack de desarrollo
+        </h3>
+        <p class="text-xs text-ink-muted">
+          Conjunto de herramientas implementadas en el backend, la capa de datos y el flujo de transacciones.
+        </p>
+      </div>
+
+      <!-- Stack Cards Grid -->
+      <div class="grid grid-cols-2 gap-2">
+        <div class="border-2 border-outline bg-surface p-2.5 shadow-brutal-sm">
+          <span class="text-[9px] font-mono font-bold text-ink-muted uppercase">Backend Framework</span>
+          <h4 class="text-xs font-bold mt-0.5">Django & Python</h4>
+          <p class="text-[10px] text-ink-muted mt-1 leading-normal">
+            Django y Python constituyen la base del desarrollo full stack.
+          </p>
+        </div>
+
+        <div class="border-2 border-outline bg-surface p-2.5 shadow-brutal-sm">
+          <span class="text-[9px] font-mono font-bold text-ink-muted uppercase">Base de Datos</span>
+          <h4 class="text-xs font-bold mt-0.5">PostgreSQL</h4>
+          <p class="text-[10px] text-ink-muted mt-1 leading-normal">
+            PostgreSQL es la base de datos utilizada por el proyecto.
+          </p>
+        </div>
+
+        <div class="border-2 border-outline bg-surface p-2.5 shadow-brutal-sm">
+          <span class="text-[9px] font-mono font-bold text-ink-muted uppercase">Pasarela de Pagos</span>
+          <h4 class="text-xs font-bold mt-0.5">Stripe</h4>
+          <p class="text-[10px] text-ink-muted mt-1 leading-normal">
+            Stripe es el proveedor integrado para los pagos.
+          </p>
+        </div>
+
+        <div class="border-2 border-outline bg-surface p-2.5 shadow-brutal-sm">
+          <span class="text-[9px] font-mono font-bold text-ink-muted uppercase">Metodología de Pruebas</span>
+          <h4 class="text-xs font-bold mt-0.5">Pytest</h4>
+          <p class="text-[10px] text-ink-muted mt-1 leading-normal">
+            Pytest forma parte de las herramientas de pruebas del proyecto.
+          </p>
+        </div>
+      </div>
+
+      <!-- Testing Section Details -->
+      <div class="border-2 border-outline bg-surface-container p-3 space-y-2 shadow-brutal-sm">
+        <div class="flex items-center justify-between">
+          <h4 class="text-xs font-mono font-bold uppercase tracking-wider text-ink flex items-center gap-1.5">
+            <span class="w-2 h-2 bg-brand-blue border border-outline inline-block"></span>
+            Pruebas con Pytest
+          </h4>
+          <span class="text-[9px] font-mono font-bold bg-surface px-1.5 py-0.5 border border-outline">Calidad y Confiabilidad</span>
+        </div>
+        <p class="text-xs text-ink leading-relaxed">
+          El desarrollo incorpora una suite de pruebas implementada con <strong>Pytest</strong> como herramienta de pruebas. El repositorio permite consultar su implementación y alcance:
+        </p>
+        <ul class="text-xs font-mono space-y-1.5 list-disc list-inside text-ink leading-relaxed pl-1">
+          <li><strong>Pruebas automatizadas:</strong> Pytest forma parte del proyecto para trabajar con pruebas automatizadas.</li>
+          <li><strong>Código de referencia:</strong> El repositorio permite revisar el código de la tienda y sus pruebas.</li>
+          <li><strong>Funciones del proyecto:</strong> Inventario, carrito, pagos, autenticación y pedidos forman el alcance de la plataforma.</li>
+        </ul>
+        <div class="pt-1 text-[10px] font-mono text-ink-muted">
+          Framework: <span class="text-ink font-bold">Pytest</span> // Código: GitHub.
+        </div>
+      </div>
+    </section>
+
+    <!-- 07. CODE / DEMO REPOSITORY ACTIONS -->
+    <section class="border-2 border-outline bg-surface p-4 shadow-brutal space-y-3">
+      <div class="space-y-1">
+        <h3 class="text-sm font-black uppercase tracking-tight">
+          ¿Deseas examinar el código o probar la tienda?
+        </h3>
+        <p class="text-xs text-ink-muted">
+          Enlaces al repositorio del proyecto y a su demo.
+        </p>
+      </div>
+
+      <div class="space-y-2 pt-1">
+        <a href="https://github.com/FEMADOX/Django-E-commers" target="_blank" rel="noopener noreferrer" class="w-full flex items-center justify-between bg-ink text-white text-xs font-mono font-bold py-2.5 px-3 border-2 border-outline shadow-brutal-sm hover:bg-neutral-800 transition-all">
+          <span>GITHUB REPOSITORIO</span>
+          <span>↗</span>
+        </a>
+        <a href="https://django-e-commers.vercel.app/" target="_blank" rel="noopener noreferrer" class="w-full flex items-center justify-between bg-accent text-ink text-xs font-mono font-bold py-2.5 px-3 border-2 border-outline shadow-brutal-sm hover:bg-yellow-400 transition-all">
+          <span>VER DEMO EN VERCEL</span>
+          <span>↗</span>
+        </a>
+      </div>
+    </section>
+
+    <!-- 08. NEXT PROJECT NAVIGATION & RETURN -->
+    <section class="space-y-3 pt-2">
+      <div class="border-2 border-outline bg-surface-container p-4 shadow-brutal-sm space-y-3">
+        <div class="flex items-center justify-between">
+          <span class="text-[9px] font-mono font-bold text-ink-muted uppercase">Siguiente Caso de Estudio // 03</span>
+          <span class="text-xs">→</span>
+        </div>
+
+        <div class="space-y-1">
+          <h3 class="text-base font-black uppercase tracking-tight">
+            Plataforma Social con Marcadores
+          </h3>
+          <p class="text-[11px] font-mono text-ink-muted">
+            Octubre 2024 — Agosto 2025 · Django, Python, PostgreSQL
+          </p>
+          <p class="text-xs text-ink-muted leading-relaxed pt-1">
+            Red social para descubrimiento y preservación de enlaces, favoritos multimedia e interacción entre perfiles.
+          </p>
+        </div>
+
+        <div class="pt-2">
+          <a href="/es/projects/social-bookmarking" class="block w-full bg-ink text-white text-center text-xs font-mono font-bold py-2.5 px-3 border-2 border-outline shadow-brutal-sm hover:bg-neutral-800 transition-all">
+            VER SIGUIENTE PROYECTO →
+          </a>
+        </div>
+      </div>
+
+      <!-- Secondary Return to All Projects Button -->
+      <div class="pt-1 text-center">
+        <a href="/es#projects" class="inline-flex items-center justify-center gap-2 w-full bg-surface border-2 border-outline py-2.5 px-4 text-xs font-mono font-bold uppercase shadow-brutal-sm hover:bg-surface-muted transition-colors">
+          <span>←</span> Volver a todos los proyectos
+        </a>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- 09. PORTFOLIO FOOTER -->
+  <footer class="bg-ink text-surface border-t-2 border-outline mt-12 px-4 py-6 space-y-4">
+    <div class="flex items-center gap-2.5">
+      <div class="w-6 h-6 bg-accent text-ink flex items-center justify-center font-bold text-[10px] border border-surface shadow-brutal-sm">
+        GG
+      </div>
+      <div class="flex flex-col">
+        <span class="text-xs font-bold tracking-tight text-white uppercase">Giancarlos Gonzalez</span>
+        <span class="text-[10px] font-mono text-neutral-400">Desarrollador Full Stack © 2026</span>
+      </div>
+    </div>
+
+    <div class="border-t border-neutral-700 pt-3 flex flex-wrap gap-4 text-xs font-mono">
+      <a href="https://github.com/FEMADOX" target="_blank" rel="noopener noreferrer" class="text-neutral-300 hover:text-accent transition-colors flex items-center gap-1">
+        <span>GitHub</span>
+        <span class="text-[10px]">↗</span>
+      </a>
+      <a href="https://www.linkedin.com/in/giancarlos-gonzalez-leyva" target="_blank" rel="noopener noreferrer" class="text-neutral-300 hover:text-accent transition-colors flex items-center gap-1">
+        <span>LinkedIn</span>
+        <span class="text-[10px]">↗</span>
+      </a>
+      <a href="/es#contact" class="text-neutral-300 hover:text-accent transition-colors">
+        Contacto
+      </a>
+    </div>
+
+    <p class="text-[10px] font-mono text-neutral-500 pt-1">
+      Desarrollo web con Django y Python.
+    </p>
+  </footer>
+
+</body>
+</html>

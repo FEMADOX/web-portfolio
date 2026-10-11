@@ -1,0 +1,980 @@
+<!DOCTYPE html>
+
+<html class="scroll-smooth" lang="es"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>PLATAFORMA E-COMMERCE CON DJANGO — Giancarlos Gonzalez // Dossier Técnico</title>
+<!-- Google Fonts: Geist & JetBrains Mono -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600;700;800;900&amp;family=JetBrains+Mono:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<!-- Material Symbols Outlined -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS v3 -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+            "surface-sand": "#EBE7E0",
+            "surface-muted": "#E4E1DA",
+            "on-surface-variant": "#444748",
+            "skill-red": "#B91C1C",
+            "surface-dim": "#e0d8d5",
+            "surface-tint": "#5f5e5e",
+            "error": "#ba1a1a",
+            "secondary": "#745b00",
+            "primary-container": "#1c1b1b",
+            "error-container": "#ffdad6",
+            "surface-variant": "#e9e1dd",
+            "on-tertiary-fixed": "#410002",
+            "on-primary-container": "#858383",
+            "dark-surface": "#030303",
+            "outline": "#747878",
+            "primary": "#000000",
+            "on-primary-fixed-variant": "#474746",
+            "on-tertiary-container": "#f43e36",
+            "outline-variant": "#c4c7c7",
+            "on-error": "#ffffff",
+            "primary-fixed-dim": "#c8c6c5",
+            "secondary-fixed-dim": "#f1c011",
+            "surface-container-high": "#eee7e3",
+            "dark-accent": "#FAC547",
+            "surface-container-low": "#faf2ee",
+            "secondary-fixed": "#ffe08e",
+            "tertiary-container": "#410002",
+            "surface-bright": "#fff8f5",
+            "tertiary": "#000000",
+            "on-secondary-fixed-variant": "#584400",
+            "on-primary": "#ffffff",
+            "project-blue": "#1D4ED8",
+            "on-secondary-fixed": "#241a00",
+            "secondary-container": "#fecb23",
+            "on-surface": "#1e1b19",
+            "surface": "#fff8f5",
+            "surface-container": "#f4ece8",
+            "dark-on-surface": "#EEEEEE",
+            "surface-container-lowest": "#ffffff",
+            "outline-solid": "#222222",
+            "inverse-primary": "#c8c6c5",
+            "on-secondary": "#ffffff",
+            "on-error-container": "#93000a",
+            "on-tertiary-fixed-variant": "#930009",
+            "inverse-on-surface": "#f7efeb",
+            "inverse-surface": "#33302d",
+            "tertiary-fixed-dim": "#ffb4ab",
+            "on-secondary-container": "#6f5700",
+            "primary-fixed": "#e5e2e1",
+            "on-background": "#1e1b19",
+            "surface-container-highest": "#e9e1dd",
+            "on-tertiary": "#ffffff",
+            "tertiary-fixed": "#ffdad5",
+            "background": "#fff8f5",
+            "on-primary-fixed": "#1c1b1b",
+            "dark-surface-container": "#070707"
+          },
+          "borderRadius": {
+            "DEFAULT": "0.25rem",
+            "lg": "0.5rem",
+            "xl": "0.75rem",
+            "full": "9999px"
+          },
+          "spacing": {
+            "space-sm": "0.5rem",
+            "space-lg": "1.5rem",
+            "space-xl": "2rem",
+            "space-md": "1rem",
+            "gutter": "1rem",
+            "space-xs": "0.25rem",
+            "margin": "1.5rem"
+          },
+          "fontFamily": {
+            "body-base": ["Geist", "sans-serif"],
+            "meta-tag": ["JetBrains Mono", "monospace"],
+            "headline-hero-tablet": ["Geist", "sans-serif"],
+            "body-bold": ["Geist", "sans-serif"],
+            "headline-hero": ["Geist", "sans-serif"],
+            "headline-hero-mobile": ["Geist", "sans-serif"],
+            "label-caps": ["JetBrains Mono", "monospace"],
+            "headline-section": ["Geist", "sans-serif"],
+            "headline-project": ["Geist", "sans-serif"],
+            "code-base": ["JetBrains Mono", "monospace"]
+          },
+          "fontSize": {
+            "body-base": ["14px", { "lineHeight": "22px", "fontWeight": "400" }],
+            "meta-tag": ["10px", { "lineHeight": "12px", "letterSpacing": "0.04em", "fontWeight": "600" }],
+            "headline-hero-tablet": ["48px", { "lineHeight": "52px", "letterSpacing": "-0.025em", "fontWeight": "900" }],
+            "body-bold": ["14px", { "lineHeight": "22px", "fontWeight": "700" }],
+            "headline-hero": ["60px", { "lineHeight": "66px", "letterSpacing": "-0.03em", "fontWeight": "900" }],
+            "headline-hero-mobile": ["36px", { "lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "900" }],
+            "label-caps": ["11px", { "lineHeight": "14px", "letterSpacing": "0.08em", "fontWeight": "700" }],
+            "headline-section": ["18px", { "lineHeight": "24px", "letterSpacing": "0.06em", "fontWeight": "900" }],
+            "headline-project": ["24px", { "lineHeight": "32px", "letterSpacing": "-0.015em", "fontWeight": "900" }],
+            "code-base": ["14px", { "lineHeight": "21px", "fontWeight": "400" }]
+          }
+        }
+      }
+    }
+  </script>
+<style>
+    .neo-shadow {
+      box-shadow: 3px 3px 0px #222222;
+    }
+    .neo-shadow-sm {
+      box-shadow: 2px 2px 0px #222222;
+    }
+    .neo-shadow-lg {
+      box-shadow: 5px 5px 0px #222222;
+    }
+    .neo-shadow-yellow {
+      box-shadow: 3px 3px 0px #fecb23;
+    }
+    .neo-pressed:active {
+      transform: translate(2px, 2px);
+      box-shadow: 0px 0px 0px #222222;
+    }
+    /* Technical Grid Pattern Accent */
+    .tech-grid-bg {
+      background-size: 20px 20px;
+      background-image:
+        linear-gradient(to right, rgba(34, 34, 34, 0.05) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(34, 34, 34, 0.05) 1px, transparent 1px);
+    }
+  </style>
+</head>
+<body class="bg-surface text-on-surface font-body-base antialiased min-h-screen selection:bg-secondary-container selection:text-primary">
+<!-- ASYMMETRIC SPLIT DESKTOP LAYOUT (1920px Standard Canvas) -->
+<div class="flex w-full min-h-screen relative">
+<!-- FIXED LEFT SIDEBAR (296px) -->
+<aside class="w-[296px] fixed top-0 left-0 h-screen z-40 flex flex-col justify-between border-r-2 border-outline-solid bg-surface-sand p-space-md select-none">
+<!-- Top Brand Anchor -->
+<div class="flex flex-col gap-space-md">
+<!-- Brand Header Stamp -->
+<div class="border-2 border-outline-solid bg-surface p-space-sm neo-shadow-sm">
+<div class="flex items-center gap-space-xs mb-1">
+<span class="w-2.5 h-2.5 bg-skill-red border border-outline-solid inline-block"></span>
+<span class="font-meta-tag text-meta-tag tracking-wider text-on-surface-variant uppercase">SYS_ENG // DOSSIER</span>
+</div>
+<h1 class="font-headline-section text-headline-section text-primary tracking-tight">GIANCARLOS GONZALEZ</h1>
+<p class="font-label-caps text-label-caps text-on-surface-variant mt-0.5">DESARROLLADOR FULL STACK</p>
+</div>
+<!-- Sidebar Navigation List -->
+<nav class="flex flex-col gap-1.5 mt-space-sm">
+<div class="font-meta-tag text-meta-tag text-on-surface-variant px-space-xs uppercase tracking-widest mb-1 flex items-center justify-between">
+<span>// DIRECTORIO</span>
+<span class="text-skill-red">● ONLINE</span>
+</div>
+<a class="font-label-caps text-label-caps p-space-sm flex items-center gap-space-sm border-2 border-transparent text-on-surface-variant hover:border-outline-solid hover:bg-surface transition-all" href="/es#summary">
+<span class="material-symbols-outlined text-[16px]">account_box</span>
+<span>Sobre mí</span>
+</a>
+<a class="font-label-caps text-label-caps p-space-sm flex items-center gap-space-sm border-2 border-transparent text-on-surface-variant hover:border-outline-solid hover:bg-surface transition-all" href="/es#skills">
+<span class="material-symbols-outlined text-[16px]">code</span>
+<span>Habilidades técnicas</span>
+</a>
+<!-- Active Navigation: Proyectos -->
+<a class="border-2 border-outline-solid bg-secondary-container text-primary font-label-caps text-label-caps p-space-sm flex items-center justify-between neo-shadow-sm font-bold" href="/es#projects">
+<div class="flex items-center gap-space-sm">
+<span class="material-symbols-outlined text-[16px]" style="font-variation-settings: 'FILL' 1;">terminal</span>
+<span>Proyectos</span>
+</div>
+<span class="font-meta-tag text-meta-tag bg-primary text-surface px-1 py-0.5 border border-outline-solid">EXP_02</span>
+</a>
+<a class="font-label-caps text-label-caps p-space-sm flex items-center gap-space-sm border-2 border-transparent text-on-surface-variant hover:border-outline-solid hover:bg-surface transition-all" href="/es#education">
+<span class="material-symbols-outlined text-[16px]">school</span>
+<span>Educación</span>
+</a>
+<a class="font-label-caps text-label-caps p-space-sm flex items-center gap-space-sm border-2 border-transparent text-on-surface-variant hover:border-outline-solid hover:bg-surface transition-all" href="/es#contact">
+<span class="material-symbols-outlined text-[16px]">mail</span>
+<span>Contacto</span>
+</a>
+</nav>
+</div>
+<!-- Bottom Profile & CV Download Section -->
+<div class="flex flex-col gap-space-sm border-t-2 border-outline-solid pt-space-md">
+<!-- Quick Dossier Status -->
+<div class="bg-surface p-space-xs border border-outline-solid flex items-center justify-between font-meta-tag text-meta-tag">
+<span class="text-on-surface-variant">ÁMBITO:</span>
+<span class="font-bold">CASOS DE ESTUDIO</span>
+</div>
+<a class="w-full bg-primary hover:bg-surface hover:text-primary text-surface border-2 border-outline-solid py-space-sm px-space-md font-label-caps text-label-caps flex items-center justify-center gap-space-sm neo-shadow-sm neo-pressed transition-colors" href="/api/cv/es">
+<span class="material-symbols-outlined text-[16px]">download</span>
+<span>Descargar CV</span>
+</a>
+</div>
+</aside>
+<!-- MAIN SCROLLABLE CONTENT CANVAS (Offset by 296px) -->
+<main class="ml-[296px] w-[calc(100%-296px)] min-h-screen bg-surface flex flex-col tech-grid-bg">
+<!-- TOP UTILITY / APP BAR -->
+<header class="sticky top-0 z-30 w-full bg-surface-sand border-b-2 border-outline-solid px-space-xl py-space-sm flex justify-between items-center shadow-none">
+<!-- Left Quick Project Breadcrumb / Back Link -->
+<div class="flex items-center gap-space-md">
+<a class="group border-2 border-outline-solid bg-surface px-space-md py-space-xs font-label-caps text-label-caps text-primary hover:bg-secondary-container neo-shadow-sm neo-pressed transition-all flex items-center gap-2" href="/es#projects">
+<span class="material-symbols-outlined text-[16px] group-hover:-translate-x-1 transition-transform">arrow_back</span>
+<span>← Volver a proyectos</span>
+</a>
+<div class="hidden xl:flex items-center gap-2 font-meta-tag text-meta-tag text-on-surface-variant">
+<span>EXPEDIENTE:</span>
+<span class="bg-surface-muted px-1.5 py-0.5 border border-outline-solid text-primary font-bold">DJANGO // E-COMMERCE</span>
+</div>
+</div>
+<!-- Right Quick Controls: Language + Theme Toggle -->
+<div class="flex items-center gap-space-sm">
+<div class="flex items-center border-2 border-outline-solid bg-surface neo-shadow-sm">
+<span class="font-meta-tag text-meta-tag px-space-sm py-1 border-r border-outline-solid text-on-surface-variant font-bold">CONTROLES</span>
+<!-- Language Selector -->
+<button class="font-label-caps text-label-caps px-2 py-1 bg-secondary-container font-extrabold border-r border-outline-solid">
+              ES
+            </button>
+<button class="font-label-caps text-label-caps px-2 py-1 text-on-surface-variant hover:bg-surface-sand transition-colors">
+              EN
+            </button>
+<!-- Theme Toggle Icon Button -->
+<button class="px-2 py-1 flex items-center justify-center hover:bg-surface-sand transition-colors border-l border-outline-solid" title="Cambiar tema visual">
+<span class="material-symbols-outlined text-[16px]" style="font-variation-settings: 'FILL' 1;">light_mode</span>
+</button>
+</div>
+</div>
+</header>
+<!-- DOSSIER CONTAINER & SIDE-TOC GRID -->
+<div class="w-full max-w-[1580px] mx-auto px-space-xl py-space-xl flex gap-space-xl relative">
+<!-- CORE CONTENT STREAM (Maximized Width) -->
+<div class="flex-1 min-w-0 flex flex-col gap-space-xl">
+<!-- ================= HERO TÉCNICO COMPACTO ================= -->
+<section class="border-2 border-outline-solid bg-surface-container-low p-space-xl neo-shadow-lg relative overflow-hidden" id="hero">
+<!-- Classification Bar -->
+<div class="w-full flex flex-wrap items-center justify-between border-b-2 border-outline-solid pb-space-sm mb-space-lg gap-space-sm">
+<div class="flex items-center gap-space-sm">
+<span class="bg-primary text-surface font-meta-tag text-meta-tag px-2 py-1 border border-outline-solid font-bold">EXPEDIENTE TÉCNICO // REF. B-02</span>
+<span class="bg-project-blue text-surface font-meta-tag text-meta-tag px-2 py-1 border border-outline-solid font-bold">CATEGORÍA: WEB</span>
+<span class="bg-surface border border-outline-solid font-meta-tag text-meta-tag px-2 py-1 text-on-surface-variant">CONTENIDO: PROYECTO WEB</span>
+</div>
+<div class="font-meta-tag text-meta-tag text-on-surface-variant flex items-center gap-1.5">
+<span class="w-2 h-2 rounded-full bg-emerald-600 animate-pulse"></span>
+<span>CASO DE ESTUDIO // DOSSIER TÉCNICO</span>
+</div>
+</div>
+<!-- Title & Concept -->
+<div class="flex flex-col gap-space-sm">
+<h1 class="font-headline-hero text-headline-hero text-primary tracking-tight font-black leading-none">
+                PLATAFORMA E-COMMERCE CON DJANGO
+              </h1>
+<p class="font-body-base text-body-base text-on-surface max-w-4xl text-base leading-relaxed mt-space-xs font-normal">
+                E-commerce con catálogo, inventario, carrito, pagos con Stripe, autenticación, gestión de órdenes y paneles de cliente.
+              </p>
+</div>
+<!-- Fact Panel Grid (Ficha Técnica Neo-brutalista) -->
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-0 border-2 border-outline-solid bg-surface mt-space-lg neo-shadow-sm">
+<div class="p-space-md border-b-2 lg:border-b-0 lg:border-r-2 border-outline-solid flex flex-col justify-between">
+<span class="font-meta-tag text-meta-tag text-on-surface-variant uppercase tracking-wider">// ROL EJECUTADO</span>
+<span class="font-body-bold text-body-bold text-primary mt-1 text-base">Desarrollo full stack</span>
+</div>
+<div class="p-space-md border-b-2 lg:border-b-0 lg:border-r-2 border-outline-solid flex flex-col justify-between">
+<span class="font-meta-tag text-meta-tag text-on-surface-variant uppercase tracking-wider">// PERIODO DE DESARROLLO</span>
+<span class="font-body-bold text-body-bold text-primary mt-1 text-base">Enero 2025 — Enero 2026</span>
+</div>
+<div class="p-space-md border-b-2 md:border-b-0 lg:border-r-2 border-outline-solid flex flex-col justify-between">
+<span class="font-meta-tag text-meta-tag text-on-surface-variant uppercase tracking-wider">// TECNOLOGÍAS CLAVE</span>
+<span class="font-body-bold text-body-bold text-primary mt-1 text-base">Django, Python, PostgreSQL, Stripe</span>
+</div>
+<div class="p-space-md flex flex-col justify-between bg-surface-sand/50">
+<span class="font-meta-tag text-meta-tag text-on-surface-variant uppercase tracking-wider">// SUITE DE PRUEBAS</span>
+<div class="flex items-center gap-2 mt-1">
+<span class="material-symbols-outlined text-emerald-700 text-[18px]">science</span>
+<span class="font-body-bold text-body-bold text-primary text-base">Pytest</span>
+</div>
+</div>
+</div>
+<!-- Technology Badges & Primary Actions -->
+<div class="flex flex-wrap items-center justify-between gap-space-lg mt-space-lg pt-space-md border-t-2 border-outline-solid">
+<!-- Stack Badges -->
+<div class="flex flex-wrap items-center gap-2">
+<span class="font-meta-tag text-meta-tag uppercase text-on-surface-variant mr-1 font-bold">STACK REGISTRADO:</span>
+<span class="inline-flex items-center gap-1.5 px-space-sm py-1 border-2 border-outline-solid bg-surface font-label-caps text-label-caps font-bold">
+<span class="w-2 h-2 bg-emerald-700"></span> Django
+                </span>
+<span class="inline-flex items-center gap-1.5 px-space-sm py-1 border-2 border-outline-solid bg-surface font-label-caps text-label-caps font-bold">
+<span class="w-2 h-2 bg-yellow-500"></span> Python
+                </span>
+<span class="inline-flex items-center gap-1.5 px-space-sm py-1 border-2 border-outline-solid bg-surface font-label-caps text-label-caps font-bold">
+<span class="w-2 h-2 bg-project-blue"></span> PostgreSQL
+                </span>
+<span class="inline-flex items-center gap-1.5 px-space-sm py-1 border-2 border-outline-solid bg-surface font-label-caps text-label-caps font-bold">
+<span class="w-2 h-2 bg-purple-600"></span> Stripe
+                </span>
+<span class="inline-flex items-center gap-1.5 px-space-sm py-1 border-2 border-outline-solid bg-surface font-label-caps text-label-caps font-bold">
+<span class="w-2 h-2 bg-skill-red"></span> Pytest
+                </span>
+</div>
+<!-- CTAs -->
+<div class="flex items-center gap-space-md">
+<a class="bg-surface hover:bg-surface-sand text-primary border-2 border-outline-solid px-space-lg py-space-sm font-label-caps text-label-caps flex items-center gap-2 neo-shadow neo-pressed transition-all" href="https://github.com/FEMADOX/Django-E-commers" rel="noopener noreferrer" target="_blank">
+<span class="material-symbols-outlined text-[18px]">terminal</span>
+<span>Ver código</span>
+</a>
+<a class="bg-secondary-container hover:bg-yellow-400 text-primary border-2 border-outline-solid px-space-lg py-space-sm font-label-caps text-label-caps flex items-center gap-2 neo-shadow neo-pressed transition-all font-bold" href="https://django-e-commers.vercel.app/" rel="noopener noreferrer" target="_blank">
+<span class="material-symbols-outlined text-[18px]">open_in_new</span>
+<span>Ver demo</span>
+</a>
+</div>
+</div>
+</section>
+<!-- ================= CAPÍTULO 01 // RESUMEN TÉCNICO Y ALCANCE ================= -->
+<section class="border-2 border-outline-solid bg-surface p-space-xl neo-shadow" id="resumen">
+<div class="flex items-center justify-between border-b-2 border-outline-solid pb-space-sm mb-space-lg">
+<div class="flex items-center gap-2">
+<span class="font-meta-tag text-meta-tag bg-primary text-surface px-2 py-0.5 font-bold">SEC_01</span>
+<h2 class="font-headline-project text-headline-project text-primary font-black uppercase">
+                  CAPÍTULO 01 // RESUMEN TÉCNICO Y ALCANCE
+                </h2>
+</div>
+<span class="font-meta-tag text-meta-tag text-on-surface-variant">[ALCANCE DEL PROYECTO]</span>
+</div>
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-space-lg">
+<div class="lg:col-span-8 flex flex-col gap-space-md">
+<p class="font-body-base text-body-base text-on-surface text-base leading-relaxed">
+                  El proyecto reúne funciones de catálogo, inventario, carrito, pagos con Stripe y gestión de órdenes. La autenticación y los paneles de cliente también forman parte del alcance descrito para esta tienda en línea.
+                </p>
+<p class="font-body-base text-body-base text-on-surface text-base leading-relaxed">
+                  Este esquema resume el recorrido conceptual entre el catálogo, el carrito, Stripe y la gestión de órdenes. Los detalles internos de la implementación no se especifican en esta ficha.
+                </p>
+<!-- Technical Highlights Checklist -->
+<div class="border-2 border-outline-solid bg-surface-sand p-space-md mt-space-sm">
+<span class="font-meta-tag text-meta-tag text-on-surface-variant uppercase font-bold block mb-space-xs">// ESPECIFICACIONES DE OPERACIÓN</span>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-2">
+<div class="flex items-center gap-2 font-label-caps text-label-caps">
+<span class="w-3 h-3 bg-primary text-surface flex items-center justify-center text-[9px] font-bold">✓</span>
+<span>Catálogo de productos e inventario</span>
+</div>
+<div class="flex items-center gap-2 font-label-caps text-label-caps">
+<span class="w-3 h-3 bg-primary text-surface flex items-center justify-center text-[9px] font-bold">✓</span>
+<span>Flujos para gestionar los productos del carrito</span>
+</div>
+<div class="flex items-center gap-2 font-label-caps text-label-caps">
+<span class="w-3 h-3 bg-primary text-surface flex items-center justify-center text-[9px] font-bold">✓</span>
+<span>Pago integrado con Stripe</span>
+</div>
+<div class="flex items-center gap-2 font-label-caps text-label-caps">
+<span class="w-3 h-3 bg-primary text-surface flex items-center justify-center text-[9px] font-bold">✓</span>
+<span>Gestión de órdenes y paneles de cliente</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Metric Card Aside -->
+<div class="lg:col-span-4 flex flex-col gap-space-md">
+<div class="border-2 border-outline-solid bg-surface-container-high p-space-md neo-shadow-sm flex flex-col justify-between h-full">
+<div>
+<div class="flex items-center justify-between border-b border-outline-solid pb-1 mb-space-sm">
+<span class="font-meta-tag text-meta-tag text-on-surface-variant uppercase font-bold">FICHA DEL PROYECTO</span>
+<span class="font-meta-tag text-meta-tag text-skill-red">E-COMMERCE</span>
+</div>
+<div class="space-y-2 font-meta-tag text-meta-tag text-on-surface">
+<div class="flex justify-between border-b border-outline-variant py-1">
+<span>ÁREAS DEL PROYECTO:</span>
+<span class="font-bold">CATÁLOGO / ÓRDENES</span>
+</div>
+<div class="flex justify-between border-b border-outline-variant py-1">
+<span>BASE DE DATOS:</span>
+<span class="font-bold">POSTGRESQL</span>
+</div>
+<div class="flex justify-between border-b border-outline-variant py-1">
+<span>INTEGRACIÓN:</span>
+<span class="font-bold">STRIPE</span>
+</div>
+<div class="flex justify-between py-1">
+<span>FRAMEWORK:</span>
+<span class="font-bold">DJANGO</span>
+</div>
+</div>
+</div>
+<div class="mt-space-md pt-space-xs border-t-2 border-outline-solid font-meta-tag text-meta-tag text-on-surface-variant">
+                    CONTENIDO DEL EXPEDIENTE: RESUMEN DEL PROYECTO.
+                  </div>
+</div>
+</div>
+</div>
+</section>
+<!-- ================= CAPÍTULO 02 // DIAGRAMA DE ARQUITECTURA DE SISTEMA ================= -->
+<section class="border-2 border-outline-solid bg-surface p-space-xl neo-shadow" id="arquitectura">
+<div class="flex items-center justify-between border-b-2 border-outline-solid pb-space-sm mb-space-lg">
+<div class="flex items-center gap-2">
+<span class="font-meta-tag text-meta-tag bg-primary text-surface px-2 py-0.5 font-bold">SEC_02</span>
+<h2 class="font-headline-project text-headline-project text-primary font-black uppercase">
+                  CAPÍTULO 02 // DIAGRAMA DE ARQUITECTURA DE SISTEMA
+                </h2>
+</div>
+<span class="font-meta-tag text-meta-tag text-on-surface-variant">[SCHEMATIC_VIEW]</span>
+</div>
+<!-- Schematic Canvas -->
+<div class="border-2 border-outline-solid bg-surface-sand p-space-lg">
+<!-- Top Flow Bar -->
+<div class="flex items-center justify-between mb-space-lg bg-surface border-2 border-outline-solid px-space-md py-space-xs font-meta-tag text-meta-tag">
+<span class="font-bold text-primary">COMPONENTES DEL PROYECTO // VISTA CONCEPTUAL</span>
+<span class="text-on-surface-variant">DIAGRAMA CONCEPTUAL</span>
+</div>
+<!-- The 4 Connected Core Nodes -->
+<div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-space-lg relative">
+<!-- NODE 1: Interfaz Web -->
+<div class="border-2 border-outline-solid bg-surface p-space-md neo-shadow-sm flex flex-col justify-between relative group">
+<div class="border-l-4 border-project-blue pl-2 mb-space-sm">
+<span class="font-meta-tag text-meta-tag text-on-surface-variant block font-bold">NODO [01]</span>
+<h3 class="font-headline-section text-headline-section text-primary">Interfaz web</h3>
+</div>
+<p class="font-body-base text-body-base text-on-surface-variant text-xs leading-relaxed mb-space-md">
+                    Interfaz conceptual para consultar el catálogo, gestionar el carrito y acceder a los paneles de cliente.
+                  </p>
+<div class="bg-surface-sand border border-outline-solid p-1.5 font-meta-tag text-meta-tag text-on-surface">
+                    COMPONENTE: INTERFAZ WEB
+                  </div>
+<!-- Connector arrow for xl screens -->
+<div class="hidden xl:flex absolute -right-5 top-1/2 -translate-y-1/2 z-10 bg-primary text-surface w-6 h-6 items-center justify-center border border-outline-solid font-bold text-xs">
+                    →
+                  </div>
+</div>
+<!-- NODE 2: Django Backend -->
+<div class="border-2 border-outline-solid bg-surface p-space-md neo-shadow-sm flex flex-col justify-between relative group">
+<div class="border-l-4 border-emerald-700 pl-2 mb-space-sm">
+<span class="font-meta-tag text-meta-tag text-on-surface-variant block font-bold">NODO [02]</span>
+<h3 class="font-headline-section text-headline-section text-primary">Django (Backend)</h3>
+</div>
+<p class="font-body-base text-body-base text-on-surface-variant text-xs leading-relaxed mb-space-md">
+                    Django forma parte del stack del proyecto y se relaciona con catálogo, carrito, autenticación y gestión de órdenes.
+                  </p>
+<div class="bg-surface-sand border border-outline-solid p-1.5 font-meta-tag text-meta-tag text-on-surface">
+                    STACK: DJANGO / PYTHON
+                  </div>
+<!-- Connector arrow for xl screens -->
+<div class="hidden xl:flex absolute -right-5 top-1/2 -translate-y-1/2 z-10 bg-primary text-surface w-6 h-6 items-center justify-center border border-outline-solid font-bold text-xs">
+                    ⇄
+                  </div>
+</div>
+<!-- NODE 3: PostgreSQL (Persistencia) -->
+<div class="border-2 border-outline-solid bg-surface p-space-md neo-shadow-sm flex flex-col justify-between relative group">
+<div class="border-l-4 border-secondary-container pl-2 mb-space-sm">
+<span class="font-meta-tag text-meta-tag text-on-surface-variant block font-bold">NODO [03]</span>
+<h3 class="font-headline-section text-headline-section text-primary">PostgreSQL</h3>
+</div>
+<p class="font-body-base text-body-base text-on-surface-variant text-xs leading-relaxed mb-space-md">
+                    PostgreSQL forma parte del stack del proyecto y se incluye en la vista conceptual de sus datos.
+                  </p>
+<div class="bg-surface-sand border border-outline-solid p-1.5 font-meta-tag text-meta-tag text-on-surface">
+                    STACK: POSTGRESQL
+                  </div>
+<!-- Connector arrow for xl screens -->
+<div class="hidden xl:flex absolute -right-5 top-1/2 -translate-y-1/2 z-10 bg-primary text-surface w-6 h-6 items-center justify-center border border-outline-solid font-bold text-xs">
+                    ⇄
+                  </div>
+</div>
+<!-- NODE 4: Stripe (Pasarela) -->
+<div class="border-2 border-outline-solid bg-surface p-space-md neo-shadow-sm flex flex-col justify-between relative group">
+<div class="border-l-4 border-skill-red pl-2 mb-space-sm">
+<span class="font-meta-tag text-meta-tag text-on-surface-variant block font-bold">NODO [04]</span>
+<h3 class="font-headline-section text-headline-section text-primary">Stripe</h3>
+</div>
+<p class="font-body-base text-body-base text-on-surface-variant text-xs leading-relaxed mb-space-md">
+                    Stripe se integra en el procesamiento de pagos del proyecto.
+                  </p>
+<div class="bg-surface-sand border border-outline-solid p-1.5 font-meta-tag text-meta-tag text-on-surface">
+                    PAGOS: STRIPE
+                  </div>
+</div>
+</div>
+<!-- Explicit Footer Caption Required by Specification -->
+<div class="mt-space-lg pt-space-sm border-t-2 border-outline-solid flex flex-col sm:flex-row justify-between items-start sm:items-center gap-2">
+<p class="font-meta-tag text-meta-tag text-on-surface font-bold tracking-wide">
+                  Vista conceptual del flujo — Diagrama esquemático de arquitectura y comunicación entre servicios
+                </p>
+<span class="font-meta-tag text-meta-tag bg-surface px-2 py-0.5 border border-outline-solid text-on-surface-variant">VISTA CONCEPTUAL</span>
+</div>
+</div>
+</section>
+<!-- ================= CAPÍTULO 03 // MATRIZ DE CAPACIDADES Y MÓDULOS ================= -->
+<section class="border-2 border-outline-solid bg-surface p-space-xl neo-shadow" id="capacidades">
+<div class="flex items-center justify-between border-b-2 border-outline-solid pb-space-sm mb-space-lg">
+<div class="flex items-center gap-2">
+<span class="font-meta-tag text-meta-tag bg-primary text-surface px-2 py-0.5 font-bold">SEC_03</span>
+<h2 class="font-headline-project text-headline-project text-primary font-black uppercase">
+                  CAPÍTULO 03 // MATRIZ DE CAPACIDADES Y MÓDULOS
+                </h2>
+</div>
+<span class="font-meta-tag text-meta-tag text-on-surface-variant">[SPECS_MATRIX]</span>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-space-lg">
+<!-- Modulo 1 -->
+<div class="border-2 border-outline-solid bg-surface-sand p-space-lg neo-shadow-sm flex flex-col justify-between">
+<div>
+<div class="flex items-center justify-between border-b-2 border-outline-solid pb-space-xs mb-space-md">
+<span class="font-label-caps text-label-caps bg-primary text-surface px-2 py-0.5">MOD_01</span>
+<span class="font-meta-tag text-meta-tag text-on-surface-variant font-bold">INVENTARIO &amp; CATÁLOGO</span>
+</div>
+<h3 class="font-headline-section text-headline-section text-primary mb-2">Catálogo e Inventario</h3>
+<p class="font-body-base text-body-base text-on-surface leading-relaxed mb-space-md">
+                    El proyecto combina el catálogo de productos con funciones de gestión de inventario dentro del e-commerce.
+                  </p>
+</div>
+<div class="border-t border-outline-solid pt-space-sm flex items-center justify-between font-meta-tag text-meta-tag">
+<span class="text-on-surface-variant">BASE DE DATOS:</span>
+<span class="font-bold">Django / PostgreSQL</span>
+</div>
+</div>
+<!-- Modulo 2 -->
+<div class="border-2 border-outline-solid bg-surface-sand p-space-lg neo-shadow-sm flex flex-col justify-between">
+<div>
+<div class="flex items-center justify-between border-b-2 border-outline-solid pb-space-xs mb-space-md">
+<span class="font-label-caps text-label-caps bg-primary text-surface px-2 py-0.5">MOD_02</span>
+<span class="font-meta-tag text-meta-tag text-on-surface-variant font-bold">CARRITO DE COMPRAS</span>
+</div>
+<h3 class="font-headline-section text-headline-section text-primary mb-2">Lógica de Carrito de Compras</h3>
+<p class="font-body-base text-body-base text-on-surface leading-relaxed mb-space-md">
+                    El carrito permite gestionar los productos seleccionados y continuar el flujo de compra antes de pasar a la gestión de la orden.
+                  </p>
+</div>
+<div class="border-t border-outline-solid pt-space-sm flex items-center justify-between font-meta-tag text-meta-tag">
+<span class="text-on-surface-variant">LÓGICA:</span>
+<span class="font-bold">Flujo de carrito</span>
+</div>
+</div>
+<!-- Modulo 3 -->
+<div class="border-2 border-outline-solid bg-surface-sand p-space-lg neo-shadow-sm flex flex-col justify-between">
+<div>
+<div class="flex items-center justify-between border-b-2 border-outline-solid pb-space-xs mb-space-md">
+<span class="font-label-caps text-label-caps bg-primary text-surface px-2 py-0.5">MOD_03</span>
+<span class="font-meta-tag text-meta-tag text-on-surface-variant font-bold">PAGOS CON STRIPE</span>
+</div>
+<h3 class="font-headline-section text-headline-section text-primary mb-2">Procesamiento de Pagos</h3>
+<p class="font-body-base text-body-base text-on-surface leading-relaxed mb-space-md">
+                    Stripe se integra en el procesamiento de pagos del e-commerce.
+                  </p>
+</div>
+<div class="border-t border-outline-solid pt-space-sm flex items-center justify-between font-meta-tag text-meta-tag">
+<span class="text-on-surface-variant">SEGURIDAD:</span>
+<span class="font-bold">Integración Stripe</span>
+</div>
+</div>
+<!-- Modulo 4 -->
+<div class="border-2 border-outline-solid bg-surface-sand p-space-lg neo-shadow-sm flex flex-col justify-between">
+<div>
+<div class="flex items-center justify-between border-b-2 border-outline-solid pb-space-xs mb-space-md">
+<span class="font-label-caps text-label-caps bg-primary text-surface px-2 py-0.5">MOD_04</span>
+<span class="font-meta-tag text-meta-tag text-on-surface-variant font-bold">ÓRDENES Y CLIENTES</span>
+</div>
+<h3 class="font-headline-section text-headline-section text-primary mb-2">Gestión de Órdenes y Clientes</h3>
+<p class="font-body-base text-body-base text-on-surface leading-relaxed mb-space-md">
+                    El proyecto incluye gestión de órdenes y paneles de cliente.
+                  </p>
+</div>
+<div class="border-t border-outline-solid pt-space-sm flex items-center justify-between font-meta-tag text-meta-tag">
+<span class="text-on-surface-variant">ESTADOS:</span>
+<span class="font-bold">Gestión de órdenes</span>
+</div>
+</div>
+</div>
+</section>
+<!-- ================= CAPÍTULO 04 // FLUJO DE TRANSACCIÓN ORDENADO ================= -->
+<section class="border-2 border-outline-solid bg-surface p-space-xl neo-shadow" id="flujo">
+<div class="flex items-center justify-between border-b-2 border-outline-solid pb-space-sm mb-space-lg">
+<div class="flex items-center gap-2">
+<span class="font-meta-tag text-meta-tag bg-primary text-surface px-2 py-0.5 font-bold">SEC_04</span>
+<h2 class="font-headline-project text-headline-project text-primary font-black uppercase">
+                  CAPÍTULO 04 // FLUJO: CATÁLOGO → ORDEN
+                </h2>
+</div>
+<span class="font-meta-tag text-meta-tag text-on-surface-variant">[PIPELINE_SEQUENCE]</span>
+</div>
+<p class="font-body-base text-body-base text-on-surface-variant max-w-3xl mb-space-lg">
+              Este recorrido conceptual resume las funciones descritas para el proyecto, desde el catálogo y el carrito hasta el pago y la gestión de órdenes.
+            </p>
+<!-- Step by Step Neo-brutalist Pipeline -->
+<div class="flex flex-col gap-space-md">
+<!-- STEP 1 -->
+<div class="border-2 border-outline-solid bg-surface p-space-md flex flex-col md:flex-row items-start md:items-center justify-between gap-space-md hover:bg-surface-sand transition-colors">
+<div class="flex items-center gap-space-md">
+<div class="w-12 h-12 bg-primary text-surface flex items-center justify-center font-meta-tag font-bold text-lg border-2 border-outline-solid shrink-0">
+                    01
+                  </div>
+<div>
+<h3 class="font-headline-section text-headline-section text-primary">Exploración de Catálogo</h3>
+<p class="font-body-base text-body-base text-on-surface-variant text-sm mt-0.5">
+                      El catálogo reúne los productos contemplados por el proyecto.
+                    </p>
+</div>
+</div>
+<div class="bg-surface-sand border border-outline-solid px-3 py-1 font-meta-tag text-meta-tag font-bold shrink-0">
+                  ETAPA: CATÁLOGO
+                </div>
+</div>
+<!-- STEP 2 -->
+<div class="border-2 border-outline-solid bg-surface p-space-md flex flex-col md:flex-row items-start md:items-center justify-between gap-space-md hover:bg-surface-sand transition-colors">
+<div class="flex items-center gap-space-md">
+<div class="w-12 h-12 bg-secondary-container text-primary flex items-center justify-center font-meta-tag font-bold text-lg border-2 border-outline-solid shrink-0">
+                    02
+                  </div>
+<div>
+<h3 class="font-headline-section text-headline-section text-primary">Adición y Modificación en Carrito</h3>
+<p class="font-body-base text-body-base text-on-surface-variant text-sm mt-0.5">
+                      El carrito permite revisar y gestionar los productos seleccionados antes del pago.
+                    </p>
+</div>
+</div>
+<div class="bg-surface-sand border border-outline-solid px-3 py-1 font-meta-tag text-meta-tag font-bold shrink-0">
+                  ETAPA: CARRITO
+                </div>
+</div>
+<!-- STEP 3 -->
+<div class="border-2 border-outline-solid bg-surface p-space-md flex flex-col md:flex-row items-start md:items-center justify-between gap-space-md hover:bg-surface-sand transition-colors">
+<div class="flex items-center gap-space-md">
+<div class="w-12 h-12 bg-project-blue text-surface flex items-center justify-center font-meta-tag font-bold text-lg border-2 border-outline-solid shrink-0">
+                    03
+                  </div>
+<div>
+<h3 class="font-headline-section text-headline-section text-primary">Delegación de Pago en Stripe</h3>
+<p class="font-body-base text-body-base text-on-surface-variant text-sm mt-0.5">
+                      Stripe forma parte del procesamiento de pagos del proyecto.
+                    </p>
+</div>
+</div>
+<div class="bg-surface-sand border border-outline-solid px-3 py-1 font-meta-tag text-meta-tag font-bold shrink-0">
+                  ETAPA: PAGO
+                </div>
+</div>
+<!-- STEP 4 -->
+<div class="border-2 border-outline-solid bg-surface p-space-md flex flex-col md:flex-row items-start md:items-center justify-between gap-space-md hover:bg-surface-sand transition-colors">
+<div class="flex items-center gap-space-md">
+<div class="w-12 h-12 bg-emerald-700 text-surface flex items-center justify-center font-meta-tag font-bold text-lg border-2 border-outline-solid shrink-0">
+                    04
+                  </div>
+<div>
+<h3 class="font-headline-section text-headline-section text-primary">Confirmación y Generación de Orden</h3>
+<p class="font-body-base text-body-base text-on-surface-variant text-sm mt-0.5">
+                      La gestión de órdenes y los paneles de cliente forman parte de las funciones del proyecto.
+                    </p>
+</div>
+</div>
+<div class="bg-surface-sand border border-outline-solid px-3 py-1 font-meta-tag text-meta-tag font-bold shrink-0">
+                  ETAPA: ÓRDENES
+                </div>
+</div>
+</div>
+</section>
+<!-- ================= CAPÍTULO 05 // STACK TECNOLÓGICO ORGANIZADO ================= -->
+<section class="border-2 border-outline-solid bg-surface p-space-xl neo-shadow" id="stack">
+<div class="flex items-center justify-between border-b-2 border-outline-solid pb-space-sm mb-space-lg">
+<div class="flex items-center gap-2">
+<span class="font-meta-tag text-meta-tag bg-primary text-surface px-2 py-0.5 font-bold">SEC_05</span>
+<h2 class="font-headline-project text-headline-project text-primary font-black uppercase">
+                  CAPÍTULO 05 // STACK TECNOLÓGICO
+                </h2>
+</div>
+<span class="font-meta-tag text-meta-tag text-on-surface-variant">[TECH_INVENTORY]</span>
+</div>
+<!-- Grouped Technology Cards -->
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-space-md">
+<!-- Group 1: Backend & Framework -->
+<div class="border-2 border-outline-solid bg-surface-sand p-space-md neo-shadow-sm flex flex-col justify-between">
+<div>
+<div class="font-meta-tag text-meta-tag text-on-surface-variant border-b border-outline-solid pb-1 mb-2 font-bold uppercase">
+                    BACKEND &amp; FRAMEWORK
+                  </div>
+<h4 class="font-headline-section text-headline-section text-primary mb-2">Django &amp; Python</h4>
+<p class="font-body-base text-body-base text-on-surface-variant text-xs leading-relaxed mb-space-md">
+                    Django y Python constituyen tecnologías confirmadas en el stack del proyecto.
+                  </p>
+</div>
+<div class="flex flex-wrap gap-1">
+<span class="bg-surface border border-outline-solid px-2 py-0.5 font-meta-tag text-meta-tag font-bold">Django</span>
+<span class="bg-surface border border-outline-solid px-2 py-0.5 font-meta-tag text-meta-tag font-bold">Python</span>
+</div>
+</div>
+<!-- Group 2: DB -->
+<div class="border-2 border-outline-solid bg-surface-sand p-space-md neo-shadow-sm flex flex-col justify-between">
+<div>
+<div class="font-meta-tag text-meta-tag text-on-surface-variant border-b border-outline-solid pb-1 mb-2 font-bold uppercase">
+                    BASE DE DATOS &amp; PERSISTENCIA
+                  </div>
+<h4 class="font-headline-section text-headline-section text-primary mb-2">PostgreSQL</h4>
+<p class="font-body-base text-body-base text-on-surface-variant text-xs leading-relaxed mb-space-md">
+                    PostgreSQL forma parte del stack del proyecto.
+                  </p>
+</div>
+<div class="flex flex-wrap gap-1">
+<span class="bg-surface border border-outline-solid px-2 py-0.5 font-meta-tag text-meta-tag font-bold">PostgreSQL</span>
+<span class="bg-surface border border-outline-solid px-2 py-0.5 font-meta-tag text-meta-tag font-bold">Órdenes</span>
+</div>
+</div>
+<!-- Group 3: Payments -->
+<div class="border-2 border-outline-solid bg-surface-sand p-space-md neo-shadow-sm flex flex-col justify-between">
+<div>
+<div class="font-meta-tag text-meta-tag text-on-surface-variant border-b border-outline-solid pb-1 mb-2 font-bold uppercase">
+                    PAGOS &amp; INTEGRACIÓN
+                  </div>
+<h4 class="font-headline-section text-headline-section text-primary mb-2">Stripe API</h4>
+<p class="font-body-base text-body-base text-on-surface-variant text-xs leading-relaxed mb-space-md">
+                    Stripe se integra en el procesamiento de pagos del proyecto.
+                  </p>
+</div>
+<div class="flex flex-wrap gap-1">
+<span class="bg-surface border border-outline-solid px-2 py-0.5 font-meta-tag text-meta-tag font-bold">Stripe</span>
+<span class="bg-surface border border-outline-solid px-2 py-0.5 font-meta-tag text-meta-tag font-bold">Pagos</span>
+</div>
+</div>
+<!-- Group 4: Environment & Tools -->
+<div class="border-2 border-outline-solid bg-surface-sand p-space-md neo-shadow-sm flex flex-col justify-between">
+<div>
+<div class="font-meta-tag text-meta-tag text-on-surface-variant border-b border-outline-solid pb-1 mb-2 font-bold uppercase">
+                    PRUEBAS DEL PROYECTO
+                  </div>
+<h4 class="font-headline-section text-headline-section text-primary mb-2">Pytest</h4>
+<p class="font-body-base text-body-base text-on-surface-variant text-xs leading-relaxed mb-space-md">
+                    Pytest se utiliza como herramienta de pruebas del proyecto.
+                  </p>
+</div>
+<div class="flex flex-wrap gap-1">
+<span class="bg-surface border border-outline-solid px-2 py-0.5 font-meta-tag text-meta-tag font-bold">Pytest</span>
+<span class="bg-surface border border-outline-solid px-2 py-0.5 font-meta-tag text-meta-tag font-bold">Pytest</span>
+</div>
+</div>
+</div>
+</section>
+<!-- ================= CAPÍTULO 06 // SUITE DE PRUEBAS CON PYTEST ================= -->
+<section class="border-2 border-outline-solid bg-surface p-space-xl neo-shadow" id="pruebas">
+<div class="flex items-center justify-between border-b-2 border-outline-solid pb-space-sm mb-space-lg">
+<div class="flex items-center gap-2">
+<span class="font-meta-tag text-meta-tag bg-primary text-surface px-2 py-0.5 font-bold">SEC_06</span>
+<h2 class="font-headline-project text-headline-project text-primary font-black uppercase">
+                  CAPÍTULO 06 // PRUEBAS CON PYTEST
+                </h2>
+</div>
+<span class="font-meta-tag text-meta-tag text-on-surface-variant">[QUALITY_ASSURANCE]</span>
+</div>
+<div class="flex flex-col lg:flex-row gap-space-lg items-start">
+<div class="flex-1 flex flex-col gap-space-md">
+<p class="font-body-base text-body-base text-on-surface text-base leading-relaxed">
+                  Esta ficha indica el uso de <strong>Pytest</strong> como herramienta de pruebas del proyecto. No se detallan casos, cobertura ni resultados.
+                </p>
+<div class="space-y-space-sm">
+<div class="border-2 border-outline-solid bg-surface-sand p-space-md flex gap-space-md items-start">
+<span class="material-symbols-outlined text-primary text-[20px] mt-0.5">check_circle</span>
+<div>
+<h4 class="font-body-bold text-body-bold text-primary">Herramienta de pruebas</h4>
+<p class="font-body-base text-body-base text-on-surface-variant text-sm mt-0.5">
+                        El proyecto indica el uso de Pytest para sus pruebas.
+                      </p>
+</div>
+</div>
+<div class="border-2 border-outline-solid bg-surface-sand p-space-md flex gap-space-md items-start">
+<span class="material-symbols-outlined text-primary text-[20px] mt-0.5">check_circle</span>
+<div>
+<h4 class="font-body-bold text-body-bold text-primary">Casos y cobertura</h4>
+<p class="font-body-base text-body-base text-on-surface-variant text-sm mt-0.5">
+                        La ficha no enumera casos específicos ni porcentaje de cobertura.
+                      </p>
+</div>
+</div>
+<div class="border-2 border-outline-solid bg-surface-sand p-space-md flex gap-space-md items-start">
+<span class="material-symbols-outlined text-primary text-[20px] mt-0.5">check_circle</span>
+<div>
+<h4 class="font-body-bold text-body-bold text-primary">Resultados</h4>
+<p class="font-body-base text-body-base text-on-surface-variant text-sm mt-0.5"> No se detallan casos concretos de prueba ni sus resultados.</p>
+</div>
+</div>
+</div>
+</div>
+<!-- Terminal Representation for Pytest Execution -->
+<div class="w-full lg:w-[460px] border-2 border-outline-solid bg-[#181818] text-[#EEEEEE] neo-shadow-sm font-code-base">
+<!-- Window Bar -->
+<div class="bg-[#222222] px-3 py-1.5 border-b-2 border-outline-solid flex items-center justify-between">
+<div class="flex items-center gap-1.5">
+<span class="w-2.5 h-2.5 bg-skill-red inline-block"></span>
+<span class="w-2.5 h-2.5 bg-secondary-container inline-block"></span>
+<span class="w-2.5 h-2.5 bg-emerald-500 inline-block"></span>
+</div>
+<span class="font-meta-tag text-meta-tag text-[#c4c7c7]">HERRAMIENTA // PYTEST</span>
+</div>
+<!-- Terminal Output Content -->
+<div class="p-space-md text-xs space-y-1.5 font-mono">
+<p class="text-[#858383]">PRUEBAS DEL PROYECTO // PYTEST</p>
+<p class="text-emerald-400">CASOS Y RESULTADOS: NO ESPECIFICADOS</p>
+<p class="text-[#EEEEEE]">DETALLE DE PRUEBAS: NO INDICADO</p>
+<div class="pt-1 text-xs space-y-1">
+<p class="text-[#EEEEEE]">Pytest se utiliza como herramienta de pruebas del proyecto.</p>
+<p class="text-[#858383]">No se detallan casos ni resultados de ejecución.</p>
+</div>
+<div class="pt-2 border-t border-[#333333] text-emerald-400 font-bold flex justify-between">
+<span>RESULTADOS DE EJECUCIÓN: NO INDICADOS</span>
+<span class="text-[#858383]">ESTADO: SIN RESULTADOS DETALLADOS</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- ================= CAPÍTULO 07 // REPOSITORIO & DEMO & NAVEGACIÓN ================= -->
+<section class="border-2 border-outline-solid bg-surface p-space-xl neo-shadow" id="demo">
+<div class="flex items-center justify-between border-b-2 border-outline-solid pb-space-sm mb-space-lg">
+<div class="flex items-center gap-2">
+<span class="font-meta-tag text-meta-tag bg-primary text-surface px-2 py-0.5 font-bold">SEC_07</span>
+<h2 class="font-headline-project text-headline-project text-primary font-black uppercase">
+                  CAPÍTULO 07 // REPOSITORIO &amp; ACCESO AL PROYECTO
+                </h2>
+</div>
+<span class="font-meta-tag text-meta-tag text-on-surface-variant">[DISPATCH_ACCESS]</span>
+</div>
+<!-- Direct Code & Demo Launchpad -->
+<div class="grid grid-cols-1 md:grid-cols-2 gap-space-lg mb-space-xl">
+<!-- Repo Box -->
+<div class="border-2 border-outline-solid bg-surface-sand p-space-lg flex flex-col justify-between neo-shadow-sm">
+<div>
+<div class="flex items-center gap-2 mb-2">
+<span class="material-symbols-outlined text-primary text-[20px]">code</span>
+<span class="font-meta-tag text-meta-tag uppercase font-bold text-on-surface-variant">REPOSITORIO DEL PROYECTO</span>
+</div>
+<h3 class="font-headline-section text-headline-section text-primary">Repositorio en GitHub</h3>
+<p class="font-body-base text-body-base text-on-surface-variant text-sm mt-1 leading-relaxed">
+                    Acceso al repositorio de GitHub indicado para este proyecto.
+                  </p>
+</div>
+<div class="mt-space-lg pt-space-sm border-t border-outline-solid">
+<a class="inline-flex items-center justify-between w-full bg-primary hover:bg-surface hover:text-primary text-surface border-2 border-outline-solid py-space-sm px-space-md font-label-caps text-label-caps neo-shadow-sm neo-pressed transition-colors" href="https://github.com/FEMADOX/Django-E-commers" rel="noopener noreferrer" target="_blank">
+<span>Abrir GitHub // FEMADOX/Django-E-commers</span>
+<span class="material-symbols-outlined text-[16px]">arrow_outward</span>
+</a>
+</div>
+</div>
+<!-- Demo Box -->
+<div class="border-2 border-outline-solid bg-secondary-container/40 p-space-lg flex flex-col justify-between neo-shadow-sm">
+<div>
+<div class="flex items-center gap-2 mb-2">
+<span class="material-symbols-outlined text-primary text-[20px]">public</span>
+<span class="font-meta-tag text-meta-tag uppercase font-bold text-on-surface-variant">ENLACE DE DEMO</span>
+</div>
+<h3 class="font-headline-section text-headline-section text-primary">Demostración en Línea</h3>
+<p class="font-body-base text-body-base text-on-surface-variant text-sm mt-1 leading-relaxed">
+                    El proyecto incluye un enlace de demo.
+                  </p>
+</div>
+<div class="mt-space-lg pt-space-sm border-t border-outline-solid">
+<a class="inline-flex items-center justify-between w-full bg-secondary-container hover:bg-yellow-400 text-primary border-2 border-outline-solid py-space-sm px-space-md font-label-caps text-label-caps font-bold neo-shadow-sm neo-pressed transition-colors" href="https://django-e-commers.vercel.app/" rel="noopener noreferrer" target="_blank">
+<span>Ver enlace de demo</span>
+<span class="material-symbols-outlined text-[16px]">open_in_new</span>
+</a>
+</div>
+</div>
+</div>
+<!-- Inter-Project Navigation: NEXT PROJECT CARD -->
+<div class="border-2 border-outline-solid bg-surface-container-low p-space-lg neo-shadow-sm">
+<div class="flex items-center justify-between border-b-2 border-outline-solid pb-2 mb-space-md">
+<span class="font-meta-tag text-meta-tag text-on-surface-variant uppercase font-bold">// SIGUIENTE PROYECTO DISPONIBLE</span>
+<span class="font-meta-tag text-meta-tag bg-primary text-surface px-1.5 py-0.5">EXPEDIENTE 03</span>
+</div>
+<div class="flex flex-col lg:flex-row items-start lg:items-center justify-between gap-space-lg">
+<div class="flex flex-col gap-1">
+<div class="font-meta-tag text-meta-tag text-on-surface-variant">PERIODO: Octubre 2024 — Agosto 2025</div>
+<h3 class="font-headline-project text-headline-project text-primary font-black">
+                    Plataforma social con marcadores
+                  </h3>
+<div class="flex flex-wrap items-center gap-2 mt-1">
+<span class="bg-surface border border-outline-solid px-2 py-0.5 font-meta-tag text-meta-tag font-bold">Django</span>
+<span class="bg-surface border border-outline-solid px-2 py-0.5 font-meta-tag text-meta-tag font-bold">Python</span>
+<span class="bg-surface border border-outline-solid px-2 py-0.5 font-meta-tag text-meta-tag font-bold">PostgreSQL</span>
+</div>
+</div>
+<div class="flex flex-wrap items-center gap-space-md">
+<a class="border-2 border-outline-solid bg-surface px-space-md py-space-sm font-label-caps text-label-caps text-primary hover:bg-surface-sand transition-all neo-shadow-sm neo-pressed" href="/es#projects">
+                    Volver a todos los proyectos
+                  </a>
+<a class="border-2 border-outline-solid bg-secondary-container px-space-lg py-space-sm font-label-caps text-label-caps text-primary font-bold hover:bg-yellow-400 transition-all neo-shadow-sm neo-pressed flex items-center gap-2" href="/es/projects/social-bookmarking">
+<span>Ver expediente completo</span>
+<span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+</a>
+</div>
+</div>
+</div>
+</section>
+</div>
+<!-- STICKY IN-PAGE TABLE OF CONTENTS (TOC Rail) -->
+<aside class="w-[280px] shrink-0 hidden 2xl:block">
+<div class="sticky top-[76px] border-2 border-outline-solid bg-surface-sand p-space-md neo-shadow-sm flex flex-col gap-space-md">
+<div class="flex items-center justify-between border-b-2 border-outline-solid pb-2">
+<span class="font-label-caps text-label-caps uppercase font-bold text-primary">ÍNDICE DEL DOSSIER</span>
+<span class="font-meta-tag text-meta-tag text-skill-red">TOC // 7 SEC</span>
+</div>
+<!-- TOC Links -->
+<nav class="flex flex-col gap-1 font-meta-tag text-meta-tag">
+<a class="px-2 py-1.5 border border-transparent hover:border-outline-solid hover:bg-surface text-on-surface flex items-center justify-between transition-colors" href="#hero">
+<span>01. Resumen &amp; Ficha</span>
+<span class="text-on-surface-variant font-mono">01</span>
+</a>
+<a class="px-2 py-1.5 border border-transparent hover:border-outline-solid hover:bg-surface text-on-surface flex items-center justify-between transition-colors" href="#arquitectura">
+<span>02. Arquitectura de Sistema</span>
+<span class="text-on-surface-variant font-mono">02</span>
+</a>
+<a class="px-2 py-1.5 border border-transparent hover:border-outline-solid hover:bg-surface text-on-surface flex items-center justify-between transition-colors" href="#capacidades">
+<span>03. Capacidades &amp; Módulos</span>
+<span class="text-on-surface-variant font-mono">03</span>
+</a>
+<a class="px-2 py-1.5 border border-transparent hover:border-outline-solid hover:bg-surface text-on-surface flex items-center justify-between transition-colors" href="#flujo">
+<span>04. Flujo: Catálogo → Orden</span>
+<span class="text-on-surface-variant font-mono">04</span>
+</a>
+<a class="px-2 py-1.5 border border-transparent hover:border-outline-solid hover:bg-surface text-on-surface flex items-center justify-between transition-colors" href="#stack">
+<span>05. Stack Tecnológico</span>
+<span class="text-on-surface-variant font-mono">05</span>
+</a>
+<a class="px-2 py-1.5 border border-transparent hover:border-outline-solid hover:bg-surface text-on-surface flex items-center justify-between transition-colors" href="#pruebas">
+<span>06. Pruebas con Pytest</span>
+<span class="text-on-surface-variant font-mono">06</span>
+</a>
+<a class="px-2 py-1.5 border border-transparent hover:border-outline-solid hover:bg-surface text-on-surface flex items-center justify-between transition-colors" href="#demo">
+<span>07. Repositorio &amp; Demo</span>
+<span class="text-on-surface-variant font-mono">07</span>
+</a>
+</nav>
+<!-- Quick Action Shortcut -->
+<div class="border-t-2 border-outline-solid pt-space-sm flex flex-col gap-2">
+<a class="bg-surface hover:bg-secondary-container text-primary border-2 border-outline-solid p-1.5 font-label-caps text-label-caps text-center neo-pressed transition-colors" href="https://github.com/FEMADOX/Django-E-commers" rel="noopener noreferrer" target="_blank">
+                GITHUB REPO ↗
+              </a>
+<a class="bg-primary text-surface hover:bg-surface-sand hover:text-primary border-2 border-outline-solid p-1.5 font-label-caps text-label-caps text-center neo-pressed transition-colors" href="https://django-e-commers.vercel.app/" rel="noopener noreferrer" target="_blank">
+                VER DEMO ↗
+              </a>
+</div>
+<!-- Footer Badge -->
+<div class="bg-surface p-1.5 border border-outline-solid font-meta-tag text-meta-tag text-on-surface-variant text-center">
+              PROYECTO: E-COMMERCE
+            </div>
+</div>
+</aside>
+</div>
+<!-- ================= FOOTER DEL PORTAFOLIO ================= -->
+<footer class="w-full mt-auto py-space-lg px-space-xl border-t-2 border-outline-solid bg-surface-muted flex flex-col md:flex-row justify-between items-center gap-space-md">
+<!-- Copyright & Identity -->
+<div class="flex items-center gap-space-md">
+<span class="w-3 h-3 bg-primary inline-block"></span>
+<span class="font-meta-tag text-meta-tag text-primary font-bold">
+            © 2026 GIANCARLOS GONZALEZ. SISTEMA DE ARCHIVOS TÉCNICOS.
+          </span>
+</div>
+<!-- Links to external profiles -->
+<div class="flex flex-wrap items-center gap-space-lg">
+<a class="font-label-caps text-label-caps text-on-surface-variant hover:text-primary hover:underline transition-colors" href="/es#projects">
+            /es#projects
+          </a>
+<a class="font-label-caps text-label-caps text-on-surface-variant hover:text-primary hover:underline transition-colors" href="/es/projects/social-bookmarking">
+            /es/projects/social-bookmarking
+          </a>
+<a class="font-label-caps text-label-caps font-bold text-primary hover:underline flex items-center gap-1" href="https://github.com/FEMADOX" rel="noopener noreferrer" target="_blank">
+<span>GITHUB</span>
+<span class="material-symbols-outlined text-[14px]">arrow_outward</span>
+</a>
+<a class="font-label-caps text-label-caps font-bold text-primary hover:underline flex items-center gap-1" href="https://www.linkedin.com/in/giancarlos-gonzalez-leyva" rel="noopener noreferrer" target="_blank">
+<span>LINKEDIN</span>
+<span class="material-symbols-outlined text-[14px]">arrow_outward</span>
+</a>
+</div>
+</footer>
+</main>
+</div>
+</body></html>
