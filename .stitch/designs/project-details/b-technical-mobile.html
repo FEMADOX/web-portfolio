@@ -1,0 +1,740 @@
+<!DOCTYPE html>
+
+<html class="light" lang="es"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Detalle de proyecto · B · Dossier técnico</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;700;900&amp;family=Geist+Mono:wght@400;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+            "surface-container": "#f1edec",
+            "on-primary": "#ffffff",
+            "surface-muted": "#E4E1DA",
+            "secondary-fixed-dim": "#f1c011",
+            "outline": "#222222",
+            "surface": "#F5EDE9",
+            "on-primary-fixed": "#1c1b1b",
+            "on-error-container": "#93000a",
+            "tertiary-fixed": "#e6e2df",
+            "surface-bright": "#fdf8f8",
+            "dark-surface": "#030303",
+            "on-primary-fixed-variant": "#474746",
+            "dark-accent": "#FAC547",
+            "background": "#fdf8f8",
+            "skill-red": "#B91C1C",
+            "on-accent": "#181818",
+            "on-error": "#ffffff",
+            "error": "#DB0002",
+            "on-tertiary-fixed": "#1c1b1a",
+            "surface-container-highest": "#e5e2e1",
+            "primary-fixed": "#e5e2e1",
+            "primary-container": "#1c1b1b",
+            "accent": "#FCCA21",
+            "surface-container-low": "#f7f3f2",
+            "outline-variant": "#c4c7c7",
+            "on-tertiary": "#ffffff",
+            "on-secondary-fixed": "#241a00",
+            "on-surface": "#1c1b1b",
+            "tertiary": "#000000",
+            "dark-on-surface": "#EEEEEE",
+            "surface-dim": "#ddd9d8",
+            "surface-container-lowest": "#ffffff",
+            "primary-fixed-dim": "#c8c6c5",
+            "on-secondary": "#ffffff",
+            "on-primary-container": "#858383",
+            "surface-tint": "#5f5e5e",
+            "on-surface-variant": "#484848",
+            "on-background": "#1c1b1b",
+            "on-secondary-container": "#6f5700",
+            "inverse-surface": "#313030",
+            "project-blue": "#1D4ED8",
+            "on-secondary-fixed-variant": "#584400",
+            "on-tertiary-container": "#868382",
+            "inverse-primary": "#c8c6c5",
+            "surface-container-high": "#ebe7e6",
+            "secondary": "#F53E36",
+            "primary": "#000000",
+            "tertiary-container": "#1c1b1a",
+            "secondary-container": "#fecb23",
+            "surface-variant": "#e5e2e1",
+            "inverse-on-surface": "#f4f0ef",
+            "tertiary-fixed-dim": "#cac6c4",
+            "on-tertiary-fixed-variant": "#484645",
+            "dark-surface-container": "#070707",
+            "secondary-fixed": "#ffe08e",
+            "error-container": "#ffdad6"
+          },
+          "borderRadius": {
+            "DEFAULT": "0.25rem",
+            "lg": "0.5rem",
+            "xl": "0.75rem",
+            "full": "9999px"
+          },
+          "spacing": {
+            "space-xs": "0.25rem",
+            "space-lg": "1.5rem",
+            "margin": "1.5rem",
+            "gutter": "1rem",
+            "space-sm": "0.5rem",
+            "space-md": "1rem",
+            "space-xl": "2rem"
+          },
+          "fontFamily": {
+            "headline-section": [
+              "\"Geist, system-ui, sans-serif\""
+            ],
+            "headline-project": [
+              "\"Geist, system-ui, sans-serif\""
+            ],
+            "body-base": [
+              "\"Geist, system-ui, sans-serif\""
+            ],
+            "headline-hero-sm": [
+              "\"Geist, system-ui, sans-serif\""
+            ],
+            "headline-hero-lg": [
+              "\"Geist, system-ui, sans-serif\""
+            ],
+            "code-base": [
+              "\"Geist Mono, monospace\""
+            ],
+            "label-caps": [
+              "\"Geist Mono, monospace\""
+            ],
+            "headline-hero": [
+              "\"Geist, system-ui, sans-serif\""
+            ]
+          },
+          "fontSize": {
+            "headline-section": [
+              "18px",
+              {
+                "lineHeight": "1.2",
+                "letterSpacing": "0.05em",
+                "fontWeight": "900"
+              }
+            ],
+            "headline-project": [
+              "24px",
+              {
+                "lineHeight": "1.3",
+                "fontWeight": "900"
+              }
+            ],
+            "body-base": [
+              "14px",
+              {
+                "lineHeight": "1.6",
+                "fontWeight": "400"
+              }
+            ],
+            "headline-hero-sm": [
+              "48px",
+              {
+                "lineHeight": "1.1",
+                "fontWeight": "900"
+              }
+            ],
+            "headline-hero-lg": [
+              "60px",
+              {
+                "lineHeight": "1.1",
+                "fontWeight": "900"
+              }
+            ],
+            "code-base": [
+              "14px",
+              {
+                "lineHeight": "1.5",
+                "fontWeight": "400"
+              }
+            ],
+            "label-caps": [
+              "11px",
+              {
+                "lineHeight": "1.2",
+                "letterSpacing": "0.05em",
+                "fontWeight": "700"
+              }
+            ],
+            "headline-hero": [
+              "36px",
+              {
+                "lineHeight": "1.1",
+                "letterSpacing": "-0.02em",
+                "fontWeight": "900"
+              }
+            ]
+          },
+          "boxShadow": {
+            "brutal": "3px 3px 0 #181818",
+            "brutal-sm": "2px 2px 0 #181818",
+            "brutal-lg": "4px 4px 0 #181818"
+          }
+        }
+      }
+    }
+  </script>
+<style>
+    .material-symbols-outlined {
+      font-variation-settings: 'FILL' 0, 'wght' 600, 'GRAD' 0, 'opsz' 20;
+      font-size: 16px;
+      line-height: 1;
+    }
+    .no-scrollbar::-webkit-scrollbar {
+      display: none;
+    }
+    .no-scrollbar {
+      -ms-overflow-style: none;
+      scrollbar-width: none;
+    }
+  </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-surface text-on-surface font-body-base antialiased min-h-screen selection:bg-accent selection:text-primary">
+<!-- Mobile Viewport Frame (Strict 390px simulated max container centered on screen) -->
+<div class="w-full max-w-[390px] mx-auto min-h-screen bg-surface border-x-2 border-outline flex flex-col shadow-2xl relative">
+<!-- 1. COMPACT MOBILE HEADER (Anchored TopNavBar implementation) -->
+<header class="sticky top-0 z-50 bg-surface border-b-2 border-outline px-space-md py-space-sm flex flex-col gap-space-xs">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-space-xs">
+<span class="inline-block w-2.5 h-2.5 bg-accent border border-outline"></span>
+<span class="font-label-caps text-label-caps text-primary tracking-widest font-black">
+            GIANCARLOS GONZALEZ // DOSSIER
+          </span>
+</div>
+<div class="flex items-center gap-space-xs">
+<button aria-label="Cambiar tema" class="p-1 border-2 border-outline bg-surface-muted hover:bg-accent transition-colors flex items-center justify-center" type="button">
+<span class="material-symbols-outlined text-primary" data-icon="dark_mode">dark_mode</span>
+</button>
+<div class="px-space-xs py-0.5 border-2 border-outline bg-surface-muted font-label-caps text-label-caps text-primary font-bold">
+            ES
+          </div>
+</div>
+</div>
+<!-- Navigation & Dossier Sub-bar -->
+<div class="flex items-center justify-between border-t border-outline/30 pt-1.5 mt-0.5">
+<a class="font-label-caps text-label-caps text-primary flex items-center gap-1 hover:underline font-bold" href="/es#projects">
+<span class="material-symbols-outlined text-xs" data-icon="arrow_back">arrow_back</span>
+          Volver a proyectos
+        </a>
+<div class="flex items-center gap-1.5">
+<span class="bg-primary text-on-primary font-label-caps text-[9px] px-1 py-0.5 font-bold">B-02</span>
+<span class="bg-accent text-on-accent font-label-caps text-[9px] border border-outline px-1 py-0.5 font-bold">2026</span>
+</div>
+</div>
+</header>
+<!-- 2. DOSSIER HERO -->
+<section class="p-space-md bg-surface border-b-2 border-outline flex flex-col gap-space-md">
+<!-- Technical Metatags -->
+<div class="flex flex-wrap items-center gap-1.5">
+<span class="font-label-caps text-[10px] font-bold px-2 py-0.5 border-2 border-outline bg-surface-muted text-primary">
+          EXPEDIENTE TÉCNICO // REF. B-02
+        </span>
+<span class="font-label-caps text-[10px] font-bold px-2 py-0.5 border-2 border-outline bg-accent text-on-accent">
+          CATEGORÍA: WEB
+        </span>
+</div>
+<!-- Hero Title -->
+<div>
+<h1 class="font-headline-project text-headline-project text-primary uppercase tracking-tight leading-none mb-space-xs">
+          PLATAFORMA E-COMMERCE CON DJANGO
+        </h1>
+<p class="font-body-base text-body-base text-on-surface-variant font-medium">
+          E-commerce con catálogo, inventario, carrito, pagos con Stripe, autenticación, gestión de órdenes y paneles de cliente.
+        </p>
+</div>
+<!-- Fact Panel Card -->
+<div class="border-2 border-outline bg-surface-container-high p-space-sm shadow-brutal flex flex-col gap-space-xs">
+<div class="flex justify-between items-baseline border-b border-outline/30 pb-1">
+<span class="font-label-caps text-[10px] text-on-surface-variant uppercase">ROL EJECUTADO:</span>
+<span class="font-label-caps text-[11px] font-bold text-primary">Desarrollo full stack</span>
+</div>
+<div class="flex justify-between items-baseline border-b border-outline/30 pb-1">
+<span class="font-label-caps text-[10px] text-on-surface-variant uppercase">PERÍODO:</span>
+<span class="font-label-caps text-[11px] font-bold text-primary">Enero 2025 — Enero 2026</span>
+</div>
+<div class="flex justify-between items-baseline border-b border-outline/30 pb-1">
+<span class="font-label-caps text-[10px] text-on-surface-variant uppercase">TECNOLOGÍAS CLAVE:</span>
+<span class="font-label-caps text-[11px] font-bold text-primary">Django, Python, PostgreSQL, Stripe</span>
+</div>
+<div class="flex justify-between items-baseline">
+<span class="font-label-caps text-[10px] text-on-surface-variant uppercase">SUITE DE PRUEBAS:</span>
+<span class="font-label-caps text-[11px] font-bold text-primary">Pytest</span>
+</div>
+</div>
+<!-- Stack Chips -->
+<div class="flex flex-wrap gap-1.5">
+<span class="font-label-caps text-[10px] font-bold px-2 py-1 bg-surface-muted border-2 border-outline">Django</span>
+<span class="font-label-caps text-[10px] font-bold px-2 py-1 bg-surface-muted border-2 border-outline">Python</span>
+<span class="font-label-caps text-[10px] font-bold px-2 py-1 bg-surface-muted border-2 border-outline">PostgreSQL</span>
+<span class="font-label-caps text-[10px] font-bold px-2 py-1 bg-surface-muted border-2 border-outline">Stripe</span>
+<span class="font-label-caps text-[10px] font-bold px-2 py-1 bg-accent border-2 border-outline">Pytest</span>
+</div>
+<!-- CTAs (Touch-Friendly Buttons) -->
+<div class="grid grid-cols-2 gap-space-sm pt-space-xs">
+<a class="h-11 flex items-center justify-center gap-1.5 border-2 border-outline bg-primary text-on-primary font-label-caps text-label-caps font-bold shadow-brutal active:translate-x-0.5 active:translate-y-0.5 transition-transform" href="https://github.com/FEMADOX/Django-E-commers" rel="noopener noreferrer" target="_blank">
+<span>Ver código</span>
+<span class="material-symbols-outlined text-sm" data-icon="open_in_new">open_in_new</span>
+</a>
+<a class="h-11 flex items-center justify-center gap-1.5 border-2 border-outline bg-accent text-on-accent font-label-caps text-label-caps font-bold shadow-brutal active:translate-x-0.5 active:translate-y-0.5 transition-transform" href="https://django-e-commers.vercel.app/" rel="noopener noreferrer" target="_blank">
+<span>Ver demo</span>
+<span class="material-symbols-outlined text-sm" data-icon="open_in_new">open_in_new</span>
+</a>
+</div>
+</section>
+<!-- 3. CHAPTER NAVIGATOR (Horizontal scroll sticky subnav) -->
+<nav class="sticky top-[73px] z-40 bg-surface-muted border-b-2 border-outline py-2 px-space-sm overflow-x-auto no-scrollbar flex items-center gap-2">
+<a class="whitespace-nowrap px-2 py-1 font-label-caps text-[10px] font-bold border border-outline bg-surface hover:bg-accent transition-colors" href="#cap-01">01 RESUMEN</a>
+<a class="whitespace-nowrap px-2 py-1 font-label-caps text-[10px] font-bold border border-outline bg-surface hover:bg-accent transition-colors" href="#cap-02">02 ARQUITECTURA</a>
+<a class="whitespace-nowrap px-2 py-1 font-label-caps text-[10px] font-bold border border-outline bg-surface hover:bg-accent transition-colors" href="#cap-03">03 CAPACIDADES</a>
+<a class="whitespace-nowrap px-2 py-1 font-label-caps text-[10px] font-bold border border-outline bg-surface hover:bg-accent transition-colors" href="#cap-04">04 FLUJO</a>
+<a class="whitespace-nowrap px-2 py-1 font-label-caps text-[10px] font-bold border border-outline bg-surface hover:bg-accent transition-colors" href="#cap-05">05 STACK</a>
+<a class="whitespace-nowrap px-2 py-1 font-label-caps text-[10px] font-bold border border-outline bg-surface hover:bg-accent transition-colors" href="#cap-06">06 PRUEBAS</a>
+<a class="whitespace-nowrap px-2 py-1 font-label-caps text-[10px] font-bold border border-outline bg-surface hover:bg-accent transition-colors" href="#cap-07">07 ACCESO</a>
+</nav>
+<!-- 4. CAPÍTULO 01 // RESUMEN TÉCNICO Y ALCANCE -->
+<section class="p-space-md border-b-2 border-outline flex flex-col gap-space-md" id="cap-01">
+<div class="flex items-center justify-between border-b-2 border-outline pb-1">
+<span class="font-label-caps text-label-caps font-black bg-primary text-on-primary px-2 py-0.5">CAPÍTULO 01</span>
+<span class="font-label-caps text-[10px] text-on-surface-variant font-bold">ALCANCE // ARQUITECTURA</span>
+</div>
+<h2 class="font-headline-section text-headline-section uppercase text-primary">
+        RESUMEN TÉCNICO Y ALCANCE
+      </h2>
+<p class="font-body-base text-body-base text-on-surface">
+        El proyecto reúne funciones de catálogo, inventario, carrito, pagos con Stripe y gestión de órdenes. La autenticación y los paneles de cliente también forman parte del alcance descrito para esta tienda en línea.
+      </p>
+<!-- Specifications Card -->
+<div class="border-2 border-outline bg-surface-container-high p-space-md shadow-brutal flex flex-col gap-space-sm">
+<div class="font-label-caps text-[11px] font-bold text-primary flex items-center gap-1 border-b border-outline pb-1">
+<span class="material-symbols-outlined text-sm" data-icon="checklist">checklist</span>
+          ESPECIFICACIONES DE OPERACIÓN
+        </div>
+<ul class="flex flex-col gap-2">
+<li class="flex items-start gap-2">
+<span class="text-skill-red font-black text-sm">▪</span>
+<span class="font-body-base text-xs font-medium">Catálogo e inventario forman parte de las funciones del proyecto.</span>
+</li>
+<li class="flex items-start gap-2">
+<span class="text-skill-red font-black text-sm">▪</span>
+<span class="font-body-base text-xs font-medium">El carrito permite gestionar los productos seleccionados.</span>
+</li>
+<li class="flex items-start gap-2">
+<span class="text-skill-red font-black text-sm">▪</span>
+<span class="font-body-base text-xs font-medium">Stripe está integrado en el procesamiento de pagos.</span>
+</li>
+<li class="flex items-start gap-2">
+<span class="text-skill-red font-black text-sm">▪</span>
+<span class="font-body-base text-xs font-medium">El proyecto incluye gestión de órdenes y paneles de cliente.</span>
+</li>
+</ul>
+</div>
+<!-- Relational Data Entities Mini-Dossier Card -->
+<div class="border-2 border-outline bg-surface-muted p-space-sm">
+<div class="font-label-caps text-[10px] font-bold text-on-surface-variant uppercase mb-1">ÁREAS DEL PROYECTO</div>
+<div class="grid grid-cols-2 gap-2 text-xs font-code-base">
+<div class="p-1.5 border border-outline bg-surface">
+<span class="font-bold text-primary block">Catálogo / Inventario</span>
+<span class="text-[10px] text-on-surface-variant">Funciones de catálogo</span>
+</div>
+<div class="p-1.5 border border-outline bg-surface">
+<span class="font-bold text-primary block">Carrito</span>
+<span class="text-[10px] text-on-surface-variant">Flujo de carrito</span>
+</div>
+<div class="p-1.5 border border-outline bg-surface">
+<span class="font-bold text-primary block">Órdenes</span>
+<span class="text-[10px] text-on-surface-variant">Gestión de órdenes</span>
+</div>
+<div class="p-1.5 border border-outline bg-surface">
+<span class="font-bold text-primary block">Pagos con Stripe</span>
+<span class="text-[10px] text-on-surface-variant">Procesamiento de pagos</span>
+</div>
+</div>
+</div>
+</section>
+<!-- 5. CAPÍTULO 02 // DIAGRAMA DE ARQUITECTURA DE SISTEMA -->
+<section class="p-space-md border-b-2 border-outline flex flex-col gap-space-md bg-surface-container-low" id="cap-02">
+<div class="flex items-center justify-between border-b-2 border-outline pb-1">
+<span class="font-label-caps text-label-caps font-black bg-primary text-on-primary px-2 py-0.5">CAPÍTULO 02</span>
+<span class="font-label-caps text-[10px] text-on-surface-variant font-bold">TOPOLOGÍA</span>
+</div>
+<div>
+<h2 class="font-headline-section text-headline-section uppercase text-primary">
+          DIAGRAMA DE ARQUITECTURA DE SISTEMA
+        </h2>
+<span class="font-label-caps text-[10px] text-on-surface-variant block mt-1 font-bold">
+          Vista conceptual del flujo — Esquema de arquitectura y comunicación entre servicios
+        </span>
+</div>
+<!-- Vertically Stacked Node Architecture -->
+<div class="flex flex-col gap-2 pt-1">
+<!-- Node 1 -->
+<div class="border-2 border-outline bg-surface p-space-sm shadow-brutal-sm relative">
+<div class="flex items-center justify-between mb-1">
+<span class="font-label-caps text-[10px] bg-secondary-container text-on-surface px-1.5 py-0.5 border border-outline font-bold">NODO 01</span>
+<span class="font-label-caps text-[9px] text-on-surface-variant">CATÁLOGO / CARRITO</span>
+</div>
+<h3 class="font-headline-section text-sm font-bold text-primary uppercase">Interfaz Web</h3>
+<p class="font-body-base text-xs text-on-surface-variant mt-1">
+            Interfaz conceptual para consultar el catálogo, gestionar el carrito y acceder a los paneles de cliente.
+          </p>
+</div>
+<div class="flex justify-center text-primary font-black py-0.5">
+<span class="material-symbols-outlined text-lg" data-icon="arrow_downward">arrow_downward</span>
+</div>
+<!-- Node 2 -->
+<div class="border-2 border-outline bg-surface p-space-sm shadow-brutal-sm border-l-8 border-l-accent">
+<div class="flex items-center justify-between mb-1">
+<span class="font-label-caps text-[10px] bg-primary text-on-primary px-1.5 py-0.5 border border-outline font-bold">NODO 02</span>
+<span class="font-label-caps text-[9px] text-on-surface-variant">DJANGO / PYTHON</span>
+</div>
+<h3 class="font-headline-section text-sm font-bold text-primary uppercase">Django</h3>
+<p class="font-body-base text-xs text-on-surface-variant mt-1">
+            Django forma parte del stack del proyecto y se relaciona con catálogo, carrito, autenticación y gestión de órdenes.
+          </p>
+</div>
+<div class="flex justify-center text-primary font-black py-0.5">
+<span class="material-symbols-outlined text-lg" data-icon="arrow_downward">arrow_downward</span>
+</div>
+<!-- Split Bottom Nodes (Node 3 & Node 4) -->
+<div class="grid grid-cols-2 gap-2">
+<!-- Node 3 -->
+<div class="border-2 border-outline bg-surface p-space-sm shadow-brutal-sm border-t-4 border-t-project-blue">
+<div class="font-label-caps text-[9px] bg-surface-muted text-primary px-1 py-0.5 border border-outline font-bold w-fit mb-1">NODO 03</div>
+<div class="font-label-caps text-[11px] font-black text-primary">PostgreSQL</div>
+<p class="font-body-base text-[11px] text-on-surface-variant mt-1">
+              PostgreSQL forma parte del stack del proyecto y se incluye en la vista conceptual de sus datos.
+            </p>
+</div>
+<!-- Node 4 -->
+<div class="border-2 border-outline bg-surface p-space-sm shadow-brutal-sm border-t-4 border-t-skill-red">
+<div class="font-label-caps text-[9px] bg-surface-muted text-primary px-1 py-0.5 border border-outline font-bold w-fit mb-1">NODO 04</div>
+<div class="font-label-caps text-[11px] font-black text-primary">Stripe</div>
+<p class="font-body-base text-[11px] text-on-surface-variant mt-1">
+              Stripe se integra en el procesamiento de pagos del proyecto.
+            </p>
+</div>
+</div>
+</div>
+</section>
+<!-- 6. CAPÍTULO 03 // MATRIZ DE CAPACIDADES Y MÓDULOS -->
+<section class="p-space-md border-b-2 border-outline flex flex-col gap-space-md" id="cap-03">
+<div class="flex items-center justify-between border-b-2 border-outline pb-1">
+<span class="font-label-caps text-label-caps font-black bg-primary text-on-primary px-2 py-0.5">CAPÍTULO 03</span>
+<span class="font-label-caps text-[10px] text-on-surface-variant font-bold">MODULARIDAD</span>
+</div>
+<h2 class="font-headline-section text-headline-section uppercase text-primary">
+        MATRIZ DE CAPACIDADES Y MÓDULOS
+      </h2>
+<!-- Capability Cards Grid -->
+<div class="flex flex-col gap-space-sm">
+<!-- MOD_01 -->
+<div class="border-2 border-outline bg-surface-muted p-space-sm shadow-brutal-sm border-l-4 border-l-accent">
+<div class="flex items-center justify-between border-b border-outline/30 pb-1 mb-1.5">
+<span class="font-label-caps text-[10px] font-bold text-primary">MOD_01 // CATÁLOGO E INVENTARIO</span>
+<span class="material-symbols-outlined text-sm" data-icon="inventory_2">inventory_2</span>
+</div>
+<p class="font-body-base text-xs text-on-surface">
+            El proyecto combina el catálogo de productos con funciones de gestión de inventario dentro del e-commerce.
+          </p>
+</div>
+<!-- MOD_02 -->
+<div class="border-2 border-outline bg-surface-muted p-space-sm shadow-brutal-sm border-l-4 border-l-skill-red">
+<div class="flex items-center justify-between border-b border-outline/30 pb-1 mb-1.5">
+<span class="font-label-caps text-[10px] font-bold text-primary">MOD_02 // LÓGICA DE CARRITO</span>
+<span class="material-symbols-outlined text-sm" data-icon="shopping_cart">shopping_cart</span>
+</div>
+<p class="font-body-base text-xs text-on-surface">
+            El carrito permite gestionar los productos seleccionados y continuar el flujo de compra antes de pasar a la gestión de la orden.
+          </p>
+</div>
+<!-- MOD_03 -->
+<div class="border-2 border-outline bg-surface-muted p-space-sm shadow-brutal-sm border-l-4 border-l-project-blue">
+<div class="flex items-center justify-between border-b border-outline/30 pb-1 mb-1.5">
+<span class="font-label-caps text-[10px] font-bold text-primary">MOD_03 // PROCESAMIENTO DE PAGOS</span>
+<span class="material-symbols-outlined text-sm" data-icon="credit_card">credit_card</span>
+</div>
+<p class="font-body-base text-xs text-on-surface">
+            Stripe se integra en el procesamiento de pagos del e-commerce.
+          </p>
+</div>
+<!-- MOD_04 -->
+<div class="border-2 border-outline bg-surface-muted p-space-sm shadow-brutal-sm border-l-4 border-l-primary">
+<div class="flex items-center justify-between border-b border-outline/30 pb-1 mb-1.5">
+<span class="font-label-caps text-[10px] font-bold text-primary">MOD_04 // GESTIÓN DE ÓRDENES</span>
+<span class="material-symbols-outlined text-sm" data-icon="receipt_long">receipt_long</span>
+</div>
+<p class="font-body-base text-xs text-on-surface">
+            El proyecto incluye gestión de órdenes y paneles de cliente.
+          </p>
+</div>
+</div>
+</section>
+<!-- 7. CAPÍTULO 04 // FLUJO: CATÁLOGO → ORDEN -->
+<section class="p-space-md border-b-2 border-outline flex flex-col gap-space-md bg-surface-container-low" id="cap-04">
+<div class="flex items-center justify-between border-b-2 border-outline pb-1">
+<span class="font-label-caps text-label-caps font-black bg-primary text-on-primary px-2 py-0.5">CAPÍTULO 04</span>
+<span class="font-label-caps text-[10px] text-on-surface-variant font-bold">RECORRIDO CONCEPTUAL</span>
+</div>
+<h2 class="font-headline-section text-headline-section uppercase text-primary">
+        FLUJO: CATÁLOGO → ORDEN
+      </h2>
+<!-- Pipeline Steps (1 to 4) -->
+<div class="flex flex-col gap-space-sm">
+<div class="border-2 border-outline bg-surface p-space-sm shadow-brutal-sm flex gap-3">
+<div class="w-7 h-7 bg-primary text-on-primary font-label-caps font-bold text-xs flex items-center justify-center shrink-0 border border-outline">
+            01
+          </div>
+<div>
+<div class="font-label-caps text-xs font-bold text-primary uppercase">Exploración de Catálogo</div>
+<p class="font-body-base text-xs text-on-surface-variant mt-0.5">
+              El catálogo reúne los productos contemplados por el proyecto.
+            </p>
+</div>
+</div>
+<div class="border-2 border-outline bg-surface p-space-sm shadow-brutal-sm flex gap-3">
+<div class="w-7 h-7 bg-primary text-on-primary font-label-caps font-bold text-xs flex items-center justify-center shrink-0 border border-outline">
+            02
+          </div>
+<div>
+<div class="font-label-caps text-xs font-bold text-primary uppercase">Adición y Modificación de Carrito</div>
+<p class="font-body-base text-xs text-on-surface-variant mt-0.5">
+              El carrito organiza los productos seleccionados antes del pago.
+            </p>
+</div>
+</div>
+<div class="border-2 border-outline bg-surface p-space-sm shadow-brutal-sm flex gap-3">
+<div class="w-7 h-7 bg-accent text-on-accent font-label-caps font-bold text-xs flex items-center justify-center shrink-0 border border-outline">
+            03
+          </div>
+<div>
+<div class="font-label-caps text-xs font-bold text-primary uppercase">Delegación de Pago en Stripe</div>
+<p class="font-body-base text-xs text-on-surface-variant mt-0.5">
+              Stripe forma parte del procesamiento de pagos del proyecto.
+            </p>
+</div>
+</div>
+<div class="border-2 border-outline bg-surface p-space-sm shadow-brutal-sm flex gap-3">
+<div class="w-7 h-7 bg-skill-red text-on-primary font-label-caps font-bold text-xs flex items-center justify-center shrink-0 border border-outline">
+            04
+          </div>
+<div>
+<div class="font-label-caps text-xs font-bold text-primary uppercase">Confirmación y Generación de Orden</div>
+<p class="font-body-base text-xs text-on-surface-variant mt-0.5"> La gestión de órdenes y los paneles de cliente forman parte de las funciones del proyecto.</p>
+</div>
+</div>
+</div>
+</section>
+<!-- 8. CAPÍTULO 05 // STACK TECNOLÓGICO -->
+<section class="p-space-md border-b-2 border-outline flex flex-col gap-space-md" id="cap-05">
+<div class="flex items-center justify-between border-b-2 border-outline pb-1">
+<span class="font-label-caps text-label-caps font-black bg-primary text-on-primary px-2 py-0.5">CAPÍTULO 05</span>
+<span class="font-label-caps text-[10px] text-on-surface-variant font-bold">INVENTARIO TÉCNICO</span>
+</div>
+<h2 class="font-headline-section text-headline-section uppercase text-primary">
+        STACK TECNOLÓGICO
+      </h2>
+<!-- Tech Stack Matrix -->
+<div class="grid grid-cols-1 gap-2.5">
+<div class="border-2 border-outline bg-surface-container-high p-space-sm">
+<span class="font-label-caps text-[10px] text-on-surface-variant uppercase block mb-1">BACKEND &amp; FRAMEWORK</span>
+<div class="flex items-center gap-2">
+<span class="font-headline-section text-sm font-bold text-primary">Django &amp; Python</span>
+</div>
+<p class="font-body-base text-xs text-on-surface-variant mt-1">
+            Django y Python constituyen tecnologías confirmadas en el stack del proyecto.
+          </p>
+</div>
+<div class="border-2 border-outline bg-surface-container-high p-space-sm">
+<span class="font-label-caps text-[10px] text-on-surface-variant uppercase block mb-1">BASE DE DATOS &amp; PERSISTENCIA</span>
+<div class="flex items-center gap-2">
+<span class="font-headline-section text-sm font-bold text-primary">PostgreSQL</span>
+</div>
+<p class="font-body-base text-xs text-on-surface-variant mt-1">
+            PostgreSQL forma parte del stack del proyecto.
+          </p>
+</div>
+<div class="border-2 border-outline bg-surface-container-high p-space-sm">
+<span class="font-label-caps text-[10px] text-on-surface-variant uppercase block mb-1">PAGOS E INTEGRACIÓN</span>
+<div class="flex items-center gap-2">
+<span class="font-headline-section text-sm font-bold text-primary">Stripe</span>
+</div>
+<p class="font-body-base text-xs text-on-surface-variant mt-1">
+            Stripe se integra en el procesamiento de pagos del proyecto.
+          </p>
+</div>
+<div class="border-2 border-outline bg-surface-container-high p-space-sm">
+<span class="font-label-caps text-[10px] text-on-surface-variant uppercase block mb-1">PRUEBAS DEL PROYECTO</span>
+<div class="flex items-center gap-2">
+<span class="font-headline-section text-sm font-bold text-primary">Pytest</span>
+</div>
+<p class="font-body-base text-xs text-on-surface-variant mt-1">
+            Pytest se utiliza como herramienta de pruebas del proyecto.
+          </p>
+</div>
+</div>
+</section>
+<!-- 9. CAPÍTULO 06 // PRUEBAS CON PYTEST -->
+<section class="p-space-md border-b-2 border-outline flex flex-col gap-space-md bg-surface-container-low" id="cap-06">
+<div class="flex items-center justify-between border-b-2 border-outline pb-1">
+<span class="font-label-caps text-label-caps font-black bg-primary text-on-primary px-2 py-0.5">CAPÍTULO 06</span>
+<span class="font-label-caps text-[10px] text-on-surface-variant font-bold">CALIDAD &amp; TEST SUITE</span>
+</div>
+<h2 class="font-headline-section text-headline-section uppercase text-primary">
+        PRUEBAS CON PYTEST
+      </h2>
+<p class="font-body-base text-body-base text-on-surface">
+        Pytest se utiliza como herramienta de pruebas del proyecto. Esta ficha no detalla casos concretos, cobertura ni resultados de ejecución:
+      </p>
+<div class="flex flex-col gap-2">
+<div class="border-2 border-outline bg-surface p-space-sm">
+<div class="font-label-caps text-[11px] font-black text-primary uppercase">Herramienta de pruebas</div>
+<p class="font-body-base text-xs text-on-surface-variant mt-0.5">
+            El proyecto indica el uso de Pytest para sus pruebas.
+          </p>
+</div>
+<div class="border-2 border-outline bg-surface p-space-sm">
+<div class="font-label-caps text-[11px] font-black text-primary uppercase">Casos y cobertura</div>
+<p class="font-body-base text-xs text-on-surface-variant mt-0.5">
+            La ficha no enumera casos específicos ni porcentaje de cobertura.
+          </p>
+</div>
+<div class="border-2 border-outline bg-surface p-space-sm">
+<div class="font-label-caps text-[11px] font-black text-primary uppercase">Resultados</div>
+<p class="font-body-base text-xs text-on-surface-variant mt-0.5">
+            No se presentan resultados de ejecución.
+          </p>
+</div>
+</div>
+<!-- Conceptual Terminal Snippet Card -->
+<div class="border-2 border-outline bg-dark-surface text-dark-on-surface shadow-brutal p-space-sm font-code-base">
+<!-- Terminal Header -->
+<div class="flex items-center justify-between border-b border-outline pb-2 mb-2 text-xs">
+<div class="flex items-center gap-1.5">
+<span class="w-2.5 h-2.5 rounded-full bg-[#FF5F56] inline-block"></span>
+<span class="w-2.5 h-2.5 rounded-full bg-[#FFBD2E] inline-block"></span>
+<span class="w-2.5 h-2.5 rounded-full bg-[#27C93F] inline-block"></span>
+</div>
+<span class="font-label-caps text-[9px] text-[#A0A0A0]">HERRAMIENTA // PYTEST</span>
+</div>
+<!-- Terminal Output -->
+<div class="text-[11px] leading-relaxed flex flex-col gap-1">
+<div class="text-[#888888]">PRUEBAS DEL PROYECTO // PYTEST</div>
+<div class="text-dark-accent">CASOS Y RESULTADOS: NO ESPECIFICADOS</div>
+<div class="text-dark-accent">Pytest se utiliza como herramienta de pruebas del proyecto.</div>
+<div>No se detallan casos ni resultados de ejecución.</div>
+<div class="text-[#27C93F] font-bold pt-1 border-t border-outline/50 mt-1">RESULTADOS DE EJECUCIÓN: NO INDICADOS</div>
+</div>
+</div>
+</section>
+<!-- 10. CAPÍTULO 07 // REPOSITORIO Y ACCESO AL PROYECTO -->
+<section class="p-space-md border-b-2 border-outline flex flex-col gap-space-md" id="cap-07">
+<div class="flex items-center justify-between border-b-2 border-outline pb-1">
+<span class="font-label-caps text-label-caps font-black bg-primary text-on-primary px-2 py-0.5">CAPÍTULO 07</span>
+<span class="font-label-caps text-[10px] text-on-surface-variant font-bold">PROYECTO // CÓDIGO</span>
+</div>
+<h2 class="font-headline-section text-headline-section uppercase text-primary">
+        REPOSITORIO Y ACCESO
+      </h2>
+<!-- Touch Action Cards -->
+<div class="flex flex-col gap-space-sm">
+<a class="border-2 border-outline bg-surface-muted p-space-sm shadow-brutal flex items-center justify-between hover:bg-accent transition-colors active:translate-x-0.5 active:translate-y-0.5" href="https://github.com/FEMADOX/Django-E-commers" rel="noopener noreferrer" target="_blank">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 border-2 border-outline bg-primary text-on-primary flex items-center justify-center font-bold">
+<span class="material-symbols-outlined" data-icon="terminal">terminal</span>
+</div>
+<div>
+<div class="font-label-caps text-xs font-bold text-primary uppercase">Repositorio en GitHub</div>
+<div class="font-code-base text-[10px] text-on-surface-variant truncate max-w-[200px]">github.com/FEMADOX/Django-E-commers</div>
+</div>
+</div>
+<span class="material-symbols-outlined text-primary font-bold" data-icon="arrow_outward">arrow_outward</span>
+</a>
+<a class="border-2 border-outline bg-secondary-container p-space-sm shadow-brutal flex items-center justify-between hover:bg-surface-sand transition-colors active:translate-x-0.5 active:translate-y-0.5" href="https://django-e-commers.vercel.app/" rel="noopener noreferrer" target="_blank">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 border-2 border-outline bg-primary text-on-primary flex items-center justify-center font-bold">
+<span class="material-symbols-outlined" data-icon="rocket_launch">rocket_launch</span>
+</div>
+<div>
+<div class="font-label-caps text-xs font-bold text-primary uppercase">Enlace de demo</div>
+<div class="font-code-base text-[10px] text-on-surface-variant truncate max-w-[200px]">django-e-commers.vercel.app</div>
+</div>
+</div>
+<span class="material-symbols-outlined text-primary font-bold" data-icon="arrow_outward">arrow_outward</span>
+</a>
+</div>
+</section>
+<!-- 11. NAVEGACIÓN ENTRE PROYECTOS -->
+<section class="p-space-md border-b-2 border-outline bg-surface-container-high flex flex-col gap-space-md">
+<div class="flex items-center justify-between border-b border-outline pb-1">
+<span class="font-label-caps text-[10px] font-bold text-on-surface-variant uppercase">EXPEDIENTE CONTINUO</span>
+<span class="font-label-caps text-[10px] font-black bg-accent px-1.5 py-0.5 border border-outline">SIGUIENTE</span>
+</div>
+<!-- Next Project Card -->
+<div class="border-2 border-outline bg-surface p-space-sm shadow-brutal border-l-4 border-l-project-blue flex flex-col gap-space-xs">
+<div class="font-label-caps text-[9px] text-on-surface-variant font-bold uppercase">Octubre 2024 — Agosto 2025</div>
+<h3 class="font-headline-section text-sm font-bold text-primary uppercase">
+          Plataforma social con marcadores
+        </h3>
+<p class="font-body-base text-xs text-on-surface-variant">
+          Proyecto siguiente del portafolio; sus funciones no se detallan en esta ficha.
+        </p>
+<div class="flex flex-wrap gap-1 my-1">
+<span class="font-label-caps text-[9px] font-bold px-1.5 py-0.5 bg-surface-muted border border-outline">Django</span>
+<span class="font-label-caps text-[9px] font-bold px-1.5 py-0.5 bg-surface-muted border border-outline">Python</span>
+<span class="font-label-caps text-[9px] font-bold px-1.5 py-0.5 bg-surface-muted border border-outline">PostgreSQL</span>
+</div>
+<div class="flex flex-col gap-2 pt-1 border-t border-outline/30">
+<a class="h-10 flex items-center justify-center gap-1.5 border-2 border-outline bg-primary text-on-primary font-label-caps text-xs font-bold shadow-brutal-sm active:translate-x-0.5 active:translate-y-0.5 transition-transform" href="/es/projects/social-bookmarking">
+<span>Ver expediente completo</span>
+<span class="material-symbols-outlined text-sm" data-icon="arrow_forward">arrow_forward</span>
+</a>
+<a class="h-10 flex items-center justify-center gap-1.5 border-2 border-outline bg-surface-muted text-primary font-label-caps text-xs font-bold hover:bg-surface active:translate-x-0.5 active:translate-y-0.5 transition-transform" href="/es#projects">
+<span class="material-symbols-outlined text-sm" data-icon="grid_view">grid_view</span>
+<span>Volver a todos los proyectos</span>
+</a>
+</div>
+</div>
+</section>
+<!-- 12. MOBILE FOOTER (Shared Component Alignment) -->
+<footer class="w-full py-space-lg px-space-md bg-surface-muted border-t-2 border-outline flex flex-col gap-space-md text-center">
+<div class="flex flex-col items-center gap-1">
+<div class="font-label-caps text-label-caps font-black text-primary tracking-wider">
+          GIANCARLOS GONZALEZ
+        </div>
+<div class="font-label-caps text-[10px] text-on-surface-variant">
+          © 2026 GIANCARLOS GONZALEZ. SISTEMA DE ARCHIVOS TÉCNICOS.
+        </div>
+</div>
+<!-- Navigation & Social Links -->
+<div class="flex flex-wrap items-center justify-center gap-x-space-md gap-y-2 border-t border-outline/30 pt-3">
+<a class="font-label-caps text-[11px] text-primary hover:underline font-bold" href="/es#projects">
+          /es#projects
+        </a>
+<a class="font-label-caps text-[11px] text-primary hover:underline font-bold" href="/es/projects/social-bookmarking">
+          /es/projects/social-bookmarking
+        </a>
+<a class="font-label-caps text-[11px] text-primary hover:underline font-bold" href="https://github.com/FEMADOX" rel="noopener noreferrer" target="_blank">
+          GITHUB
+        </a>
+<a class="font-label-caps text-[11px] text-primary hover:underline font-bold" href="https://www.linkedin.com/in/giancarlos-gonzalez-leyva" rel="noopener noreferrer" target="_blank">
+          LINKEDIN
+        </a>
+</div>
+</footer>
+</div>
+</body></html>
