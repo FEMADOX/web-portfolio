@@ -26,3 +26,19 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# local browser and design tooling artifacts
+/.playwright-mcp/
+/.stitch/*
+!/.stitch/BRIEF.md
+!/.stitch/DESIGN.md
+!/.stitch/designs/
+/.stitch/designs/*
+!/.stitch/designs/project-details/
+/.stitch/designs/project-details/*
+!/.stitch/designs/project-details/*-desktop.html
+!/.stitch/designs/project-details/*-mobile.html
+!/.stitch/designs/project-details/*-desktop.png
+!/.stitch/designs/project-details/*-mobile.png
+__pycache__/
+*.pyc
