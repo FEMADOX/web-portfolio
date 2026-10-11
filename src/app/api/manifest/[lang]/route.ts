@@ -1,5 +1,6 @@
 import { NextResponse } from 'next/server'
 import type { Lang } from '@/app/types'
+import { getDocumentLang, getLanguagePath, isLang } from '@/lib/language'
 
 const labels: Record<
   Lang,
@@ -28,7 +29,7 @@ export async function GET(
   { params }: { params: Promise<{ lang: string }> }
 ) {
   const { lang } = await params
-  if (lang !== 'en' && lang !== 'es' && lang !== 'pt') {
+  if (!isLang(lang)) {
     return new Response(null, { status: 404 })
   }
   const { name, shortName, description } = labels[lang]
@@ -37,8 +38,8 @@ export async function GET(
       name,
       short_name: shortName,
       description,
-      lang: lang === 'pt' ? 'pt-BR' : lang,
-      start_url: `/${lang}`,
+      lang: getDocumentLang(lang),
+      start_url: getLanguagePath(lang),
       display: 'standalone',
       background_color: '#ffffff',
       theme_color: '#000000',

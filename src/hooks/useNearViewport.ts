@@ -1,8 +1,6 @@
-'use client'
-
 import { useEffect, useRef, useState } from 'react'
 
-export const useNearViewport = (rootMargin = '400px 0px') => {
+const useNearViewport = (rootMargin = '400px 0px') => {
   const ref = useRef<HTMLDivElement | null>(null)
   const [shouldLoad, setShouldLoad] = useState(false)
 
@@ -36,3 +34,5 @@ export const useNearViewport = (rootMargin = '400px 0px') => {
 
   return { ref, shouldLoad }
 }
+
+export default useNearViewport

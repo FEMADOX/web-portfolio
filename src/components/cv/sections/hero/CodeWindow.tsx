@@ -1,6 +1,6 @@
-import type { ReactNode } from 'react'
+import type { ChildrenProps } from '@/app/types'
 
-export const CodeWindow = ({ children }: { children: ReactNode }) => (
+export const CodeWindow = ({ children }: ChildrenProps) => (
   <div className="mt-5 relative">
     <div className="bg-[#101114] overflow-hidden border-4 border-border shadow-normal min-h-80">
       <div className="flex items-center gap-2 px-4 py-2 border-b-2 border-border/70">

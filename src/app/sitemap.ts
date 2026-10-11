@@ -1,15 +1,12 @@
 import type { MetadataRoute } from 'next'
-import { SITE_URL } from './metadata'
+import { getLanguageAlternates, getLanguagePath } from '../lib/language'
+import { SITE_URL, SUPPORTED_LANGUAGES } from './constants'
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const languages = {
-    en: `${SITE_URL}/en`,
-    es: `${SITE_URL}/es`,
-    'pt-BR': `${SITE_URL}/pt`
-  }
+  const languages = getLanguageAlternates(SITE_URL)
 
-  return (['en', 'es', 'pt'] as const).map(lang => ({
-    url: `${SITE_URL}/${lang}`,
+  return SUPPORTED_LANGUAGES.map(lang => ({
+    url: `${SITE_URL}${getLanguagePath(lang)}`,
     alternates: { languages }
   }))
 }

@@ -1,19 +1,16 @@
 import type { Metadata } from 'next'
 import { notFound } from 'next/navigation'
 import CVPage from '@/components/cv/CVPage'
-import { getPortfolioMetadata } from '../metadata'
-import type { Lang } from '../types'
+import CurrentYearServerProvider from '@/contexts/CurrentYearServerContext'
+import LanguageServerProvider from '@/contexts/LanguageServerContext'
+import getPortfolioMetadata from '@/lib/getPortfolioMetadata'
+import { isLang } from '@/lib/language'
+import { SUPPORTED_LANGUAGES } from '../constants'
 
 type Props = { params: Promise<{ lang: string }> }
 
-const isLang = (lang: string): lang is Lang =>
-  lang === 'en' || lang === 'es' || lang === 'pt'
-
-export const generateStaticParams = () => [
-  { lang: 'en' },
-  { lang: 'es' },
-  { lang: 'pt' }
-]
+export const generateStaticParams = () =>
+  SUPPORTED_LANGUAGES.map(lang => ({ lang }))
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { lang } = await params
@@ -23,5 +20,11 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 export default async function LocalizedCVPage({ params }: Props) {
   const { lang } = await params
   if (!isLang(lang)) notFound()
-  return <CVPage initialLang={lang} />
+  return (
+    <LanguageServerProvider lang={lang}>
+      <CurrentYearServerProvider>
+        <CVPage />
+      </CurrentYearServerProvider>
+    </LanguageServerProvider>
+  )
 }
