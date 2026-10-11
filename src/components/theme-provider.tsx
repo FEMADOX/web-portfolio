@@ -11,6 +11,10 @@ export const ThemeProvider = ({ children, ...props }: ThemeProviderProps) => (
     defaultTheme="system"
     enableSystem
     {...props}
+    scriptProps={{
+      ...props.scriptProps,
+      type: typeof window === 'undefined' ? 'text/javascript' : 'text/plain'
+    }}
   >
     {children}
   </NextThemesProvider>
