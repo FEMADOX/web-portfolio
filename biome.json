@@ -11,6 +11,9 @@
     "includes": [
       "**",
       "!.next",
+      "!.stitch",
+      "!.playwright-mcp",
+      "!next-env.d.ts",
       "!node_modules",
       "!.agents",
       "!.claude",
