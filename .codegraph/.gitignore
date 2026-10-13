@@ -1,0 +1,3 @@
+# CodeGraph's SQLite index is local to this checkout and can be regenerated.
+*
+!.gitignore
