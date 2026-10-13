@@ -2,7 +2,13 @@
 
 import { useEffect, useState } from 'react'
 
-const sections = ['summary', 'skills', 'projects', 'education', 'contact']
+const sections = [
+  'summary',
+  'skills',
+  'projects',
+  'education',
+  'contact'
+] as const
 
 type ActiveSection = (typeof sections)[number]
 
@@ -11,28 +17,42 @@ const useActiveSection = () => {
 
   useEffect(() => {
     const handleScroll = () => {
-      const scrollPosition = window.scrollY + 200
+      const root = document.scrollingElement ?? document.documentElement
+      const maxScroll = Math.max(0, root.scrollHeight - root.clientHeight)
+      const scrollTop = Math.min(maxScroll, Math.max(0, root.scrollTop))
 
-      for (const section of sections) {
-        const element = document.getElementById(section)
+      let nextActive: ActiveSection = 'summary'
 
-        if (element) {
-          const offsetTop = element.offsetTop
-          const offsetHeight = element.offsetHeight
+      if (maxScroll > 0) {
+        for (const section of sections) {
+          const element = document.getElementById(section)
+          if (!element) continue
 
-          if (
-            scrollPosition >= offsetTop &&
-            scrollPosition < offsetTop + offsetHeight
-          ) {
-            setActiveSection(section)
-            break
+          const top = element.getBoundingClientRect().top + root.scrollTop
+          const start = Math.min(maxScroll, Math.max(0, top - 200))
+
+          if (scrollTop >= start) {
+            nextActive = section
           }
         }
       }
+
+      setActiveSection(nextActive)
     }
 
-    window.addEventListener('scroll', handleScroll)
-    return () => window.removeEventListener('scroll', handleScroll)
+    handleScroll()
+
+    window.addEventListener('scroll', handleScroll, { passive: true })
+    window.addEventListener('resize', handleScroll)
+
+    const observer = new ResizeObserver(handleScroll)
+    observer.observe(document.body)
+
+    return () => {
+      window.removeEventListener('scroll', handleScroll)
+      window.removeEventListener('resize', handleScroll)
+      observer.disconnect()
+    }
   }, [])
 
   return activeSection
