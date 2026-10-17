@@ -3,6 +3,7 @@ import { useCallback, useEffect } from 'react'
 import { LANGUAGE_CHOICE_KEY } from '@/app/constants'
 import type { Lang } from '@/app/types'
 import { getLanguagePath, getPreferredLang } from '@/lib/language'
+import { getLocalizedPathname } from '@/lib/projectPaths'
 
 const useLanguageNavigation = () => {
   const router = useRouter()
@@ -29,7 +30,9 @@ const useLanguageNavigation = () => {
         legacyLang
       )
 
-      router.replace(getLanguagePath(preferredLang))
+      router.replace(
+        `${getLanguagePath(preferredLang)}${window.location.search}${window.location.hash}`
+      )
     }
   }, [pathname, router])
 
@@ -41,9 +44,11 @@ const useLanguageNavigation = () => {
         // Navigation still works when browser storage is unavailable.
       }
 
-      router.push(getLanguagePath(nextLang))
+      router.push(
+        `${getLocalizedPathname(pathname, nextLang)}${window.location.search}${window.location.hash}`
+      )
     },
-    [router]
+    [pathname, router]
   )
 
   return setLang

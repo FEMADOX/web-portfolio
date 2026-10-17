@@ -1,5 +1,6 @@
 @import "tailwindcss";
 @import "tw-animate-css";
+@import "./projects.css";
 
 @custom-variant dark (&:is(.dark *));
 
@@ -288,19 +289,18 @@ html {
   scroll-behavior: smooth;
 }
 
-::view-transition-group(root) {
+.theme-view-transition::view-transition-group(root) {
   animation-duration: 0.7s;
   animation-timing-function: var(--expo-out);
 }
 
-::view-transition-old(root),
-.dark::view-transition-old(root) {
+.theme-view-transition::view-transition-old(root) {
   animation: none;
   animation-fill-mode: both;
   z-index: -1;
 }
 
-::view-transition-new(root) {
+.theme-view-transition::view-transition-new(root) {
   clip-path: circle(0 at var(--theme-toggle-x) var(--theme-toggle-y));
   animation: theme-reveal 2s;
   animation-fill-mode: both;

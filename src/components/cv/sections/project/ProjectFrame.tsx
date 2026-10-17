@@ -1,4 +1,10 @@
+import { ArrowUpRight } from 'lucide-react'
+import Link from 'next/link'
 import type { ReactNode } from 'react'
+import { getProjectLabels } from '@/components/projects/labels'
+import { ProjectVisual } from '@/components/projects/ProjectVisual'
+import { useLanguageContext } from '@/contexts/LanguageContext'
+import { getProjectPath } from '@/lib/projectPaths'
 import { Technologies } from './Technologies'
 import type { ProjectsComponentProps } from './types'
 
@@ -7,42 +13,40 @@ interface ProjectFrameProps extends ProjectsComponentProps {
 }
 
 export const ProjectFrame = ({
-  project: { title, period, description, technologies },
+  project: { slug, title, period, description, technologies },
   accent,
-  isLeftLine,
   links
-}: ProjectFrameProps) => (
-  <div
-    className={`grid grid-flow-row ${isLeftLine ? 'sm:grid-cols-[auto_1fr]' : 'sm:grid-cols-[1fr_auto]'} sm:items-start sm:gap-4`}
-  >
-    <div
-      className={`pointer-events-none w-0.75 h-full ${accent.line} ${isLeftLine ? 'order-first' : 'order-last w-0.75'}`}
-      aria-hidden="true"
-    />
-    <div
-      className={`
-        group relative w-full bg-card border-2 border-border p-5 shadow-sm
-        transition-transform will-change-transform hover:-translate-y-0.5 sm:hover:translate-y-0
-        ${isLeftLine ? 'sm:hover:translate-x-0.5' : 'sm:hover:-translate-x-0.5'}
-      `}
-    >
-      <div className="flex items-start justify-between mb-4">
-        <span
-          className={`
-            inline-block px-2 py-0.5 text-[12px] font-black uppercase border border-border ${accent.badge}
-          `}
-        >
-          {period}
-        </span>
+}: ProjectFrameProps) => {
+  const lang = useLanguageContext()
+  const labels = getProjectLabels(lang)
+  return (
+    <article className="project-card" data-project={slug}>
+      <div className="project-card-header">
+        <span>{period}</span>
         {links}
       </div>
-      <h3 className="text-2xl font-black uppercase leading-none text-foreground mb-3">
-        {title}
-      </h3>
-      <p className="text-sm text-muted-foreground leading-relaxed mb-4 max-w-3xl">
-        {description}
-      </p>
-      <Technologies technologies={technologies} accent={accent} />
-    </div>
-  </div>
-)
+      <Link
+        href={getProjectPath(lang, slug)}
+        transitionTypes={['project-forward']}
+        className="project-card-body"
+        aria-label={`${labels.explore}: ${title}`}
+      >
+        <ProjectVisual slug={slug} />
+        <div className="project-card-copy">
+          <h3>{title}</h3>
+          <p>{description}</p>
+          <Technologies technologies={technologies} accent={accent} />
+          <div className="project-card-cta">
+            <span>
+              <strong>{labels.explore}</strong>
+              <small>{labels.cardHint}</small>
+            </span>
+            <span>
+              <ArrowUpRight size={22} aria-hidden="true" />
+            </span>
+          </div>
+        </div>
+      </Link>
+    </article>
+  )
+}

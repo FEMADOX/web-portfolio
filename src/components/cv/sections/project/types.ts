@@ -1,4 +1,7 @@
+import type { ProjectSlug } from '@/data/projects/types'
+
 export interface ProjectProps {
+  slug: ProjectSlug
   title: string
   period: string
   description: string
