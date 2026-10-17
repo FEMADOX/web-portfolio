@@ -51,4 +51,14 @@ jobs:
           fi
 
       - name: Run Biome
-        run: bunx --no-install biome ci ./src
+        run: bunx --no-install biome ci .
+
+      - name: Run tests
+        run: bun run test
+
+      - name: Build application
+        run: bun run build
+
+      # Next.js generates its ambient and route declarations during the build.
+      - name: Check TypeScript
+        run: bun run tsc
