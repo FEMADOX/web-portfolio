@@ -13,6 +13,7 @@ export const ThemeToggle = ({
 }) => {
   const [mounted, setMounted] = useState(false)
   const [isAnimating, setIsAnimating] = useState(false)
+  const viewTransitionTokenRef = useRef<string | null>(null)
   const { resolvedTheme, setTheme } = useTheme()
   const isDark = mounted && resolvedTheme === 'dark'
   const iconAnimationTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(
@@ -37,6 +38,13 @@ export const ThemeToggle = ({
       }
 
       document.documentElement.classList.remove('theme-transition')
+      const root = document.documentElement
+      if (
+        root.dataset.themeTransitionToken === viewTransitionTokenRef.current
+      ) {
+        root.classList.remove('theme-view-transition')
+        delete root.dataset.themeTransitionToken
+      }
     }
   }, [])
 
@@ -84,9 +92,21 @@ export const ThemeToggle = ({
       `${buttonRect.top + buttonRect.height / 2}px`
     )
 
-    doc.startViewTransition(() => {
+    const transitionToken = String(performance.now())
+    viewTransitionTokenRef.current = transitionToken
+    root.dataset.themeTransitionToken = transitionToken
+    root.classList.add('theme-view-transition')
+    const transition = doc.startViewTransition(() => {
       setTheme(nextTheme)
     })
+    const cleanup = () => {
+      if (root.dataset.themeTransitionToken === transitionToken) {
+        root.classList.remove('theme-view-transition')
+        delete root.dataset.themeTransitionToken
+        viewTransitionTokenRef.current = null
+      }
+    }
+    transition.finished.then(cleanup, cleanup)
   }
 
   const label = !mounted ? labels.change : isDark ? labels.light : labels.dark
