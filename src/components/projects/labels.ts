@@ -1,6 +1,7 @@
 import type { Lang } from '@/app/types'
+import type { ProjectLabels } from './types'
 
-export const projectLabels = {
+export const projectLabelsDiffLangs = {
   en: {
     caseStudy: 'Project case study',
     explore: 'Explore the build',
@@ -134,9 +135,10 @@ export const projectLabels = {
     skip: 'Pular para o estudo de caso',
     progress: 'Progresso de leitura do estudo de caso'
   }
-} satisfies Record<Lang, object>
+} satisfies Record<Lang, ProjectLabels>
 
-export const getProjectLabels = (lang: Lang) => projectLabels[lang]
+export const getProjectLabels = (lang: Lang): ProjectLabels =>
+  projectLabelsDiffLangs[lang]
 
 export const PROJECT_CHAPTERS = [
   'challenge',

@@ -1,0 +1,13 @@
+export const projectButtonClasses =
+  'inline-flex min-h-12 items-center justify-between gap-[1.2rem] border-2 border-border bg-accent px-[1.1rem] py-[0.8rem] text-[0.7rem] font-black tracking-[0.04em] text-accent-foreground uppercase shadow-(--shadow-sm) transition-[transform,box-shadow] duration-180 ease-[ease] hover:transform-[translate(2px,2px)] hover:shadow-[1px_1px_0_var(--border)] focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-ring active:transform-[translate(3px,3px)] active:shadow-none data-[pressed=true]:transform-[translate(3px,3px)] data-[pressed=true]:shadow-none motion-reduce:transition-none motion-reduce:hover:transform-none motion-reduce:active:transform-none motion-reduce:data-[pressed=true]:transform-none'
+export const eyebrowClasses =
+  'font-mono text-[0.65rem] leading-[normal] font-bold tracking-[0.13em] uppercase'
+export const chapterClasses = 'scroll-mt-36 pt-20 lg:scroll-mt-8 lg:pt-24'
+export const chapterHeadingClasses = 'text-[1.05rem] leading-[1.3] font-[850]'
+export const chapterParagraphClasses = 'text-[0.9rem] leading-[1.85]'
+export const smallNumberClasses =
+  'font-mono text-[0.65rem] leading-[normal] font-bold text-muted-foreground'
+export const textLinkClasses =
+  'inline-flex min-h-11 items-center gap-2 text-[0.7rem] font-extrabold transition-[color,background-color,transform] duration-180 hover:underline hover:underline-offset-[0.3rem] focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-ring active:bg-accent active:text-accent-foreground active:underline active:underline-offset-[0.3rem] data-[pressed=true]:bg-accent data-[pressed=true]:text-accent-foreground data-[pressed=true]:underline data-[pressed=true]:underline-offset-[0.3rem] motion-safe:active:translate-y-px motion-safe:data-[pressed=true]:translate-y-px motion-reduce:transition-none'
+export const decisionClasses =
+  'group/decision border-b-2 border-border transition-colors duration-200 open:border-foreground motion-reduce:transition-none supports-[interpolate-size:allow-keywords]:[interpolate-size:allow-keywords] supports-[interpolate-size:allow-keywords]:details-content:h-0 supports-[interpolate-size:allow-keywords]:[&[open]::details-content]:h-auto supports-[interpolate-size:allow-keywords]:details-content:overflow-clip supports-[interpolate-size:allow-keywords]:motion-safe:details-content:transition-[height,content-visibility] supports-[interpolate-size:allow-keywords]:motion-safe:details-content:duration-300 supports-[interpolate-size:allow-keywords]:motion-safe:details-content:ease-out supports-[interpolate-size:allow-keywords]:motion-safe:details-content:transition-discrete'

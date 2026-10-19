@@ -1,7 +1,7 @@
 import type { Metadata } from 'next'
 import { notFound } from 'next/navigation'
 import { SUPPORTED_LANGUAGES } from '@/app/constants'
-import { ProjectDetailPage } from '@/components/projects/ProjectDetailPage'
+import { ProjectDetailPage } from '@/components/projects/DetailPage'
 import {
   getProjectDetail,
   getProjectDetails,
