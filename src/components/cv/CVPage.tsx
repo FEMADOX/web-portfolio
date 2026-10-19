@@ -1,12 +1,9 @@
 'use client'
 
-import { ViewTransition } from 'react'
 import { getCvLocale } from '@/app/i18n'
 import {
   ContactSection,
-  DesktopControlsDock,
   EducationSection,
-  Footer,
   HeroSection,
   MobileHeader,
   MobileNav,
@@ -17,64 +14,70 @@ import {
 import { getProjects } from '@/components/cv/sections/project/utils'
 import { useLanguageContext } from '@/contexts/LanguageContext'
 import useActiveSection from '@/hooks/useActiveSection'
+import PortfolioShell from '../layout/PortfolioShell'
 
 const CVPage = () => {
   const [activeSection, lang] = [useActiveSection(), useLanguageContext()]
-  const [locale, projects] = [getCvLocale(lang), getProjects(lang)]
+  const [
+    {
+      sidebar,
+      navigation,
+      sections: {
+        skills: skillsTitle,
+        projects: projectsTitle,
+        education: educationTitle,
+        contact: contactTitle
+      },
+      theme,
+      hero,
+      sectionCodes: {
+        projects: projectsCode,
+        education: educationCode,
+        contact: contactCode
+      },
+      contactForm
+    },
+    projects
+  ] = [getCvLocale(lang), getProjects(lang)]
 
   return (
-    <ViewTransition
-      enter="project-page-enter"
-      exit="project-page-exit"
-      default="none"
-    >
-      <div className="min-h-screen bg-background text-foreground antialiased">
-        {/* Mobile Header */}
-        <MobileHeader className="lg:hidden" themeLabels={locale.theme} />
-
-        {/* Desktop Sidebar */}
+    <PortfolioShell
+      mobileHeader={<MobileHeader className="lg:hidden" themeLabels={theme} />}
+      sidebar={
         <Sidebar
           activeSection={activeSection}
           className="hidden lg:flex"
-          sidebar={locale.sidebar}
+          sidebar={sidebar}
         />
-
-        <DesktopControlsDock
-          controlsLabel={locale.controls}
-          themeLabels={locale.theme}
-        />
-
-        {/* Main Content */}
-        <main className="lg:ml-72 pb-15 lg:pb-0">
-          <div className="max-w-5xl mx-auto px-2 sm:px-6 lg:px-10 py-4 lg:py-10">
-            <HeroSection hero={locale.hero} />
-            <SkillsSection sectionTitle={locale.sections.skills} />
-            <ProjectsSection
-              sectionTitle={locale.sections.projects}
-              projects={projects}
-              sectionCode={locale.sectionCodes.projects}
-            />
-            <EducationSection
-              sectionTitle={locale.sections.education}
-              sectionCode={locale.sectionCodes.education}
-            />
-            <ContactSection
-              sectionTitle={locale.sections.contact}
-              contactForm={locale.contactForm}
-              sectionCode={locale.sectionCodes.contact}
-            />
-          </div>
-          <Footer source={locale.footer.source} />
-        </main>
-
-        {/* Mobile Bottom Navigation */}
+      }
+      bottomNavigation={
         <MobileNav
           activeSection={activeSection}
-          navigation={locale.navigation}
+          navigation={navigation}
           className="lg:hidden"
         />
+      }
+      contentClassName="pb-15 lg:pb-0"
+    >
+      <div className="mx-auto max-w-5xl px-2 py-4 sm:px-6 lg:px-10 lg:py-10">
+        <HeroSection hero={hero} />
+        <SkillsSection sectionTitle={skillsTitle} />
+        <ProjectsSection
+          sectionTitle={projectsTitle}
+          projects={projects}
+          sectionCode={projectsCode}
+        />
+        <EducationSection
+          sectionTitle={educationTitle}
+          sectionCode={educationCode}
+        />
+        <ContactSection
+          sectionTitle={contactTitle}
+          contactForm={contactForm}
+          sectionCode={contactCode}
+        />
       </div>
-    </ViewTransition>
+    </PortfolioShell>
   )
 }
 

@@ -1,6 +1,8 @@
 import { notFound } from 'next/navigation'
 import type { ChildrenProps } from '@/app/types'
 import PortfolioDocument from '@/components/PortfolioDocument'
+import CurrentYearServerProvider from '@/contexts/CurrentYearServerContext'
+import LanguageServerProvider from '@/contexts/LanguageServerContext'
 import { isLang } from '@/lib/language'
 
 export {
@@ -18,5 +20,12 @@ export default async function LocalizedLayout({
 }: LocalizedLayoutProps) {
   const { lang } = await params
   if (!isLang(lang)) notFound()
-  return <PortfolioDocument lang={lang}>{children}</PortfolioDocument>
+
+  return (
+    <PortfolioDocument lang={lang}>
+      <LanguageServerProvider lang={lang}>
+        <CurrentYearServerProvider>{children}</CurrentYearServerProvider>
+      </LanguageServerProvider>
+    </PortfolioDocument>
+  )
 }

@@ -2,8 +2,6 @@ import type { Metadata } from 'next'
 import { notFound } from 'next/navigation'
 import { SUPPORTED_LANGUAGES } from '@/app/constants'
 import { ProjectDetailPage } from '@/components/projects/ProjectDetailPage'
-import CurrentYearServerProvider from '@/contexts/CurrentYearServerContext'
-import LanguageServerProvider from '@/contexts/LanguageServerContext'
 import {
   getProjectDetail,
   getProjectDetails,
@@ -42,15 +40,11 @@ export default async function LocalizedProjectPage({ params }: Props) {
   const nextProject = projects[(index + 1) % projects.length]
 
   return (
-    <LanguageServerProvider lang={lang}>
-      <CurrentYearServerProvider>
-        <ProjectDetailPage
-          lang={lang}
-          project={project}
-          nextProject={nextProject}
-          index={index}
-        />
-      </CurrentYearServerProvider>
-    </LanguageServerProvider>
+    <ProjectDetailPage
+      lang={lang}
+      project={project}
+      nextProject={nextProject}
+      index={index}
+    />
   )
 }
