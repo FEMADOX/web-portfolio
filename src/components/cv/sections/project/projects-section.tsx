@@ -42,9 +42,11 @@ export const ProjectsSection = ({
         </span>
       </div>
 
-      <div className="project-section-intro">
-        <h3>{labels.intro}</h3>
-        <p>{labels.introBody}</p>
+      <div className="mb-8 max-w-184 text-muted-foreground">
+        <h3 className="mb-[0.85rem] text-[clamp(1.65rem,3.5vw,2.7rem)] leading-[1.08] font-black tracking-[-0.04em]">
+          {labels.intro}
+        </h3>
+        <p className="text-[0.95rem] leading-[1.8]">{labels.introBody}</p>
       </div>
       <LazyProjects projects={projects} />
     </section>
