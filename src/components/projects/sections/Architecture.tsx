@@ -37,9 +37,15 @@ const Architecture = ({
         >
           {project.architecture.summary}
         </p>
-        <ol className="mt-[1.7rem] grid gap-5 border-2 border-border bg-card p-6">
+        <ProjectReveal
+          as="ol"
+          variant="group"
+          className="mt-[1.7rem] grid gap-5 border-2 border-border bg-card p-6"
+        >
           {project.architecture.steps.map((step, i) => (
-            <li
+            <ProjectReveal
+              as="li"
+              variant="item"
               key={step.title}
               className="relative flex gap-4 border-b border-dashed border-border pb-6 last:border-0 last:pb-0"
             >
@@ -66,9 +72,9 @@ const Architecture = ({
                   aria-hidden="true"
                 />
               )}
-            </li>
+            </ProjectReveal>
           ))}
-        </ol>
+        </ProjectReveal>
         <div className="mt-8">
           <h3
             className={`${chapterHeadingClasses} font-mono tracking-[0.13em] uppercase`}

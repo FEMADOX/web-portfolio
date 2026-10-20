@@ -7,6 +7,7 @@ import {
 } from 'lucide-react'
 import type { Lang } from '@/app/types'
 import { PROJECT_SLUGS, type ProjectDetail } from '@/data/projects/types'
+import { ProjectReveal } from '../Motion'
 import ProjectPressLink from '../PressLink'
 import type {
   eyebrowClassesType,
@@ -150,43 +151,60 @@ const Hero = ({
         {labelsCaseStudy}{' '}
         <span className="text-[1.3rem] text-foreground">↘</span>
       </p>
-      <h1 className="max-w-262.5 text-[clamp(2.9rem,6vw,6.7rem)] leading-[0.98] font-black tracking-[-0.06em] text-balance wrap-anywhere">
-        {projectTitle}
-      </h1>
-      <p className="mt-6 max-w-180 text-[clamp(1.15rem,2.3vw,1.7rem)] leading-[1.35] font-[650] text-balance">
-        {projectHeadline}
-      </p>
-      <p className="mt-4 max-w-172 text-[0.95rem] leading-[1.8] text-muted-foreground">
-        {projectIntro}
-      </p>
-
-      <div className="mt-8 flex flex-wrap items-center gap-5">
-        <ProjectPressLink className={projectButtonClasses} href="#challenge">
-          {labelsExplore}
-          <ArrowDown size={17} aria-hidden="true" />
-        </ProjectPressLink>
-        <ProjectPressLink
-          className={textLinkClasses}
-          href={projectLinks.github}
-          target="_blank"
-          rel="noopener noreferrer"
+      <ProjectReveal variant="group">
+        <ProjectReveal
+          as="h1"
+          variant="item"
+          className="max-w-262.5 text-[clamp(2.9rem,6vw,6.7rem)] leading-[0.98] font-black tracking-[-0.06em] text-balance wrap-anywhere"
         >
-          <Code2 size={17} aria-hidden="true" />
-          {labelsSource}
-          <ArrowUpRight size={15} aria-hidden="true" />
-        </ProjectPressLink>
-        {projectLinks.website && (
+          {projectTitle}
+        </ProjectReveal>
+        <ProjectReveal
+          as="p"
+          variant="item"
+          className="mt-6 max-w-180 text-[clamp(1.15rem,2.3vw,1.7rem)] leading-[1.35] font-[650] text-balance"
+        >
+          {projectHeadline}
+        </ProjectReveal>
+        <ProjectReveal
+          as="p"
+          variant="item"
+          className="mt-4 max-w-172 text-[0.95rem] leading-[1.8] text-muted-foreground"
+        >
+          {projectIntro}
+        </ProjectReveal>
+
+        <ProjectReveal
+          variant="item"
+          className="mt-8 flex flex-wrap items-center gap-5"
+        >
+          <ProjectPressLink className={projectButtonClasses} href="#challenge">
+            {labelsExplore}
+            <ArrowDown size={17} aria-hidden="true" />
+          </ProjectPressLink>
           <ProjectPressLink
             className={textLinkClasses}
-            href={projectLinks.website}
+            href={projectLinks.github}
             target="_blank"
             rel="noopener noreferrer"
           >
-            {labelsDemo}
-            <ExternalLink size={15} aria-hidden="true" />
+            <Code2 size={17} aria-hidden="true" />
+            {labelsSource}
+            <ArrowUpRight size={15} aria-hidden="true" />
           </ProjectPressLink>
-        )}
-      </div>
+          {projectLinks.website && (
+            <ProjectPressLink
+              className={textLinkClasses}
+              href={projectLinks.website}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              {labelsDemo}
+              <ExternalLink size={15} aria-hidden="true" />
+            </ProjectPressLink>
+          )}
+        </ProjectReveal>
+      </ProjectReveal>
 
       <figure data-project-hero-figure className="mt-12">
         <ProjectVisual variant="hero" slug={projectSlug} />

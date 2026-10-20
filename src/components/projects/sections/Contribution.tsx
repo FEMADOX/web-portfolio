@@ -37,11 +37,14 @@ const Contribution = ({
           title={labelsContributionTitle}
         />
       </ProjectReveal>
-      <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3 lg:has-[>:nth-child(4)]:grid-cols-2">
+      <ProjectReveal
+        variant="group"
+        className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3 lg:has-[>:nth-child(4)]:grid-cols-2"
+      >
         {projectContributions.map((item, i) => (
           <ProjectReveal
             key={item.title}
-            delay={i * 0.06}
+            variant="item"
             className="border-2 border-border bg-card p-6 sm:[&:last-child:nth-child(odd)]:col-span-full lg:[&:last-child:nth-child(odd)]:col-auto"
           >
             <span className={smallNumberClasses}>0{i + 1} /</span>
@@ -53,7 +56,7 @@ const Contribution = ({
             </p>
           </ProjectReveal>
         ))}
-      </div>
+      </ProjectReveal>
     </div>
   </section>
 )

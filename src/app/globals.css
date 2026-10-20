@@ -261,6 +261,11 @@
     #typing-effect::after {
       animation-play-state: paused;
     }
+
+    [data-project-visual] [data-project-visual-node] {
+      transform: none;
+      transition: none;
+    }
   }
 }
 
