@@ -38,10 +38,7 @@ const PortfolioShell = ({
     >
       <div
         {...props}
-        className={cn(
-          'min-h-screen bg-background text-foreground antialiased',
-          className
-        )}
+        className={cn('min-h-screen text-foreground antialiased', className)}
       >
         {overlay}
         {mobileHeader}
