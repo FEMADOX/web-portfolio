@@ -212,12 +212,6 @@
     }
   }
 
-  @media (prefers-reduced-motion: reduce) {
-    .desktop-controls-dock {
-      animation: none;
-    }
-  }
-
   @keyframes desktop-controls-float {
     0%,
     100% {
@@ -250,6 +244,22 @@
     }
     50% {
       opacity: 0;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .desktop-controls-dock,
+    .download-icon path:nth-child(n),
+    #typing-effect::after {
+      animation: none;
+    }
+  }
+
+  html[data-visual-effects="paused"] {
+    .desktop-controls-dock,
+    .download-icon path,
+    #typing-effect::after {
+      animation-play-state: paused;
     }
   }
 }
@@ -362,6 +372,13 @@ html {
   :root {
     scroll-behavior: auto;
   }
+}
+
+html[data-visual-effects="paused"]::view-transition-old(*),
+html[data-visual-effects="paused"]::view-transition-new(*),
+html[data-visual-effects="paused"]::view-transition-group(*) {
+  animation-duration: 0s;
+  animation-delay: 0s;
 }
 
 /* Selection color */
