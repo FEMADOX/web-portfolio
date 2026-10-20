@@ -32,9 +32,11 @@ const Outcomes = ({
         label={labels.chapters[4]}
         title={labels.outcomesTitle}
       />
-      <ul className="grid gap-[0.9rem]">
+      <ProjectReveal as="ul" variant="group" className="grid gap-[0.9rem]">
         {project.outcomes.map(outcome => (
-          <li
+          <ProjectReveal
+            as="li"
+            variant="item"
             key={outcome}
             className="flex items-start gap-4 border-2 border-border bg-card p-5"
           >
@@ -44,9 +46,9 @@ const Outcomes = ({
               aria-hidden="true"
             />
             <p className={chapterParagraphClasses}>{outcome}</p>
-          </li>
+          </ProjectReveal>
         ))}
-      </ul>
+      </ProjectReveal>
       <div className="mt-4 border-b-2 border-border py-8">
         <p className="font-mono text-[0.9rem] leading-[1.85] font-bold tracking-[0.13em] uppercase">
           {labels.learning}
