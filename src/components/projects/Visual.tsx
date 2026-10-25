@@ -20,6 +20,7 @@ import {
 import type {} from 'react/canary'
 import { useMotionPreferences } from '@/contexts/MotionPreferencesContext'
 import { ProjectReveal } from './Motion'
+import { HeroVisualAccent, HeroVisualNode } from './ProjectVisualMotion'
 import {
   getProjectVisualClassName,
   getProjectVisualCode,
@@ -34,7 +35,7 @@ function HeroVisualDepth({
   code: string
   target: RefObject<HTMLDivElement | null>
 }) {
-  const { motionEnabled } = useMotionPreferences()
+  const { canAnimate } = useMotionPreferences()
   const { scrollYProgress } = useScroll({
     target,
     offset: ['start end', 'end start']
@@ -60,7 +61,7 @@ function HeroVisualDepth({
 
   return (
     <motion.span
-      style={{ y: depthReady && motionEnabled ? y : 0 }}
+      style={{ y: depthReady && canAnimate ? y : 0 }}
       className="pointer-events-none absolute -right-4 bottom-0 -z-1 text-(--project-color) opacity-[0.045] [font:900_17rem/1_sans-serif]"
     >
       {code}
@@ -70,7 +71,8 @@ function HeroVisualDepth({
 
 const ProjectVisual = ({ slug, variant = 'card' }: ProjectVisualProps) => {
   const code = getProjectVisualCode(slug)
-  const { motionEnabled } = useMotionPreferences()
+  const { motionEnabled, canAnimate } = useMotionPreferences()
+  const visualMotionEnabled = variant === 'hero' ? canAnimate : motionEnabled
   const ref = useRef<HTMLDivElement | null>(null)
   const pointerX = useMotionValue(0)
   const pointerY = useMotionValue(0)
@@ -80,13 +82,13 @@ const ProjectVisual = ({ slug, variant = 'card' }: ProjectVisualProps) => {
   const rotateY = useTransform(x, [-4, 4], [-3, 3])
 
   useEffect(() => {
-    if (!motionEnabled) {
+    if (!visualMotionEnabled) {
       pointerX.jump(0)
       pointerY.jump(0)
       x.jump(0)
       y.jump(0)
     }
-  }, [motionEnabled, pointerX, pointerY, x, y])
+  }, [visualMotionEnabled, pointerX, pointerY, x, y])
 
   useEffect(() => {
     const reset = () => {
@@ -111,15 +113,15 @@ const ProjectVisual = ({ slug, variant = 'card' }: ProjectVisualProps) => {
       <motion.div
         ref={ref}
         style={{
-          x: motionEnabled ? x : 0,
-          y: motionEnabled ? y : 0,
-          rotateX: motionEnabled ? rotateX : 0,
-          rotateY: motionEnabled ? rotateY : 0,
+          x: visualMotionEnabled ? x : 0,
+          y: visualMotionEnabled ? y : 0,
+          rotateX: visualMotionEnabled ? rotateX : 0,
+          rotateY: visualMotionEnabled ? rotateY : 0,
           transformPerspective: 900
         }}
         onPointerMove={event => {
           if (
-            !motionEnabled ||
+            !visualMotionEnabled ||
             event.pointerType !== 'mouse' ||
             !window.matchMedia('(hover: hover) and (pointer: fine)').matches
           )
@@ -156,12 +158,15 @@ const ProjectVisual = ({ slug, variant = 'card' }: ProjectVisualProps) => {
         <ProjectVisualContent
           slug={slug}
           Reveal={ProjectReveal}
+          Node={variant === 'hero' ? HeroVisualNode : undefined}
+          enter={variant === 'hero'}
           depth={
             variant === 'hero' ? (
               <HeroVisualDepth code={code} target={ref} />
             ) : undefined
           }
         />
+        {variant === 'hero' && <HeroVisualAccent />}
       </motion.div>
     </ViewTransition>
   )

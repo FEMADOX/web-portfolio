@@ -30,26 +30,24 @@ const Decisions = ({
   smallNumberClasses
 }: Props) => (
   <section id="decisions" className={chapterClasses}>
-    <ProjectReveal>
+    <ProjectReveal preset="heading">
       <ChapterTitle
         number="04"
         label={labels.chapters[3]}
         title={labels.decisionsTitle}
       />
-      <div className="border-t-2 border-border">
-        {project.decisions.map((decision, i) => (
-          <details
-            key={decision.title}
-            open={i === 0}
-            className={decisionClasses}
-          >
-            <summary className="flex min-h-11 cursor-pointer list-none items-center gap-4 py-6 transition-colors duration-180 hover:bg-muted focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-ring active:bg-accent active:text-accent-foreground motion-reduce:transition-none [&::-webkit-details-marker]:hidden">
+    </ProjectReveal>
+    <ProjectReveal variant="group" className="border-t-2 border-border">
+      {project.decisions.map((decision, i) => (
+        <ProjectReveal key={decision.title} variant="item" preset="fade">
+          <details open={i === 0} className={decisionClasses}>
+            <summary className="flex min-h-11 cursor-pointer list-none items-center gap-4 py-6 transition-colors duration-180 hover:bg-muted focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-ring active:bg-accent active:text-accent-foreground motion-reduce:transition-none [[data-visual-effects=paused]_&]:transition-none [&::-webkit-details-marker]:hidden">
               <span className={smallNumberClasses}>0{i + 1}</span>
               <h3 className={`${chapterHeadingClasses} flex-1`}>
                 {decision.title}
               </h3>
               <span
-                className="font-mono text-2xl leading-[normal] font-normal transition-transform duration-180 ease-[ease] group-open/decision:transform-[rotate(45deg)] motion-safe:group-active/decision:scale-90 motion-reduce:transition-none"
+                className="font-mono text-2xl leading-[normal] font-normal transition-transform duration-220 ease-[ease] group-open/decision:transform-[rotate(45deg)] motion-safe:group-active/decision:scale-90 motion-reduce:transition-none [[data-visual-effects=paused]_&]:transition-none"
                 aria-hidden="true"
               >
                 +
@@ -69,8 +67,8 @@ const Decisions = ({
               </div>
             </div>
           </details>
-        ))}
-      </div>
+        </ProjectReveal>
+      ))}
     </ProjectReveal>
   </section>
 )

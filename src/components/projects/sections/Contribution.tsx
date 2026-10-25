@@ -30,7 +30,7 @@ const Contribution = ({
 }: Props) => (
   <section id="contribution" className={chapterClasses}>
     <div>
-      <ProjectReveal>
+      <ProjectReveal preset="heading">
         <ChapterTitle
           number="02"
           label={labelsChapters[1]}
