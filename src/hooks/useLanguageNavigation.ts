@@ -2,6 +2,10 @@ import { usePathname, useRouter } from 'next/navigation'
 import { useCallback, useEffect } from 'react'
 import { LANGUAGE_CHOICE_KEY } from '@/app/constants'
 import type { Lang } from '@/app/types'
+import {
+  hasCompletedIntroduction,
+  isIntroductionRoute
+} from '@/lib/introduction'
 import { getLanguagePath, getPreferredLang } from '@/lib/language'
 import { getLocalizedPathname } from '@/lib/projectPaths'
 
@@ -11,6 +15,12 @@ const useLanguageNavigation = () => {
 
   useEffect(() => {
     if (pathname === '/') {
+      // First-time visitors choose their locale inside the introduction.
+      if (
+        isIntroductionRoute(pathname, window.location.hash) &&
+        !hasCompletedIntroduction()
+      )
+        return
       let savedChoice: string | null = null
       let legacyLang: string | null = null
       try {

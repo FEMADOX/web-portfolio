@@ -1,6 +1,6 @@
 'use client'
 
-import { motion } from 'motion/react'
+import * as motion from 'motion/react-m'
 import Link from 'next/link'
 import { type ComponentProps, useState } from 'react'
 

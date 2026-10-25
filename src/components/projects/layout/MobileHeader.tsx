@@ -4,6 +4,7 @@ import type { CvLocale } from '@/app/types'
 import { EffectsToggle } from '@/components/ambient/EffectsToggle'
 import { LanguageButton } from '@/components/cv/LanguageButton'
 import { ThemeToggle } from '@/components/cv/ThemeToggle'
+import ReplayIntroductionButton from '@/components/intro/ReplayIntroductionButton'
 import type { ProjectLabels } from '../types'
 
 type Props = {
@@ -26,6 +27,7 @@ const ProjectMobileHeader = ({ locale, labels, backHref }: Props) => (
       <span>{labels.back}</span>
     </Link>
     <div className="ml-auto flex shrink-0 items-center gap-1.5 min-[375px]:gap-2">
+      <ReplayIntroductionButton />
       <EffectsToggle />
       <ThemeToggle labels={locale.theme} />
       <LanguageButton />

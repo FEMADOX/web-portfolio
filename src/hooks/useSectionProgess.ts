@@ -1,5 +1,5 @@
 import { useMotionValue } from 'motion/react'
-import { useEffect, useMemo } from 'react'
+import { type RefObject, useEffect, useMemo } from 'react'
 import type { SectionId } from '@/app/types'
 
 const sectionIds: SectionId[] = [
@@ -18,7 +18,7 @@ const initialProgress: Record<SectionId, number> = {
   contact: 0
 }
 
-const useSectionProgress = () => {
+const useSectionProgress = (contentRef: RefObject<HTMLElement | null>) => {
   const summary = useMotionValue(0)
   const skills = useMotionValue(0)
   const projects = useMotionValue(0)
@@ -31,6 +31,9 @@ const useSectionProgress = () => {
   )
 
   useEffect(() => {
+    const content = contentRef.current
+    if (!content) return
+
     let frame: number | null = null
 
     const update = () => {
@@ -42,7 +45,7 @@ const useSectionProgress = () => {
       const next = { ...initialProgress }
 
       const getSectionStart = (id: SectionId) => {
-        const element = document.getElementById(id)
+        const element = content.querySelector(`#${id}`)
         if (!element) return maxScroll
 
         const top = element.getBoundingClientRect().top + root.scrollTop
@@ -51,7 +54,7 @@ const useSectionProgress = () => {
       }
 
       for (const [index, id] of sectionIds.entries()) {
-        if (!document.getElementById(id)) continue
+        if (!content.querySelector(`#${id}`)) continue
 
         const nextId = sectionIds[index + 1]
         const start = index === 0 ? 0 : getSectionStart(id)
@@ -84,6 +87,7 @@ const useSectionProgress = () => {
 
     const observer = new ResizeObserver(schedule)
     observer.observe(document.body)
+    observer.observe(content)
 
     schedule()
 
@@ -93,7 +97,7 @@ const useSectionProgress = () => {
       observer.disconnect()
       if (frame !== null) cancelAnimationFrame(frame)
     }
-  }, [progress])
+  }, [contentRef, progress])
 
   return progress
 }

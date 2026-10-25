@@ -2,12 +2,11 @@
 
 import { Briefcase, Code, GraduationCap, Mail, User } from 'lucide-react'
 import type { NavigationItem, SectionId } from '@/app/types'
-import useScrollToSection from '@/hooks/useScrollToSection'
+import { useCvNavigation } from '@/contexts/CvNavigationContext'
 import { cn } from '@/lib/utils'
 import { ScrollProgress } from './ScrollProgress'
 
 interface MobileNavProps {
-  activeSection: string
   navigation: Record<SectionId, string>
   className?: string
 }
@@ -20,12 +19,8 @@ const navItems = [
   { id: 'contact', label: 'Contact', icon: Mail }
 ] satisfies NavigationItem[]
 
-export const MobileNav = ({
-  activeSection,
-  className,
-  navigation
-}: MobileNavProps) => {
-  const scrollToSection = useScrollToSection()
+export const MobileNav = ({ className, navigation }: MobileNavProps) => {
+  const { activeSection, scrollToSection } = useCvNavigation()
 
   return (
     <nav

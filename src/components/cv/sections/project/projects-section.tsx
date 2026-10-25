@@ -1,30 +1,25 @@
-'use client'
-
-import type { CvLocale } from '@/app/types'
-import { createLazyOnVisible } from '@/components/cv/LazyOnVisible'
+import type { CvLocale, Lang } from '@/app/types'
 import { getProjectLabels } from '@/components/projects/labels'
-import { useLanguageContext } from '@/contexts/LanguageContext'
-import type { ProjectsProps } from './Projects'
+import { LazyProjects } from './LazyProjects'
 import { ProjectsPreview } from './ProjectsPreview'
 import type { ProjectProps } from './types'
 
-const LazyProjects = createLazyOnVisible<ProjectsProps>(
-  () => import('./Projects').then(({ Projects }) => ({ default: Projects })),
-  props => <ProjectsPreview {...props} />
-)
-
-interface ProjectsSectionProps {
+interface Props {
+  lang: Lang
   sectionTitle: CvLocale['sections']['projects']
   projects: readonly ProjectProps[]
   sectionCode: string
 }
 
 export const ProjectsSection = ({
+  lang,
   sectionTitle,
   projects,
   sectionCode
-}: ProjectsSectionProps) => {
-  const labels = getProjectLabels(useLanguageContext())
+}: Props) => {
+  const { intro: introLabels, introBody: introBodyLabels } =
+    getProjectLabels(lang)
+
   return (
     <section id="projects" className="my-20 group">
       {/* Section Header */}
@@ -43,12 +38,15 @@ export const ProjectsSection = ({
       </div>
 
       <div className="mb-8 max-w-184 text-muted-foreground">
-        <h3 className="mb-[0.85rem] text-[clamp(1.65rem,3.5vw,2.7rem)] leading-[1.08] font-black tracking-[-0.04em]">
-          {labels.intro}
+        <h3 className="mb-[0.85rem] text-[clamp(1.65rem,3.5vw,2.7rem)] text-gray-200 leading-[1.08] font-black tracking-[-0.04em]">
+          {introLabels}
         </h3>
-        <p className="text-[0.95rem] leading-[1.8]">{labels.introBody}</p>
+        <p className="text-[0.95rem] leading-[1.8]">{introBodyLabels}</p>
       </div>
-      <LazyProjects projects={projects} />
+      <LazyProjects
+        projects={projects}
+        fallback={<ProjectsPreview projects={projects} lang={lang} />}
+      />
     </section>
   )
 }

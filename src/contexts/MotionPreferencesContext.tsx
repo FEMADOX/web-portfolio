@@ -1,5 +1,6 @@
 'use client'
 
+import { domAnimation, LazyMotion } from 'motion/react'
 import {
   createContext,
   use,
@@ -24,17 +25,21 @@ const getReducedMotion = () => window.matchMedia(REDUCED_MOTION_QUERY).matches
 const getServerReducedMotion = () => true
 
 interface MotionPreferences {
+  ready: boolean
   effectsEnabled: boolean
   reducedMotion: boolean
   motionEnabled: boolean
   canAnimate: boolean
   toggleEffects: () => void
+  setEffectsEnabled: (enabled: boolean) => void
+  setEffectsPreview: (enabled: boolean | null) => void
 }
 
 const MotionPreferencesContext = createContext<MotionPreferences | null>(null)
 
 export function MotionPreferencesProvider({ children }: ChildrenProps) {
-  const [effectsEnabled, setEffectsEnabled] = useState(true)
+  const [effectsEnabled, updateEffectsEnabled] = useState(true)
+  const [effectsPreview, setEffectsPreview] = useState<boolean | null>(null)
   const [hydrated, setHydrated] = useState(false)
   const [pageVisible, setPageVisible] = useState(true)
   const reducedMotion = useSyncExternalStore(
@@ -42,12 +47,13 @@ export function MotionPreferencesProvider({ children }: ChildrenProps) {
     getReducedMotion,
     getServerReducedMotion
   )
-  const motionEnabled = hydrated && effectsEnabled && !reducedMotion
+  const motionEnabled =
+    hydrated && (effectsPreview ?? effectsEnabled) && !reducedMotion
   const canAnimate = motionEnabled && pageVisible
 
   useEffect(() => {
     try {
-      setEffectsEnabled(localStorage.getItem(STORAGE_KEY) !== 'off')
+      updateEffectsEnabled(localStorage.getItem(STORAGE_KEY) !== 'off')
     } catch {
       // The in-memory preference still works when browser storage is unavailable.
     }
@@ -56,7 +62,7 @@ export function MotionPreferencesProvider({ children }: ChildrenProps) {
     const updateVisibility = () => setPageVisible(!document.hidden)
     const updatePreference = (event: StorageEvent) => {
       if (event.key === STORAGE_KEY || event.key === null) {
-        setEffectsEnabled(event.newValue !== 'off')
+        updateEffectsEnabled(event.newValue !== 'off')
       }
     }
 
@@ -78,30 +84,47 @@ export function MotionPreferencesProvider({ children }: ChildrenProps) {
     }
   }, [canAnimate])
 
-  const toggleEffects = useCallback(() => {
-    const next = !effectsEnabled
-    setEffectsEnabled(next)
+  const setEffectsEnabled = useCallback((enabled: boolean) => {
+    updateEffectsEnabled(enabled)
     try {
-      localStorage.setItem(STORAGE_KEY, next ? 'on' : 'off')
+      localStorage.setItem(STORAGE_KEY, enabled ? 'on' : 'off')
     } catch {
       // Storage is optional; do not block the control in private browsing.
     }
-  }, [effectsEnabled])
+  }, [])
+
+  const toggleEffects = useCallback(
+    () => setEffectsEnabled(!effectsEnabled),
+    [effectsEnabled, setEffectsEnabled]
+  )
 
   const value = useMemo(
     () => ({
+      ready: hydrated,
       effectsEnabled,
       reducedMotion,
       motionEnabled,
       canAnimate,
-      toggleEffects
+      toggleEffects,
+      setEffectsEnabled,
+      setEffectsPreview
     }),
-    [effectsEnabled, reducedMotion, motionEnabled, canAnimate, toggleEffects]
+    [
+      hydrated,
+      effectsEnabled,
+      reducedMotion,
+      motionEnabled,
+      canAnimate,
+      toggleEffects,
+      setEffectsEnabled
+    ]
   )
 
   return (
     <MotionPreferencesContext value={value}>
-      {children}
+      <LazyMotion features={domAnimation} strict>
+        {children}
+      </LazyMotion>
     </MotionPreferencesContext>
   )
 }

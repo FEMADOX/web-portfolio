@@ -1,12 +1,11 @@
 'use client'
 
 import { useMotionValue } from 'motion/react'
-import { useEffect, useMemo, useState } from 'react'
+import { type RefObject, useEffect, useMemo, useState } from 'react'
 import { PROJECT_CHAPTERS } from '@/components/projects/labels'
-import type { ProjectSlug } from '@/data/projects/types'
 import type { ProjectChapter } from '@/types/projects'
 
-export function useProjectChapter(slug: ProjectSlug) {
+export function useProjectChapter(contentRef: RefObject<HTMLElement | null>) {
   const [active, setActive] = useState<ProjectChapter>(PROJECT_CHAPTERS[0])
   const challenge = useMotionValue(0)
   const contribution = useMotionValue(0)
@@ -20,7 +19,7 @@ export function useProjectChapter(slug: ProjectSlug) {
   )
 
   useEffect(() => {
-    const content = document.querySelector(`[data-project-detail="${slug}"]`)
+    const content = contentRef.current
     let frame: number | null = null
 
     const update = () => {
@@ -69,6 +68,8 @@ export function useProjectChapter(slug: ProjectSlug) {
 
     const observer = new ResizeObserver(schedule)
     observer.observe(document.body)
+    const projectContent = content?.querySelector('[data-project-content]')
+    if (projectContent) observer.observe(projectContent)
     schedule()
 
     return () => {
@@ -77,7 +78,7 @@ export function useProjectChapter(slug: ProjectSlug) {
       observer.disconnect()
       if (frame !== null) cancelAnimationFrame(frame)
     }
-  }, [slug, progress])
+  }, [contentRef, progress])
 
   return { active, progress }
 }

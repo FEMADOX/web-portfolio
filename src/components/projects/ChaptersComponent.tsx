@@ -8,8 +8,9 @@ type Props = {
   labels: ProjectLabels
   className: string
   dataProjectNavigation: string
-  chapterLinkVariant: 'mobile' | 'desktop'
+  chapterLinkVariant: 'mobile' | 'desktop' | 'dock'
   mobileNavRef?: RefObject<HTMLDivElement | null>
+  navigationRef?: RefObject<HTMLElement | null>
 }
 
 const ProjectChaptersComponent = ({
@@ -17,13 +18,14 @@ const ProjectChaptersComponent = ({
   className,
   dataProjectNavigation,
   chapterLinkVariant,
-  mobileNavRef
+  mobileNavRef,
+  navigationRef
 }: Props) => {
   const { active, progress } = useProjectChaptersContext()
 
   return (
     <nav
-      ref={mobileNavRef}
+      ref={navigationRef ?? mobileNavRef}
       aria-label={labels.contents}
       className={className}
       data-project-navigation={dataProjectNavigation}

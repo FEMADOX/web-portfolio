@@ -1,16 +1,6 @@
-'use client'
-
 import type { CvLocale } from '@/app/types'
-import { createLazyOnVisible } from '@/components/cv/LazyOnVisible'
+import { LazySkillGroups } from './LazySkillGroups'
 import { SkillGroupsFallback } from './SkillGroupsFallback'
-
-const LazySkillGroups = createLazyOnVisible<Record<string, never>>(
-  () =>
-    import('./SkillsGroups').then(({ SkillGroups }) => ({
-      default: SkillGroups
-    })),
-  <SkillGroupsFallback />
-)
 
 interface SkillSectionProps {
   sectionTitle: CvLocale['sections']['skills']
@@ -27,6 +17,6 @@ export const SkillsSection = ({ sectionTitle }: SkillSectionProps) => (
       </span>
     </div>
 
-    <LazySkillGroups />
+    <LazySkillGroups fallback={<SkillGroupsFallback />} />
   </section>
 )

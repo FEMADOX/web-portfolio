@@ -2,7 +2,8 @@
 
 import { cn } from "@/lib/utils";
 import type { HTMLMotionProps, Variants } from "motion/react";
-import { motion, useAnimation, useReducedMotion } from "motion/react";
+import { useAnimation, useReducedMotion } from "motion/react";
+import * as motion from "motion/react-m";
 import { forwardRef, useCallback, useImperativeHandle, useRef } from "react";
 
 export interface SendIconHandle {

@@ -5,13 +5,11 @@ import { NavItems } from './NavItems'
 import { DownloadCvButton } from './sections/hero/DownloadCvButton'
 
 interface SidebarProps {
-  activeSection: string
   className?: string
   sidebar: CvLocale['sidebar']
 }
 
 export const Sidebar = ({
-  activeSection,
   className,
   sidebar: { jobTitle, navLabels, downloadCv }
 }: SidebarProps) => (
@@ -35,7 +33,7 @@ export const Sidebar = ({
       </div>
     </div>
 
-    <NavItems activeSection={activeSection} navLabels={navLabels} />
+    <NavItems navLabels={navLabels} />
 
     <div className="p-4 border-t-4 border-border mx-0 text-center">
       <DownloadCvButton {...downloadCv} animation={false} />

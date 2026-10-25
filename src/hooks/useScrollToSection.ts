@@ -1,13 +1,16 @@
-import { useCallback } from 'react'
+import { type RefObject, useCallback } from 'react'
 import type { SectionId } from '@/app/types'
+import { useMotionPreferences } from '@/contexts/MotionPreferencesContext'
 
-const useScrollToSection = () =>
-  useCallback(
+const useScrollToSection = (contentRef: RefObject<HTMLElement | null>) => {
+  const { motionEnabled } = useMotionPreferences()
+  return useCallback(
     (sectionId: SectionId) =>
-      document
-        .getElementById(sectionId)
-        ?.scrollIntoView({ behavior: 'smooth' }),
-    []
+      contentRef.current
+        ?.querySelector(`#${sectionId}`)
+        ?.scrollIntoView({ behavior: motionEnabled ? 'smooth' : 'instant' }),
+    [contentRef, motionEnabled]
   )
+}
 
 export default useScrollToSection

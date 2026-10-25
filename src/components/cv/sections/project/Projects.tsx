@@ -1,6 +1,6 @@
+import { projectAccents } from './accents'
 import { Project } from './Project'
 import type { ProjectProps } from './types'
-import { projectAccents } from './utils'
 
 export interface ProjectsProps {
   projects: readonly ProjectProps[]

@@ -1,15 +1,15 @@
-'use client'
-
-import type { CvLocale } from '@/app/types'
+import type { CvLocale, Lang } from '@/app/types'
 import { Educations } from './Educations'
 import { Languages } from './Languages'
 
 interface EducationSectionProps {
+  lang: Lang
   sectionTitle: CvLocale['sections']['education']
   sectionCode: string
 }
 
 export const EducationSection = ({
+  lang,
   sectionTitle,
   sectionCode
 }: EducationSectionProps) => (
@@ -28,7 +28,7 @@ export const EducationSection = ({
         {sectionCode}
       </span>
     </div>
-    <Educations />
-    <Languages />
+    <Educations lang={lang} />
+    <Languages lang={lang} />
   </section>
 )
