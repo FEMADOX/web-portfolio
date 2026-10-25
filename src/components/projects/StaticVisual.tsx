@@ -12,10 +12,24 @@ type RevealProps = {
   children: ReactNode
   className?: string
   variant?: 'single' | 'group' | 'item'
+  preset?: 'rise' | 'heading' | 'node' | 'fade' | 'line'
+  enter?: boolean
 }
 
 const StaticReveal = ({ children, className }: RevealProps) => (
   <div className={className}>{children}</div>
+)
+
+export type ProjectVisualNodeProps = {
+  children: ReactNode
+  className: string
+  index: number
+}
+
+const StaticVisualNode = ({ children, className }: ProjectVisualNodeProps) => (
+  <div data-project-visual-node className={className}>
+    {children}
+  </div>
 )
 
 const visuals = {
@@ -63,14 +77,21 @@ export const getProjectVisualClassName = (
 export const ProjectVisualContent = ({
   slug,
   Reveal = StaticReveal,
-  depth
+  depth,
+  Node,
+  enter = false
 }: {
   slug: ProjectSlug
   Reveal?: ComponentType<RevealProps>
   depth?: ReactNode
+  Node?: ComponentType<ProjectVisualNodeProps>
+  enter?: boolean
 }) => {
   const visual = visuals[slug]
   const code = getProjectVisualCode(slug)
+  const NodeFrame = Node ?? StaticVisualNode
+  // The injected node owns its animation; cards keep the existing text reveal.
+  const NodeContent = Node ? StaticReveal : Reveal
 
   return (
     <>
@@ -78,7 +99,11 @@ export const ProjectVisualContent = ({
         <span>BUILD / {code}</span>
         <span className="size-[0.45rem] rounded-full bg-(--project-color) shadow-[0_0_0_4px_color-mix(in_srgb,var(--project-color)_13%,transparent)]" />
       </div>
-      <Reveal className="z-1 my-2 text-[clamp(1.4rem,12cqw,5.5rem)] leading-[0.95] font-black tracking-[-0.065em] text-(--project-ink)">
+      <Reveal
+        enter={enter}
+        preset={enter ? 'heading' : undefined}
+        className="z-1 my-2 text-[clamp(1.4rem,12cqw,5.5rem)] leading-[0.95] font-black tracking-[-0.065em] text-(--project-ink)"
+      >
         {visual.name}
         <span className="mt-[0.9rem] block tracking-[0.12em] text-(--project-muted) [font:500_clamp(0.4rem,2.3cqw,0.7rem)_var(--font-mono)]">
           {visual.tag}
@@ -86,23 +111,24 @@ export const ProjectVisualContent = ({
       </Reveal>
       <Reveal
         variant="group"
+        enter={enter}
         className="z-1 grid grid-cols-2 gap-[0.6rem] @min-[500px]:grid-cols-4 @min-[500px]:gap-4"
       >
         {visual.nodes.map((node, index) => (
-          <div
+          <NodeFrame
             key={node}
-            data-project-visual-node
+            index={index}
             className="border border-[color-mix(in_srgb,var(--foreground)_40%,transparent)] bg-(--project-panel) px-[0.65rem] py-[0.8rem] [transition:transform_240ms_ease,border-color_240ms] nth-2:delay-35 nth-3:delay-70 nth-4:delay-105 group-hover/project-card:border-(--project-color) group-hover/project-card:transform-[translateY(-3px)] group-focus-within/project-card:border-(--project-color) group-focus-within/project-card:transform-[translateY(-3px)] group-active/project-card:border-(--project-color) group-active/project-card:transform-[translateY(-3px)] group-data-[pressed=true]/project-card:border-(--project-color) group-data-[pressed=true]/project-card:transform-[translateY(-3px)] motion-reduce:transition-none motion-reduce:group-hover/project-card:transform-none motion-reduce:group-focus-within/project-card:transform-none motion-reduce:group-active/project-card:transform-none motion-reduce:group-data-[pressed=true]/project-card:transform-none @min-[500px]:p-4"
           >
-            <Reveal variant="item">
+            <NodeContent variant="item">
               <span className="mb-[0.3rem] block text-(--project-ink) [font:0.5rem_var(--font-mono)]">
                 0{index + 1}
               </span>
               <strong className="[font:700_0.65rem_var(--font-mono)] @min-[500px]:text-[0.8rem]">
                 {node}
               </strong>
-            </Reveal>
-          </div>
+            </NodeContent>
+          </NodeFrame>
         ))}
       </Reveal>
       <div className="z-1 flex items-center justify-between gap-[0.6rem] tracking-[0.08em] text-(--project-muted) [font:500_0.58rem_var(--font-mono)] @min-[500px]:text-[0.7rem]">

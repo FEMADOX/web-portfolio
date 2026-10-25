@@ -72,16 +72,20 @@ const ProjectMetadata = ({ labels, project }: ProjectMetadataProps) => {
   ]
 
   return (
-    <dl className="mt-6 grid grid-cols-2 gap-x-4 gap-y-6 border-b-2 border-border py-8 sm:grid-cols-4">
+    <ProjectReveal
+      as="dl"
+      variant="group"
+      className="mt-6 grid grid-cols-2 gap-x-4 gap-y-6 border-b-2 border-border py-8 sm:grid-cols-4"
+    >
       {items.map(([label, value]) => (
-        <div key={label}>
+        <ProjectReveal key={label} variant="item" preset="fade">
           <dt className="mb-[0.7rem] font-mono text-[0.6rem] leading-[normal] font-normal tracking-[0.06em] text-muted-foreground uppercase">
             {label}
           </dt>
           <dd className="text-[0.82rem] leading-normal font-[750]">{value}</dd>
-        </div>
+        </ProjectReveal>
       ))}
-    </dl>
+    </ProjectReveal>
   )
 }
 
@@ -145,37 +149,48 @@ const Hero = ({
         </span>
       </div>
 
-      <p
+      <ProjectReveal
+        as="p"
+        preset="fade"
+        enter
         className={`${eyebrowClasses} mb-[1.2rem] flex items-center gap-4 text-muted-foreground`}
       >
         {labelsCaseStudy}{' '}
         <span className="text-[1.3rem] text-foreground">↘</span>
-      </p>
-      <ProjectReveal variant="group">
+      </ProjectReveal>
+      <div>
         <ProjectReveal
           as="h1"
-          variant="item"
+          preset="heading"
+          enter
+          delay={0.06}
           className="max-w-262.5 text-[clamp(2.9rem,6vw,6.7rem)] leading-[0.98] font-black tracking-[-0.06em] text-balance wrap-anywhere"
         >
           {projectTitle}
         </ProjectReveal>
         <ProjectReveal
           as="p"
-          variant="item"
+          preset="fade"
+          enter
+          delay={0.12}
           className="mt-6 max-w-180 text-[clamp(1.15rem,2.3vw,1.7rem)] leading-[1.35] font-[650] text-balance"
         >
           {projectHeadline}
         </ProjectReveal>
         <ProjectReveal
           as="p"
-          variant="item"
+          preset="fade"
+          enter
+          delay={0.12}
           className="mt-4 max-w-172 text-[0.95rem] leading-[1.8] text-muted-foreground"
         >
           {projectIntro}
         </ProjectReveal>
 
         <ProjectReveal
-          variant="item"
+          preset="fade"
+          enter
+          delay={0.18}
           className="mt-8 flex flex-wrap items-center gap-5"
         >
           <ProjectPressLink className={projectButtonClasses} href="#challenge">
@@ -204,7 +219,7 @@ const Hero = ({
             </ProjectPressLink>
           )}
         </ProjectReveal>
-      </ProjectReveal>
+      </div>
 
       <figure data-project-hero-figure className="mt-12">
         <ProjectVisual variant="hero" slug={projectSlug} />
