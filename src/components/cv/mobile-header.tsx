@@ -2,6 +2,7 @@
 
 import type { CvLocale } from '@/app/types'
 import { EffectsToggle } from '@/components/ambient/EffectsToggle'
+import ReplayIntroductionButton from '@/components/intro/ReplayIntroductionButton'
 import { cn } from '@/lib/utils'
 import { BrandLogo } from './BrandLogo'
 import { LanguageButton } from './LanguageButton'
@@ -32,6 +33,7 @@ export const MobileHeader = ({ themeLabels, className }: MobileHeaderProps) => (
         </div>
       </div>
       <div className="ml-auto flex shrink-0 items-center gap-1.5 min-[375px]:gap-2">
+        <ReplayIntroductionButton />
         <EffectsToggle />
         <ThemeToggle labels={themeLabels} />
         <LanguageButton />

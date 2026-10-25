@@ -1,16 +1,20 @@
-import { ProjectFrame } from './ProjectFrame'
+import { projectAccents } from './accents'
+import { ProjectCardFrame } from './ProjectCardFrame'
 import { ProjectLinksFrame } from './ProjectLinksFrame'
 import type { ProjectsProps } from './Projects'
-import { projectAccents } from './utils'
 
-export const ProjectsPreview = ({ projects }: ProjectsProps) => (
+export const ProjectsPreview = ({
+  projects,
+  lang
+}: ProjectsProps & { lang: Lang }) => (
   <div className="space-y-5">
     {projects.map((project, index) => {
       const accent = projectAccents[index % projectAccents.length]
 
       return (
-        <ProjectFrame
+        <ProjectCardFrame
           key={project.title}
+          lang={lang}
           project={project}
           accent={accent}
           isLeftLine={index % 2 === 0}
@@ -42,3 +46,5 @@ export const ProjectsPreview = ({ projects }: ProjectsProps) => (
     })}
   </div>
 )
+
+import type { Lang } from '@/app/types'

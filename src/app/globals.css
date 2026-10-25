@@ -1,7 +1,45 @@
-@import "tailwindcss";
+@import "tailwindcss" source("../");
 @import "tw-animate-css";
 
 @custom-variant dark (&:is(.dark *));
+@custom-variant wide (&:is(html[data-sidebar-state="collapsed"] *));
+
+/* Keep the existing ambient field visible beneath the native modal. */
+html:is([data-introduction="pending"], [data-introduction="open"])
+[data-portfolio-content] {
+  visibility: hidden;
+  /* The modal covers the CV: skip its layout/paint until the visitor enters. */
+  content-visibility: hidden;
+}
+
+[data-portfolio-introduction] {
+  display: none;
+}
+
+html:is([data-introduction="pending"], [data-introduction="open"])
+  [data-portfolio-introduction] {
+  display: block;
+}
+
+html[data-introduction="pending"] {
+  overflow: hidden;
+}
+
+[data-introduction-initial-scene] {
+  display: none;
+}
+
+html[data-introduction-scene="identity"]
+  [data-introduction-initial-scene="identity"],
+html[data-introduction-scene="settings"]
+  [data-introduction-initial-scene="settings"] {
+  display: block;
+}
+
+html[data-introduction="pending"][data-introduction-scene="settings"]
+  [data-portfolio-introduction] {
+  touch-action: auto;
+}
 
 :root {
   view-transition-name: none;
@@ -212,6 +250,18 @@
     }
   }
 
+  @media (min-width: 64rem) and (prefers-reduced-motion: no-preference) {
+    html[data-sidebar-state="collapsed"] [data-desktop-docks] {
+      animation: desktop-controls-float 4.2s ease-in-out infinite;
+      will-change: transform;
+
+      &:hover,
+      &:has(:focus-visible) {
+        animation-play-state: paused;
+      }
+    }
+  }
+
   @keyframes desktop-controls-float {
     0%,
     100% {
@@ -249,6 +299,7 @@
 
   @media (prefers-reduced-motion: reduce) {
     .desktop-controls-dock,
+    [data-desktop-docks],
     .download-icon path:nth-child(n),
     #typing-effect::after {
       animation: none;
@@ -257,6 +308,7 @@
 
   html[data-visual-effects="paused"] {
     .desktop-controls-dock,
+    [data-desktop-docks],
     .download-icon path,
     #typing-effect::after {
       animation-play-state: paused;
@@ -302,6 +354,10 @@ body::-webkit-scrollbar {
 /* Smooth scrolling */
 html {
   scroll-behavior: smooth;
+}
+
+html[data-visual-effects="paused"] {
+  scroll-behavior: auto;
 }
 
 /* Native route transitions target browser-generated pseudo-elements. */

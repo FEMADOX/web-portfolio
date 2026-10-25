@@ -1,4 +1,5 @@
 import type { Metadata } from 'next'
+import { notFound } from 'next/navigation'
 import CVPage from '@/components/cv/CVPage'
 import getPortfolioMetadata from '@/lib/getPortfolioMetadata'
 import { isLang } from '@/lib/language'
@@ -14,6 +15,11 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   return isLang(lang) ? getPortfolioMetadata(lang) : {}
 }
 
-const LocalizedCVPage = async () => <CVPage />
+const LocalizedCVPage = async ({ params }: Props) => {
+  const { lang } = await params
+  if (!isLang(lang)) notFound()
+
+  return <CVPage lang={lang} />
+}
 
 export default LocalizedCVPage

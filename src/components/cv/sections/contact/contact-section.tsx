@@ -1,5 +1,3 @@
-'use client'
-
 import type { CvLocale } from '@/app/types'
 import { ContactLinks } from './ContactLinks'
 import { LazyContactForm } from './LazyContactForm'

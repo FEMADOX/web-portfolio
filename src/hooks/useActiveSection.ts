@@ -1,6 +1,6 @@
 'use client'
 
-import { useEffect, useState } from 'react'
+import { type RefObject, useEffect, useState } from 'react'
 
 const sections = [
   'summary',
@@ -12,10 +12,13 @@ const sections = [
 
 type ActiveSection = (typeof sections)[number]
 
-const useActiveSection = () => {
+const useActiveSection = (contentRef: RefObject<HTMLElement | null>) => {
   const [activeSection, setActiveSection] = useState<ActiveSection>('summary')
 
   useEffect(() => {
+    const content = contentRef.current
+    if (!content) return
+
     const handleScroll = () => {
       const root = document.scrollingElement ?? document.documentElement
       const maxScroll = Math.max(0, root.scrollHeight - root.clientHeight)
@@ -25,7 +28,7 @@ const useActiveSection = () => {
 
       if (maxScroll > 0) {
         for (const section of sections) {
-          const element = document.getElementById(section)
+          const element = content.querySelector(`#${section}`)
           if (!element) continue
 
           const top = element.getBoundingClientRect().top + root.scrollTop
@@ -47,13 +50,14 @@ const useActiveSection = () => {
 
     const observer = new ResizeObserver(handleScroll)
     observer.observe(document.body)
+    observer.observe(content)
 
     return () => {
       window.removeEventListener('scroll', handleScroll)
       window.removeEventListener('resize', handleScroll)
       observer.disconnect()
     }
-  }, [])
+  }, [contentRef])
 
   return activeSection
 }

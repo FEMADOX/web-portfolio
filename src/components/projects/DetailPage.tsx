@@ -114,7 +114,7 @@ export function ProjectDetailPage({
     >
       <div
         data-project-content
-        className="mx-auto max-w-300 px-5 pt-[1.7rem] sm:px-8 lg:px-12 lg:pt-24"
+        className="mx-auto max-w-300 px-5 pt-[1.7rem] sm:px-8 lg:px-12 lg:pt-24 lg:wide:max-w-none lg:wide:pt-28 lg:wide:[&_p]:max-w-prose"
       >
         <Hero {...heroProps} />
 

@@ -1,3 +1,5 @@
+'use client'
+
 import { Download } from 'lucide-react'
 import { toast } from 'sonner'
 import { Button } from '@/components/ui/button'
@@ -17,7 +19,8 @@ export const DownloadCvButton = ({
   downloadNotice,
   downloadDescription,
   shadow,
-  animation
+  animation,
+  variant = 'default'
 }: DownloadCvButtonProps) => {
   const notifyDownload = () =>
     toast.success(downloadNotice, {
@@ -25,11 +28,11 @@ export const DownloadCvButton = ({
     })
 
   return (
-    <div className="flex justify-center">
+    <div className="flex shrink-0 justify-center">
       <Button
         asChild
         className={`
-          h-12 rounded-none border-2 border-border bg-accent text-accent-foreground font-black uppercase tracking-widest
+          ${variant === 'dock' ? 'size-11 p-0' : 'h-12'} rounded-none border-2 border-border bg-accent text-accent-foreground font-black uppercase tracking-widest
           hover:bg-accent/60 ${shadow ? `shadow-${shadow}` : ''}
           ${animation ? 'button-animation' : ''}
         `}
@@ -37,16 +40,19 @@ export const DownloadCvButton = ({
         <a
           className="text-xs sm:text-base"
           href={cvLangUrl}
+          title={variant === 'dock' ? buttonText : undefined}
           download={downloadName}
           onMouseEnter={() => warmDownload(cvLangUrl)}
           onClick={notifyDownload}
         >
           {/* Download SVG should animate when the button is hovered */}
           <Download
-            className={'download-icon w-4 mr-2 sm:ml-2'}
-            style={{ height: '100%' }}
+            className={`download-icon ${variant === 'dock' ? 'size-4' : 'w-4 mr-2 sm:ml-2 h-full'}`}
+            aria-hidden="true"
           />
-          {buttonText}
+          <span className={variant === 'dock' ? 'sr-only' : undefined}>
+            {buttonText}
+          </span>
         </a>
       </Button>
     </div>

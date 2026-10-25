@@ -1,20 +1,22 @@
 'use client'
 
-import { createContext, use } from 'react'
+import { createContext, type RefObject, use } from 'react'
 import type { ChildrenProps } from '@/app/types'
-import type { ProjectSlug } from '@/data/projects/types'
 import { useProjectChapter } from '@/hooks/useProjectChapter'
 
 type ProjectChaptersValue = ReturnType<typeof useProjectChapter>
 
 interface ProviderProps extends ChildrenProps {
-  slug: ProjectSlug
+  contentRef: RefObject<HTMLElement | null>
 }
 
 const ProjectChaptersContext = createContext<ProjectChaptersValue | null>(null)
 
-export const ProjectChaptersProvider = ({ slug, children }: ProviderProps) => (
-  <ProjectChaptersContext value={useProjectChapter(slug)}>
+export const ProjectChaptersProvider = ({
+  contentRef,
+  children
+}: ProviderProps) => (
+  <ProjectChaptersContext value={useProjectChapter(contentRef)}>
     {children}
   </ProjectChaptersContext>
 )

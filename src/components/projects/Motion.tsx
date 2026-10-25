@@ -1,11 +1,7 @@
 'use client'
 
-import {
-  motion,
-  useAnimationControls,
-  useInView,
-  type Variants
-} from 'motion/react'
+import { useAnimationControls, type Variants } from 'motion/react'
+import * as motion from 'motion/react-m'
 import { type ReactNode, useEffect, useRef } from 'react'
 import { useMotionPreferences } from '@/contexts/MotionPreferencesContext'
 
@@ -52,26 +48,39 @@ export function ProjectReveal({
   const { motionEnabled } = useMotionPreferences()
   const ref = useRef<HTMLElement | null>(null)
   const revealed = useRef(false)
-  const inView = useInView(ref, { once: true, amount: 0.12 })
   const controls = useAnimationControls()
   const Element = elements[as]
 
   useEffect(() => {
     if (variant === 'item') return
     if (!motionEnabled) {
+      // Server content is already visible. Initial hydration has nothing to
+      // settle; only interrupt a reveal that actually started.
+      if (!revealed.current) return
       controls.stop()
-      void controls.start('settled', { duration: 0, delay: 0 })
+      controls.set('settled')
       return
     }
-    if (revealed.current) {
-      void controls.start('settled', { duration: 0, delay: 0 })
-      return
-    }
-    if (inView) {
-      revealed.current = true
-      void controls.start('reveal')
-    }
-  }, [controls, inView, motionEnabled, variant])
+    if (revealed.current) return
+    const element = ref.current
+    if (!element) return
+    let initialEntry = true
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          observer.disconnect()
+          revealed.current = true
+          // Above-fold HTML is already painted. Keep it visible instead of
+          // replaying an entrance during hydration (and delaying LCP).
+          if (!initialEntry) void controls.start('reveal')
+        }
+        initialEntry = false
+      },
+      { threshold: 0.12 }
+    )
+    observer.observe(element)
+    return () => observer.disconnect()
+  }, [controls, motionEnabled, variant])
 
   return (
     <Element

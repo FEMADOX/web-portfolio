@@ -1,10 +1,10 @@
-import { useLanguageContext } from '@/contexts/LanguageContext'
+import type { Lang } from '@/app/types'
 import { EducationComponent } from './Education'
 import { getEducations } from './utils'
 
-export const Educations = () => (
+export const Educations = ({ lang }: { lang: Lang }) => (
   <div className="space-y-5">
-    {getEducations(useLanguageContext()).map(item => (
+    {getEducations(lang).map(item => (
       <EducationComponent
         key={item.degree}
         degree={item.degree}

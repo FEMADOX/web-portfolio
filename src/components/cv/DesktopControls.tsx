@@ -1,7 +1,9 @@
 'use client'
 
+import type { ReactNode } from 'react'
 import type { CvLocale } from '@/app/types'
 import { EffectsToggle } from '@/components/ambient/EffectsToggle'
+import ReplayIntroductionButton from '@/components/intro/ReplayIntroductionButton'
 import { cn } from '@/lib/utils'
 import { LanguageButton } from './LanguageButton'
 import { ThemeToggle } from './ThemeToggle'
@@ -9,11 +11,13 @@ import { ThemeToggle } from './ThemeToggle'
 interface DesktopControlsProps {
   themeLabels: CvLocale['theme']
   className?: string
+  children?: ReactNode
 }
 
 export const DesktopControls = ({
   themeLabels,
-  className
+  className,
+  children
 }: DesktopControlsProps) => (
   <div
     className={cn(
@@ -21,6 +25,8 @@ export const DesktopControls = ({
       className
     )}
   >
+    {children}
+    <ReplayIntroductionButton />
     <EffectsToggle />
     <ThemeToggle labels={themeLabels} />
     <LanguageButton />
