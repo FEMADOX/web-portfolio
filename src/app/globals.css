@@ -442,6 +442,28 @@ html[data-visual-effects="paused"]::view-transition-group(*) {
   animation-delay: 0s;
 }
 
+/* Hide the native pointer only while the mouse sight is visible and live. */
+@media (hover: hover) and (pointer: fine) and (
+    prefers-reduced-motion: no-preference
+  ) {
+  :root[data-technical-cursor="active"][data-visual-effects="enabled"]:not(
+    :active-view-transition
+  ):not(.theme-view-transition),
+  :root[data-technical-cursor="active"][data-visual-effects="enabled"]:not(
+      :active-view-transition
+    ):not(.theme-view-transition)
+    * {
+    cursor: none;
+  }
+}
+
+/* Exclude the sight before transition snapshots are captured. */
+:root:is(:active-view-transition, .theme-view-transition)
+[data-technical-cursor],
+:root[data-visual-effects="paused"] [data-technical-cursor] {
+  visibility: hidden;
+}
+
 /* Selection color */
 ::selection {
   background: oklch(0.85 0.15 85 / 0.3);
