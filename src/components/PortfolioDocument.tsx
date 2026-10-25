@@ -5,6 +5,7 @@ import { Toaster } from 'sonner'
 
 import '@/app/globals.css'
 import AmbientBackground from '@/components/ambient/AmbientBackground'
+import TechnicalCursor from '@/components/ambient/TechnicalCursor'
 import IntroductionPreferenceScript from '@/components/intro/IntroductionPreferenceScript'
 import PortfolioIntroduction from '@/components/intro/PortfolioIntroduction'
 import SidebarPreferenceScript from '@/components/layout/SidebarPreferenceScript'
@@ -32,7 +33,8 @@ const PortfolioDocument = ({ children, lang }: LanguageChildrenProps) => (
         <SidebarPreferencesProvider>
           <MotionPreferencesProvider>
             <IntroductionProvider>
-              <AmbientBackground />{' '}
+              <AmbientBackground />
+              <TechnicalCursor />
               <Suspense fallback={null}>
                 <PortfolioIntroduction lang={lang} />
               </Suspense>
