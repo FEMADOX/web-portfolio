@@ -3,6 +3,7 @@
 import { Moon, Sun } from 'lucide-react'
 import { useTheme } from 'next-themes'
 import { type MouseEvent, useEffect, useRef, useState } from 'react'
+import { flushSync } from 'react-dom'
 
 import { Button } from '../ui/button'
 
@@ -97,7 +98,8 @@ export const ThemeToggle = ({
     root.dataset.themeTransitionToken = transitionToken
     root.classList.add('theme-view-transition')
     const transition = doc.startViewTransition(() => {
-      setTheme(nextTheme)
+      // Capture the new view only after next-themes has updated the document.
+      flushSync(() => setTheme(nextTheme))
     })
     const cleanup = () => {
       if (root.dataset.themeTransitionToken === transitionToken) {
