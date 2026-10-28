@@ -11,5 +11,7 @@ const projectThemeClasses = {
     '[--project-color:#e3a455] [--project-surface-light:#f7ecdd] [--project-tint-light:#f4e6d2] [--project-surface-dark:#2a1810] [--project-tint-dark:#7a4517]'
 } satisfies Record<ProjectSlug, string>
 
-export const getProjectThemeClasses = (slug: ProjectSlug): string =>
+const getProjectThemeClasses = (slug: ProjectSlug): string =>
   projectThemeClasses[slug]
+
+export default getProjectThemeClasses

@@ -16,6 +16,7 @@ interface LazyOnVisibleProps {
   fallback: ReactNode
   className?: string
   rootMargin?: string
+  forceLoad?: boolean
 }
 
 const LoadedContent = ({
@@ -33,9 +34,10 @@ export const LazyOnVisible = ({
   children,
   fallback,
   className,
-  rootMargin
+  rootMargin,
+  forceLoad
 }: LazyOnVisibleProps) => {
-  const { ref, shouldLoad } = useNearViewport(rootMargin)
+  const { ref, shouldLoad } = useNearViewport(rootMargin, forceLoad)
   const focusedLink = useRef<HTMLAnchorElement | null>(null)
 
   const restoreFocus = useCallback(() => {

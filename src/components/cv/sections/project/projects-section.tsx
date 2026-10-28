@@ -38,14 +38,16 @@ export const ProjectsSection = ({
       </div>
 
       <div className="mb-8 max-w-184 text-muted-foreground">
-        <h3 className="mb-[0.85rem] text-[clamp(1.65rem,3.5vw,2.7rem)] text-gray-200 leading-[1.08] font-black tracking-[-0.04em]">
+        <h3 className="mb-[0.85rem] text-[clamp(1.65rem,3.5vw,2.7rem)] text-foreground leading-[1.08] font-black tracking-[-0.04em]">
           {introLabels}
         </h3>
         <p className="text-[0.95rem] leading-[1.8]">{introBodyLabels}</p>
       </div>
       <LazyProjects
         projects={projects}
-        fallback={<ProjectsPreview projects={projects} lang={lang} />}
+        fallback={
+          <ProjectsPreview projects={projects.slice(0, 3)} lang={lang} />
+        }
       />
     </section>
   )

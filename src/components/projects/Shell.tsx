@@ -12,7 +12,7 @@ import ProjectDesktopNavigation from './layout/DesktopNavigation'
 import ProjectMobileHeader from './layout/MobileHeader'
 import ProjectShellMobileNavigation from './layout/MobileNavigation'
 import ProjectSidebar from './layout/Sidebar'
-import { getProjectThemeClasses } from './theme'
+import getProjectThemeClasses from './theme'
 
 type Props = {
   children: ReactNode

@@ -1,12 +1,31 @@
 'use client'
 
-import type { ReactNode } from 'react'
-import { createLazyOnVisible } from '@/components/cv/LazyOnVisible'
+import { lazy, type ReactNode, Suspense } from 'react'
+import { LazyOnVisible } from '@/components/cv/LazyOnVisible'
+import { useGalleryLocation } from '@/hooks/useGalleryLocation'
 import type { ProjectsProps } from './Projects'
 
 type LazyProjectsProps = ProjectsProps & { fallback: ReactNode }
 
-export const LazyProjects = createLazyOnVisible<LazyProjectsProps>(
-  () => import('./Projects').then(({ Projects }) => ({ default: Projects })),
-  ({ fallback }) => fallback
+const Projects = lazy(() =>
+  import('./Projects').then(({ Projects }) => ({ default: Projects }))
+)
+
+const ProjectsLoader = ({ fallback, ...props }: LazyProjectsProps) => {
+  const requestedSlug = useGalleryLocation()
+  const restoreGallery = props.projects.some(
+    project => project.slug === requestedSlug
+  )
+
+  return (
+    <LazyOnVisible fallback={fallback} forceLoad={restoreGallery}>
+      <Projects {...props} />
+    </LazyOnVisible>
+  )
+}
+
+export const LazyProjects = (props: LazyProjectsProps) => (
+  <Suspense fallback={<div>{props.fallback}</div>}>
+    <ProjectsLoader {...props} />
+  </Suspense>
 )

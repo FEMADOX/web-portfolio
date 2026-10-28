@@ -1,10 +1,14 @@
 import { useEffect, useRef, useState } from 'react'
 
-const useNearViewport = (rootMargin = '400px 0px') => {
+const useNearViewport = (rootMargin = '400px 0px', forceLoad = false) => {
   const ref = useRef<HTMLDivElement | null>(null)
   const [shouldLoad, setShouldLoad] = useState(false)
 
   useEffect(() => {
+    if (forceLoad) {
+      setShouldLoad(true)
+      return
+    }
     const element = ref.current
     if (!element) return
 
@@ -30,9 +34,9 @@ const useNearViewport = (rootMargin = '400px 0px') => {
     observer.observe(element)
 
     return () => observer.disconnect()
-  }, [rootMargin])
+  }, [forceLoad, rootMargin])
 
-  return { ref, shouldLoad }
+  return { ref, shouldLoad: shouldLoad || forceLoad }
 }
 
 export default useNearViewport

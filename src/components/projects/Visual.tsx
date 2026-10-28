@@ -107,7 +107,11 @@ const ProjectVisual = ({ slug, variant = 'card' }: ProjectVisualProps) => {
   return (
     <ViewTransition
       name={`project-visual-${slug}`}
-      share="project-morph"
+      share={{
+        default: 'none',
+        'project-forward': 'project-morph',
+        'project-back': 'project-morph'
+      }}
       default="none"
     >
       <motion.div
