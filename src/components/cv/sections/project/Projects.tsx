@@ -1,25 +1,28 @@
-import { projectAccents } from './accents'
-import { Project } from './Project'
+'use client'
+
+import { useMemo } from 'react'
+import { getProjectGalleryCopy } from '@/components/projects/gallery/copy'
+import { getProjectGalleryCards } from '@/components/projects/gallery/ProjectGalleryCards'
+import ProjectGalleryCollection from '@/components/projects/gallery/ProjectGalleryCollection'
+import { useLanguageContext } from '@/contexts/LanguageContext'
 import type { ProjectProps } from './types'
 
-export interface ProjectsProps {
+export type ProjectsProps = {
   projects: readonly ProjectProps[]
 }
 
-export const Projects = ({ projects }: ProjectsProps) => (
-  <div className="space-y-5">
-    {projects.map((project, index) => {
-      const accent = projectAccents[index % projectAccents.length]
-      const isLeftLine = index % 2 === 0
+export const Projects = ({ projects }: ProjectsProps) => {
+  const lang = useLanguageContext()
+  const gallery = useMemo(
+    () => ({
+      cards: getProjectGalleryCards(projects),
+      titles: projects.map(project => project.title),
+      slugs: projects.map(project => project.slug)
+    }),
+    [projects]
+  )
 
-      return (
-        <Project
-          key={project.title}
-          project={project}
-          accent={accent}
-          isLeftLine={isLeftLine}
-        />
-      )
-    })}
-  </div>
-)
+  return (
+    <ProjectGalleryCollection {...gallery} copy={getProjectGalleryCopy(lang)} />
+  )
+}

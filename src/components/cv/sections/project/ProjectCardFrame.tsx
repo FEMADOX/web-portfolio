@@ -28,7 +28,7 @@ export const ProjectCardContent = ({
 
   return (
     <>
-      <div className="flex items-center justify-between gap-4 border-b-2 border-border px-[1.2rem] py-[0.8rem]">
+      <div className="flex items-center justify-between gap-4 border-b-2 border-border px-[1.2rem] py-[0.8rem] gallery-compact:px-4 gallery-compact:py-2 gallery-short:py-1">
         <span className="tracking-[0.06em] uppercase [font:700_0.65rem_var(--font-mono)]">
           {period}
         </span>
@@ -37,19 +37,19 @@ export const ProjectCardContent = ({
       <Link
         href={getProjectPath(lang, slug)}
         transitionTypes={['project-forward']}
-        className="group/project-card-body grid grid-cols-[minmax(0,1fr)] focus-visible:outline-3 focus-visible:outline-offset-[5px] focus-visible:outline-ring sm:grid-cols-[minmax(0,0.8fr)_minmax(0,1.2fr)]"
+        className="group/project-card-body grid grid-cols-[minmax(0,1fr)] focus-visible:outline-3 focus-visible:outline-offset-[5px] focus-visible:outline-ring sm:grid-cols-[minmax(0,0.8fr)_minmax(0,1.2fr)] gallery-short:grid-cols-[minmax(0,0.7fr)_minmax(0,1.3fr)]"
         aria-label={`${exploreLabels}: ${title}`}
       >
         {visual}
-        <div className="flex min-w-0 flex-col border-t-2 border-border p-[1.3rem] sm:border-t-0 sm:border-l-2 sm:p-[1.6rem]">
+        <div className="flex min-w-0 flex-col border-t-2 border-border p-[1.3rem] sm:border-t-0 sm:border-l-2 sm:p-[1.6rem] gallery-compact:p-4 gallery-short:p-3">
           <h3 className="text-[clamp(1.3rem,2vw,1.8rem)] leading-[1.12] font-black tracking-[-0.03em] text-balance">
             {title}
           </h3>
-          <p className="my-4 text-[0.85rem] leading-[1.7] text-muted-foreground">
+          <p className="my-4 text-[0.85rem] leading-[1.7] text-muted-foreground gallery-compact:my-3 gallery-short:my-1.5 gallery-short:leading-normal">
             {description}
           </p>
           <Technologies technologies={technologies} accent={accent} />
-          <div className="mt-auto flex items-center justify-between gap-3 pt-[1.4rem]">
+          <div className="mt-auto flex items-center justify-between gap-3 pt-[1.4rem] gallery-compact:pt-4 gallery-short:pt-2">
             <span>
               <strong className="block text-[0.8rem] tracking-[0.04em] uppercase">
                 {exploreLabels}
