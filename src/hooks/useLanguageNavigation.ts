@@ -47,7 +47,10 @@ const useLanguageNavigation = () => {
   }, [pathname, router])
 
   const setLang = useCallback(
-    (nextLang: Lang) => {
+    (
+      nextLang: Lang,
+      options?: { scroll?: boolean; transitionTypes?: string[] }
+    ) => {
       try {
         localStorage.setItem(LANGUAGE_CHOICE_KEY, nextLang)
       } catch {
@@ -55,7 +58,8 @@ const useLanguageNavigation = () => {
       }
 
       router.push(
-        `${getLocalizedPathname(pathname, nextLang)}${window.location.search}${window.location.hash}`
+        `${getLocalizedPathname(pathname, nextLang)}${window.location.search}${window.location.hash}`,
+        options
       )
     },
     [pathname, router]
